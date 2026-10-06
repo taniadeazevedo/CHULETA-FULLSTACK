@@ -217,6 +217,54 @@
     position:relative;
   }
   .tier .name{ margin:14px 0 0; font-size:12px; color:var(--ink-faint); }
+  .browser-api{
+    margin:18px 0 0;
+    padding:12px 14px 14px;
+    border:1.5px dashed var(--accent-js);
+    background:var(--accent-js-soft);
+    border-radius:12px;
+  }
+  .browser-api .ba-title{ margin:0; font-size:13px; font-weight:700; color:var(--ink); }
+  .browser-api .ba-sub{ margin:2px 0 12px; font-size:12px; color:var(--ink-soft); }
+  .browser-api ul{ gap:11px; }
+  .browser-api li{ grid-template-columns:104px 1fr; }
+
+  /* ---- vista compacta: cada elemento es una fila con "+" ---- */
+  .entry-head{ cursor:pointer; margin-bottom:0; }
+  .entry.open .entry-head{ margin-bottom:8px; }
+  .entry-head:focus-visible{ outline:2px solid var(--dot); outline-offset:3px; border-radius:6px; }
+  .entry-head .tag{ order:0; }
+  .entry-head::after, .plus{
+    order:1; flex:none; width:20px; height:20px; border-radius:50%;
+    border:1px solid var(--border); background:var(--surface); color:var(--ink-soft);
+    font:600 14px/17px "IBM Plex Sans", system-ui, sans-serif; text-align:center;
+  }
+  .entry-head::after{ content:"+"; align-self:center; }
+  .entry-head:hover::after, li.more:hover > .plus{ border-color:var(--dot, var(--ink-soft)); color:var(--ink); }
+  .entry.open .entry-head::after{ content:"\2212"; background:var(--dot); border-color:var(--dot); color:var(--bg); }
+  .entry-head .desc{ order:2; }
+  .entry:not(.open) > :not(.entry-head){ display:none; }
+  .entry:not(.open) .entry-head .desc{ display:none; }
+  .entry.open .entry-head .desc{ flex-basis:100%; }
+  .open-all{
+    font:inherit; font-size:12.5px; padding:6px 12px; border:1px solid var(--border);
+    border-radius:999px; background:var(--surface); color:var(--ink-soft); cursor:pointer; white-space:nowrap;
+  }
+  .open-all:hover{ color:var(--ink); }
+  .open-all[hidden]{ display:none; }
+
+
+
+  /* panorama: fichas con "+" */
+  .tier li.more{ display:flex; flex-wrap:wrap; align-items:center; gap:6px 8px; cursor:pointer; }
+  .tier li.more:focus-visible{ outline:2px solid var(--ink-soft); outline-offset:3px; border-radius:8px; }
+  .tier li.more .chip{ min-width:92px; }
+  .tier li.more > .plus{ order:1; }
+  .tier li.more > span:not(.chip):not(.plus){ display:none; order:2; flex-basis:100%; padding-left:14px; font-size:13px; line-height:1.45; }
+  .tier li.more.open > span:not(.chip):not(.plus){ display:block; }
+  .tier li.more.open > .plus{ background:var(--ink); border-color:var(--ink); color:var(--bg); }
+  .browser-api b{ color:var(--ink); }
+  .browser-api .rel{ display:block; margin-top:2px; font-style:normal; font-size:11.5px; font-weight:600; color:var(--accent-js); }
   .tier li:has(+ li.derivada)::after{
     content:"";
     position:absolute;
@@ -271,6 +319,44 @@
   @media (max-width:900px){ .link .arr::before{ content:"⇅"; } }
   .link b{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:12px; color:var(--ink); }
   .basic-legend{ margin:0 0 6px; font-size:12.5px; color:var(--ink-faint); }
+
+  /* panorama en vertical */
+  .basic{ grid-template-columns:1fr; max-width:720px; gap:4px; }
+  .link{ flex-direction:row; flex-wrap:wrap; gap:4px 10px; font-size:12.5px; padding:8px 0; }
+  .link b{ font-size:13px; }
+  .link .arr::before{ content:"\21C5"; }
+
+  /* panorama: en pantallas anchas, cada nivel es una tarjeta ancha (explicación | fichas | herramientas) */
+  @media (min-width:900px){
+    .basic{ max-width:none; }
+    .tier{
+      display:grid;
+      grid-template-columns:minmax(220px,300px) minmax(0,1fr) minmax(0,1fr);
+      grid-template-rows:repeat(4,auto) 1fr;
+      column-gap:40px;
+      align-content:start;
+      padding:26px 30px;
+    }
+    .tier > .group-label, .tier > .kick, .tier > h3, .tier > .analogy, .tier > .name{ grid-column:1; }
+    .tier > ul{ grid-column:2; grid-row:1 / span 5; align-self:start; padding-top:4px; }
+    .tier > .browser-api{ grid-column:3; grid-row:1 / span 5; align-self:start; margin:0; }
+    .tier:not(:has(> .browser-api)) > ul{ grid-column:2 / -1; }
+    .tier li.more > span:not(.chip):not(.plus){ max-width:62ch; }
+    .tier .analogy{ margin-bottom:0; }
+    .tier h3{ font-size:25px; }
+    .tier .analogy{ font-size:14px; }
+    .tier ul{ gap:20px; }
+    .tier li.more{ gap:8px 12px; font-size:14px; }
+    .tier li.more .chip{ font-size:13.5px; padding:5px 14px; min-width:124px; }
+    .tier li.more > .plus{ width:24px; height:24px; font-size:16px; line-height:20px; }
+    .tier li.derivada{ padding-left:34px; }
+    .tier li.derivada::before{ width:34px; top:14px; }
+    .tier li:has(+ li.derivada)::after{ top:14px; bottom:-34px; }
+    .tier li.more > span:not(.chip):not(.plus){ font-size:14px; line-height:1.5; }
+    .browser-api{ padding:16px 18px 18px; }
+    .browser-api .ba-title{ font-size:14px; }
+    .browser-api .ba-sub{ font-size:12.5px; }
+  }
   .tools-strip{
     margin:0 0 18px;
     padding:12px 14px;
@@ -315,6 +401,13 @@
     justify-content:center;
   }
   ol.steps b{ color:var(--ink); }
+  .steps-note{ margin:12px 0 0; padding-top:10px; border-top:1px dashed var(--border); font-size:13px; line-height:1.5; color:var(--ink-soft); }
+  .steps-note b{ color:var(--ink); }
+  dl.gloss{ margin:0; display:grid; grid-template-columns:max-content 1fr; gap:8px 14px; align-items:baseline; font-size:13.5px; line-height:1.5; color:var(--ink-soft); }
+  dl.gloss dt{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:12px; font-weight:600; color:var(--ink); background:var(--surface-2); border-radius:6px; padding:2px 8px; justify-self:start; }
+  dl.gloss dd{ margin:0; }
+  dl.gloss b{ color:var(--ink); }
+  @media (max-width:640px){ dl.gloss{ grid-template-columns:1fr; gap:2px; } dl.gloss dd{ margin-bottom:8px; } }
   details.full-map > summary{
     display:inline-block;
     cursor:pointer;
@@ -1054,16 +1147,25 @@
         <ul>
           <li><span class="chip html">HTML</span><span>lo que hay: títulos, textos, botones</span></li>
           <li><span class="chip css">CSS</span><span>cómo se ve: colores, tamaños, posición</span></li>
-          <li class="derivada"><span class="chip bs">Bootstrap</span><span>biblioteca de CSS ya hecho, para ir más rápido</span></li>
+          <li class="derivada"><span class="chip bs">Bootstrap</span><span>biblioteca de CSS ya hecho (y un poco de JS): botones, rejilla, navbar, tarjetas…</span></li>
           <li><span class="chip js">JavaScript</span><span>lo que hace: reacciona cuando pulsas algo</span></li>
           <li class="derivada"><span class="chip todo">React</span><span>biblioteca de JavaScript para organizar webs grandes; hay otras (Vue, Angular) (por ver)</span></li>
         </ul>
+        <div class="browser-api">
+          <p class="ba-title">Herramientas que trae el propio navegador</p>
+          <p class="ba-sub">No son un lenguaje: JavaScript las usa para hacer su trabajo.</p>
+          <ul>
+            <li><span class="chip js">DOM</span><span>la mesa servida: <b>el HTML</b> convertido en objetos que JavaScript puede buscar y cambiar. <em class="rel">viene del HTML</em></span></li>
+            <li><span class="chip js">Custom Elements</span><span>tus propias etiquetas HTML hechas con JavaScript. <em class="rel">amplía el HTML</em></span></li>
+            <li><span class="chip js">fetch</span><span>el teléfono a cocina: pide y manda datos al servidor <b>sin recargar</b> la página. <em class="rel">habla por HTTP ⇢</em></span></li>
+          </ul>
+        </div>
       </div>
 
       <div class="link">
         <span class="arr" aria-hidden="true"></span>
         <b>HTTP</b>
-        <span>el camarero: lleva el pedido y trae la respuesta</span>
+        <span>el camarero: lleva el pedido y trae la respuesta (en JSON)</span>
       </div>
 
       <div class="tier">
@@ -1074,8 +1176,8 @@
         <ul>
           <li><span class="chip todo">Java</span><span>el lenguaje en el que se escriben las reglas (por ver)</span></li>
           <li class="derivada"><span class="chip todo">Spring</span><span>biblioteca de Java ya hecha, para montar el servidor sin partir de cero (por ver)</span></li>
-          <li><span class="chip todo">REST</span><span>la ventanilla por la que la cocina atiende los pedidos</span></li>
-          <li><span class="chip js">json-server</span><span>una cocina de mentira para practicar: finge ser la API con un archivo .json (ya visto)</span></li>
+          <li><span class="chip">REST</span><span>las <b>ventanillas</b> de la cocina. Cada una es una dirección (por ejemplo <code>/productos</code>) y, según cómo te acerques, hace una cosa: <b>GET</b> ver, <b>POST</b> añadir, <b>PUT</b> cambiar, <b>DELETE</b> quitar. Esas 4 acciones se llaman <b>CRUD</b>. Ya lo has visto en clase con fetch.</span></li>
+          <li><span class="chip js">json-server</span><span>una cocina de pruebas: atiende igual que la real (mismas ventanillas REST), pero guarda los datos en un archivo <b>.json</b> en vez de en MySQL. Es lo que has usado en clase.</span></li>
         </ul>
       </div>
 
@@ -1102,19 +1204,33 @@
     <p class="basic-legend">Con trazo continuo: lo que ya habéis visto en clase. Con trazo discontinuo: lo que falta según el temario.</p>
 
     <div class="tools-strip">
-      <b>Y aparte, tus herramientas.</b> <b>VS Code</b> y <b>Eclipse</b> son el cuaderno donde escribes el código. <b>GitHub</b> es donde lo guardas y lo compartes. <b>Maven</b> y <b>JUnit</b> (por ver) sirven para organizar el proyecto Java y comprobar que funciona.
+      <b>Y aparte, tus herramientas.</b> <b>VS Code</b> y <b>Eclipse</b> son el cuaderno donde escribes el código. <b>GitHub</b> es donde lo guardas y lo compartes. <b>Live Server</b> (extensión de VS Code) abre tu página en el navegador y la recarga sola. <b>Node.js</b> (con <b>npx</b>) ejecuta JavaScript fuera del navegador: es lo que arranca json-server. <b>Maven</b> y <b>JUnit</b> (por ver) sirven para organizar el proyecto Java y comprobar que funciona.
     </div>
 
     <div class="steps-box">
       <h3>Qué pasa cuando pulsas «Comprar»</h3>
       <ol class="steps">
         <li><span><b>Haces clic</b> en un botón que ves en la página (HTML y CSS lo han dibujado).</span></li>
-        <li><span><b>JavaScript</b> se entera del clic y manda un pedido al servidor (HTTP).</span></li>
+        <li><span><b>JavaScript</b> se entera del clic (evento) y manda un pedido al servidor con <b>fetch</b> (HTTP), con los datos en JSON.</span></li>
         <li><span><b>Java</b> recibe el pedido y le pide los datos que necesita a la base de datos (SQL).</span></li>
         <li><span><b>MySQL</b> contesta, y Java prepara la respuesta y la devuelve.</span></li>
-        <li><span><b>JavaScript</b> recibe la respuesta y cambia la página (DOM): «Compra realizada».</span></li>
+        <li><span><b>JavaScript</b> recibe la respuesta, la convierte a objeto (<b>.json()</b>) y cambia la página (DOM): «Compra realizada».</span></li>
       </ol>
     </div>
+
+    <details class="full-map">
+      <summary>Glosario: las palabras que salen en todas partes</summary>
+    <div class="steps-box">
+            <dl class="gloss">
+        <dt>HTTP</dt><dd>El idioma del camarero: una petición y una respuesta. Métodos: <b>GET</b> leer, <b>POST</b> crear, <b>PUT</b> editar, <b>DELETE</b> borrar.</dd>
+        <dt>API REST</dt><dd>Las ventanillas de la cocina: cada dirección (<code>/productos</code>) hace una cosa según el método (GET ver, POST añadir, PUT cambiar, DELETE quitar).</dd>
+        <dt>JSON</dt><dd>El formato de las cajas selladas de datos: texto con <code>{ }</code>, <code>[ ]</code> y <code>"clave": valor</code>. Un archivo <b>.json</b> guarda datos; uno <b>.js</b> es código.</dd>
+        <dt>fetch</dt><dd>La llamada de JavaScript a la cocina. Con <b>async / await</b> espera la respuesta sin congelar la página.</dd>
+        <dt>DOM</dt><dd>La mesa servida: la página como objetos que JavaScript puede buscar y cambiar. Lo crea el navegador (existe sin JS, pero solo JS lo cambia).</dd>
+        <dt>CRUD</dt><dd>Las 4 cosas que haces con datos: <b>C</b>rear, <b>R</b>eer, <b>U</b>pdate (editar) y <b>D</b>elete (borrar).</dd>
+      </dl>
+    </div>
+    </details>
 
     <details class="full-map">
       <summary>Ver el mapa técnico completo del curso (CI338)</summary>
@@ -1215,13 +1331,13 @@
       <button class="tab" data-panel="css" style="--dot:var(--accent-css); --dot-soft:var(--accent-css-soft)" role="tab" aria-selected="false"><span class="dot"></span>CSS</button>
       <button class="tab" data-panel="js" style="--dot:var(--accent-js); --dot-soft:var(--accent-js-soft)" role="tab" aria-selected="false"><span class="dot"></span>JavaScript</button>
       <button class="tab" data-panel="bootstrap" style="--dot:var(--accent-bs); --dot-soft:var(--accent-bs-soft)" role="tab" aria-selected="false"><span class="dot"></span>Bootstrap</button>
-      <button class="tab" data-panel="proyecto" style="--dot:var(--accent-pr); --dot-soft:var(--accent-pr-soft)" role="tab" aria-selected="false"><span class="dot"></span>Proyecto</button>
       <button class="tab" data-panel="org" style="--dot:var(--ink-soft); --dot-soft:var(--surface-2)" role="tab" aria-selected="false"><span class="dot"></span>Organigrama</button>
     </div>
     <div class="mode" role="group" aria-label="Nivel de detalle">
       <button type="button" id="modeCore" aria-pressed="true">Esencial</button>
       <button type="button" id="modePro" aria-pressed="false">Pro</button>
     </div>
+    <button type="button" class="open-all" id="toggleAll">Abrir todo</button>
     <label class="search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input type="text" id="filterInput" placeholder="Buscar etiqueta…" autocomplete="off">
@@ -3800,11 +3916,83 @@ window.alert("Hola"); // igual que alert("Hola")</code></pre>
               </div>
             </details>
           </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Mostrar una sección y ocultar el resto</span><span class="desc">Una sola página con varias «pantallas» (<code>section</code>): cada vez se enseña una y se esconden las demás con la clase <b>d-none</b> de Bootstrap.</span></div>
+            <pre class="example"><code>&lt;main&gt;
+  &lt;section id="catalogo"&gt;…&lt;/section&gt;
+  &lt;section id="administracion" class="d-none"&gt;…&lt;/section&gt;
+  &lt;section id="formulario" class="d-none"&gt;…&lt;/section&gt;
+&lt;/main&gt;
+
+function mostrar(idSeccion) {
+  for (const seccion of document.querySelectorAll("main &gt; section")) {
+    seccion.classList.add("d-none");            // esconde todas
+  }
+  document.querySelector("#" + idSeccion).classList.remove("d-none"); // enseña una
+}</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Es un restaurante con un solo comedor y varias mesas tapadas con un mantel: para «cambiar de sala» no construyes otro local, solo destapas una mesa y vuelves a tapar las otras.</div>
+            <details class="pv">
+              <summary>Ver ejemplo visual</summary>
+              <div class="preview">
+                <span class="pv-label">mostrar("detalle")</span>
+                <div class="mini-demo"><span class="mini-chip">lista · d-none</span><span class="mini-chip on">detalle</span><span class="mini-chip">formulario · d-none</span></div>
+                <p class="pv-note">Solo la sección sin <b>d-none</b> es visible. Es una <b>single-page app</b> sencilla: la página nunca se recarga, solo cambia qué sección se ve.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="group">
+          <h2>Custom Elements</h2>
+          <p class="group-desc">Crear tus <b>propias etiquetas HTML</b> (como <code>&lt;jl-titulo&gt;</code>) para no repetir el mismo bloque de HTML muchas veces. Es una herramienta del navegador, como el DOM.</p>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">class … extends HTMLElement</span><span class="desc">Tu etiqueta es una <b>clase</b>. <b>connectedCallback</b> se ejecuta cuando aparece en la página y <b>customElements.define</b> le pone nombre (siempre con guion).</span></div>
+            <pre class="example"><code>class Titulo extends HTMLElement {
+  connectedCallback() {
+    // getAttribute lee los atributos escritos en el HTML; ?? = valor por defecto
+    const texto = this.getAttribute('texto') ?? 'SIN TEXTO';
+    this.innerHTML = `&lt;h2&gt;${texto}&lt;/h2&gt;`;
+  }
+}
+customElements.define('jl-titulo', Titulo);
+
+&lt;!-- en el HTML, como una etiqueta normal --&gt;
+&lt;jl-titulo texto="Hola"&gt;&lt;/jl-titulo&gt;
+&lt;jl-titulo texto="Otro"&gt;&lt;/jl-titulo&gt;</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Es inventar un plato nuevo de la carta con nombre propio: escribes la receta una sola vez (la clase) y cada vez que apuntas «jl-titulo» la cocina prepara el plato completo. <b>texto="…"</b> es el detalle que le pasas.</div>
+            <details class="pv">
+              <summary>Ver ejemplo visual</summary>
+              <div class="preview">
+                <div><span style="display:inline-block;background:#111;color:#fff;border-radius:4px;padding:4px 8px;font-size:12.5px;margin-right:6px;">Hola</span><span style="display:inline-block;background:#111;color:#fff;border-radius:4px;padding:4px 8px;font-size:12.5px;margin-right:6px;">Otro</span></div>
+                <p class="pv-note">El nombre lleva <b>guion</b> para no chocar con las etiquetas oficiales. Si el mismo bloque de HTML se repite 6 veces (por ejemplo, los campos de un formulario Bootstrap), conviene hacerlo un Custom Element.</p>
+              </div>
+            </details>
+          </div>
         </div>
 
         <div class="group">
           <h2>Asíncrono y datos</h2>
-          <p class="group-desc">Cómo pedir datos al servidor sin congelar la página mientras llega la respuesta, y cómo convertir esos datos a un formato que JavaScript entiende. <b>Para verlo todo junto en un proyecto real, mira la pestaña Proyecto.</b></p>
+          <p class="group-desc">Cómo pedir datos al servidor sin congelar la página mientras llega la respuesta, y cómo convertir esos datos a un formato que JavaScript entiende. Incluye la diferencia entre <b>.js</b> y <b>.json</b>, el CRUD y un mini ejercicio para practicar.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">.js vs .json: la diferencia</span><span class="desc"><b>.js</b> = código JavaScript que el navegador <b>ejecuta</b>. <b>.json</b> = <b>datos</b> escritos como texto, que el código <b>lee</b>. No se ejecuta nada dentro de un .json.</span></div>
+            <pre class="example"><code>┌─────────────┬────────────────────────────┬──────────────────────────┐
+│             │ .js                        │ .json                    │
+├─────────────┼────────────────────────────┼──────────────────────────┤
+│ Qué es      │ código (instrucciones)     │ datos (texto)            │
+│ Contiene    │ let, function, if, for…    │ solo { } [ ] "texto" 5   │
+│ Se usa con  │ &lt;script src="app.js"&gt;      │ fetch("datos.json")      │
+│ Comentarios │ sí  // ...                 │ NO                       │
+│ Ejemplo     │ app.js                │ productos.json            │
+└─────────────┴────────────────────────────┴──────────────────────────┘</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>El <b>.js</b> es el libro de recetas del cocinero: dice qué hacer paso a paso. El <b>.json</b> es la lista de la despensa: qué ingredientes hay y cuántos, pero no dice cómo cocinar. El cocinero (.js) abre la lista (.json) cuando necesita saber qué hay.</div>
+            <details class="pv">
+              <summary>Ver ejemplo visual</summary>
+              <div class="preview">
+                <div class="obj-card"><div class="obj-row"><b>.js</b><span>Receta · código que se ejecuta · <code>&lt;script src&gt;</code></span></div><div class="obj-row"><b>.json</b><span>Despensa · datos que se leen · <code>fetch()</code></span></div></div>
+                <p class="pv-note">Mismo aspecto de «llaves y comillas» (el JSON nació de la sintaxis de los objetos de JavaScript), pero el .json <b>no puede tener</b> funciones, variables ni bucles: solo información.</p>
+              </div>
+            </details>
+          </div>
           <div class="entry">
             <div class="entry-head"><span class="tag">fetch(url)</span><span class="desc">Hace una petición HTTP al servidor. Con <b>async/await</b> se lee como código normal, de arriba a abajo.</span></div>
             <pre class="example"><code>window.addEventListener("DOMContentLoaded", async () => {
@@ -3851,6 +4039,124 @@ JSON.parse('{"a":1}');    // { a: 1 }</code></pre>
               <summary>Ver ejemplo visual</summary>
               <div class="preview">
                 <div class="console-mock"><span class="cm-in">&gt; JSON.stringify({a:1})</span><span class="cm-out">'{"a":1}'</span><span class="cm-in">&gt; JSON.parse('{"a":1}')</span><span class="cm-out">{ a: 1 }</span></div>
+              </div>
+            </details>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">CRUD: GET, POST, PUT, DELETE</span><span class="desc">Las 4 cosas que haces con datos: <b>C</b>rear, <b>R</b>eer, <b>U</b>pdate (editar) y <b>D</b>elete (borrar). Cada una usa su método HTTP en <b>fetch</b>.</span></div>
+            <pre class="example"><code>const URL = "http://localhost:3001/productos/";
+const cabeceras = { "Content-type": "application/json" };
+
+await fetch(URL);                       // GET: leer todos (URL + id: uno solo)
+
+await fetch(URL, {                      // POST: crear (sin id: lo pone el servidor)
+  method: "POST", body: JSON.stringify(nuevo), headers: cabeceras
+});
+
+await fetch(URL + 3, {                  // PUT: editar (con el id en la URL)
+  method: "PUT", body: JSON.stringify(editado), headers: cabeceras
+});
+
+const r = await fetch(URL + 3, { method: "DELETE" });   // DELETE: borrar
+if (r.ok) { /* salió bien: 200-299 */ }</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Son los cuatro gestos con la cocina: «tráeme la carta» (GET), «apunta este pedido nuevo» (POST), «corrige este pedido» (PUT) y «anula este pedido» (DELETE). Para enviar datos, el objeto viaja como texto JSON (<b>JSON.stringify</b>) y la cabecera <b>Content-type</b> avisa de ello.</div>
+            <details class="pv">
+              <summary>Ver ejemplo visual</summary>
+              <div class="preview">
+                <div class="obj-card"><div class="obj-row"><b>GET</b><span>Leer · R</span></div><div class="obj-row"><b>POST</b><span>Crear · C · con body</span></div><div class="obj-row"><b>PUT</b><span>Editar · U · con body + id</span></div><div class="obj-row"><b>DELETE</b><span>Borrar · D · con id</span></div></div>
+                <p class="pv-note">Es el mismo idioma que hablará el servidor Java real: aprendiéndolo ahora, ya lo tienes.</p>
+              </div>
+            </details>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">json-server</span><span class="desc">Servidor falso para practicar: convierte un archivo <b>.json</b> en una API con GET, POST, PUT y DELETE, sin montar el backend todavía.</span></div>
+            <pre class="example"><code># en la terminal (necesita Node.js)
+npx json-server json/productos.json --port 3001
+
+# cada clave del .json es una "tabla":
+{ "productos": [ { "id": 1, "nombre": "Portátil", "precio": 499.9 } ] }
+
+# ya existe la dirección  http://localhost:3001/productos</code></pre>
+            <details class="pv">
+              <summary>Ver ejemplo visual</summary>
+              <div class="preview">
+                <div class="console-mock"><span class="cm-in">$ npx json-server json/productos.json --port 3001</span><span class="cm-out">http://localhost:3001/productos</span></div>
+                <p class="pv-note">Es la <b>cocina de mentira</b>: responde como un servidor real, pero los datos viven en un archivo. Los POST, PUT y DELETE modifican ese archivo.</p>
+              </div>
+            </details>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Ejercicio: lee un .json y pinta la lista</span><span class="desc">Crea 3 archivos en una carpeta nueva. Rellena los huecos del <b>app.js</b>. Tres niveles: <b>1)</b> ver los datos en la consola, <b>2)</b> pintarlos en la lista, <b>3)</b> mostrar solo los de menos de 30 €.</span></div>
+            <pre class="example"><code>// ---- productos.json (datos) ----
+[
+  { "id": 1, "nombre": "Portátil", "precio": 499.9 },
+  { "id": 2, "nombre": "Ratón",    "precio": 12 },
+  { "id": 3, "nombre": "Teclado",  "precio": 25 }
+]
+
+// ---- index.html ----
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;body&gt;
+  &lt;h1&gt;Mi primer fetch&lt;/h1&gt;
+  &lt;ul id="lista"&gt;&lt;/ul&gt;
+  &lt;script src="app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+// ---- app.js (rellena los huecos) ----
+async function cargarProductos() {
+  // NIVEL 1: leer
+  const respuesta = await fetch(/* ¿de qué archivo? */);
+  const productos = await /* convierte la respuesta a objeto */;
+  console.log(productos);          // F12 → Console: debe salir la lista
+
+  // NIVEL 2: pintar
+  const lista = document.querySelector("#lista");
+  for (const producto of productos) {
+    /* crea un &lt;li&gt;, ponle "nombre: precio €" y añádelo a la lista */
+  }
+
+  // NIVEL 3 (extra): solo los de menos de 30 €
+}
+
+cargarProductos();</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Es la prueba más pequeña posible de la cocina: abres la nevera (el .json), lees qué hay (fetch + .json()) y pones los platos en la mesa (el bucle con <b>li</b>). Si te sale la lista, ya has entendido la base de pedir datos al servidor.</div>
+            <details class="pv">
+              <summary>Ver ejemplo visual</summary>
+              <div class="preview">
+                <span class="pv-label">Así debe verse al acabar los niveles 1 y 2</span>
+                <div class="console-mock"><span class="cm-in">&gt; (F12 · Console)</span><span class="cm-out">(3) [{…}, {…}, {…}]</span></div>
+                <ul class="fetch-list" style="margin-top:8px;"><li><strong>Portátil</strong>: 499,9 €</li><li><strong>Ratón</strong>: 12 €</li><li><strong>Teclado</strong>: 25 €</li></ul>
+                <p class="pv-note"><b>Pistas:</b> el archivo se llama <code>"productos.json"</code> (entre comillas) · el método de la respuesta es <code>.json()</code> y necesita <b>await</b> · para el nivel 3 mira <code>filter</code> en la pestaña JavaScript (Arrays).</p>
+              </div>
+            </details>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Solución del ejercicio</span><span class="desc">Mírala solo cuando lo hayas intentado, aunque sea con errores: te enseña más fallar un rato que copiarla.</span></div>
+            <pre class="example"><code>async function cargarProductos() {
+  const respuesta = await fetch("productos.json");
+  const productos = await respuesta.json();
+  console.log(productos);
+
+  const lista = document.querySelector("#lista");
+  for (const producto of productos) {
+    const li = document.createElement("li");
+    li.textContent = `${producto.nombre}: ${producto.precio} €`;
+    lista.appendChild(li);
+  }
+}
+
+cargarProductos();
+
+// NIVEL 3 (dentro de la función, antes del bucle): solo los baratos
+const baratos = productos.filter(p =&gt; p.precio &lt; 30);
+// y recorres "baratos" en vez de "productos" en el bucle</code></pre>
+            <details class="pv">
+              <summary>Ver la solución y qué hace cada línea</summary>
+              <div class="preview">
+                <div class="obj-card"><div class="obj-row"><b>fetch("productos.json")</b><span>pide el archivo (la nevera)</span></div><div class="obj-row"><b>await respuesta.json()</b><span>convierte el texto en objeto</span></div><div class="obj-row"><b>createElement + appendChild</b><span>crea un &lt;li&gt; y lo coloca en la lista</span></div><div class="obj-row"><b>filter(p =&gt; p.precio &lt; 30)</b><span>se queda solo con los baratos</span></div></div>
+                <p class="pv-note">Si en la consola sale un error rojo con <b>Failed to fetch</b> o <b>CORS</b>: abriste el HTML con doble clic. Ábrelo con <b>Live Server</b> (clic derecho → Open with Live Server).</p>
               </div>
             </details>
           </div>
@@ -4113,6 +4419,32 @@ total = 5; // ERROR: total no está declarado</code></pre>
               </div>
             </details>
           </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">row-cols-*: rejilla de tarjetas</span><span class="desc">En vez de poner <b>col</b> a mano, el <b>row</b> decide cuántas columnas hay por fila: <b>row-cols-1 row-cols-sm-2 row-cols-lg-4</b>. <b>g-4</b> es el hueco entre tarjetas.</span></div>
+            <pre class="example"><code>&lt;div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4"&gt;
+  &lt;div class="col"&gt;
+    &lt;article class="card h-100"&gt;
+      &lt;img src="…" class="card-img-top" alt="Portátil"&gt;
+      &lt;div class="card-body"&gt;
+        &lt;h5 class="card-title"&gt;Portátil&lt;/h5&gt;
+        &lt;p class="card-text"&gt;499,9 €&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="card-footer"&gt;
+        &lt;a href="#" class="btn btn-primary"&gt;Ver&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/article&gt;
+  &lt;/div&gt;
+  &lt;!-- una .col por producto --&gt;
+&lt;/div&gt;</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Es decir al camarero «en esta sala pon 1 mesa por fila si es pequeña, y hasta 4 si es grande». Tú no colocas cada mesa: solo dices cuántas caben por fila.</div>
+            <details class="pv">
+              <summary>Ver ejemplo visual</summary>
+              <div class="preview">
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:360px;"><div style="border:1px solid var(--border);border-radius:6px;padding:6px;font-size:11.5px;"><div style="background:var(--surface-2);height:26px;border-radius:3px;margin-bottom:4px;"></div>Portátil</div><div style="border:1px solid var(--border);border-radius:6px;padding:6px;font-size:11.5px;"><div style="background:var(--surface-2);height:26px;border-radius:3px;margin-bottom:4px;"></div>Ratón</div><div style="border:1px solid var(--border);border-radius:6px;padding:6px;font-size:11.5px;"><div style="background:var(--surface-2);height:26px;border-radius:3px;margin-bottom:4px;"></div>Teclado</div><div style="border:1px solid var(--border);border-radius:6px;padding:6px;font-size:11.5px;"><div style="background:var(--surface-2);height:26px;border-radius:3px;margin-bottom:4px;"></div>Monitor</div></div>
+                <p class="pv-note">En móvil 1 por fila, en «sm» 2, en «lg» 4. <b>h-100</b> en la tarjeta hace que todas midan lo mismo, aunque el texto cambie.</p>
+              </div>
+            </details>
+          </div>
         </div>
 
         <div class="group">
@@ -4336,662 +4668,6 @@ total = 5; // ERROR: total no está declarado</code></pre>
               </div>
             </details>
           </div>
-        </div>
-
-
-      </div>
-    </section>
-
-    <!-- PROYECTO AMAZONIA -->
-    <section class="panel" id="panel-proyecto" style="--dot:var(--accent-pr); --dot-soft:var(--accent-pr-soft)">
-      <div class="panel-intro">
-        <span class="glyph">★</span>
-        <p><strong>Proyecto AMAZONIA</strong> es la práctica del curso donde se juntan HTML, CSS, JavaScript y Bootstrap en una mini tienda: catálogo, administración y formulario. Aquí está todo lo que la hace funcionar, <strong>en orden</strong>: primero el mapa de las piezas, luego la diferencia entre <b>.js</b> y <b>.json</b>, después cómo se piden y se cambian los datos (<b>fetch</b>), cómo cambian las pantallas y, por último, las piezas de Bootstrap. Si te pierdes, vuelve al primer grupo.</p>
-      </div>
-
-      <div class="route">
-        <p class="route-title">Por dónde empezar: solo 4 cosas</p>
-        <ol>
-          <li><span><b>El mapa</b>: qué es AMAZONIA y sus 4 piezas (HTML, .js, .json y json-server).</span></li>
-          <li><span><b>Un clic, paso a paso</b>: sigue lo que pasa cuando pulsas «Borrar».</span></li>
-          <li><span><b>.js vs .json</b>: uno hace cosas, el otro guarda cosas.</span></li>
-          <li><span><b>GET</b>: cómo se piden los datos con <b>fetch</b> y se pintan en pantalla.</span></li>
-        </ol>
-        <p class="route-note">En modo <b>Esencial</b> ves esos 4 más el <b>plan de estudio</b> y el <b>mini ejercicio</b>. Lo demás (POST, PUT, DELETE, formularios, menú, Bootstrap) está en <b>Pro</b>, para cuando quieras profundizar.</p>
-      </div>
-
-      <div class="groups">
-
-        <div class="group">
-          <h2>Plan de estudio</h2>
-          <p class="group-desc">No hace falta aprenderlo todo a la vez. La idea es <b>reconstruir AMAZONIA por trozos</b>, en este orden, y no pasar al siguiente hasta que el anterior funcione. Un paso por sesión es suficiente.</p>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">Plan en 6 pasos</span><span class="desc">Cada paso tiene una tarea concreta y te enseña un concepto. Los pasos 1 a 5 son el núcleo; el 6 viene después.</span></div>
-            <pre class="example"><code>PASO 1  Abre el proyecto y recorre los 4 archivos, solo mirando
-          → aprendes el mapa: quién hace qué
-PASO 2  Cambia un texto en el HTML y un producto en el .json
-          → aprendes qué es página y qué es dato
-PASO 3  Escribe un fetch que haga console.log de los productos
-          → aprendes GET y .json()           (¡ejercicio justo debajo!)
-PASO 4  Pinta esos productos en la página con un bucle
-          → aprendes DOM y plantillas
-PASO 5  Haz funcionar el botón «Borrar»
-          → aprendes DELETE y confirm
-PASO 6  Más adelante: formulario, crear y editar
-          → aprendes POST y PUT</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Es aprender a cocinar un menú: no empiezas por el postre. Primero miras la cocina (paso 1), luego tocas un ingrediente (2), sacas un plato de la nevera (3), lo pones en la mesa (4), retiras un plato (5) y, al final, te animas a inventar platos nuevos (6).</div>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div class="obj-card"><div class="obj-row"><b>1 · Mirar</b><span>los 4 archivos, sin tocar nada</span></div><div class="obj-row"><b>2 · Tocar</b><span>un texto del HTML y un dato del .json</span></div><div class="obj-row"><b>3 · Leer</b><span>fetch + console.log (ejercicio)</span></div><div class="obj-row"><b>4 · Pintar</b><span>los productos en la página</span></div><div class="obj-row"><b>5 · Borrar</b><span>botón + DELETE + confirm</span></div><div class="obj-row"><b>6 · Crear y editar</b><span>formulario, POST y PUT</span></div></div>
-                <p class="pv-note"><b>Reglas:</b> un paso por sesión · usa la chuleta solo para consultar, no para leerla entera · si algo falla, abre la consola (<b>F12</b>): dice el error y la línea · lo que no uses en el paso actual, ignóralo.</p>
-              </div>
-            </details>
-          </div>
-        </div>
-
-        <div class="group">
-          <h2>Proyecto AMAZONIA: el mapa</h2>
-          <p class="group-desc">Antes de los detalles: <b>qué es</b> y <b>cómo encajan sus piezas</b>. AMAZONIA es una mini tienda con tres pantallas (catálogo, administración y formulario) hecha con 4 archivos. Si entiendes este grupo, el resto del JavaScript nuevo (fetch, JSON, CRUD…) tiene sitio donde colgarse.</p>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">AMAZONIA: qué hace y de qué se compone</span><span class="desc">Una web con <b>3 pantallas</b> y <b>4 piezas</b>. Cada pieza tiene un único trabajo.</span></div>
-            <pre class="example"><code>PANTALLAS (todas en el mismo index.html)
-  catálogo        → ver los productos en tarjetas   → "Ver detalle"
-  administración  → tabla con ✎ editar y 🗑 borrar  → "Añadir"
-  formulario      → crear o editar un producto
-
-PIEZAS (los 4 archivos)
-  index.html      → la estructura (las 3 pantallas + Bootstrap)
-  amazonia.js     → la lógica (qué pasa al pulsar cada botón)
-  amazonia.json   → los datos (la lista de productos)
-  json-server     → el programa que sirve esos datos por internet</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Es un restaurante: el HTML es el local con sus salas (una por pantalla), el .js es el camarero que sabe qué hacer cuando un cliente pulsa algo, el .json es el cuaderno con la lista de productos y json-server es el encargado que abre ese cuaderno cuando el camarero lo pide. Nadie hace el trabajo de otro.</div>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div class="obj-card"><div class="obj-row"><b>index.html</b><span>El local · sala, mesas y decoración (HTML + Bootstrap)</span></div><div class="obj-row"><b>amazonia.js</b><span>El camarero · lleva pedidos y trae platos (lógica)</span></div><div class="obj-row"><b>amazonia.json</b><span>La despensa · lista de productos (datos)</span></div><div class="obj-row"><b>json-server</b><span>El encargado · abre la despensa y atiende al camarero</span></div></div>
-                <p class="pv-note">Flujo: pulsas un botón → el <b>camarero (.js)</b> pide al <b>encargado (json-server)</b> → este abre la <b>despensa (.json)</b> → el camarero pinta el resultado en el <b>local (HTML)</b>.</p>
-              </div>
-            </details>
-          </div>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">Recorrido: pulsas «Borrar» (paso a paso)</span><span class="desc">El mejor modo de entenderlo es seguir <b>un solo clic</b> de principio a fin.</span></div>
-            <pre class="example"><code>1. Pulsas 🗑 en la fila del producto 3
-     &lt;a href="javascript:borrarProducto(3)"&gt;      ← el HTML llama a tu función
-2. function borrarProducto(id)                     ← amazonia.js
-     confirm("¿Seguro?")                           ← el navegador pregunta
-3. fetch(URL_PRODUCTOS + 3, { method: "DELETE" })  ← pide al servidor borrar el 3
-4. json-server abre amazonia.json y quita el 3     ← los datos cambian
-5. if (respuesta.ok) mostrarAdministracion()       ← pide la lista otra vez
-6. fetch(URL_PRODUCTOS) → pinta la tabla sin el 3  ← la pantalla se actualiza</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Es como pedir al camarero que retire un plato de la carta: te pregunta «¿seguro?», va a cocina a avisar, vuelve diciendo «hecho» y, solo entonces, te enseña la carta ya sin ese plato.</div>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div class="console-mock"><span class="cm-in">clic 🗑 → borrarProducto(3)</span><span class="cm-in">confirm → true</span><span class="cm-in">DELETE /productos/3</span><span class="cm-out">200 OK · amazonia.json ya no tiene el 3</span><span class="cm-in">GET /productos</span><span class="cm-out">[ {id:1…}, {id:2…} ]  → tabla repintada</span></div>
-                <p class="pv-note">Todas las acciones de AMAZONIA siguen la misma receta: <b>clic → función → fetch → servidor cambia los datos → volver a pintar</b>.</p>
-              </div>
-            </details>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Las funciones de amazonia.js, una por una</span><span class="desc">Son pocas y cada una tiene un solo trabajo. No hace falta memorizarlas: sirve para saber <b>dónde mirar</b>.</span></div>
-            <pre class="example"><code>domCargado()              al abrir la página: pinta el catálogo
-mostrar(idSeccion)        enseña UNA pantalla y esconde las demás (d-none)
-mostrarCatalogo()         GET todos → tarjetas
-mostrarDetalle(id)        GET uno → ficha del producto
-mostrarAdministracion()   GET todos → tabla con ✎ y 🗑
-mostrarFormulario(id)     sin id: formulario vacío · con id: GET uno y rellena
-guardar()                 sin id: POST (crear) · con id: PUT (editar)
-borrarProducto(id)        confirm + DELETE</code></pre>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div class="obj-card"><div class="obj-row"><b>Mostrar</b><span>mostrar · mostrarCatalogo · mostrarDetalle · mostrarAdministracion</span></div><div class="obj-row"><b>Formulario</b><span>mostrarFormulario · guardar</span></div><div class="obj-row"><b>Borrar</b><span>borrarProducto</span></div><div class="obj-row"><b>Arranque</b><span>domCargado</span></div></div>
-                <p class="pv-note">Ocho funciones en total. Las que empiezan por <b>mostrar…</b> hacen un GET y pintan; <b>guardar</b> y <b>borrarProducto</b> cambian datos (POST/PUT/DELETE).</p>
-              </div>
-            </details>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Cómo arrancarlo en tu ordenador</span><span class="desc">Hacen falta dos cosas encendidas a la vez: el servidor de datos y la página.</span></div>
-            <pre class="example"><code># Terminal 1: el servidor de datos (el encargado)
-npx json-server json/amazonia.json --port 3001
-
-# Terminal 2 / VS Code: la página (el local)
-Clic derecho en index.html → "Open with Live Server"
-
-# Si la página sale vacía: ¿está json-server encendido?
-http://localhost:3001/productos   ← debe mostrar los productos</code></pre>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div class="console-mock"><span class="cm-in">$ npx json-server json/amazonia.json --port 3001</span><span class="cm-out">http://localhost:3001/productos</span><span class="cm-in">(Live Server abre) http://127.0.0.1:5500/index.html</span><span class="cm-out">catálogo con tarjetas ✅</span></div>
-                <p class="pv-note">Si el catálogo sale vacío o aparece un error de red en la consola (F12), casi siempre es que <b>json-server no está encendido</b>.</p>
-              </div>
-            </details>
-          </div>
-        </div>
-
-        <div class="group">
-          <h2>Archivos .js y .json</h2>
-          <p class="group-desc">Dos archivos con nombre casi igual y trabajos muy distintos. <b>.js</b> es una <b>receta</b> (instrucciones que se ejecutan); <b>.json</b> es una <b>despensa</b> (datos que solo se leen). Si te quedas con una idea: <b>el .js hace cosas, el .json guarda cosas</b>.</p>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">.js vs .json: la diferencia</span><span class="desc"><b>.js</b> = código JavaScript que el navegador <b>ejecuta</b>. <b>.json</b> = <b>datos</b> escritos como texto, que el código <b>lee</b>. No se ejecuta nada dentro de un .json.</span></div>
-            <pre class="example"><code>┌─────────────┬────────────────────────────┬──────────────────────────┐
-│             │ .js                        │ .json                    │
-├─────────────┼────────────────────────────┼──────────────────────────┤
-│ Qué es      │ código (instrucciones)     │ datos (texto)            │
-│ Contiene    │ let, function, if, for…    │ solo { } [ ] "texto" 5   │
-│ Se usa con  │ &lt;script src="app.js"&gt;      │ fetch("datos.json")      │
-│ Comentarios │ sí  // ...                 │ NO                       │
-│ Ejemplo     │ amazonia.js                │ amazonia.json            │
-└─────────────┴────────────────────────────┴──────────────────────────┘</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>El <b>.js</b> es el libro de recetas del cocinero: dice qué hacer paso a paso. El <b>.json</b> es la lista de la despensa: qué ingredientes hay y cuántos, pero no dice cómo cocinar. El cocinero (.js) abre la lista (.json) cuando necesita saber qué hay.</div>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div class="obj-card"><div class="obj-row"><b>.js</b><span>Receta · código que se ejecuta · <code>&lt;script src&gt;</code></span></div><div class="obj-row"><b>.json</b><span>Despensa · datos que se leen · <code>fetch()</code></span></div></div>
-                <p class="pv-note">Mismo aspecto de «llaves y comillas» (el JSON nació de la sintaxis de los objetos de JavaScript), pero el .json <b>no puede tener</b> funciones, variables ni bucles: solo información.</p>
-              </div>
-            </details>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Cómo se ve cada uno por dentro</span><span class="desc">El mismo dato, escrito en un archivo de código y en un archivo de datos. Fíjate en las diferencias.</span></div>
-            <pre class="example"><code>// amazonia.js  → CÓDIGO (se ejecuta)
-const URL_PRODUCTOS = 'http://localhost:3001/productos/';
-
-async function mostrarCatalogo() {
-  const respuesta = await fetch(URL_PRODUCTOS);
-  const productos = await respuesta.json();
-}
-
-// amazonia.json → DATOS (solo se lee)
-{
-  "productos": [
-    { "id": 1, "nombre": "Portátil", "precio": 499.9 },
-    { "id": 2, "nombre": "Ratón",    "precio": 12 }
-  ]
-}</code></pre>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div class="obj-card"><div class="obj-row"><b>.js</b><span>const, function, async, await, if…</span></div><div class="obj-row"><b>.json</b><span>{ } [ ] "clave": valor</span></div></div>
-                <p class="pv-note">Si en un .json ves <code>function</code> o <code>let</code>, algo va mal: eso es código y debería estar en un .js.</p>
-              </div>
-            </details>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Reglas estrictas del JSON</span><span class="desc">El JSON es más <b>estricto</b> que un objeto de JavaScript: un solo fallo y no se puede leer.</span></div>
-            <pre class="example"><code>// ✅ JSON válido
-{ "nombre": "Ana", "edad": 30, "activo": true, "notas": [5, 7], "pareja": null }
-
-// ❌ NO es JSON válido
-{ nombre: 'Ana',      // claves sin comillas dobles
-  edad: 30,           // comentarios no permitidos
-  saluda() {},        // funciones no permitidas
-  notas: [5, 7,],     // coma sobrante al final
-}</code></pre>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div class="obj-card"><div class="obj-row"><b>Claves</b><span>siempre <code>"entre comillas dobles"</code></span></div><div class="obj-row"><b>Textos</b><span>comillas dobles (nunca simples)</span></div><div class="obj-row"><b>Valores</b><span>texto, número, true/false, null, [ ], { }</span></div><div class="obj-row"><b>Prohibido</b><span>comentarios, funciones, coma final</span></div></div>
-                <p class="pv-note">Es lo más típico que falla cuando editas un .json a mano: comillas simples o una coma de más.</p>
-              </div>
-            </details>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">El viaje: archivo → texto → objeto</span><span class="desc">Un .json es <b>texto</b>. Para usarlo en tu código hay que <b>convertirlo a objeto</b>; y para guardarlo o enviarlo, <b>a texto</b> otra vez.</span></div>
-            <pre class="example"><code>// LEER: texto del archivo/servidor → objeto JavaScript
-const respuesta = await fetch("json/amazonia.json"); // llega el texto
-const datos = await respuesta.json();                // → objeto (hace JSON.parse)
-console.log(datos.productos[0].nombre);              // "Portátil"
-
-// ENVIAR / GUARDAR: objeto → texto
-const texto = JSON.stringify({ nombre: "Teclado", precio: 25 });
-// '{"nombre":"Teclado","precio":25}'</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Por la carretera solo viajan cajas selladas con texto (JSON). Al llegar a la cocina, abres la caja y sacas los ingredientes (<b>.json()</b> / <b>JSON.parse</b> → objeto). Para devolver algo, vuelves a empaquetarlo en caja sellada (<b>JSON.stringify</b> → texto).</div>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div class="console-mock"><span class="cm-in">texto en el archivo:  '{"nombre":"Teclado"}'</span><span class="cm-in">await respuesta.json()   // o JSON.parse(texto)</span><span class="cm-out">{ nombre: 'Teclado' }   // objeto: ya puedes usar .nombre</span><span class="cm-in">JSON.stringify(objeto)</span><span class="cm-out">'{"nombre":"Teclado"}'   // texto: listo para enviar</span></div>
-                <p class="pv-note"><b>respuesta.json()</b> = <b>JSON.parse</b> aplicado a la respuesta. <b>JSON.stringify</b> es el camino de vuelta, el que usas al hacer POST y PUT.</p>
-              </div>
-            </details>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">¿Quién lee qué? El mapa completo</span><span class="desc">Cómo encajan las piezas del curso: el HTML carga el .js, el .js pide datos, y los datos vienen de un .json (a través de json-server).</span></div>
-            <pre class="example"><code>index.html  ── &lt;script src="js/amazonia.js"&gt; ──▶  amazonia.js   (código)
-                                                      │ fetch("http://localhost:3001/productos")
-                                                      ▼
-                                           json-server (servidor falso)
-                                                      │ lee y escribe
-                                                      ▼
-                                               amazonia.json   (datos)</code></pre>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div class="mini-demo"><span class="mini-chip">index.html</span><span>→</span><span class="mini-chip on">amazonia.js</span><span>→ fetch →</span><span class="mini-chip">json-server</span><span>→</span><span class="mini-chip on">amazonia.json</span></div>
-                <p class="pv-note">Con <b>POST / PUT / DELETE</b> json-server <b>modifica el archivo .json</b>: por eso los cambios se quedan aunque recargues. Sin json-server, un .json estático solo se puede <b>leer</b>.</p>
-              </div>
-            </details>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Preguntas típicas</span><span class="desc">Las dudas que suele haber con estos archivos.</span></div>
-            <pre class="example"><code>¿Puedo escribir código dentro de un .json?        → No. Es solo datos.
-¿Puedo poner un .json en &lt;script src&gt;?             → No. Se carga con fetch.
-¿Puedo ponerle comentarios al .json?               → No (error de lectura).
-¿Un objeto de JavaScript es lo mismo que JSON?     → Se parecen, pero el objeto
-                                                      admite funciones y comillas simples.
-¿Dónde guardo datos fijos: en el .js o el .json?   → Si cambian a menudo o los usa
-                                                      el servidor, en el .json.</code></pre>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div class="console-mock"><span class="cm-in">¿.js ejecuta cosas?   → sí</span><span class="cm-in">¿.json ejecuta cosas? → no, solo datos</span><span class="cm-in">¿cómo lo cargo?       → fetch(), nunca &lt;script&gt;</span></div>
-              </div>
-            </details>
-          </div>
-        </div>
-
-        <div class="group">
-          <h2>CRUD con fetch (json-server)</h2>
-          <p class="group-desc">CRUD = <b>C</b>rear, <b>R</b>eer, <b>U</b>pdate (editar) y <b>D</b>elete (borrar): las 4 cosas que haces con casi cualquier dato. En el curso las hacemos contra <b>json-server</b>, un servidor de mentira que convierte un archivo <code>.json</code> en una API REST para practicar sin montar el backend todavía.</p>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">json-server</span><span class="desc">Servidor falso para practicar: lee un archivo <b>.json</b> y crea las direcciones (<code>/productos</code>…) con GET, POST, PUT y DELETE ya funcionando.</span></div>
-            <pre class="example"><code>// 1) Instalar y arrancar (en la terminal, no en el navegador)
-npx json-server json/amazonia.json --port 3001
-
-// 2) El archivo JSON: cada clave es una "tabla"
-{ "productos": [
-    { "id": 1, "nombre": "Portátil", "precio": 499.9 },
-    { "id": 2, "nombre": "Ratón",    "precio": 12 }
-] }
-
-// 3) Ya existe esta dirección:
-const URL_PRODUCTOS = "http://localhost:3001/productos/";</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Antes de contratar una cocina de verdad (Java + base de datos), montas una de cartón piedra: tiene las mismas ventanillas (GET, POST…) y contesta igual, pero los platos salen de un cuaderno (el .json). Así practicas pedir y servir sin esperar a la cocina real.</div>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div class="console-mock"><span class="cm-in">$ npx json-server json/amazonia.json --port 3001</span><span class="cm-out">Resources</span><span class="cm-out">http://localhost:3001/productos</span><span class="cm-out">Home: http://localhost:3001</span></div>
-                <p class="pv-note">Es la <b>cocina de mentira</b>: responde como un servidor real, pero los datos viven en un archivo. Luego se cambia por Java + MySQL sin tocar casi nada del JavaScript.</p>
-              </div>
-            </details>
-          </div>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">GET: leer datos (R)</span><span class="desc">Pedir la lista (o un solo elemento si añades el <b>id</b> a la URL). Es lo que hace <b>fetch</b> si no le dices nada más.</span></div>
-            <pre class="example"><code>const URL_PRODUCTOS = "http://localhost:3001/productos/";
-
-async function mostrarCatalogo() {
-  const respuesta = await fetch(URL_PRODUCTOS);       // todos
-  const productos = await respuesta.json();
-
-  const uno = await fetch(URL_PRODUCTOS + 2);          // solo el id 2
-  const producto = await uno.json();
-}</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Es pedirle a la cocina «tráeme la carta entera» o «tráeme solo el plato número 2». La cocina contesta con los datos; tú los lees con <b>await respuesta.json()</b>.</div>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <span class="pv-label">Petición y respuesta</span>
-                <div class="console-mock"><span class="cm-in">GET /productos</span><span class="cm-out">200 OK  → [ {id:1, nombre:'Portátil'}, {id:2, nombre:'Ratón'} ]</span><span class="cm-in">GET /productos/2</span><span class="cm-out">200 OK  → { id:2, nombre:'Ratón', precio:12 }</span></div>
-              </div>
-            </details>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">POST: crear (C)</span><span class="desc">Enviar un elemento nuevo. Hay que decir <b>method</b>, convertir el objeto a texto con <b>JSON.stringify</b> y avisar del tipo en las <b>headers</b>.</span></div>
-            <pre class="example"><code>const producto = { nombre: "Teclado", precio: 25 };   // sin id: lo pone el servidor
-
-const respuesta = await fetch(URL_PRODUCTOS, {
-  method: "POST",
-  body: JSON.stringify(producto),
-  headers: { "Content-type": "application/json" }
-});</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Es entregarle a la cocina un pedido nuevo por escrito. El texto va en formato JSON y la cabecera <b>Content-type</b> es la etiqueta del sobre: «lo de dentro es JSON».</div>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div class="console-mock"><span class="cm-in">POST /productos   body: {nombre:'Teclado', precio:25}</span><span class="cm-out">201 Created → { id:3, nombre:'Teclado', precio:25 }</span></div>
-                <p class="pv-note">El <b>id</b> lo genera el servidor; por eso un producto <b>sin id</b> significa «nuevo».</p>
-              </div>
-            </details>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">PUT: editar (U)</span><span class="desc">Reemplazar un elemento que ya existe: misma petición que POST pero con el <b>id</b> en la URL.</span></div>
-            <pre class="example"><code>const producto = { id: 3, nombre: "Teclado RGB", precio: 39 };
-
-await fetch(URL_PRODUCTOS + producto.id, {
-  method: "PUT",
-  body: JSON.stringify(producto),
-  headers: { "Content-type": "application/json" }
-});</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Es corregir un pedido que ya está en cocina: indicas el número (el id en la dirección) y mandas la versión nueva completa.</div>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div class="console-mock"><span class="cm-in">PUT /productos/3   body: {id:3, nombre:'Teclado RGB', precio:39}</span><span class="cm-out">200 OK → { id:3, nombre:'Teclado RGB', precio:39 }</span></div>
-              </div>
-            </details>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">DELETE: borrar (D)</span><span class="desc">Eliminar por <b>id</b>. Comprueba <b>respuesta.ok</b> antes de refrescar la pantalla.</span></div>
-            <pre class="example"><code>async function borrarProducto(id) {
-  if (!confirm(`¿Seguro que quieres borrar el producto ${id}?`)) return;
-
-  const respuesta = await fetch(URL_PRODUCTOS + id, { method: "DELETE" });
-
-  if (respuesta.ok) {
-    mostrarAdministracion();   // vuelve a pintar la tabla
-  }
-}</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Es anular un pedido. Primero preguntas «¿seguro?» (confirm) y, solo si la cocina responde que sí (<b>respuesta.ok</b>), vuelves a pintar la carta sin ese plato.</div>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div class="console-mock"><span class="cm-in">DELETE /productos/3</span><span class="cm-out">200 OK → {}</span><span class="cm-in">respuesta.ok</span><span class="cm-out">true  // 200-299 = todo bien</span></div>
-                <p class="pv-note"><b>confirm()</b> pregunta «¿seguro?» y devuelve <b>true</b>/<b>false</b>. Si es false, el <b>return</b> corta la función y no se borra nada.</p>
-              </div>
-            </details>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Métodos HTTP: resumen</span><span class="desc">Cada acción del CRUD tiene su método HTTP y su dirección.</span></div>
-            <pre class="example"><code>GET     /productos        → leer todos
-GET     /productos/2      → leer uno
-POST    /productos        → crear      (con body)
-PUT     /productos/2      → editar     (con body)
-DELETE  /productos/2      → borrar</code></pre>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div class="obj-card"><div class="obj-row"><b>GET</b><span>Leer · R</span></div><div class="obj-row"><b>POST</b><span>Crear · C</span></div><div class="obj-row"><b>PUT</b><span>Editar · U</span></div><div class="obj-row"><b>DELETE</b><span>Borrar · D</span></div></div>
-                <p class="pv-note">Es el mismo idioma que hablará luego el servidor Java (servicio REST): aprendiéndolo ahora, ya lo tienes.</p>
-              </div>
-            </details>
-          </div>
-        </div>
-
-        <div class="group">
-          <h2>Mini ejercicio: tu primer fetch</h2>
-          <p class="group-desc">El paso 3 del plan, en pequeño. Es solo un <b>.json</b> y un <b>.js</b> con huecos para rellenar. No necesitas json-server: basta con abrir la página con <b>Live Server</b>.</p>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">Ejercicio: lee un .json y pinta la lista</span><span class="desc">Crea 3 archivos en una carpeta nueva. Rellena los huecos del <b>app.js</b>. Tres niveles: <b>1)</b> ver los datos en la consola, <b>2)</b> pintarlos en la lista, <b>3)</b> mostrar solo los de menos de 30 €.</span></div>
-            <pre class="example"><code>// ---- productos.json (datos) ----
-[
-  { "id": 1, "nombre": "Portátil", "precio": 499.9 },
-  { "id": 2, "nombre": "Ratón",    "precio": 12 },
-  { "id": 3, "nombre": "Teclado",  "precio": 25 }
-]
-
-// ---- index.html ----
-&lt;!DOCTYPE html&gt;
-&lt;html lang="es"&gt;
-&lt;body&gt;
-  &lt;h1&gt;Mi primer fetch&lt;/h1&gt;
-  &lt;ul id="lista"&gt;&lt;/ul&gt;
-  &lt;script src="app.js"&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-// ---- app.js (rellena los huecos) ----
-async function cargarProductos() {
-  // NIVEL 1: leer
-  const respuesta = await fetch(/* ¿de qué archivo? */);
-  const productos = await /* convierte la respuesta a objeto */;
-  console.log(productos);          // F12 → Console: debe salir la lista
-
-  // NIVEL 2: pintar
-  const lista = document.querySelector("#lista");
-  for (const producto of productos) {
-    /* crea un &lt;li&gt;, ponle "nombre: precio €" y añádelo a la lista */
-  }
-
-  // NIVEL 3 (extra): solo los de menos de 30 €
-}
-
-cargarProductos();</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Es la prueba más pequeña posible de la cocina: abres la nevera (el .json), lees qué hay (fetch + .json()) y pones los platos en la mesa (el bucle con <b>li</b>). Si te sale la lista, ya has entendido la base de AMAZONIA.</div>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <span class="pv-label">Así debe verse al acabar los niveles 1 y 2</span>
-                <div class="console-mock"><span class="cm-in">&gt; (F12 · Console)</span><span class="cm-out">(3) [{…}, {…}, {…}]</span></div>
-                <ul class="fetch-list" style="margin-top:8px;"><li><strong>Portátil</strong>: 499,9 €</li><li><strong>Ratón</strong>: 12 €</li><li><strong>Teclado</strong>: 25 €</li></ul>
-                <p class="pv-note"><b>Pistas:</b> el archivo se llama <code>"productos.json"</code> (entre comillas) · el método de la respuesta es <code>.json()</code> y necesita <b>await</b> · para el nivel 3 mira <code>filter</code> en la pestaña JavaScript (Arrays).</p>
-              </div>
-            </details>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Solución del ejercicio</span><span class="desc">Mírala solo cuando lo hayas intentado, aunque sea con errores: te enseña más fallar un rato que copiarla.</span></div>
-            <pre class="example"><code>async function cargarProductos() {
-  const respuesta = await fetch("productos.json");
-  const productos = await respuesta.json();
-  console.log(productos);
-
-  const lista = document.querySelector("#lista");
-  for (const producto of productos) {
-    const li = document.createElement("li");
-    li.textContent = `${producto.nombre}: ${producto.precio} €`;
-    lista.appendChild(li);
-  }
-}
-
-cargarProductos();
-
-// NIVEL 3 (dentro de la función, antes del bucle): solo los baratos
-const baratos = productos.filter(p =&gt; p.precio &lt; 30);
-// y recorres "baratos" en vez de "productos" en el bucle</code></pre>
-            <details class="pv">
-              <summary>Ver la solución y qué hace cada línea</summary>
-              <div class="preview">
-                <div class="obj-card"><div class="obj-row"><b>fetch("productos.json")</b><span>pide el archivo (la nevera)</span></div><div class="obj-row"><b>await respuesta.json()</b><span>convierte el texto en objeto</span></div><div class="obj-row"><b>createElement + appendChild</b><span>crea un &lt;li&gt; y lo coloca en la lista</span></div><div class="obj-row"><b>filter(p =&gt; p.precio &lt; 30)</b><span>se queda solo con los baratos</span></div></div>
-                <p class="pv-note">Si en la consola sale un error rojo con <b>Failed to fetch</b> o <b>CORS</b>: abriste el HTML con doble clic. Ábrelo con <b>Live Server</b> (clic derecho → Open with Live Server).</p>
-              </div>
-            </details>
-          </div>
-        </div>
-
-        <div class="group">
-          <h2>Pantallas, formularios y menús</h2>
-          <p class="group-desc">Cómo cambiar lo que se ve sin recargar la página: mostrar una sección y esconder las demás, leer y rellenar formularios, y desplegar un menú con una animación.</p>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Mostrar una sección y ocultar el resto</span><span class="desc">Una sola página con varias «pantallas» (<code>section</code>): cada vez se enseña una y se esconden las demás con la clase <b>d-none</b> de Bootstrap.</span></div>
-            <pre class="example"><code>&lt;main&gt;
-  &lt;section id="catalogo"&gt;…&lt;/section&gt;
-  &lt;section id="administracion" class="d-none"&gt;…&lt;/section&gt;
-  &lt;section id="formulario" class="d-none"&gt;…&lt;/section&gt;
-&lt;/main&gt;
-
-function mostrar(idSeccion) {
-  for (const seccion of document.querySelectorAll("main &gt; section")) {
-    seccion.classList.add("d-none");            // esconde todas
-  }
-  document.querySelector("#" + idSeccion).classList.remove("d-none"); // enseña una
-}</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Es un restaurante con un solo comedor y varias mesas tapadas con un mantel: para «cambiar de sala» no construyes otro local, solo destapas una mesa y vuelves a tapar las otras.</div>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <span class="pv-label">mostrar("administracion")</span>
-                <div class="mini-demo"><span class="mini-chip">catalogo · d-none</span><span class="mini-chip on">administracion</span><span class="mini-chip">formulario · d-none</span></div>
-                <p class="pv-note">Solo la sección sin <b>d-none</b> es visible. Es una <b>single-page app</b> sencilla: la página nunca se recarga, solo cambia qué sección se ve.</p>
-              </div>
-            </details>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Leer y rellenar un formulario</span><span class="desc">Los campos se alcanzan por su <b>name</b> (o con corchetes si tiene guion). <b>.value</b> lee o escribe, <b>.reset()</b> vacía todo.</span></div>
-            <pre class="example"><code>const form = document.querySelector("#formulario form");
-
-// escribir (editar un producto existente)
-form["id-producto"].value = producto.id;
-form.nombre.value = producto.nombre;
-form.precio.value = producto.precio;
-
-// leer (al guardar): los inputs siempre devuelven TEXTO
-const nuevo = {
-  id: parseInt(form["id-producto"].value),
-  nombre: form.nombre.value,
-  precio: parseFloat(form.precio.value)
-};
-
-form.reset();   // vacía el formulario (producto nuevo)</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Es la hoja de pedido en papel: lo que el cliente escribe siempre llega como texto, aunque ponga «39». Con <b>parseInt</b> / <b>parseFloat</b> lo conviertes en número de verdad antes de hacer cuentas o enviarlo.</div>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div class="console-mock"><span class="cm-in">&gt; form.precio.value</span><span class="cm-out">"39"        // texto</span><span class="cm-in">&gt; parseFloat(form.precio.value)</span><span class="cm-out">39          // número</span><span class="cm-in">&gt; parseInt("")</span><span class="cm-out">NaN         // id vacío = producto nuevo</span></div>
-                <p class="pv-note">Con <b>id</b> vacío se hace POST (crear); con id relleno, PUT (editar). Un solo formulario sirve para las dos cosas.</p>
-              </div>
-            </details>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Guardar: ¿crear o editar?</span><span class="desc">Si el objeto tiene <b>id</b> es una edición (PUT); si no, es nuevo (POST). Un solo botón «Guardar».</span></div>
-            <pre class="example"><code>async function guardar() {
-  const producto = leerFormulario();
-
-  if (producto.id) {
-    await fetch(URL_PRODUCTOS + producto.id, { method: "PUT", body: JSON.stringify(producto),
-      headers: { "Content-type": "application/json" } });
-  } else {
-    await fetch(URL_PRODUCTOS, { method: "POST", body: JSON.stringify(producto),
-      headers: { "Content-type": "application/json" } });
-  }
-  mostrarAdministracion();
-}</code></pre>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div class="console-mock"><span class="cm-in">guardar()  // id: 2</span><span class="cm-out">PUT /productos/2</span><span class="cm-in">guardar()  // id vacío</span><span class="cm-out">POST /productos</span></div>
-              </div>
-            </details>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Pintar datos con plantillas (template literals)</span><span class="desc">Crear elementos del DOM con <b>createElement</b> y rellenar su HTML con <b>`${variable}`</b>, dentro de un bucle.</span></div>
-            <pre class="example"><code>for (const producto of productos) {
-  const div = document.createElement("div");
-  div.className = "col";
-  div.innerHTML = `
-    &lt;article class="card h-100"&gt;
-      &lt;img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}"&gt;
-      &lt;div class="card-body"&gt;
-        &lt;h5 class="card-title"&gt;${producto.nombre}&lt;/h5&gt;
-        &lt;p class="card-text"&gt;${producto.precio} €&lt;/p&gt;
-      &lt;/div&gt;
-    &lt;/article&gt;`;
-  marco.appendChild(div);
-}</code></pre>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div style="display:flex;gap:8px;"><div style="border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:12.5px;"><div style="background:var(--surface-2);height:34px;border-radius:4px;margin-bottom:6px;"></div><b>Portátil</b><br>499,9 €</div><div style="border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:12.5px;"><div style="background:var(--surface-2);height:34px;border-radius:4px;margin-bottom:6px;"></div><b>Ratón</b><br>12 €</div></div>
-                <p class="pv-note">Un bucle, una tarjeta por producto: añades un producto al JSON y aparece solo en la pantalla.</p>
-              </div>
-            </details>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Menú desplegable (hamburguesa)</span><span class="desc">Un botón que añade o quita una clase. El CSS se encarga de la animación; JavaScript solo cambia la clase.</span></div>
-            <pre class="example"><code>const menu = document.querySelector("#menu-hamburguesa");
-
-document.querySelector("#boton-menu").addEventListener("click", () =&gt; {
-  if (menu.classList.contains("oculto")) {
-    menu.classList.remove("oculto");
-  } else {
-    menu.classList.add("oculto");
-  }
-  // atajo equivalente: menu.classList.toggle("oculto");
-});</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>El botón es el interruptor de la persiana de la terraza: JavaScript solo pulsa «subir» o «bajar» (la clase); el movimiento suave de la persiana lo define el CSS.</div>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div class="mini-demo"><span class="mini-chip">☰ botón</span><span style="font-size:12.5px;color:var(--ink-soft);">→ clic → <code>menu</code> pasa de <code>.oculto</code> a visible</span></div>
-                <p class="pv-note">Con <b>classList.contains()</b> preguntas «¿ya la tiene?» y con <b>add / remove / toggle</b> la pones o quitas. Mira la pestaña CSS (Transiciones y anidado) para la animación.</p>
-              </div>
-            </details>
-          </div>
-        </div>
-
-        <div class="group">
-          <h2>Catálogo y administración</h2>
-          <p class="group-desc">Las piezas de la práctica AMAZONIA: barra superior con menú móvil, tarjetas en rejilla, tabla de administración con iconos y formulario en filas. Todo con clases, casi sin CSS propio.</p>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">navbar con menú móvil (collapse)</span><span class="desc">En pantallas pequeñas la barra se recoge tras el botón ☰ (<b>navbar-toggler</b>) y se despliega sola, sin escribir JavaScript.</span></div>
-            <pre class="example"><code>&lt;nav class="navbar navbar-expand-sm bg-dark" data-bs-theme="dark"&gt;
-  &lt;div class="container-fluid"&gt;
-    &lt;a class="navbar-brand" href="#"&gt;Amazonia&lt;/a&gt;
-    &lt;button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu"&gt;
-      &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
-    &lt;/button&gt;
-    &lt;div class="collapse navbar-collapse" id="menu"&gt;
-      &lt;ul class="navbar-nav"&gt;
-        &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Catálogo&lt;/a&gt;&lt;/li&gt;
-        &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Administración&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/nav&gt;</code></pre>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div style="background:#212529;color:#fff;border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:16px;font-size:12.5px;"><b>Amazonia</b><span style="color:#adb5bd">Catálogo</span><span style="color:#adb5bd">Administración</span></div>
-                <p class="pv-note"><b>navbar-expand-sm</b>: desde pantalla «sm» se ve entera; por debajo, solo el botón ☰. <b>data-bs-theme="dark"</b> pone los textos claros sobre fondo oscuro. <b>data-bs-toggle="collapse"</b> + <b>data-bs-target</b> hacen la magia (necesita el script de Bootstrap).</p>
-              </div>
-            </details>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">row-cols-*: rejilla de tarjetas</span><span class="desc">En vez de poner <b>col</b> a mano, el <b>row</b> decide cuántas columnas hay por fila: <b>row-cols-1 row-cols-sm-2 row-cols-lg-4</b>. <b>g-4</b> es el hueco entre tarjetas.</span></div>
-            <pre class="example"><code>&lt;div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4"&gt;
-  &lt;div class="col"&gt;
-    &lt;article class="card h-100"&gt;
-      &lt;img src="…" class="card-img-top" alt="Portátil"&gt;
-      &lt;div class="card-body"&gt;
-        &lt;h5 class="card-title"&gt;Portátil&lt;/h5&gt;
-        &lt;p class="card-text"&gt;499,9 €&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class="card-footer"&gt;
-        &lt;a href="#" class="btn btn-primary"&gt;Ver&lt;/a&gt;
-      &lt;/div&gt;
-    &lt;/article&gt;
-  &lt;/div&gt;
-  &lt;!-- una .col por producto --&gt;
-&lt;/div&gt;</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Es decir al camarero «en esta sala pon 1 mesa por fila si es pequeña, y hasta 4 si es grande». Tú no colocas cada mesa: solo dices cuántas caben por fila.</div>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:360px;"><div style="border:1px solid var(--border);border-radius:6px;padding:6px;font-size:11.5px;"><div style="background:var(--surface-2);height:26px;border-radius:3px;margin-bottom:4px;"></div>Portátil</div><div style="border:1px solid var(--border);border-radius:6px;padding:6px;font-size:11.5px;"><div style="background:var(--surface-2);height:26px;border-radius:3px;margin-bottom:4px;"></div>Ratón</div><div style="border:1px solid var(--border);border-radius:6px;padding:6px;font-size:11.5px;"><div style="background:var(--surface-2);height:26px;border-radius:3px;margin-bottom:4px;"></div>Teclado</div><div style="border:1px solid var(--border);border-radius:6px;padding:6px;font-size:11.5px;"><div style="background:var(--surface-2);height:26px;border-radius:3px;margin-bottom:4px;"></div>Monitor</div></div>
-                <p class="pv-note">En móvil 1 por fila, en «sm» 2, en «lg» 4. <b>h-100</b> en la tarjeta hace que todas midan lo mismo, aunque el texto cambie.</p>
-              </div>
-            </details>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Tabla de administración con iconos</span><span class="desc">Tabla completa con scroll en móvil, filas rayadas y resalte, y botones pequeños con iconos de <b>Bootstrap Icons</b>.</span></div>
-            <pre class="example"><code>&lt;!-- en el &lt;head&gt;: &lt;link rel="stylesheet" href="…bootstrap-icons.css"&gt; --&gt;
-&lt;div class="table-responsive"&gt;
-  &lt;table class="table table-striped table-hover table-bordered"&gt;
-    &lt;thead class="table-secondary"&gt;
-      &lt;tr&gt;&lt;th&gt;Nombre&lt;/th&gt;&lt;th&gt;Precio&lt;/th&gt;&lt;th&gt;Opciones&lt;/th&gt;&lt;/tr&gt;
-    &lt;/thead&gt;
-    &lt;tbody&gt;
-      &lt;tr&gt;
-        &lt;td&gt;Portátil&lt;/td&gt;&lt;td&gt;499,9 €&lt;/td&gt;
-        &lt;td&gt;
-          &lt;a href="javascript:mostrarFormulario(1)" class="btn btn-sm btn-primary"&gt;&lt;i class="bi bi-pencil-fill"&gt;&lt;/i&gt;&lt;/a&gt;
-          &lt;a href="javascript:borrarProducto(1)" class="btn btn-sm btn-danger"&gt;&lt;i class="bi bi-trash-fill"&gt;&lt;/i&gt;&lt;/a&gt;
-        &lt;/td&gt;
-      &lt;/tr&gt;
-    &lt;/tbody&gt;
-    &lt;tfoot class="table-secondary"&gt;
-      &lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="javascript:mostrarFormulario()" class="btn btn-sm btn-primary"&gt;&lt;i class="bi bi-plus-lg"&gt;&lt;/i&gt; Añadir&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-    &lt;/tfoot&gt;
-  &lt;/table&gt;
-&lt;/div&gt;</code></pre>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <table><tr style="background:var(--surface-2)"><th>Nombre</th><th>Precio</th><th>Opciones</th></tr><tr><td>Portátil</td><td>499,9 €</td><td><span style="background:#0d6efd;color:#fff;border-radius:4px;padding:2px 7px;font-size:11.5px;">✎</span> <span style="background:#dc3545;color:#fff;border-radius:4px;padding:2px 7px;font-size:11.5px;">🗑</span></td></tr><tr style="background:var(--surface-2)"><td>Ratón</td><td>12 €</td><td><span style="background:#0d6efd;color:#fff;border-radius:4px;padding:2px 7px;font-size:11.5px;">✎</span> <span style="background:#dc3545;color:#fff;border-radius:4px;padding:2px 7px;font-size:11.5px;">🗑</span></td></tr></table>
-                <p class="pv-note"><b>btn-sm</b> = botón pequeño. <b>bi bi-NOMBRE</b> = icono (lápiz, papelera, más). <b>href="javascript:función(id)"</b> ejecuta tu función al pulsar, sin cambiar de página.</p>
-              </div>
-            </details>
-          </div>
           <div class="entry">
             <div class="entry-head"><span class="tag">Formulario horizontal (etiqueta a la izquierda)</span><span class="desc">Cada fila es un <b>row</b>: la etiqueta ocupa 2 columnas (<b>col-form-label</b>) y el campo el resto. <b>offset-sm-2</b> alinea el botón con los campos.</span></div>
             <pre class="example"><code>&lt;form action="javascript:guardar()"&gt;
@@ -5017,24 +4693,8 @@ document.querySelector("#boton-menu").addEventListener("click", () =&gt; {
               </div>
             </details>
           </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Pie de página siempre abajo</span><span class="desc">Convierte el <b>body</b> en una columna flex que ocupa toda la altura, para que el footer quede abajo aunque haya poco contenido.</span></div>
-            <pre class="example"><code>&lt;html class="h-100"&gt;
-  &lt;body class="h-100 d-flex flex-column justify-content-between"&gt;
-    &lt;header&gt;…navbar…&lt;/header&gt;
-    &lt;main class="container"&gt;…&lt;/main&gt;
-    &lt;footer class="p-2 text-bg-dark text-center"&gt;© Amazonia&lt;/footer&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-            <details class="pv">
-              <summary>Ver ejemplo visual</summary>
-              <div class="preview">
-                <div style="border:1px solid var(--border);border-radius:6px;height:90px;display:flex;flex-direction:column;justify-content:space-between;font-size:11.5px;"><div style="background:#212529;color:#fff;padding:3px 8px;border-radius:5px 5px 0 0;">navbar</div><div style="padding:0 8px;color:var(--ink-soft);">main (poco contenido)</div><div style="background:#212529;color:#fff;padding:3px 8px;border-radius:0 0 5px 5px;">footer</div></div>
-                <p class="pv-note"><b>h-100</b> en <code>html</code> y <code>body</code> da altura completa; <b>justify-content-between</b> empuja el footer al fondo. <b>text-bg-dark</b> = fondo oscuro con texto claro, de un golpe.</p>
-              </div>
-            </details>
-          </div>
         </div>
+
 
       </div>
     </section>
@@ -5100,7 +4760,8 @@ document.querySelector("#boton-menu").addEventListener("click", () =&gt; {
                           <li><div class="node br"><b>Objetos</b><small>datos agrupados</small></div><div class="leaves"><span>{ clave: valor }</span><span>Object.keys</span></div></li>
                           <li><div class="node br"><b>Números y azar</b><small>aleatorios y ventanas</small></div><div class="leaves"><span>Math.random</span><span>Math.floor</span><span>parseInt</span><span>prompt</span><span>alert</span></div></li>
                           <li><div class="node br"><b>DOM</b><small>tocar la página</small></div><div class="leaves"><span>querySelector</span><span>addEventListener</span><span>classList</span><span>createElement</span><span>textContent</span></div></li>
-                          <li class="adv"><div class="node br"><b>Asíncrono y datos</b><small>pedir datos al servidor</small></div><div class="leaves"><span>fetch</span><span>async / await</span><span>GET / POST / PUT / DELETE</span><span>JSON.parse</span><span>JSON.stringify</span></div></li>
+                          <li class="adv"><div class="node br"><b>Custom Elements</b><small>tus propias etiquetas</small></div><div class="leaves"><span>extends HTMLElement</span><span>connectedCallback</span><span>customElements.define</span></div></li>
+                          <li><div class="node br"><b>Asíncrono y datos</b><small>pedir datos al servidor</small></div><div class="leaves"><span>fetch</span><span>async / await</span><span>GET / POST / PUT / DELETE</span><span>JSON.parse</span><span>JSON.stringify</span></div></li>
                           <li><div class="node br"><b>Consola</b><small>depurar (solo tú)</small></div><div class="leaves"><span>console.log</span><span>error</span><span>warn</span><span>table</span></div></li>
                           <li><div class="node br"><b>Buenas prácticas</b><small>hábitos que evitan fallos</small></div><div class="leaves"><span>DRY</span><span>rubber duck</span><span>camelCase</span><span>const / let</span><span>use strict</span></div></li>
                         </ul>
@@ -5312,6 +4973,65 @@ document.querySelector("#boton-menu").addEventListener("click", () =&gt; {
     renderJsPreview();
   });
   renderJsPreview();
+
+  /* ---- vista compacta: filas con "+" ---- */
+  function setEntry(entry, open){
+    entry.classList.toggle('open', open);
+    entry.querySelector('.entry-head').setAttribute('aria-expanded', String(open));
+  }
+  document.querySelectorAll('.entry-head').forEach(h => {
+    h.setAttribute('role', 'button'); h.tabIndex = 0; h.setAttribute('aria-expanded', 'false');
+  });
+  const toggleAll = document.getElementById('toggleAll');
+  function visibleEntries(){
+    const p = document.querySelector('.panel.active');
+    return p ? [...p.querySelectorAll('.entry:not(.is-hidden)')] : [];
+  }
+  function refreshAll(){
+    const es = visibleEntries();
+    toggleAll.textContent = es.length && es.every(x => x.classList.contains('open')) ? 'Cerrar todo' : 'Abrir todo';
+  }
+  document.addEventListener('click', e => {
+    const h = e.target.closest('.entry-head');
+    if (h) { setEntry(h.parentElement, !h.parentElement.classList.contains('open')); refreshAll(); }
+  });
+  document.addEventListener('keydown', e => {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.classList && e.target.classList.contains('entry-head')) {
+      e.preventDefault(); e.target.click();
+    }
+  });
+  toggleAll.addEventListener('click', () => {
+    const es = visibleEntries();
+    const abrir = !es.every(x => x.classList.contains('open'));
+    es.forEach(x => setEntry(x, abrir));
+    refreshAll();
+  });
+  tabs.forEach(t => t.addEventListener('click', () => {
+    toggleAll.hidden = t.dataset.panel === 'org';
+    refreshAll();
+  }));
+  filterInput.addEventListener('input', () => {
+    if (filterInput.value.trim()) visibleEntries().forEach(x => setEntry(x, true));
+    refreshAll();
+  });
+  modeCore.addEventListener('click', refreshAll);
+  modePro.addEventListener('click', refreshAll);
+
+  document.querySelectorAll('.tier li').forEach(li => {
+    const chip = li.querySelector(':scope > .chip');
+    if (!chip || !li.querySelector(':scope > span:not(.chip)')) return;
+    li.classList.add('more'); li.tabIndex = 0; li.setAttribute('role', 'button'); li.setAttribute('aria-expanded', 'false');
+    const plus = document.createElement('span');
+    plus.className = 'plus'; plus.setAttribute('aria-hidden', 'true'); plus.textContent = '+';
+    chip.after(plus);
+    const toggle = () => {
+      const open = li.classList.toggle('open');
+      li.setAttribute('aria-expanded', String(open));
+      plus.textContent = open ? '−' : '+';
+    };
+    li.addEventListener('click', toggle);
+    li.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+  });
 </script>
 
 </body>
