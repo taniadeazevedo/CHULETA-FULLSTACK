@@ -1471,6 +1471,25 @@
             <div class="entry-head"><span class="tag">&lt;title&gt;</span><span class="desc">Texto que aparece en la pestaña del navegador.</span></div>
             <pre class="example"><code>&lt;title&gt;Mi tienda online&lt;/title&gt;</code></pre>
           </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">&lt;script defer src=""&gt;</span><span class="desc">Carga un archivo JavaScript. Con <b>defer</b> el navegador lo descarga mientras lee el HTML y lo <b>ejecuta al terminar</b> de leerlo, así que puede ir en el <b>head</b> sin problemas.</span></div>
+            <pre class="example"><code>&lt;head&gt;
+  &lt;script defer src="js/app.js"&gt;&lt;/script&gt;     &lt;!-- espera a que el HTML esté listo --&gt;
+&lt;/head&gt;
+
+&lt;!-- sin defer, mejor al final del body: --&gt;
+&lt;body&gt;
+  …
+  &lt;script src="js/app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+            <details class="pv">
+              <summary>Ver ejemplo visual</summary>
+              <div class="preview">
+                <div class="obj-card"><div class="obj-row"><b>sin defer, en el head</b><span>bloquea la página y el JS no encuentra los elementos (aún no existen)</span></div><div class="obj-row"><b>defer, en el head</b><span>no bloquea y se ejecuta con el HTML ya cargado ✅</span></div><div class="obj-row"><b>sin defer, al final del body</b><span>también funciona ✅</span></div></div>
+                <p class="pv-note">Con varios scripts con <b>defer</b>, se ejecutan <b>en el orden</b> en que están escritos.</p>
+              </div>
+            </details>
+          </div>
         </div>
 
         <div class="group">
@@ -1832,6 +1851,21 @@
               </div>
             </details>
           </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Formatos de imagen</span><span class="desc">Cada formato sirve para algo distinto. Elegir bien hace que la web cargue más rápido.</span></div>
+            <pre class="example"><code>logo.svg     → logotipos e iconos (vectorial: se ve nítido a cualquier tamaño)
+foto.jpg     → fotografías (compresión con pérdida, 16 millones de colores)
+foto.webp    → como JPEG pero más ligero, con la misma calidad
+icono.png    → transparencia y compresión sin pérdida
+animacion.gif → animaciones sencillas (solo 256 colores)</code></pre>
+            <details class="pv">
+              <summary>Ver ejemplo visual</summary>
+              <div class="preview">
+                <div class="obj-card"><div class="obj-row"><b>SVG</b><span>dibujo lineal · escalable sin perder calidad</span></div><div class="obj-row"><b>JPEG</b><span>fotos · compresión destructiva</span></div><div class="obj-row"><b>WebP</b><span>más pequeño que JPEG con la misma calidad</span></div><div class="obj-row"><b>PNG</b><span>sin pérdida · admite transparencia</span></div><div class="obj-row"><b>GIF</b><span>animación · 256 colores</span></div></div>
+                <p class="pv-note">Regla rápida: <b>logo → SVG</b>, <b>foto → WebP o JPEG</b>, <b>con fondo transparente → PNG o SVG</b>.</p>
+              </div>
+            </details>
+          </div>
         </div>
 
         <div class="group">
@@ -1994,6 +2028,27 @@
                             <div class="fld"><div class="col"><label for="pv-ph">Email <span style="color:var(--accent-html)">*</span></label><input id="pv-ph" type="email" placeholder="tu@email.com"></div><span class="ftag">placeholder + required</span></div>
                             <p class="pv-note"><b>placeholder</b> es el texto gris de ayuda, que desaparece al escribir. <b>required</b> hace el campo <b>obligatorio</b>: si está vacío, el navegador no deja enviar el formulario y avisa. (El asterisco es solo una convención visual.)</p>
                           </div>
+            </details>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">&lt;fieldset&gt;&lt;legend&gt;</span><span class="desc">Agrupa campos relacionados dentro de un recuadro con título. Además, <b>type</b> tiene valores para fechas, teléfonos y direcciones web.</span></div>
+            <pre class="example"><code>&lt;fieldset&gt;
+  &lt;legend&gt;Datos de contacto&lt;/legend&gt;
+
+  &lt;label for="tel"&gt;Teléfono&lt;/label&gt;
+  &lt;input type="tel" id="tel" name="tel"&gt;
+
+  &lt;label for="cita"&gt;Fecha y hora&lt;/label&gt;
+  &lt;input type="datetime-local" id="cita" name="cita"&gt;
+&lt;/fieldset&gt;
+
+&lt;!-- otros type: date · url · email · password · number · checkbox · radio --&gt;</code></pre>
+            <details class="pv">
+              <summary>Ver ejemplo visual</summary>
+              <div class="preview">
+                <fieldset style="border:1px solid var(--border);border-radius:6px;padding:8px 12px;font-size:13px;max-width:280px;"><legend style="font-size:12px;padding:0 6px;width:auto;">Datos de contacto</legend><div style="display:flex;flex-direction:column;gap:6px;"><label>Teléfono <input type="tel" style="width:100%;padding:3px 6px;"></label><label>Fecha y hora <input type="datetime-local" style="width:100%;padding:3px 6px;"></label></div></fieldset>
+                <p class="pv-note"><b>legend</b> debe ser el <b>primer hijo</b> del <b>fieldset</b>. Con <b>type="tel"</b> el móvil abre el teclado numérico, y con <b>datetime-local</b>, un selector de fecha y hora.</p>
+              </div>
             </details>
           </div>
         </div>
@@ -2231,6 +2286,19 @@ p { ... }           /* etiqueta */
                           </div>
             </details>
           </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">[atributo*=valor]</span><span class="desc">Selecciona los elementos cuyo atributo <b>contiene</b> un texto. También existe <b>^=</b> (empieza por) y <b>$=</b> (termina en).</span></div>
+            <pre class="example"><code>a[href*="google"]  { color: red; }       /* el enlace contiene "google" */
+a[href^="https"]   { color: green; }     /* empieza por https */
+a[href$=".pdf"]    { font-weight: 700; } /* termina en .pdf */</code></pre>
+            <details class="pv">
+              <summary>Ver ejemplo visual</summary>
+              <div class="preview">
+                <div class="obj-card"><div class="obj-row"><b>*=</b><span>contiene</span></div><div class="obj-row"><b>^=</b><span>empieza por</span></div><div class="obj-row"><b>$=</b><span>termina en</span></div></div>
+                <p class="pv-note">Útil, por ejemplo, para marcar todos los enlaces a PDF sin añadirles una clase.</p>
+              </div>
+            </details>
+          </div>
         </div>
 
         <div class="group">
@@ -2342,6 +2410,20 @@ p { ... }           /* etiqueta */
               <div class="preview">
                 <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;">19.99<b style="color:var(--accent-css)"> €</b></span>
                 <p class="pv-note">El <b> €</b> en azul no está en el HTML: lo añade el <code>content:" €"</code> del <code>::after</code>.</p>
+              </div>
+            </details>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">:nth-of-type() / :last-of-type</span><span class="desc">Como <b>:nth-child</b>, pero cuenta <b>solo los hermanos de la misma etiqueta</b>. Acepta <b>odd</b> (impares), <b>even</b> (pares) o un número.</span></div>
+            <pre class="example"><code>p:nth-of-type(2)     { color: red; }   /* el 2.º &lt;p&gt; (aunque haya &lt;h2&gt; entre medias) */
+li:last-of-type      { font-weight: 700; }
+tr:nth-of-type(even) { background: #eee; }  /* filas pares */
+p:first-of-type      { font-size: 1.2rem; }</code></pre>
+            <details class="pv">
+              <summary>Ver ejemplo visual</summary>
+              <div class="preview">
+                <div class="obj-card"><div class="obj-row"><b>:nth-child(2)</b><span>el 2.º hijo, sea de la etiqueta que sea</span></div><div class="obj-row"><b>:nth-of-type(2)</b><span>el 2.º de <b>su misma etiqueta</b></span></div></div>
+                <p class="pv-note">Si dentro de un contenedor mezclas <b>h2</b> y <b>p</b>, <b>:nth-of-type</b> cuenta cada tipo por separado.</p>
               </div>
             </details>
           </div>
@@ -2757,6 +2839,22 @@ body {
               <div class="preview">
                 <p style="margin:0;font-family:'Lato',sans-serif;font-size:18px;">Este texto usa la fuente Lato</p>
                 <p class="pv-note">Fuente descargada de Google Fonts con el <code>@import</code> de arriba, aplicada de verdad en esta chuleta.</p>
+              </div>
+            </details>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">@font-face</span><span class="desc">Carga una tipografía <b>desde un archivo tuyo</b> (en vez de Google Fonts) y le da un nombre para usarla con <b>font-family</b>.</span></div>
+            <pre class="example"><code>@font-face {
+  font-family: "MiFuente";
+  src: url("fonts/MiFuente.ttf");
+}
+
+body { font-family: "MiFuente", sans-serif; }</code></pre>
+            <details class="pv">
+              <summary>Ver ejemplo visual</summary>
+              <div class="preview">
+                <div class="obj-card"><div class="obj-row"><b>font-family</b><span>el nombre que le pones tú</span></div><div class="obj-row"><b>src: url(…)</b><span>dónde está el archivo de la fuente</span></div></div>
+                <p class="pv-note">Detrás del nombre, pon siempre una fuente de reserva (<b>sans-serif</b>, <b>serif</b>) por si el archivo no carga.</p>
               </div>
             </details>
           </div>
@@ -3940,6 +4038,25 @@ function mostrar(idSeccion) {
               </div>
             </details>
           </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">.dataset (atributos data-*)</span><span class="desc">Los atributos <b>data-algo</b> del HTML sirven para guardar información dentro de un elemento. En JavaScript se leen con <b>.dataset</b>.</span></div>
+            <pre class="example"><code>&lt;a href="#" data-id="7" data-jl-modal-texto="¿Borrar la taza?"&gt;Borrar&lt;/a&gt;
+
+const enlace = document.querySelector('a');
+
+enlace.dataset.id;               // "7"   ¡siempre es TEXTO!
+Number(enlace.dataset.id);       // 7     para compararlo con números
+enlace.dataset.jlModalTexto;     // data-jl-modal-texto  →  jlModalTexto (camelCase)
+enlace.getAttribute('data-id');  // forma equivalente</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Es la etiqueta que el camarero pega en cada plato con un número de mesa o una nota. Tú no la ves en el plato, pero JavaScript puede leerla cuando la necesita. Eso sí, la nota siempre está escrita como texto: hay que convertirla con <b>Number()</b> si es un número.</div>
+            <details class="pv">
+              <summary>Ver ejemplo visual</summary>
+              <div class="preview">
+                <div class="console-mock"><span class="cm-in">&gt; enlace.dataset.id</span><span class="cm-out">"7"   // texto</span><span class="cm-in">&gt; enlace.dataset.id === 7</span><span class="cm-out">false  // texto ≠ número</span><span class="cm-in">&gt; Number(enlace.dataset.id) === 7</span><span class="cm-out">true</span></div>
+                <p class="pv-note">En el HTML se escribe con guiones (<b>data-jl-modal-texto</b>) y en JavaScript pasa a <b>camelCase</b> (<b>jlModalTexto</b>). Y todo lo que sale de <b>dataset</b> es texto.</p>
+              </div>
+            </details>
+          </div>
         </div>
 
         <div class="group">
@@ -3965,6 +4082,35 @@ customElements.define('jl-titulo', Titulo);
               <div class="preview">
                 <div><span style="display:inline-block;background:#111;color:#fff;border-radius:4px;padding:4px 8px;font-size:12.5px;margin-right:6px;">Hola</span><span style="display:inline-block;background:#111;color:#fff;border-radius:4px;padding:4px 8px;font-size:12.5px;margin-right:6px;">Otro</span></div>
                 <p class="pv-note">El nombre lleva <b>guion</b> para no chocar con las etiquetas oficiales. Si el mismo bloque de HTML se repite 6 veces (por ejemplo, los campos de un formulario Bootstrap), conviene hacerlo un Custom Element.</p>
+              </div>
+            </details>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Componente reutilizable (jl-modal)</span><span class="desc">El mismo patrón de Custom Element sirve para piezas completas, como una ventana de confirmación: la defines <b>una vez</b> y la usas con una sola línea.</span></div>
+            <pre class="example"><code>class Modal extends HTMLElement {
+  connectedCallback() {
+    const idModal = this.getAttribute('id-modal');     // atributo propio de la etiqueta
+
+    this.innerHTML = `&lt;div class="modal fade" id="${idModal}"&gt; … &lt;/div&gt;`;
+
+    const modal = document.querySelector(`#${idModal}`);
+    modal.addEventListener('show.bs.modal', (e) =&gt; {
+      const disparador = e.relatedTarget;               // el botón que la abrió
+      modal.querySelector('.modal-body').textContent = disparador.dataset.jlModalTexto;
+    });
+  }
+}
+customElements.define('jl-modal', Modal);
+
+&lt;!-- en la página: una vez la ventana... --&gt;
+&lt;jl-modal id-modal="confirmacion"&gt;&lt;/jl-modal&gt;
+&lt;!-- ...y cada botón dice qué texto mostrar --&gt;
+&lt;a data-bs-toggle="modal" data-bs-target="#confirmacion" data-jl-modal-texto="¿Borrar la taza?"&gt;Borrar&lt;/a&gt;</code></pre>
+            <details class="pv">
+              <summary>Ver ejemplo visual</summary>
+              <div class="preview">
+                <div class="obj-card"><div class="obj-row"><b>id-modal</b><span>atributo de la etiqueta: el id que tendrá la ventana</span></div><div class="obj-row"><b>data-jl-modal-texto</b><span>atributo del botón: el texto que se mostrará</span></div><div class="obj-row"><b>show.bs.modal</b><span>evento de Bootstrap: justo antes de abrirse</span></div><div class="obj-row"><b>relatedTarget</b><span>el botón que la ha abierto</span></div></div>
+                <p class="pv-note">Une tres cosas ya vistas: <b>Custom Element</b>, <b>modal de Bootstrap</b> y <b>dataset</b>. En el curso lo hacían primero con el modal escrito a mano y luego lo convirtieron en componente.</p>
               </div>
             </details>
           </div>
@@ -4309,6 +4455,24 @@ total = 5; // ERROR: total no está declarado</code></pre>
               </div>
             </details>
           </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">eval(): mejor no usarlo</span><span class="desc"><b>eval(texto)</b> ejecuta un texto como si fuera código. Funciona, pero es peligroso y difícil de depurar. En el curso se usó provisionalmente y quedó marcado como <b>FIXME</b> (hay que cambiarlo).</span></div>
+            <pre class="example"><code>// ❌ Evitar: ejecuta lo que ponga el texto
+const ejecutar = boton.getAttribute('data-jl-modal-si');   // "borrarProducto(3)"
+eval(ejecutar);
+
+// ✅ Mejor: guardar la función, no el texto
+boton.onclick = () =&gt; borrarProducto(3);
+boton.addEventListener('click', () =&gt; borrarProducto(3));</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Es como dejar que un desconocido te dicte por papel qué hacer en la cocina y obedecer sin mirar. Mucho más seguro es tener las recetas ya escritas en el libro (las funciones) y que el papel solo diga el nombre de la receta.</div>
+            <details class="pv">
+              <summary>Ver ejemplo visual</summary>
+              <div class="preview">
+                <div class="pv-warn">Si alguien consigue meter texto malicioso en ese atributo, <b>eval</b> lo ejecutaría con todos los permisos de tu página. Pasar una <b>función</b> (en lugar de un texto) evita el problema.</div>
+                <p class="pv-note"><b>TODO</b> y <b>FIXME</b> son comentarios que los programadores dejan para recordar algo pendiente: <b>// TODO</b> = falta hacer; <b>// FIXME</b> = funciona, pero hay que arreglarlo.</p>
+              </div>
+            </details>
+          </div>
         </div>
 
 
@@ -4579,6 +4743,21 @@ total = 5; // ERROR: total no está declarado</code></pre>
               </div>
             </details>
           </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">h-100 · vh-100 · vw-100 · w-auto</span><span class="desc">Alturas y anchos relativos: <b>h-100</b> (100 % del contenedor), <b>vh-100</b> / <b>vw-100</b> (toda la ventana) y <b>w-auto</b> (lo que ocupe su contenido).</span></div>
+            <pre class="example"><code>&lt;html class="h-100"&gt;
+  &lt;body class="h-100 d-flex flex-column justify-content-between"&gt;   &lt;!-- footer siempre abajo --&gt;
+
+&lt;section class="vh-100"&gt;…&lt;/section&gt;                                  &lt;!-- ocupa toda la pantalla --&gt;
+&lt;img class="w-auto" src="logo.png" alt="Logo"&gt;</code></pre>
+            <details class="pv">
+              <summary>Ver ejemplo visual</summary>
+              <div class="preview">
+                <div class="obj-card"><div class="obj-row"><b>h-100</b><span>alto = 100 % del padre (el padre debe tener altura)</span></div><div class="obj-row"><b>vh-100</b><span>alto = 100 % de la ventana</span></div><div class="obj-row"><b>vw-100</b><span>ancho = 100 % de la ventana</span></div><div class="obj-row"><b>w-auto</b><span>ancho según su contenido</span></div></div>
+                <p class="pv-note">Para que un pie de página quede siempre abajo: <b>html</b> y <b>body</b> con <b>h-100</b>, y el <b>body</b> como columna con <b>d-flex flex-column justify-content-between</b>.</p>
+              </div>
+            </details>
+          </div>
         </div>
 
         <div class="group">
@@ -4611,6 +4790,43 @@ total = 5; // ERROR: total no está declarado</code></pre>
               <summary>Ver ejemplo visual</summary>
               <div class="preview">
                 <div style="background:#f8f9fa;border:1px solid var(--border);border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:16px;font-size:12.5px;"><b>Mi web</b><span style="color:var(--ink-soft)">Inicio</span></div>
+              </div>
+            </details>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Modal (ventana emergente)</span><span class="desc">Una ventana que aparece encima de la página, por ejemplo para pedir confirmación antes de borrar. Sustituye al <b>confirm()</b> de JavaScript, con tu propio diseño.</span></div>
+            <pre class="example"><code>&lt;!-- el botón que la abre --&gt;
+&lt;button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmacion"&gt;Borrar&lt;/button&gt;
+
+&lt;!-- la ventana --&gt;
+&lt;div class="modal fade" id="confirmacion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"&gt;
+  &lt;div class="modal-dialog"&gt;
+    &lt;div class="modal-content"&gt;
+      &lt;div class="modal-header"&gt;&lt;h1 class="modal-title fs-5"&gt;Confirmación&lt;/h1&gt;&lt;/div&gt;
+      &lt;div class="modal-body"&gt;¿Seguro que quieres borrar este producto?&lt;/div&gt;
+      &lt;div class="modal-footer"&gt;
+        &lt;button class="btn btn-secondary" data-bs-dismiss="modal"&gt;No&lt;/button&gt;
+        &lt;button class="btn btn-primary" data-bs-dismiss="modal"&gt;Sí&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+// JavaScript: reaccionar justo antes de que se abra
+modal.addEventListener('show.bs.modal', (e) =&gt; {
+  const boton = e.relatedTarget;                       // el botón que la ha abierto
+  modal.querySelector('.modal-body').textContent = boton.dataset.texto;
+});</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Es el camarero que, antes de retirar un plato, te pone la bandeja delante y pregunta «¿seguro?». La ventana es siempre la misma; solo cambia el texto según el plato que pulsaste (lo lees del botón con <b>relatedTarget</b>).</div>
+            <details class="pv">
+              <summary>Ver ejemplo visual</summary>
+              <div class="preview">
+                <div style="border:1px solid var(--border);border-radius:8px;max-width:300px;background:var(--surface);overflow:hidden;font-size:13px;">
+                  <div style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:600;">Confirmación</div>
+                  <div style="padding:12px;">¿Seguro que quieres borrar este producto?</div>
+                  <div style="padding:8px 12px;border-top:1px solid var(--border);text-align:right;display:flex;gap:6px;justify-content:flex-end;"><span style="background:#6c757d;color:#fff;border-radius:6px;padding:4px 12px;">No</span><span style="background:#0d6efd;color:#fff;border-radius:6px;padding:4px 12px;">Sí</span></div>
+                </div>
+                <p class="pv-note"><b>data-bs-toggle="modal"</b> + <b>data-bs-target="#id"</b> abren la ventana; <b>data-bs-dismiss="modal"</b> la cierran. <b>data-bs-backdrop="static"</b> impide cerrarla al hacer clic fuera; <b>data-bs-keyboard="false"</b>, con Esc. <b>e.relatedTarget</b> es el botón que la abrió: por él sabes <b>qué producto</b> se va a borrar.</p>
               </div>
             </details>
           </div>
@@ -4759,11 +4975,11 @@ total = 5; // ERROR: total no está declarado</code></pre>
                           <li class="adv"><div class="node br"><b>Strings</b><small>trabajar con texto</small></div><div class="leaves"><span>length</span><span>includes</span><span>slice</span><span>split</span><span>trim</span></div></li>
                           <li><div class="node br"><b>Objetos</b><small>datos agrupados</small></div><div class="leaves"><span>{ clave: valor }</span><span>Object.keys</span></div></li>
                           <li><div class="node br"><b>Números y azar</b><small>aleatorios y ventanas</small></div><div class="leaves"><span>Math.random</span><span>Math.floor</span><span>parseInt</span><span>prompt</span><span>alert</span></div></li>
-                          <li><div class="node br"><b>DOM</b><small>tocar la página</small></div><div class="leaves"><span>querySelector</span><span>addEventListener</span><span>classList</span><span>createElement</span><span>textContent</span></div></li>
+                          <li><div class="node br"><b>DOM</b><small>tocar la página</small></div><div class="leaves"><span>querySelector</span><span>addEventListener</span><span>classList</span><span>createElement</span><span>textContent</span><span>dataset</span></div></li>
                           <li class="adv"><div class="node br"><b>Custom Elements</b><small>tus propias etiquetas</small></div><div class="leaves"><span>extends HTMLElement</span><span>connectedCallback</span><span>customElements.define</span></div></li>
                           <li><div class="node br"><b>Asíncrono y datos</b><small>pedir datos al servidor</small></div><div class="leaves"><span>fetch</span><span>async / await</span><span>GET / POST / PUT / DELETE</span><span>JSON.parse</span><span>JSON.stringify</span></div></li>
                           <li><div class="node br"><b>Consola</b><small>depurar (solo tú)</small></div><div class="leaves"><span>console.log</span><span>error</span><span>warn</span><span>table</span></div></li>
-                          <li><div class="node br"><b>Buenas prácticas</b><small>hábitos que evitan fallos</small></div><div class="leaves"><span>DRY</span><span>rubber duck</span><span>camelCase</span><span>const / let</span><span>use strict</span></div></li>
+                          <li><div class="node br"><b>Buenas prácticas</b><small>hábitos que evitan fallos</small></div><div class="leaves"><span>DRY</span><span>rubber duck</span><span>camelCase</span><span>const / let</span><span>use strict</span><span>sin eval</span></div></li>
                         </ul>
                       </li>
 
@@ -4775,7 +4991,7 @@ total = 5; // ERROR: total no está declarado</code></pre>
                           <li><div class="node br"><b>Espaciado</b><small>márgenes y rellenos</small></div><div class="leaves"><span>m-3</span><span>p-3</span><span>mt-2</span><span>mx-auto</span></div></li>
                           <li><div class="node br"><b>Texto y color</b><small>clases de estilo</small></div><div class="leaves"><span>text-center</span><span>text-danger</span><span>bg-primary</span><span>display-1</span></div></li>
                           <li class="adv"><div class="node br"><b>Tamaños y bordes</b><small>ancho, alto, esquinas</small></div><div class="leaves"><span>w-100</span><span>h-100</span><span>rounded</span><span>ratio</span></div></li>
-                          <li><div class="node br"><b>Componentes</b><small>piezas ya hechas</small></div><div class="leaves"><span>btn</span><span>navbar</span><span>bi bi-*</span></div></li>
+                          <li><div class="node br"><b>Componentes</b><small>piezas ya hechas</small></div><div class="leaves"><span>btn</span><span>navbar</span><span>bi bi-*</span><span>modal</span></div></li>
                           <li><div class="node br"><b>Formularios y tablas</b><small>campos y datos</small></div><div class="leaves"><span>form-control</span><span>form-select</span><span>table</span><span>img-fluid</span></div></li>
                         </ul>
                       </li>
