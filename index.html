@@ -1149,7 +1149,7 @@
           <li><span class="chip css">CSS</span><span>cómo se ve: colores, tamaños, posición</span></li>
           <li class="derivada"><span class="chip bs">Bootstrap</span><span>biblioteca de CSS ya hecho (y un poco de JS): botones, rejilla, navbar, tarjetas…</span></li>
           <li><span class="chip js">JavaScript</span><span>lo que hace: reacciona cuando pulsas algo</span></li>
-          <li class="derivada"><span class="chip todo">React</span><span>biblioteca de JavaScript para organizar webs grandes; hay otras (Vue, Angular) (por ver)</span></li>
+          <li class="derivada"><span class="chip js">React</span><span>biblioteca de JavaScript para construir la pantalla con componentes; hay otras (Vue, Angular). Ya empezado: mira la pestaña React.</span></li>
         </ul>
         <div class="browser-api">
           <p class="ba-title">Herramientas que trae el propio navegador</p>
@@ -1206,6 +1206,127 @@
     <div class="tools-strip">
       <b>Y aparte, tus herramientas.</b> <b>VS Code</b> y <b>Eclipse</b> son el cuaderno donde escribes el código. <b>GitHub</b> es donde lo guardas y lo compartes. <b>Live Server</b> (extensión de VS Code) abre tu página en el navegador y la recarga sola. <b>Node.js</b> (con <b>npx</b>) ejecuta JavaScript fuera del navegador: es lo que arranca json-server. <b>Maven</b> y <b>JUnit</b> (por ver) sirven para organizar el proyecto Java y comprobar que funciona.
     </div>
+
+<style>
+  .vm{ margin:0 0 20px; }
+  .vm h3{ margin:0 0 4px; font-size:17px; }
+  .vm .vm-sub{ margin:0 0 14px; font-size:13px; color:var(--ink-soft); }
+  .vm-4{ display:grid; grid-template-columns:repeat(auto-fit, minmax(min(210px,100%),1fr)); gap:10px; margin-bottom:12px; }
+  .dtile{ background:var(--surface); border:1px solid var(--border); border-top:3px solid var(--c); border-radius:12px; padding:12px 14px; display:flex; flex-direction:column; gap:6px; min-width:0; }
+  .dtile b{ font-size:17px; color:var(--ink); }
+  .dtile .sim{ font-size:13px; color:var(--ink-soft); }
+  .dtile .ej{ display:flex; flex-wrap:wrap; gap:5px; margin-top:2px; }
+  .vm-regla{ display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; background:var(--surface-2); border-radius:12px; padding:10px 14px; font-size:13px; color:var(--ink-soft); margin-bottom:20px; }
+  .vm-regla b{ color:var(--ink); }
+  .vm-regla .vs{ font-size:18px; color:var(--ink-faint); }
+  @media (max-width:560px){ .vm-regla{ grid-template-columns:1fr; text-align:center; } }
+  .dom-box{ background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:14px 16px; margin-bottom:20px; box-shadow:var(--shadow); }
+  .dom-box h3{ margin:0 0 4px; font-size:16px; }
+  .dom-flow{ display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:8px; align-items:stretch; margin:12px 0 10px; }
+  .dom-step{ background:var(--surface-2); border-radius:10px; padding:10px 12px; font-size:12.5px; line-height:1.4; color:var(--ink-soft); min-width:0; }
+  .dom-step b{ display:block; color:var(--ink); font-size:14px; margin-bottom:2px; }
+  .dom-step.hl{ border:1.5px solid var(--accent-js); background:var(--accent-js-soft); }
+  .dom-arrow{ align-self:center; color:var(--ink-faint); font-size:18px; }
+  @media (max-width:640px){ .dom-flow{ grid-template-columns:1fr; } .dom-arrow{ transform:rotate(90deg); justify-self:center; } }
+  .vm-code{ margin:0; background:var(--code-bg); border:1px solid var(--border-soft); border-radius:8px; padding:8px 11px; overflow-x:auto; font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:12px; line-height:1.55; color:var(--ink); white-space:pre; }
+  .dom-note{ margin:10px 0 0; font-size:13px; color:var(--ink-soft); }
+  .dom-note b{ color:var(--ink); }
+  .rv{ display:grid; grid-template-columns:repeat(auto-fit, minmax(min(260px,100%),1fr)); gap:10px; margin-bottom:20px; }
+  .rv-card{ background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:12px 14px; display:flex; flex-direction:column; gap:8px; min-width:0; }
+  .rv-card .rv-t{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .rv-card .rv-t b{ font-size:16px; color:var(--ink); }
+  .rv-card p{ margin:0; font-size:13px; color:var(--ink-soft); }
+  .vm-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(min(300px,100%),1fr)); gap:12px; align-items:start; }
+  .gcard{ background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; min-width:0; }
+  .gcard h4{ margin:0; padding:9px 14px; font-size:13px; letter-spacing:.02em; background:var(--cs); color:var(--c); border-bottom:1px solid var(--border-soft); }
+  .glist{ list-style:none; margin:0; padding:10px 14px 12px; display:grid; gap:8px; }
+  .glist li{ display:grid; grid-template-columns:132px 1fr; gap:10px; align-items:center; font-size:13px; line-height:1.35; color:var(--ink-soft); }
+  .glist li .chip{ justify-self:start; max-width:100%; }
+  @media (max-width:400px){ .glist li{ grid-template-columns:1fr; gap:3px; } }
+  .vm-html{ --c:var(--accent-html); --cs:var(--accent-html-soft); }
+  .vm-js{ --c:var(--accent-js); --cs:var(--accent-js-soft); }
+  .vm-css{ --c:var(--accent-css); --cs:var(--accent-css-soft); }
+  .vm-bs{ --c:var(--accent-bs); --cs:var(--accent-bs-soft); }
+  .vm-pr{ --c:var(--accent-pr); --cs:var(--accent-pr-soft); }
+  .vm-gr{ --c:var(--ink-soft); --cs:var(--surface-2); }
+  /* en móvil, un bloque de código largo no ensancha la tarjeta: se desplaza dentro de ella */
+  .groups > .group{ min-width:0; }
+  .group .example{ max-width:100%; }
+</style>
+    <div class="vm">
+      <h3>Lenguaje, biblioteca, framework… ¿qué es cada cosa?</h3>
+      <p class="vm-sub">Cuatro palabras que se mezclan siempre. Con el símil de la cocina:</p>
+      <div class="vm-4">
+        <div class="dtile vm-html"><b>Lenguaje</b><span class="sim">el idioma</span><span class="ej"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">Java</span><span class="chip">SQL</span></span></div>
+        <div class="dtile vm-js"><b>Biblioteca</b><span class="sim">un cajón de utensilios</span><span class="ej"><span class="chip">React</span></span></div>
+        <div class="dtile vm-bs"><b>Framework</b><span class="sim">una cocina con normas</span><span class="ej"><span class="chip">Vue</span><span class="chip">Angular</span><span class="chip">Spring</span><span class="chip">Bootstrap</span></span></div>
+        <div class="dtile vm-css"><b>Herramienta</b><span class="sim">un utensilio del taller</span><span class="ej"><span class="chip">Vite</span><span class="chip">npm</span><span class="chip">VS Code</span><span class="chip">Git</span></span></div>
+      </div>
+      <div class="vm-regla">
+        <span><b>Biblioteca</b>: la llamas <b>tú</b> cuando la necesitas</span>
+        <span class="vs" aria-hidden="true">⇄</span>
+        <span><b>Framework</b>: te llama <b>él</b>, porque manda él</span>
+      </div>
+    </div>
+
+    <div class="dom-box">
+      <h3>¿Qué era el DOM?</h3>
+      <p class="vm-sub" style="margin-bottom:0">El plano se convierte en una mesa servida, y JavaScript puede mover lo que hay en ella.</p>
+      <div class="dom-flow">
+        <div class="dom-step"><b>HTML</b>El <b style="display:inline;font-size:inherit">plano</b>: texto con etiquetas.</div>
+        <span class="dom-arrow" aria-hidden="true">→</span>
+        <div class="dom-step hl"><b>DOM</b>La <b style="display:inline;font-size:inherit">mesa servida</b>: cada etiqueta, convertida en un objeto.</div>
+        <span class="dom-arrow" aria-hidden="true">←</span>
+        <div class="dom-step"><b>JavaScript</b>El <b style="display:inline;font-size:inherit">camarero</b>: busca algo en la mesa y lo cambia.</div>
+      </div>
+      <pre class="vm-code">document.querySelector("h1").textContent = "Hola";   // busca el título y cambia su texto</pre>
+      <p class="dom-note"><b>React y Vue</b> lo hacen por ti: tú cambias los datos y ellos tocan el DOM.</p>
+    </div>
+
+    <div class="rv">
+      <div class="rv-card vm-js">
+        <div class="rv-t"><b>React</b><span class="chip">biblioteca</span></div>
+        <p>Usa <b>JSX</b>: HTML escrito dentro de JavaScript.</p>
+        <pre class="vm-code">function Saludo() {
+  return &lt;h1&gt;Hola&lt;/h1&gt;;
+}</pre>
+      </div>
+      <div class="rv-card vm-bs">
+        <div class="rv-t"><b>Vue</b><span class="chip">framework</span></div>
+        <p>Usa archivos <b>.vue</b> con tres partes por componente.</p>
+        <pre class="vm-code">&lt;template&gt; &lt;h1&gt;Hola&lt;/h1&gt; &lt;/template&gt;
+&lt;script&gt; ... &lt;/script&gt;
+&lt;style&gt; ... &lt;/style&gt;</pre>
+      </div>
+    </div>
+
+    <p class="basic-legend" style="margin-bottom:10px">Mismo trabajo en los dos: <b>construir la pantalla con piezas reutilizables (componentes)</b>. Solo cambia cómo se escribe.</p>
+
+    <div class="vm">
+      <h3>Todo agrupado</h3>
+    </div>
+    <div class="vm-grid" style="margin-bottom:20px">
+      <div class="gcard vm-html"><h4>1 · Idiomas (lenguajes)</h4><ul class="glist"><li><span class="chip">HTML</span><span>qué hay en la página</span></li><li><span class="chip">CSS</span><span>cómo se ve</span></li><li><span class="chip">JavaScript</span><span>qué hace</span></li><li><span class="chip">TypeScript</span><span>JavaScript con tipos</span></li><li><span class="chip">Java</span><span>el del servidor</span></li><li><span class="chip">SQL</span><span>pide datos a la base</span></li></ul></div>
+      <div class="gcard vm-js"><h4>2 · Para la pantalla (frontend)</h4><ul class="glist"><li><span class="chip">React</span><span>biblioteca</span></li><li><span class="chip">Vue</span><span>framework</span></li><li><span class="chip">Angular</span><span>framework de Google</span></li><li><span class="chip">Next.js · Nuxt</span><span>React · Vue, con extras</span></li><li><span class="chip">Bootstrap</span><span>CSS ya hecho</span></li><li><span class="chip">Tailwind</span><span>mini-clases de CSS</span></li></ul></div>
+      <div class="gcard vm-css"><h4>3 · El taller (construir)</h4><ul class="glist"><li><span class="chip">Vite</span><span>crea y prueba tu proyecto</span></li><li><span class="chip">Webpack</span><span>el Vite antiguo</span></li><li><span class="chip">build</span><span>prepara para publicar</span></li></ul></div>
+      <div class="gcard vm-bs"><h4>4 · Node y paquetes</h4><ul class="glist"><li><span class="chip">Node.js</span><span>JavaScript fuera del navegador</span></li><li><span class="chip">npm</span><span>la tienda de paquetes</span></li><li><span class="chip">npx</span><span>ejecuta sin instalar</span></li><li><span class="chip">package.json</span><span>la lista de la compra</span></li><li><span class="chip">node_modules</span><span>las descargas (no se sube)</span></li><li><span class="chip">yarn · pnpm</span><span>como npm</span></li></ul></div>
+      <div class="gcard vm-pr"><h4>5 · Servidor y datos (backend)</h4><ul class="glist"><li><span class="chip">Spring</span><span>framework de Java</span></li><li><span class="chip">Express</span><span>framework de Node</span></li><li><span class="chip">REST · API</span><span>las ventanillas</span></li><li><span class="chip">JSON</span><span>formato de datos</span></li><li><span class="chip">json-server</span><span>cocina de pruebas</span></li><li><span class="chip">MySQL</span><span>guarda los datos</span></li></ul></div>
+      <div class="gcard vm-gr"><h4>6 · Lo que trae el navegador</h4><ul class="glist"><li><span class="chip">DOM</span><span>la página como objetos</span></li><li><span class="chip">fetch</span><span>pide datos al servidor</span></li><li><span class="chip">localStorage</span><span>cajita para guardar datos</span></li></ul></div>
+      <div class="gcard vm-gr"><h4>7 · Tu mesa de trabajo</h4><ul class="glist"><li><span class="chip">VS Code · Eclipse</span><span>donde escribes</span></li><li><span class="chip">Live Server</span><span>recarga sola</span></li><li><span class="chip">Git</span><span>guarda las versiones</span></li><li><span class="chip">GitHub</span><span>las sube y comparte</span></li></ul></div>
+    </div>
+
+    <details class="full-map">
+      <summary>Ejemplo real: de cero a una app con React o Vue</summary>
+      <div class="steps-box">
+        <ol class="steps">
+          <li><span>Tener <b>Node.js</b> instalado (trae npm y npx).</span></li>
+          <li><span><b>Vite</b> crea el proyecto: <code>npm create vite@latest mi-app</code>. Eliges <b>React</b> o <b>Vue</b>.</span></li>
+          <li><span>Descargar las piezas: <code>npm install</code> (aparece <b>node_modules</b>).</span></li>
+          <li><span>Probar la web: <code>npm run dev</code>. Se recarga sola al guardar.</span></li>
+          <li><span>Publicar: <code>npm run build</code> prepara la versión final.</span></li>
+        </ol>
+      </div>
+    </details>
 
     <div class="steps-box">
       <h3>Qué pasa cuando pulsas «Comprar»</h3>
@@ -1331,6 +1452,7 @@
       <button class="tab" data-panel="css" style="--dot:var(--accent-css); --dot-soft:var(--accent-css-soft)" role="tab" aria-selected="false"><span class="dot"></span>CSS</button>
       <button class="tab" data-panel="js" style="--dot:var(--accent-js); --dot-soft:var(--accent-js-soft)" role="tab" aria-selected="false"><span class="dot"></span>JavaScript</button>
       <button class="tab" data-panel="bootstrap" style="--dot:var(--accent-bs); --dot-soft:var(--accent-bs-soft)" role="tab" aria-selected="false"><span class="dot"></span>Bootstrap</button>
+      <button class="tab" data-panel="react" style="--dot:var(--accent-pr); --dot-soft:var(--accent-pr-soft)" role="tab" aria-selected="false"><span class="dot"></span>React</button>
       <button class="tab" data-panel="org" style="--dot:var(--ink-soft); --dot-soft:var(--surface-2)" role="tab" aria-selected="false"><span class="dot"></span>Organigrama</button>
     </div>
     <div class="mode" role="group" aria-label="Nivel de detalle">
@@ -4475,6 +4597,26 @@ boton.addEventListener('click', () =&gt; borrarProducto(3));</code></pre>
           </div>
         </div>
 
+        <div class="group">
+          <h2>Versiones y términos</h2>
+          <p class="group-desc">Palabras del curso que salen al hablar de cómo evoluciona JavaScript.</p>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Versiones de JavaScript (ES)</span><span class="desc"><b>ECMAScript</b> es el estándar; <b>JavaScript</b> es lo que lo cumple en el navegador. Cada versión añade cosas.</span></div>
+            <pre class="example"><code>ES5     ===  !==  'use strict'
+ES2015  let · const · class · =&gt; · for (of) · `texto ${variable}`
+ES2017  async · await</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Como las ediciones de un libro de cocina: la 2015 trajo las recetas modernas (<b>let</b>, <b>class</b>, flechas) y la 2017 las esperas con <b>async/await</b>.</div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Polyfill</span><span class="desc">Un trozo de código que <b>añade a un navegador antiguo</b> algo que no traía, para que lo nuevo funcione también allí.</span></div>
+            <pre class="example"><code>if (!String.prototype.startsWith) {
+  String.prototype.startsWith = function (txt) {
+    return this.indexOf(txt) === 0;
+  };
+}</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Es un adaptador de enchufe: tu código usa lo moderno y el polyfill lo traduce para el navegador viejo.</div>
+          </div>
+        </div>
 
 
       </div>
@@ -4915,6 +5057,160 @@ modal.addEventListener('show.bs.modal', (e) =&gt; {
       </div>
     </section>
 
+    <!-- REACT -->
+    <section class="panel" id="panel-react" style="--dot:var(--accent-pr); --dot-soft:var(--accent-pr-soft)">
+      <div class="panel-intro">
+        <span class="glyph">&lt;/&gt;</span>
+        <p><strong>React</strong> es una <strong>biblioteca de JavaScript</strong> para construir la pantalla con piezas reutilizables (<strong>componentes</strong>). Aquí está lo de clase: primero en un solo HTML y después en un proyecto con Vite.</p>
+      </div>
+
+      <div class="groups">
+        <div class="group">
+          <h2>React en un solo archivo</h2>
+          <p class="group-desc">Para probar sin instalar nada: una sola página HTML con React cargado desde internet (así empezó la clase).</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">React en un solo HTML</span><span class="desc">Tres <b>&lt;script&gt;</b> (React, ReactDOM y Babel) y tu código dentro de <b>&lt;script type="text/babel"&gt;</b>.</span></div>
+            <pre class="example"><code>&lt;script src="https://unpkg.com/react@18/umd/react.development.js"&gt;&lt;/script&gt;
+&lt;script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"&gt;&lt;/script&gt;
+&lt;script src="https://unpkg.com/@babel/standalone/babel.min.js"&gt;&lt;/script&gt;
+
+&lt;main id="root"&gt;&lt;/main&gt;
+
+&lt;script type="text/babel"&gt;
+  function App() {
+    return &lt;h1&gt;Hola&lt;/h1&gt;;
+  }
+  ReactDOM.createRoot(document.getElementById("root")).render(&lt;App /&gt;);
+&lt;/script&gt;</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">createRoot(…).render()</span><span class="desc">Le dice a React <b>en qué hueco</b> de la página dibujar (el <b>&lt;main id="root"&gt;</b>) y qué componente poner.</span></div>
+            <pre class="example"><code>ReactDOM.createRoot(document.getElementById("root")).render(&lt;App /&gt;);</code></pre>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Babel</span><span class="desc">Traduce el <b>JSX</b> a JavaScript que el navegador entiende. Aquí lo hace el propio navegador (solo para probar); en un proyecto con Vite lo hace el proyecto.</span></div>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Componentes y JSX</h2>
+          <p class="group-desc">Las dos ideas base: dividir la pantalla en piezas y escribirlas como si fueran HTML.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Componente</span><span class="desc">Una <b>función con nombre en Mayúscula</b> que devuelve JSX. Se usa como si fuera una etiqueta nueva.</span></div>
+            <pre class="example"><code>function Titulo() {
+  return &lt;h1&gt;Hola&lt;/h1&gt;;
+}
+
+// se usa como una etiqueta:
+&lt;Titulo /&gt;</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Es una plantilla de cocina: la escribes una vez y la usas tantas veces como quieras.</div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">JSX</span><span class="desc">HTML escrito <b>dentro de JavaScript</b>. Reglas: una sola etiqueta raíz, cerrar todas (<b>&lt;img /&gt;</b>) y <b>class</b> se escribe <b>className</b>.</span></div>
+            <pre class="example"><code>return (
+  &lt;div className="caja"&gt;
+    &lt;img src="foto.png" alt="" /&gt;
+  &lt;/div&gt;
+);</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">{ } en JSX</span><span class="desc">Entre llaves metes <b>cualquier expresión de JavaScript</b>: una variable, una cuenta, una llamada a función.</span></div>
+            <pre class="example"><code>const nombre = "Tania";
+
+&lt;h1&gt;Hola, {nombre}&lt;/h1&gt;
+&lt;p&gt;{2 + 3}&lt;/p&gt;</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">props</span><span class="desc">Los <b>datos que le pasas</b> a un componente, como atributos. El componente los recibe entre llaves.</span></div>
+            <pre class="example"><code>function Titulo({ texto }) {
+  return &lt;h1&gt;{texto}&lt;/h1&gt;;
+}
+
+&lt;Titulo texto="Prueba" /&gt;
+&lt;Titulo texto="Otra prueba" /&gt;</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Los props son los <b>ingredientes</b> que le das a la receta: misma plantilla, plato distinto.</div>
+            <details class="pv">
+              <summary>Ver ejemplo visual</summary>
+              <div class="preview">
+                <div class="obj-card"><span class="oc-title">&lt;Titulo texto="Prueba" /&gt;</span><div class="oc-row"><span class="oc-key">resultado</span><span class="oc-val">&lt;h1&gt;Prueba&lt;/h1&gt;</span></div></div> <div class="obj-card"><span class="oc-title">&lt;Titulo texto="Otra prueba" /&gt;</span><div class="oc-row"><span class="oc-key">resultado</span><span class="oc-val">&lt;h1&gt;Otra prueba&lt;/h1&gt;</span></div></div>
+              </div>
+            </details>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">props con valor por defecto</span><span class="desc">Si no le pasas el prop, usa el valor que pongas con <b>=</b>.</span></div>
+            <pre class="example"><code>export function Titulo({ texto = 'SIN TITULO' }) {
+  return &lt;h1&gt;{texto}&lt;/h1&gt;;
+}</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Fragmento &lt;&gt;…&lt;/&gt;</span><span class="desc">Agrupa varias etiquetas <b>sin añadir una etiqueta extra</b> al HTML.</span></div>
+            <pre class="example"><code>return (
+  &lt;&gt;
+    &lt;Titulo texto="Prueba" /&gt;
+    &lt;footer&gt;&amp;copy;2026&lt;/footer&gt;
+  &lt;/&gt;
+);</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">onClick={…}</span><span class="desc">Los eventos se escriben en <b>camelCase</b> (onClick, onChange…) y reciben una <b>función</b> entre llaves, no un texto.</span></div>
+            <pre class="example"><code>&lt;button onClick={() =&gt; alert('Hola')}&gt;Púlsame&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Un proyecto con Vite</h2>
+          <p class="group-desc">Lo mismo, pero como un proyecto de verdad: cada componente en su archivo y Vite se encarga del resto.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">npm create vite@latest</span><span class="desc">Crea el proyecto. Te pregunta qué usar (<b>React</b>) y la variante; en clase: <b>JavaScript</b>, <b>React Compiler</b> y <b>OxLint</b>.</span></div>
+            <pre class="example"><code>npm create vite@latest ejemplo
+cd ejemplo
+npm install      # descarga las piezas (node_modules)
+npm run dev      # arranca la web de pruebas</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Estructura del proyecto</span><span class="desc">Qué hay en cada sitio. Los componentes viven en <b>src/</b>, en archivos <b>.jsx</b> (JavaScript que admite JSX).</span></div>
+            <pre class="example"><code>ejemplo/
+├─ index.html      la única página, con el hueco &lt;div id="root"&gt;
+├─ package.json    paquetes y comandos del proyecto
+├─ vite.config.js  configuración de Vite
+├─ public/         archivos tal cual (favicon…)
+└─ src/
+   ├─ main.jsx     arranca React
+   ├─ App.jsx      el componente principal
+   ├─ Titulo.jsx   un componente nuestro
+   └─ Titulo.css   su estilo</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">import / export</span><span class="desc">Cada componente va en <b>su archivo</b>: <b>export</b> lo ofrece e <b>import</b> lo trae. Con llaves, si se exportó con nombre; sin llaves, si es <b>export default</b>.</span></div>
+            <pre class="example"><code>// Titulo.jsx
+import './Titulo.css'
+export function Titulo({ texto }) { ... }
+
+// App.jsx
+import { Titulo } from './Titulo'
+function App() { ... }
+export default App
+
+// main.jsx
+import App from './App.jsx'</code></pre>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">main.jsx</span><span class="desc">El arranque: busca <b>#root</b> y dibuja <b>&lt;App /&gt;</b> dentro. <b>StrictMode</b> añade avisos extra mientras programas.</span></div>
+            <pre class="example"><code>createRoot(document.getElementById('root')).render(
+  &lt;StrictMode&gt;
+    &lt;App /&gt;
+  &lt;/StrictMode&gt;,
+)</code></pre>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Comandos de package.json</span><span class="desc">Los <b>scripts</b> del proyecto, para usar con <b>npm run</b>.</span></div>
+            <pre class="example"><code>npm run dev       # web de pruebas, se recarga sola
+npm run build     # prepara la versión para publicar
+npm run lint      # busca errores de estilo (OxLint)
+npm run preview   # prueba la versión ya construida</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ORGANIGRAMA -->
     <section class="panel" id="panel-org" style="--dot:var(--ink-soft); --dot-soft:var(--surface-2)">
       <div class="panel-intro">
@@ -5031,7 +5327,7 @@ modal.addEventListener('show.bs.modal', (e) =&gt; {
   </main>
 
   <footer>
-    <span class="mono">HTML · CSS · JavaScript · Bootstrap</span>
+    <span class="mono">HTML · CSS · JavaScript · Bootstrap · React</span>
     <span>Chuleta de repaso — pensada para escanear, no para leer entera.</span>
   </footer>
 
@@ -5249,6 +5545,7 @@ modal.addEventListener('show.bs.modal', (e) =&gt; {
     li.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
   });
 </script>
+
 
 </body>
 </html>
