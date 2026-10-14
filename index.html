@@ -5061,7 +5061,7 @@ modal.addEventListener('show.bs.modal', (e) =&gt; {
     <section class="panel" id="panel-react" style="--dot:var(--accent-pr); --dot-soft:var(--accent-pr-soft)">
       <div class="panel-intro">
         <span class="glyph">&lt;/&gt;</span>
-        <p><strong>React</strong> es una <strong>biblioteca de JavaScript</strong> para construir la pantalla con piezas reutilizables (<strong>componentes</strong>). Aquí está lo de clase: primero en un solo HTML y después en un proyecto con Vite.</p>
+        <p><strong>React</strong> es una <strong>biblioteca de JavaScript</strong> para construir la pantalla con piezas reutilizables (<strong>componentes</strong>). Aquí está lo de clase: primero en un solo HTML y después en un proyecto con Vite, con estado (<strong>useState</strong>), condiciones, listas y formularios.</p>
       </div>
 
       <div class="groups">
@@ -5153,6 +5153,85 @@ modal.addEventListener('show.bs.modal', (e) =&gt; {
           <div class="entry core">
             <div class="entry-head"><span class="tag">onClick={…}</span><span class="desc">Los eventos se escriben en <b>camelCase</b> (onClick, onChange…) y reciben una <b>función</b> entre llaves, no un texto.</span></div>
             <pre class="example"><code>&lt;button onClick={() =&gt; alert('Hola')}&gt;Púlsame&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Datos que cambian (estado)</h2>
+          <p class="group-desc">Cuando un dato cambia, la pantalla tiene que enterarse. React lo hace con el estado.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">useState</span><span class="desc">Una variable que React <b>vigila</b>: se cambia con su función (<b>setUsuario</b>), nunca con <b>=</b>, y al cambiarla React <b>redibuja</b> el componente.</span></div>
+            <pre class="example"><code>import { useState } from 'react';
+
+function App() {
+  const [usuario, setUsuario] = useState(null);
+  //     valor     función para cambiarlo      valor inicial
+
+  return &lt;Login onLogin={u =&gt; setUsuario(u)} /&gt;;
+}</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Es la <b>pizarra de pedidos</b> de la cocina: cuando apuntas algo nuevo con <b>setUsuario</b>, el camarero (React) vuelve a sacar el plato actualizado.</div>
+            <details class="pv">
+              <summary>Ver ejemplo visual</summary>
+              <div class="preview">
+                <div class="obj-card"><span class="oc-title">usuario = null</span><div class="oc-row"><span class="oc-key">se ve</span><span class="oc-val">No hay usuario</span></div></div> <div class="obj-card"><span class="oc-title">setUsuario({ email })</span><div class="oc-row"><span class="oc-key">se ve</span><span class="oc-val">javier@email.net</span></div></div>
+              </div>
+            </details>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Función como prop</span><span class="desc">El hijo <b>avisa al padre</b>: el padre le pasa una función como prop y el hijo la llama cuando pasa algo.</span></div>
+            <pre class="example"><code>// App.jsx (el padre)
+&lt;Login onLogin={u =&gt; setUsuario(u)} /&gt;
+
+// Login.jsx (el hijo)
+export function Login({ onLogin }) {
+  ...
+  onLogin({ email: 'javier@email.net' });
+}</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Es un <b>timbre</b>: el hijo (Login) lo pulsa y el padre (App) se entera y decide qué hacer.</div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">f &amp;&amp; f(…)</span><span class="desc">Llama a la función <b>solo si existe</b>: si no te la han pasado, no hace nada ni da error.</span></div>
+            <pre class="example"><code>onLogin &amp;&amp; onLogin({ email: 'javier@email.net' });</code></pre>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Condiciones, listas y formularios</h2>
+          <p class="group-desc">Cómo decidir qué se pinta, pintar una lista de datos y recoger lo que escribe la persona.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">cond &amp;&amp; &lt;Etiqueta /&gt;</span><span class="desc">Pinta algo <b>solo si</b> la condición es verdadera; si no, no pinta nada. Va dentro de llaves.</span></div>
+            <pre class="example"><code>{usuario &amp;&amp; &lt;Listado elementos={['Prueba1', 'Prueba2']} /&gt;}</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">cond ? A : B</span><span class="desc">Pinta <b>una cosa u otra</b> según la condición (el operador ternario).</span></div>
+            <pre class="example"><code>{usuario
+  ? &lt;p&gt;{usuario.email}&lt;/p&gt;
+  : &lt;p&gt;No hay usuario&lt;/p&gt;
+}</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">.map() + key</span><span class="desc">Convierte una lista de datos en una lista de etiquetas. Cada elemento lleva un <b>key</b> único para que React sepa cuál es cuál.</span></div>
+            <pre class="example"><code>export function Listado({ elementos }) {
+  return (
+    &lt;ul&gt;
+      {elementos.map(e =&gt; &lt;li key={e}&gt;{e}&lt;/li&gt;)}
+    &lt;/ul&gt;
+  );
+}</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>El <b>key</b> es el nombre escrito en cada plato de la bandeja: así el camarero sabe cuál has cambiado. Sin él, React avisa en la consola.</div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Formulario: onSubmit</span><span class="desc">Se recoge con <b>onSubmit</b>; <b>preventDefault()</b> evita que la página se recargue y los valores se leen por el <b>name</b> de cada campo.</span></div>
+            <pre class="example"><code>function comprobarLogin(e) {
+  e.preventDefault();
+  const form = e.target;
+  const email = form.email.value;
+  const password = form.password.value;
+}
+
+&lt;form onSubmit={e =&gt; comprobarLogin(e)}&gt;
+  &lt;input name="email" type="email" /&gt;
+  &lt;input name="password" type="password" /&gt;
+  &lt;button&gt;Inicio sesión&lt;/button&gt;
+&lt;/form&gt;</code></pre>
           </div>
         </div>
         <div class="group">
