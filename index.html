@@ -1174,7 +1174,7 @@
         <h3>El servidor</h3>
         <p class="analogy"><b>La cocina.</b> Recibe los pedidos, decide qué hacer y prepara la respuesta.</p>
         <ul>
-          <li><span class="chip todo">Java</span><span>el lenguaje en el que se escriben las reglas (por ver)</span></li>
+          <li><span class="chip html">Java</span><span>el lenguaje en el que se escriben las reglas. Ya empezado: mira la pestaña Java.</span></li>
           <li class="derivada"><span class="chip todo">Spring</span><span>biblioteca de Java ya hecha, para montar el servidor sin partir de cero (por ver)</span></li>
           <li><span class="chip">REST</span><span>las <b>ventanillas</b> de la cocina. Cada una es una dirección (por ejemplo <code>/productos</code>) y, según cómo te acerques, hace una cosa: <b>GET</b> ver, <b>POST</b> añadir, <b>PUT</b> cambiar, <b>DELETE</b> quitar. Esas 4 acciones se llaman <b>CRUD</b>. Ya lo has visto en clase con fetch.</span></li>
           <li><span class="chip js">json-server</span><span>una cocina de pruebas: atiende igual que la real (mismas ventanillas REST), pero guarda los datos en un archivo <b>.json</b> en vez de en MySQL. Es lo que has usado en clase.</span></li>
@@ -1453,6 +1453,7 @@
       <button class="tab" data-panel="js" style="--dot:var(--accent-js); --dot-soft:var(--accent-js-soft)" role="tab" aria-selected="false"><span class="dot"></span>JavaScript</button>
       <button class="tab" data-panel="bootstrap" style="--dot:var(--accent-bs); --dot-soft:var(--accent-bs-soft)" role="tab" aria-selected="false"><span class="dot"></span>Bootstrap</button>
       <button class="tab" data-panel="react" style="--dot:var(--accent-pr); --dot-soft:var(--accent-pr-soft)" role="tab" aria-selected="false"><span class="dot"></span>React</button>
+      <button class="tab" data-panel="java" style="--dot:var(--accent-html); --dot-soft:var(--accent-html-soft)" role="tab" aria-selected="false"><span class="dot"></span>Java</button>
       <button class="tab" data-panel="org" style="--dot:var(--ink-soft); --dot-soft:var(--surface-2)" role="tab" aria-selected="false"><span class="dot"></span>Organigrama</button>
     </div>
     <div class="mode" role="group" aria-label="Nivel de detalle">
@@ -4616,6 +4617,26 @@ ES2017  async · await</code></pre>
 }</code></pre>
             <div class="simple-explain"><span class="se-label">En cristiano</span>Es un adaptador de enchufe: tu código usa lo moderno y el polyfill lo traduce para el navegador viejo.</div>
           </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">PATCH</span><span class="desc">Cambia <b>solo algunos campos</b> de un dato; <b>PUT</b> lo sustituye entero.</span></div>
+            <pre class="example"><code>fetch(URL + id, {
+  method: 'PATCH',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ precio: 9.99 })
+});</code></pre>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">AJAX</span><span class="desc"><b>A</b>synchronous <b>J</b>avaScript <b>A</b>nd <b>X</b>ML: pedir datos al servidor <b>sin recargar</b> la página. Hoy se hace con <b>fetch</b> y JSON.</span></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Hardcoded</span><span class="desc">Datos o textos <b>escritos a mano</b> en el código en vez de venir de un JSON o una base de datos. Sirve para maquetar, pero se acaba sustituyendo.</span></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Parálisis por análisis</span><span class="desc">Pensar y planificar tanto que no empiezas. Mejor una versión pequeña que funcione y mejorarla después.</span></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Golden Hammer</span><span class="desc">El «martillo de oro»: usar <b>siempre la misma herramienta</b> para todo porque es la que conoces, aunque no sea la mejor.</span></div>
+          </div>
         </div>
 
 
@@ -5061,7 +5082,7 @@ modal.addEventListener('show.bs.modal', (e) =&gt; {
     <section class="panel" id="panel-react" style="--dot:var(--accent-pr); --dot-soft:var(--accent-pr-soft)">
       <div class="panel-intro">
         <span class="glyph">&lt;/&gt;</span>
-        <p><strong>React</strong> es una <strong>biblioteca de JavaScript</strong> para construir la pantalla con piezas reutilizables (<strong>componentes</strong>). Aquí está lo de clase: primero en un solo HTML y después en un proyecto con Vite, con estado (<strong>useState</strong>), condiciones, listas y formularios.</p>
+        <p><strong>React</strong> es una <strong>biblioteca de JavaScript</strong> para construir la pantalla con piezas reutilizables (<strong>componentes</strong>). Aquí está lo de clase: primero en un solo HTML y después en un proyecto con Vite, con estado (<strong>useState</strong>), condiciones, listas y formularios, y después los proyectos «pensar en React» y «tienda» (datos con <strong>useEffect</strong> y varias páginas con <strong>React Router</strong>).</p>
       </div>
 
       <div class="groups">
@@ -5235,6 +5256,127 @@ export function Login({ onLogin }) {
           </div>
         </div>
         <div class="group">
+          <h2>Pensar en React</h2>
+          <p class="group-desc">El método de clase («Thinking in React») para construir una pantalla paso a paso: una tabla de productos con buscador.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Los 5 pasos</span><span class="desc">Antes de escribir código, se piensa la pantalla en este orden.</span></div>
+            <pre class="example"><code>0. Maqueta en HTML normal
+1. Dividir la pantalla en una jerarquía de componentes
+2. Versión estática: componentes con props, sin estado
+3. Decidir qué datos cambian (el estado mínimo)
+4. Decidir en qué componente vive ese estado
+5. Flujo inverso: los hijos avisan al padre</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Es como montar una cocina: primero el plano (1), luego las piezas sin encender (2) y, al final, decidir quién maneja el interruptor (4 y 5).</div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Jerarquía de componentes</span><span class="desc">Cada caja de la maqueta es un componente. Los de dentro son <b>hijos</b> y los de fuera, <b>padres</b>. En clase, cada hijo tiene su carpeta.</span></div>
+            <pre class="example"><code>FilterableProductTable      ← el padre de todo
+├─ SearchBar                ← buscador y casilla
+└─ ProductTable             ← la tabla
+   ├─ ProductCategoryRow    ← fila de categoría
+   └─ ProductRow            ← fila de producto</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Elevar el estado</span><span class="desc">El estado va en el <b>padre común</b> más cercano de todos los que lo necesitan. Los hijos lo reciben por <b>props</b>.</span></div>
+            <pre class="example"><code>export function FilterableProductTable({ products }) {
+  const [filterText, setFilterText] = useState('');
+  const [inStockOnly, setInStockOnly] = useState(false);
+
+  return (
+    &lt;&gt;
+      &lt;SearchBar filterText={filterText} inStockOnly={inStockOnly}
+        onFilterTextChange={setFilterText}
+        onInStockOnlyChange={setInStockOnly} /&gt;
+      &lt;ProductTable filterText={filterText} inStockOnly={inStockOnly}
+        products={products} /&gt;
+    &lt;/&gt;
+  );
+}</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>El buscador y la tabla necesitan el mismo dato, así que lo guarda el <b>jefe de sala</b> y se lo reparte a los dos.</div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Input controlado</span><span class="desc">Un campo cuyo valor <b>manda React</b>: <b>value</b> (o <b>checked</b>) viene del estado y <b>onChange</b> avisa al padre del cambio. Y <b>for</b> se escribe <b>htmlFor</b>.</span></div>
+            <pre class="example"><code>&lt;input type="search" value={filterText}
+  onChange={e =&gt; onFilterTextChange(e.target.value)} /&gt;
+
+&lt;input id="stock" type="checkbox" checked={inStockOnly}
+  onChange={e =&gt; onInStockOnlyChange(e.target.checked)} /&gt;
+&lt;label htmlFor="stock"&gt;Solo en stock&lt;/label&gt;</code></pre>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Cargar datos y navegar</h2>
+          <p class="group-desc">Lo que se vio en el proyecto «tienda»: datos desde un JSON y varias páginas dentro de la misma app.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">useEffect + fetch</span><span class="desc">Ejecuta código <b>cuando el componente aparece</b> en pantalla, por ejemplo para cargar datos. El <b>[]</b> del final significa «solo una vez». El <b>async</b> va en una función de dentro.</span></div>
+            <pre class="example"><code>const [productos, setProductos] = useState([]);
+
+useEffect(() =&gt; {
+  async function cargarDatos() {
+    const respuesta = await fetch("json/productos.json");
+    const productos = await respuesta.json();
+
+    setProductos(productos);
+  }
+
+  cargarDatos();
+}, []);</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Es el aviso al repartidor: «cuando abras el local, ve a por el pedido». Al llegar, <b>setProductos</b> actualiza el estado y la pantalla se redibuja sola.</div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Listar con .map()</span><span class="desc">Con los datos en el estado, cada uno se pinta como un componente. El <b>key</b> mejor con el <b>id</b> del dato.</span></div>
+            <pre class="example"><code>{productos.map(producto =&gt;
+  &lt;div key={producto.id} className="col"&gt;
+    &lt;Ficha producto={producto} /&gt;
+  &lt;/div&gt;
+)}</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">React Router</span><span class="desc">Biblioteca aparte para tener <b>varias páginas</b> en la misma app. Se instala con <b>npm install react-router</b> y se define qué componente sale en cada dirección.</span></div>
+            <pre class="example"><code>// router.jsx
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    Component: App,
+    children: [
+      { index: true, Component: Listado },
+      { path: "admin", Component: Admin },
+    ],
+  },
+]);
+
+// main.jsx
+&lt;RouterProvider router={router} /&gt;</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Es el <b>cartel de la entrada</b>: dice qué sala se abre según la dirección que escribas.</div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">&lt;Outlet /&gt;</span><span class="desc">El <b>hueco</b> donde se pinta la página hija. Lo que rodea al Outlet (menú, pie) se ve siempre.</span></div>
+            <pre class="example"><code>function App() {
+  return (
+    &lt;&gt;
+      &lt;Menu /&gt;
+      &lt;main className="container my-3"&gt;
+        &lt;Outlet /&gt;
+      &lt;/main&gt;
+      &lt;Pie /&gt;
+    &lt;/&gt;
+  );
+}</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">&lt;NavLink to&gt;</span><span class="desc">Un enlace que <b>no recarga</b> la página. Con <b>end</b> solo se marca como activo en esa dirección exacta.</span></div>
+            <pre class="example"><code>&lt;NavLink className="nav-link" to="/admin" end&gt;Administración&lt;/NavLink&gt;</code></pre>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Bootstrap en React</span><span class="desc">Se usan las mismas clases, pero escritas con <b>className</b>. Lo que cambia con los datos se mete entre llaves.</span></div>
+            <pre class="example"><code>&lt;div className="card h-100"&gt;
+  &lt;img src={'https://picsum.photos/400/300?' + producto.id}
+    className="card-img-top" alt="..." /&gt;
+  &lt;h5 className="card-title"&gt;{producto.nombre}&lt;/h5&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+        <div class="group">
           <h2>Un proyecto con Vite</h2>
           <p class="group-desc">Lo mismo, pero como un proyecto de verdad: cada componente en su archivo y Vite se encarga del resto.</p>
           <div class="entry core">
@@ -5285,6 +5427,197 @@ import App from './App.jsx'</code></pre>
 npm run build     # prepara la versión para publicar
 npm run lint      # busca errores de estilo (OxLint)
 npm run preview   # prueba la versión ya construida</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JAVA -->
+    <section class="panel" id="panel-java" style="--dot:var(--accent-html); --dot-soft:var(--accent-html-soft)">
+      <div class="panel-intro">
+        <span class="glyph">&lt;/&gt;</span>
+        <p><strong>Java</strong> es el <strong>lenguaje del servidor</strong> (el backend): donde se escriben las reglas. Esto es una <strong>base general</strong> de las primeras clases; se irá ajustando con lo que veáis en clase.</p>
+      </div>
+
+      <div class="groups">
+        <div class="group">
+          <h2>Qué es Java y cómo se ejecuta</h2>
+          <p class="group-desc">Lo primero: de dónde sale el programa y quién lo ejecuta.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Java no es JavaScript</span><span class="desc">Son <b>dos lenguajes distintos</b> que solo comparten parte del nombre. Java se usa sobre todo en el <b>servidor</b>; JavaScript, en el navegador.</span></div>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Como «Carne» y «Carnet»: suenan parecido y no tienen nada que ver.</div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Compilar y ejecutar</span><span class="desc">Java primero se <b>traduce</b> (compila) a un código intermedio llamado <b>bytecode</b>, y la <b>JVM</b> lo ejecuta. JavaScript, en cambio, se ejecuta tal cual.</span></div>
+            <pre class="example"><code>Hola.java   ──javac──▶   Hola.class   ──java──▶   se ejecuta
+(tu código)              (bytecode)               (la JVM)</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Escribes la receta en español (.java), un traductor la pasa a un idioma universal (.class) y cualquier cocina con JVM sabe cocinarla, sea Windows, Mac o Linux.</div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">JVM · JRE · JDK</span><span class="desc">Tres siglas que se mezclan: la <b>JVM</b> ejecuta; el <b>JRE</b> es la JVM más las librerías; el <b>JDK</b> es el JRE más las herramientas para programar (como <b>javac</b>).</span></div>
+            <pre class="example"><code>JDK  =  JRE  +  herramientas (javac, ...)
+JRE  =  JVM  +  librerías
+JVM  =  la que ejecuta el bytecode</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Para programar necesitas el <b>JDK</b>.</div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Tipado estático</span><span class="desc">En Java <b>cada variable tiene un tipo declarado</b> y no puede cambiarlo. Si te equivocas, el compilador avisa <b>antes</b> de ejecutar.</span></div>
+            <pre class="example"><code>// JavaScript: el tipo cambia
+let dato = 5;
+dato = "cinco";      // vale
+
+// Java: el tipo es fijo
+int dato = 5;
+dato = "cinco";      // ERROR al compilar</code></pre>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Primer programa</h2>
+          <p class="group-desc">La estructura mínima de cualquier programa Java.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">class + main</span><span class="desc">Todo va dentro de una <b>clase</b>. El programa empieza en el método <b>main</b>. El archivo se llama igual que la clase (<b>Hola.java</b>).</span></div>
+            <pre class="example"><code>public class Hola {
+    public static void main(String[] args) {
+        System.out.println("Hola, mundo");
+    }
+}</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>La clase es el local; el <b>main</b> es la puerta por la que entra el primer cliente.</div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">System.out.println</span><span class="desc">Escribe un texto en la consola y salta de línea. Es el <b>console.log</b> de Java.</span></div>
+            <pre class="example"><code>System.out.println("Hola");      // con salto de línea
+System.out.print("Hola");        // sin salto de línea</code></pre>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Sintaxis básica</span><span class="desc">Cada instrucción acaba en <b>;</b>, los bloques van entre <b>{ }</b> y Java distingue mayúsculas de minúsculas. Los comentarios son iguales que en JavaScript.</span></div>
+            <pre class="example"><code>// comentario de una línea
+/* comentario
+   de varias líneas */
+
+int total = 5;   // el ; es obligatorio</code></pre>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Variables y tipos</h2>
+          <p class="group-desc">Los tipos básicos y cómo se declaran.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Tipos básicos</span><span class="desc">Los más usados. <b>String</b> (con mayúscula) es una clase, no un tipo básico.</span></div>
+            <pre class="example"><code>int edad = 33;               // entero
+double precio = 9.99;        // decimal
+boolean activo = true;       // true o false
+char letra = 'A';            // un carácter (comillas simples)
+String nombre = "Tania";     // texto (comillas dobles)</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">final</span><span class="desc">Una variable <b>que no se puede cambiar</b> después: es el <b>const</b> de Java. Por costumbre se escribe en MAYÚSCULAS.</span></div>
+            <pre class="example"><code>final double IVA = 0.21;</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Comparar textos: equals</span><span class="desc">Con los números se usa <b>==</b>, pero los textos se comparan con <b>.equals()</b>. Con <b>==</b> no se compara el contenido.</span></div>
+            <pre class="example"><code>String a = "hola";
+String b = "hola";
+
+a.equals(b);        // true: compara el contenido
+a == b;             // no uses esto con textos</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Con <b>equals</b> preguntas «¿dicen lo mismo?»; con <b>==</b> preguntarías «¿son el mismo objeto?».</div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">var</span><span class="desc">Java puede <b>deducir el tipo</b> por ti con <b>var</b> (desde Java 10). La variable sigue teniendo tipo fijo.</span></div>
+            <pre class="example"><code>var numero = 5;        // Java deduce que es int
+var texto = "hola";    // y esta, String</code></pre>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Convertir tipos</span><span class="desc">Pasar de un tipo a otro: con <b>(tipo)</b> entre números, y con los métodos <b>parse</b> desde un texto.</span></div>
+            <pre class="example"><code>int entero = (int) 3.7;                  // 3
+int numero = Integer.parseInt("42");     // de texto a número
+String texto = String.valueOf(42);       // de número a texto</code></pre>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Control de flujo</h2>
+          <p class="group-desc">Casi igual que en JavaScript.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">if / else</span><span class="desc">Igual que en JavaScript, pero la condición tiene que ser un <b>boolean</b> de verdad.</span></div>
+            <pre class="example"><code>if (edad &gt;= 18) {
+    System.out.println("Mayor de edad");
+} else {
+    System.out.println("Menor");
+}</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">for / while</span><span class="desc">Los bucles se escriben igual. El contador lleva su tipo.</span></div>
+            <pre class="example"><code>for (int i = 1; i &lt;= 10; i++) {
+    System.out.println(i);
+}
+
+while (activo) { ... }</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">for-each</span><span class="desc">Recorre una lista o un array sin contador (el <b>for…of</b> de JavaScript).</span></div>
+            <pre class="example"><code>for (String nombre : nombres) {
+    System.out.println(nombre);
+}</code></pre>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">switch</span><span class="desc">Elige según un valor. Cada caso acaba con <b>break</b>.</span></div>
+            <pre class="example"><code>switch (dia) {
+    case 1: System.out.println("Lunes"); break;
+    case 2: System.out.println("Martes"); break;
+    default: System.out.println("Otro");
+}</code></pre>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Clases y objetos</h2>
+          <p class="group-desc">La base de Java: todo se organiza en clases.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Clase y objeto</span><span class="desc">La <b>clase</b> es el molde y el <b>objeto</b> es cada pieza hecha con él. Se crea con <b>new</b>.</span></div>
+            <pre class="example"><code>public class Persona {
+    private String nombre;
+
+    public Persona(String nombre) {      // constructor
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {          // getter
+        return nombre;
+    }
+}
+
+Persona p = new Persona("Tania");
+System.out.println(p.getNombre());</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>La clase es el <b>molde de las galletas</b>; cada galleta (objeto) sale del molde con su propio sabor (los datos).</div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">public · private</span><span class="desc">Quién puede ver cada cosa. <b>private</b>: solo la propia clase. <b>public</b>: todo el mundo. Los datos suelen ser privados y se leen con <b>getters</b>.</span></div>
+            <pre class="example"><code>private String nombre;           // solo dentro de la clase
+public String getNombre() { ... } // accesible desde fuera</code></pre>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">this</span><span class="desc">Se refiere al <b>propio objeto</b>. Sirve para distinguir el dato de la clase del parámetro que se llama igual.</span></div>
+            <pre class="example"><code>public Persona(String nombre) {
+    this.nombre = nombre;   // el atributo = el parámetro
+}</code></pre>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Listas</h2>
+          <p class="group-desc">Guardar varios datos juntos.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Array</span><span class="desc">Una lista de <b>tamaño fijo</b> y de un solo tipo.</span></div>
+            <pre class="example"><code>int[] numeros = {4, 8, 15};
+System.out.println(numeros[0]);        // 4
+System.out.println(numeros.length);    // 3</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">ArrayList</span><span class="desc">Una lista que <b>crece y se encoge</b>. El tipo de lo que guarda va entre <b>&lt; &gt;</b>.</span></div>
+            <pre class="example"><code>ArrayList&lt;String&gt; nombres = new ArrayList&lt;&gt;();
+nombres.add("Tania");
+nombres.add("Cris");
+nombres.get(0);        // "Tania"
+nombres.size();        // 2
+nombres.remove(0);</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Es el <b>array</b> de JavaScript, pero tienes que decir de qué tipo son sus elementos.</div>
           </div>
         </div>
       </div>
@@ -5406,7 +5739,7 @@ npm run preview   # prueba la versión ya construida</code></pre>
   </main>
 
   <footer>
-    <span class="mono">HTML · CSS · JavaScript · Bootstrap · React</span>
+    <span class="mono">HTML · CSS · JavaScript · Bootstrap · React · Java</span>
     <span>Chuleta de repaso — pensada para escanear, no para leer entera.</span>
   </footer>
 
@@ -5624,6 +5957,7 @@ npm run preview   # prueba la versión ya construida</code></pre>
     li.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
   });
 </script>
+
 
 
 </body>
