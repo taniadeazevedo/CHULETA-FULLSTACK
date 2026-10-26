@@ -1131,83 +1131,48 @@
   <header class="page">
     <p class="eyebrow">Referencia rápida · fullstack</p>
     <h1>Chuleta Fullstack</h1>
-    <p class="lede">Las etiquetas, selectores y funciones que más se usan en HTML, CSS, JavaScript y Bootstrap — con un ejemplo de uso en cada una, para repasar rápido y ver cómo se escriben de verdad. Por defecto ves lo Esencial; cambia a Pro para verlo todo.</p>
   </header>
 
   <section class="architecture">
     <h2>Panorama general</h2>
-    <p class="sub">Si esto te suena a chino, empieza aquí: una web funciona como un restaurante. Todo lo demás del curso son detalles de este esquema. Fíjate en las fichas con flecha (→): son bibliotecas, piezas ya hechas que se montan <b>encima</b> de un lenguaje para no programarlo todo desde cero.</p>
+    <p class="sub">Una web funciona como un <b>restaurante</b>. Todo lo demás son detalles de este esquema.</p>
 
-    <div class="basic">
-      <div class="tier">
-        <p class="group-label">Frontend</p>
-        <p class="kick">Lo que ves</p>
-        <h3>El navegador</h3>
-        <p class="analogy"><b>El comedor.</b> Donde te sientas, miras la carta y haces tu pedido.</p>
-        <ul>
-          <li><span class="chip html">HTML</span><span>lo que hay: títulos, textos, botones</span></li>
-          <li><span class="chip css">CSS</span><span>cómo se ve: colores, tamaños, posición</span></li>
-          <li class="derivada"><span class="chip bs">Bootstrap</span><span>biblioteca de CSS ya hecho (y un poco de JS): botones, rejilla, navbar, tarjetas…</span></li>
-          <li><span class="chip js">JavaScript</span><span>lo que hace: reacciona cuando pulsas algo</span></li>
-          <li class="derivada"><span class="chip js">React</span><span>biblioteca de JavaScript para construir la pantalla con componentes; hay otras (Vue, Angular). Ya empezado: mira la pestaña React.</span></li>
-        </ul>
-        <div class="browser-api">
-          <p class="ba-title">Herramientas que trae el propio navegador</p>
-          <p class="ba-sub">No son un lenguaje: JavaScript las usa para hacer su trabajo.</p>
-          <ul>
-            <li><span class="chip js">DOM</span><span>la mesa servida: <b>el HTML</b> convertido en objetos que JavaScript puede buscar y cambiar. <em class="rel">viene del HTML</em></span></li>
-            <li><span class="chip js">Custom Elements</span><span>tus propias etiquetas HTML hechas con JavaScript. <em class="rel">amplía el HTML</em></span></li>
-            <li><span class="chip js">fetch</span><span>el teléfono a cocina: pide y manda datos al servidor <b>sin recargar</b> la página. <em class="rel">habla por HTTP ⇢</em></span></li>
-          </ul>
-        </div>
+    <style>
+  .arq{ display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:8px; align-items:stretch; margin-bottom:22px; }
+  .arq-c{ background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:10px 14px 12px; display:flex; flex-direction:column; gap:5px; min-width:0; }
+  .arq-c small{ font:600 10px "IBM Plex Mono", ui-monospace, monospace; text-transform:uppercase; letter-spacing:.1em; color:var(--ink-faint); }
+  .arq-c b{ font-size:15px; color:var(--ink); line-height:1.2; }
+  .arq-c p{ margin:0; font-size:12px; color:var(--ink-soft); }
+  .arq-c .ej{ display:flex; flex-wrap:wrap; gap:5px; margin-top:2px; }
+  .arq-l{ align-self:center; text-align:center; font:600 11px "IBM Plex Mono", ui-monospace, monospace; color:var(--ink); line-height:1.3; }
+  .arq-l i{ display:block; font-style:normal; font-size:17px; color:var(--ink-faint); }
+  .arq-l span{ display:block; font:400 10.5px "IBM Plex Sans", system-ui, sans-serif; color:var(--ink-soft); max-width:9ch; margin:0 auto; }
+  @media (max-width:900px){ .arq{ grid-template-columns:1fr; } .arq-l{ display:flex; gap:8px; justify-content:center; align-items:center; } .arq-l span{ max-width:none; margin:0; } .arq-l i{ display:inline; } }
+</style>
+    <div class="arq">
+      <div class="arq-c">
+        <small>Frontend · lo que ves</small>
+        <b>El navegador</b>
+        <p>El comedor: donde haces tu pedido.</p>
+        <div class="ej"><span class="chip html" title="lo que hay en la página">HTML</span><span class="chip css" title="cómo se ve">CSS</span><span class="chip js" title="lo que hace">JavaScript</span><span class="chip bs" title="CSS ya hecho">Bootstrap</span><span class="chip js" title="pantallas con componentes">React</span></div>
       </div>
-
-      <div class="link">
-        <span class="arr" aria-hidden="true"></span>
-        <b>HTTP</b>
-        <span>el camarero: lleva el pedido y trae la respuesta (en JSON)</span>
+      <div class="arq-l"><i>⇄</i>HTTP<span>el camarero</span></div>
+      <div class="arq-c">
+        <small>Backend · lo que no ves</small>
+        <b>El servidor</b>
+        <p>La cocina: prepara las respuestas.</p>
+        <div class="ej"><span class="chip html" title="el lenguaje del servidor">Java</span><span class="chip todo" title="framework de Java (por ver)">Spring</span><span class="chip " title="las ventanillas: GET ver, POST añadir, PUT cambiar, DELETE quitar (el CRUD)">REST</span><span class="chip js" title="una cocina de pruebas con los datos en un .json">json-server</span></div>
       </div>
-
-      <div class="tier">
-        <p class="group-label">Backend</p>
-        <p class="kick">Lo que no ves</p>
-        <h3>El servidor</h3>
-        <p class="analogy"><b>La cocina.</b> Recibe los pedidos, decide qué hacer y prepara la respuesta.</p>
-        <ul>
-          <li><span class="chip html">Java</span><span>el lenguaje en el que se escriben las reglas. Ya empezado: mira la pestaña Java.</span></li>
-          <li class="derivada"><span class="chip todo">Spring</span><span>biblioteca de Java ya hecha, para montar el servidor sin partir de cero (por ver)</span></li>
-          <li><span class="chip">REST</span><span>las <b>ventanillas</b> de la cocina. Cada una es una dirección (por ejemplo <code>/productos</code>) y, según cómo te acerques, hace una cosa: <b>GET</b> ver, <b>POST</b> añadir, <b>PUT</b> cambiar, <b>DELETE</b> quitar. Esas 4 acciones se llaman <b>CRUD</b>. Ya lo has visto en clase con fetch.</span></li>
-          <li><span class="chip js">json-server</span><span>una cocina de pruebas: atiende igual que la real (mismas ventanillas REST), pero guarda los datos en un archivo <b>.json</b> en vez de en MySQL. Es lo que has usado en clase.</span></li>
-        </ul>
-      </div>
-
-      <div class="link">
-        <span class="arr" aria-hidden="true"></span>
-        <b>SQL</b>
-        <span>la cocina pide ingredientes a la despensa</span>
-      </div>
-
-      <div class="tier">
-        <p class="group-label">Datos</p>
-        <p class="kick">Donde se guarda</p>
-        <h3>La base de datos</h3>
-        <p class="analogy"><b>La despensa.</b> Guarda todo bien ordenado: usuarios, productos, pedidos.</p>
-        <ul>
-          <li><span class="chip todo">MySQL</span><span>el programa que guarda los datos (por ver)</span></li>
-          <li><span class="chip todo">SQL</span><span>el idioma para pedirle datos: SELECT, INSERT…</span></li>
-          <li><span class="chip todo">JDBC / JPA</span><span>el puente para que Java hable con ella</span></li>
-        </ul>
-        <p class="name">Aquí no hay pantalla: solo datos.</p>
+      <div class="arq-l"><i>⇄</i>SQL<span>pide a la despensa</span></div>
+      <div class="arq-c">
+        <small>Datos · donde se guarda</small>
+        <b>La base de datos</b>
+        <p>La despensa: todo ordenado.</p>
+        <div class="ej"><span class="chip todo" title="guarda los datos (por ver)">MySQL</span><span class="chip todo" title="el idioma para pedirle datos">SQL</span><span class="chip todo" title="el puente con Java">JDBC / JPA</span></div>
       </div>
     </div>
 
-    <p class="basic-legend">Con trazo continuo: lo que ya habéis visto en clase. Con trazo discontinuo: lo que falta según el temario.</p>
-
-    <div class="tools-strip">
-      <b>Y aparte, tus herramientas.</b> <b>VS Code</b> y <b>Eclipse</b> son el cuaderno donde escribes el código. <b>GitHub</b> es donde lo guardas y lo compartes. <b>Live Server</b> (extensión de VS Code) abre tu página en el navegador y la recarga sola. <b>Node.js</b> (con <b>npx</b>) ejecuta JavaScript fuera del navegador: es lo que arranca json-server. <b>Maven</b> y <b>JUnit</b> (por ver) sirven para organizar el proyecto Java y comprobar que funciona.
-    </div>
-
-<style>
+    <style>
   .vm{ margin:0 0 20px; }
   .vm h3{ margin:0 0 4px; font-size:17px; }
   .vm .vm-sub{ margin:0 0 14px; font-size:13px; color:var(--ink-soft); }
@@ -1269,65 +1234,6 @@
       </div>
     </div>
 
-    <div class="dom-box">
-      <h3>¿Qué era el DOM?</h3>
-      <p class="vm-sub" style="margin-bottom:0">El plano se convierte en una mesa servida, y JavaScript puede mover lo que hay en ella.</p>
-      <div class="dom-flow">
-        <div class="dom-step"><b>HTML</b>El <b style="display:inline;font-size:inherit">plano</b>: texto con etiquetas.</div>
-        <span class="dom-arrow" aria-hidden="true">→</span>
-        <div class="dom-step hl"><b>DOM</b>La <b style="display:inline;font-size:inherit">mesa servida</b>: cada etiqueta, convertida en un objeto.</div>
-        <span class="dom-arrow" aria-hidden="true">←</span>
-        <div class="dom-step"><b>JavaScript</b>El <b style="display:inline;font-size:inherit">camarero</b>: busca algo en la mesa y lo cambia.</div>
-      </div>
-      <pre class="vm-code">document.querySelector("h1").textContent = "Hola";   // busca el título y cambia su texto</pre>
-      <p class="dom-note"><b>React y Vue</b> lo hacen por ti: tú cambias los datos y ellos tocan el DOM.</p>
-    </div>
-
-    <div class="rv">
-      <div class="rv-card vm-js">
-        <div class="rv-t"><b>React</b><span class="chip">biblioteca</span></div>
-        <p>Usa <b>JSX</b>: HTML escrito dentro de JavaScript.</p>
-        <pre class="vm-code">function Saludo() {
-  return &lt;h1&gt;Hola&lt;/h1&gt;;
-}</pre>
-      </div>
-      <div class="rv-card vm-bs">
-        <div class="rv-t"><b>Vue</b><span class="chip">framework</span></div>
-        <p>Usa archivos <b>.vue</b> con tres partes por componente.</p>
-        <pre class="vm-code">&lt;template&gt; &lt;h1&gt;Hola&lt;/h1&gt; &lt;/template&gt;
-&lt;script&gt; ... &lt;/script&gt;
-&lt;style&gt; ... &lt;/style&gt;</pre>
-      </div>
-    </div>
-
-    <p class="basic-legend" style="margin-bottom:10px">Mismo trabajo en los dos: <b>construir la pantalla con piezas reutilizables (componentes)</b>. Solo cambia cómo se escribe.</p>
-
-    <div class="vm">
-      <h3>Todo agrupado</h3>
-    </div>
-    <div class="vm-grid" style="margin-bottom:20px">
-      <div class="gcard vm-html"><h4>1 · Idiomas (lenguajes)</h4><ul class="glist"><li><span class="chip">HTML</span><span>qué hay en la página</span></li><li><span class="chip">CSS</span><span>cómo se ve</span></li><li><span class="chip">JavaScript</span><span>qué hace</span></li><li><span class="chip">TypeScript</span><span>JavaScript con tipos</span></li><li><span class="chip">Java</span><span>el del servidor</span></li><li><span class="chip">SQL</span><span>pide datos a la base</span></li></ul></div>
-      <div class="gcard vm-js"><h4>2 · Para la pantalla (frontend)</h4><ul class="glist"><li><span class="chip">React</span><span>biblioteca</span></li><li><span class="chip">Vue</span><span>framework</span></li><li><span class="chip">Angular</span><span>framework de Google</span></li><li><span class="chip">Next.js · Nuxt</span><span>React · Vue, con extras</span></li><li><span class="chip">Bootstrap</span><span>CSS ya hecho</span></li><li><span class="chip">Tailwind</span><span>mini-clases de CSS</span></li></ul></div>
-      <div class="gcard vm-css"><h4>3 · El taller (construir)</h4><ul class="glist"><li><span class="chip">Vite</span><span>crea y prueba tu proyecto</span></li><li><span class="chip">Webpack</span><span>el Vite antiguo</span></li><li><span class="chip">build</span><span>prepara para publicar</span></li></ul></div>
-      <div class="gcard vm-bs"><h4>4 · Node y paquetes</h4><ul class="glist"><li><span class="chip">Node.js</span><span>JavaScript fuera del navegador</span></li><li><span class="chip">npm</span><span>la tienda de paquetes</span></li><li><span class="chip">npx</span><span>ejecuta sin instalar</span></li><li><span class="chip">package.json</span><span>la lista de la compra</span></li><li><span class="chip">node_modules</span><span>las descargas (no se sube)</span></li><li><span class="chip">yarn · pnpm</span><span>como npm</span></li></ul></div>
-      <div class="gcard vm-pr"><h4>5 · Servidor y datos (backend)</h4><ul class="glist"><li><span class="chip">Spring</span><span>framework de Java</span></li><li><span class="chip">Express</span><span>framework de Node</span></li><li><span class="chip">REST · API</span><span>las ventanillas</span></li><li><span class="chip">JSON</span><span>formato de datos</span></li><li><span class="chip">json-server</span><span>cocina de pruebas</span></li><li><span class="chip">MySQL</span><span>guarda los datos</span></li></ul></div>
-      <div class="gcard vm-gr"><h4>6 · Lo que trae el navegador</h4><ul class="glist"><li><span class="chip">DOM</span><span>la página como objetos</span></li><li><span class="chip">fetch</span><span>pide datos al servidor</span></li><li><span class="chip">localStorage</span><span>cajita para guardar datos</span></li></ul></div>
-      <div class="gcard vm-gr"><h4>7 · Tu mesa de trabajo</h4><ul class="glist"><li><span class="chip">VS Code · Eclipse</span><span>donde escribes</span></li><li><span class="chip">Live Server</span><span>recarga sola</span></li><li><span class="chip">Git</span><span>guarda las versiones</span></li><li><span class="chip">GitHub</span><span>las sube y comparte</span></li></ul></div>
-    </div>
-
-    <details class="full-map">
-      <summary>Ejemplo real: de cero a una app con React o Vue</summary>
-      <div class="steps-box">
-        <ol class="steps">
-          <li><span>Tener <b>Node.js</b> instalado (trae npm y npx).</span></li>
-          <li><span><b>Vite</b> crea el proyecto: <code>npm create vite@latest mi-app</code>. Eliges <b>React</b> o <b>Vue</b>.</span></li>
-          <li><span>Descargar las piezas: <code>npm install</code> (aparece <b>node_modules</b>).</span></li>
-          <li><span>Probar la web: <code>npm run dev</code>. Se recarga sola al guardar.</span></li>
-          <li><span>Publicar: <code>npm run build</code> prepara la versión final.</span></li>
-        </ol>
-      </div>
-    </details>
-
     <div class="steps-box">
       <h3>Qué pasa cuando pulsas «Comprar»</h3>
       <ol class="steps">
@@ -1338,112 +1244,6 @@
         <li><span><b>JavaScript</b> recibe la respuesta, la convierte a objeto (<b>.json()</b>) y cambia la página (DOM): «Compra realizada».</span></li>
       </ol>
     </div>
-
-    <details class="full-map">
-      <summary>Glosario: las palabras que salen en todas partes</summary>
-    <div class="steps-box">
-            <dl class="gloss">
-        <dt>HTTP</dt><dd>El idioma del camarero: una petición y una respuesta. Métodos: <b>GET</b> leer, <b>POST</b> crear, <b>PUT</b> editar, <b>DELETE</b> borrar.</dd>
-        <dt>API REST</dt><dd>Las ventanillas de la cocina: cada dirección (<code>/productos</code>) hace una cosa según el método (GET ver, POST añadir, PUT cambiar, DELETE quitar).</dd>
-        <dt>JSON</dt><dd>El formato de las cajas selladas de datos: texto con <code>{ }</code>, <code>[ ]</code> y <code>"clave": valor</code>. Un archivo <b>.json</b> guarda datos; uno <b>.js</b> es código.</dd>
-        <dt>fetch</dt><dd>La llamada de JavaScript a la cocina. Con <b>async / await</b> espera la respuesta sin congelar la página.</dd>
-        <dt>DOM</dt><dd>La mesa servida: la página como objetos que JavaScript puede buscar y cambiar. Lo crea el navegador (existe sin JS, pero solo JS lo cambia).</dd>
-        <dt>CRUD</dt><dd>Las 4 cosas que haces con datos: <b>C</b>rear, <b>R</b>eer, <b>U</b>pdate (editar) y <b>D</b>elete (borrar).</dd>
-      </dl>
-    </div>
-    </details>
-
-    <details class="full-map">
-      <summary>Ver el mapa técnico completo del curso (CI338)</summary>
-    <figure>
-      <svg viewBox="0 0 1100 420" role="img" aria-label="Diagrama del curso CI338: el navegador con HTML, CSS, JavaScript y Bootstrap (y React por ver) pide datos por HTTP y JSON al servidor Java, con Tomcat y Jakarta EE o con Spring Boot, que consulta la base de datos MySQL mediante JDBC o JPA. Abajo, las herramientas: VS Code, Eclipse, Maven, JUnit y GitHub. Trazo continuo es lo ya visto; discontinuo, lo que falta." xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M0,0 L10,5 L0,10 z" fill="var(--ink-soft)"/>
-          </marker>
-        </defs>
-
-        <!-- Leyenda -->
-        <rect x="30" y="8" width="44" height="18" rx="9" fill="var(--surface-2)" stroke="var(--ink-soft)"/>
-        <text x="82" y="21" font-size="11.5" fill="var(--ink-soft)">ya visto en clase</text>
-        <rect x="220" y="8" width="44" height="18" rx="9" fill="var(--surface)" stroke="var(--ink-faint)" stroke-dasharray="4 3"/>
-        <text x="272" y="21" font-size="11.5" fill="var(--ink-soft)">por ver (según el temario CI338)</text>
-
-        <!-- Cliente -->
-        <rect x="30" y="44" width="340" height="200" rx="14" fill="var(--surface)" stroke="var(--border)"/>
-        <text x="50" y="68" font-size="11" letter-spacing="0.08em" fill="var(--ink-faint)">CLIENTE · NAVEGADOR</text>
-        <rect x="50" y="82" width="68" height="32" rx="16" fill="var(--accent-html-soft)" stroke="var(--accent-html)"/>
-        <text x="84" y="103" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--accent-html)">HTML</text>
-        <rect x="128" y="82" width="62" height="32" rx="16" fill="var(--accent-css-soft)" stroke="var(--accent-css)"/>
-        <text x="159" y="103" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--accent-css)">CSS</text>
-        <rect x="200" y="82" width="112" height="32" rx="16" fill="var(--accent-js-soft)" stroke="var(--accent-js)"/>
-        <text x="256" y="103" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--accent-js)">JavaScript</text>
-        <rect x="50" y="126" width="96" height="32" rx="16" fill="var(--accent-bs-soft)" stroke="var(--accent-bs)"/>
-        <text x="98" y="147" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--accent-bs)">Bootstrap</text>
-        <rect x="156" y="126" width="80" height="32" rx="16" fill="var(--surface)" stroke="var(--ink-faint)" stroke-dasharray="4 3"/>
-        <text x="196" y="147" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ink-soft)">React</text>
-        <text x="50" y="184" font-size="11.5" fill="var(--ink-faint)">JavaScript toca la página con el DOM y</text>
-        <text x="50" y="201" font-size="11.5" fill="var(--ink-faint)">pide datos al servidor con fetch.</text>
-        <text x="50" y="224" font-size="11.5" fill="var(--ink-faint)">F12 → Consola para depurar.</text>
-
-        <!-- Cliente <-> Servidor -->
-        <line x1="370" y1="150" x2="460" y2="150" stroke="var(--ink-soft)" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
-        <text x="415" y="138" text-anchor="middle" font-size="11" fill="var(--ink-faint)">HTTP + JSON</text>
-        <text x="415" y="170" text-anchor="middle" font-size="11" fill="var(--ink-faint)">petición /</text>
-        <text x="415" y="183" text-anchor="middle" font-size="11" fill="var(--ink-faint)">respuesta</text>
-
-        <!-- Servidor -->
-        <rect x="460" y="44" width="340" height="200" rx="14" fill="var(--surface)" stroke="var(--border)"/>
-        <text x="480" y="68" font-size="11" letter-spacing="0.08em" fill="var(--ink-faint)">SERVIDOR · BACKEND</text>
-        <rect x="480" y="82" width="80" height="32" rx="16" fill="var(--surface)" stroke="var(--ink-faint)" stroke-dasharray="4 3"/>
-        <text x="520" y="103" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ink-soft)">Java</text>
-        <text x="572" y="103" font-size="11.5" fill="var(--ink-faint)">el lenguaje del servidor</text>
-        <rect x="480" y="126" width="170" height="32" rx="16" fill="var(--surface)" stroke="var(--ink-faint)" stroke-dasharray="4 3"/>
-        <text x="565" y="147" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ink-soft)">Tomcat + Jakarta EE</text>
-        <rect x="660" y="126" width="120" height="32" rx="16" fill="var(--surface)" stroke="var(--ink-faint)" stroke-dasharray="4 3"/>
-        <text x="720" y="147" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ink-soft)">Spring Boot</text>
-        <text x="480" y="184" font-size="11.5" fill="var(--ink-faint)">Jakarta EE: Servlets, JSP, JPA, REST</text>
-        <text x="480" y="201" font-size="11.5" fill="var(--ink-faint)">Spring: Web, Data JPA, Security, REST</text>
-        <text x="480" y="224" font-size="11.5" fill="var(--ink-faint)">Los dos exponen un servicio REST (JSON).</text>
-
-        <!-- Servidor <-> Base de datos -->
-        <line x1="800" y1="150" x2="890" y2="150" stroke="var(--ink-soft)" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
-        <text x="845" y="138" text-anchor="middle" font-size="11" fill="var(--ink-faint)">JDBC / JPA</text>
-        <text x="845" y="170" text-anchor="middle" font-size="11" fill="var(--ink-faint)">SQL: consulta</text>
-        <text x="845" y="183" text-anchor="middle" font-size="11" fill="var(--ink-faint)">y resultados</text>
-
-        <!-- Base de datos -->
-        <rect x="890" y="44" width="180" height="200" rx="14" fill="var(--surface)" stroke="var(--border)"/>
-        <text x="910" y="68" font-size="11" letter-spacing="0.08em" fill="var(--ink-faint)">BASE DE DATOS</text>
-        <rect x="910" y="82" width="100" height="32" rx="16" fill="var(--surface)" stroke="var(--ink-faint)" stroke-dasharray="4 3"/>
-        <text x="960" y="103" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ink-soft)">MySQL</text>
-        <text x="910" y="148" font-size="11.5" fill="var(--ink-faint)">Guarda los datos</text>
-        <text x="910" y="165" font-size="11.5" fill="var(--ink-faint)">de forma permanente.</text>
-        <text x="910" y="196" font-size="11.5" fill="var(--ink-faint)">Java la consulta con</text>
-        <text x="910" y="213" font-size="11.5" fill="var(--ink-faint)">JDBC o JPA (SQL).</text>
-
-        <!-- Herramientas -->
-        <rect x="30" y="270" width="1040" height="130" rx="14" fill="var(--surface)" stroke="var(--border)"/>
-        <text x="50" y="294" font-size="11" letter-spacing="0.08em" fill="var(--ink-faint)">HERRAMIENTAS · DONDE ESCRIBES, PRUEBAS Y GUARDAS EL CÓDIGO</text>
-        <rect x="85" y="314" width="130" height="32" rx="16" fill="var(--surface-2)" stroke="var(--ink-soft)"/>
-        <text x="150" y="335" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ink)">VS Code</text>
-        <text x="150" y="368" text-anchor="middle" font-size="11" fill="var(--ink-faint)">editor para HTML, CSS y JS</text>
-        <rect x="285" y="314" width="130" height="32" rx="16" fill="var(--surface)" stroke="var(--ink-faint)" stroke-dasharray="4 3"/>
-        <text x="350" y="335" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ink-soft)">Eclipse</text>
-        <text x="350" y="368" text-anchor="middle" font-size="11" fill="var(--ink-faint)">entorno de desarrollo Java</text>
-        <rect x="485" y="314" width="130" height="32" rx="16" fill="var(--surface)" stroke="var(--ink-faint)" stroke-dasharray="4 3"/>
-        <text x="550" y="335" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ink-soft)">Maven</text>
-        <text x="550" y="368" text-anchor="middle" font-size="11" fill="var(--ink-faint)">proyecto y dependencias</text>
-        <rect x="685" y="314" width="130" height="32" rx="16" fill="var(--surface)" stroke="var(--ink-faint)" stroke-dasharray="4 3"/>
-        <text x="750" y="335" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ink-soft)">JUnit</text>
-        <text x="750" y="368" text-anchor="middle" font-size="11" fill="var(--ink-faint)">tests unitarios</text>
-        <rect x="885" y="314" width="130" height="32" rx="16" fill="var(--surface)" stroke="var(--ink-faint)" stroke-dasharray="4 3"/>
-        <text x="950" y="335" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ink-soft)">GitHub</text>
-        <text x="950" y="368" text-anchor="middle" font-size="11" fill="var(--ink-faint)">guarda y versiona el código</text>
-      </svg>
-      <figcaption>De izquierda a derecha: el navegador (HTML, CSS, JavaScript y Bootstrap, con React por ver) pide datos al servidor Java por HTTP en formato JSON con <b>fetch</b>. El servidor, montado con Tomcat y Jakarta EE o con Spring Boot, expone un servicio REST y consulta la base de datos MySQL con JDBC o JPA. Debajo, las herramientas con las que escribes, pruebas y guardas todo el código. Marcado como visto: HTML, CSS, JavaScript (DOM, fetch con CRUD y consola), json-server, Bootstrap y VS Code.</figcaption>
-    </figure>
-    </details>
   </section>
 
   <div class="controls">
@@ -1476,7 +1276,9 @@
         <p><strong>HTML</strong> (HyperText Markup Language) define la <strong>estructura y el contenido</strong> de la página: qué es un título, qué es un párrafo, qué es un formulario. No tiene lógica ni estilo propio — eso lo aportan CSS y JavaScript.</p>
       </div>
 
-      <div class="playground">
+      <details class="full-map">
+      <summary>▶ Probar el código en directo</summary>
+<div class="playground">
         <div class="playground-head">
           <div>
             <h2>Ejemplo interactivo</h2>
@@ -1547,6 +1349,7 @@
           </div>
         </div>
       </div>
+    </details>
 
       <div class="groups">
         <div class="group">
@@ -1619,7 +1422,7 @@
         <div class="group">
           <h2>Documento</h2>
           <p class="group-desc">Las etiquetas que arman el esqueleto de cualquier página: le dicen al navegador qué tipo de documento es y dónde van los metadatos y el contenido.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;!DOCTYPE html&gt;</span><span class="desc">Le dice al navegador que use el estándar HTML5. Va siempre en la primera línea, y debajo el esqueleto completo: <b>html → head + body</b>.</span></div>
             <pre class="example"><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="es"&gt;
@@ -1632,31 +1435,31 @@
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;html&gt;</span><span class="desc">Elemento raíz de todo el documento.</span></div>
             <pre class="example"><code>&lt;html lang="es"&gt;
   &lt;head&gt;...&lt;/head&gt;
   &lt;body&gt;...&lt;/body&gt;
 &lt;/html&gt;</code></pre>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;head&gt;</span><span class="desc">Metadatos: título, enlaces a CSS, charset. No se ve.</span></div>
             <pre class="example"><code>&lt;head&gt;
   &lt;meta charset="utf-8"&gt;
   &lt;title&gt;Mi página&lt;/title&gt;
 &lt;/head&gt;</code></pre>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;body&gt;</span><span class="desc">Todo el contenido visible de la página.</span></div>
             <pre class="example"><code>&lt;body&gt;
   &lt;h1&gt;Hola&lt;/h1&gt;
 &lt;/body&gt;</code></pre>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;meta charset&gt;</span><span class="desc">Codificación de caracteres, normalmente <b>utf-8</b>.</span></div>
             <pre class="example"><code>&lt;meta charset="utf-8"&gt;</code></pre>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;title&gt;</span><span class="desc">Texto que aparece en la pestaña del navegador.</span></div>
             <pre class="example"><code>&lt;title&gt;Mi tienda online&lt;/title&gt;</code></pre>
           </div>
@@ -1684,7 +1487,7 @@
         <div class="group">
           <h2>Semántica</h2>
           <p class="group-desc">Etiquetas que describen el propósito de cada bloque (cabecera, menú, contenido principal…) en vez de usar &lt;div&gt; genéricos para todo. Ayudan a la accesibilidad y al SEO.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;header&gt;</span><span class="desc">Cabecera de la página o de una sección.</span></div>
             <pre class="example"><code>&lt;header&gt;
   &lt;h1&gt;Mi Blog&lt;/h1&gt;
@@ -1698,7 +1501,7 @@
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;nav&gt;</span><span class="desc">Bloque de enlaces de navegación.</span></div>
             <pre class="example"><code>&lt;nav&gt;
   &lt;a href="/"&gt;Inicio&lt;/a&gt;
@@ -1728,7 +1531,7 @@
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;section&gt;</span><span class="desc">Bloque temático con su propio sentido.</span></div>
             <pre class="example"><code>&lt;section&gt;
   &lt;h2&gt;Sobre mí&lt;/h2&gt;
@@ -1793,7 +1596,7 @@
         <div class="group">
           <h2>Texto</h2>
           <p class="group-desc">Las etiquetas para dar formato y jerarquía al texto: títulos, párrafos y énfasis.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;h1&gt;…&lt;h6&gt;</span><span class="desc">Títulos, de mayor (h1) a menor (h6) importancia.</span></div>
             <pre class="example"><code>&lt;h1&gt;Título principal&lt;/h1&gt;
 &lt;h2&gt;Subtítulo&lt;/h2&gt;</code></pre>
@@ -1805,7 +1608,7 @@
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;p&gt;</span><span class="desc">Párrafo de texto.</span></div>
             <pre class="example"><code>&lt;p&gt;Este es un párrafo normal.&lt;/p&gt;</code></pre>
             <details class="pv">
@@ -1862,7 +1665,7 @@
         <div class="group">
           <h2>Listas y tablas</h2>
           <p class="group-desc">Formas de organizar datos: en lista (con o sin orden) o en una tabla con filas y columnas.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;ul&gt;&lt;li&gt;</span><span class="desc">Lista sin orden, con elementos <b>li</b>.</span></div>
             <pre class="example"><code>&lt;ul&gt;
   &lt;li&gt;Manzana&lt;/li&gt;
@@ -1910,7 +1713,7 @@
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;table&gt;</span><span class="desc">La tabla se construye <b>fila a fila</b>: cada <b>tr</b> es una fila y dentro van sus celdas (<b>th</b> = título, <b>td</b> = dato).</span></div>
             <pre class="example"><code>&lt;table&gt;
   &lt;tr&gt;                 &lt;!-- fila 1: los títulos --&gt;
@@ -1950,7 +1753,7 @@
 &lt;/table&gt;</code></pre>
             <p class="pv-note">Se ve <b>exactamente igual</b> que la de arriba: <b>thead</b> y <b>tbody</b> solo agrupan (y permiten darle estilo a cabecera y cuerpo por separado). En tablas pequeñas puedes no usarlos.</p>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;tr&gt;&lt;th&gt;&lt;td&gt;</span><span class="desc">Fila / celda de cabecera / celda normal.</span></div>
             <pre class="example"><code>&lt;table&gt;
   &lt;tr&gt;
@@ -1972,7 +1775,7 @@
         <div class="group">
           <h2>Enlaces y medios</h2>
           <p class="group-desc">Cómo conectas con otras páginas y cómo incrustas imágenes, vídeo, audio u otra página dentro de la tuya.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;a href=""&gt;</span><span class="desc">Enlace a otra página, ancla o recurso.</span></div>
             <pre class="example"><code>&lt;a href="https://example.com"&gt;Visitar&lt;/a&gt;</code></pre>
             <details class="pv">
@@ -1982,7 +1785,7 @@
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;img src="" alt=""&gt;</span><span class="desc">Imagen. <b>alt</b> es obligatorio (accesibilidad).</span></div>
             <pre class="example"><code>&lt;img src="perro.jpg" alt="Perro corriendo en el parque"&gt;</code></pre>
             <details class="pv">
@@ -2060,7 +1863,7 @@ animacion.gif → animaciones sencillas (solo 256 colores)</code></pre>
         <div class="group">
           <h2>Formularios</h2>
           <p class="group-desc">Los campos con los que el usuario introduce datos —texto, listas, casillas…— y el contenedor que los agrupa y los envía.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;form action method&gt;</span><span class="desc">El contenedor: agrupa los campos y define a dónde y cómo se envían.</span></div>
             <pre class="example"><code>&lt;form action="/enviar" method="post"&gt;
   &lt;label for="nombre"&gt;Nombre&lt;/label&gt;
@@ -2099,7 +1902,7 @@ animacion.gif → animaciones sencillas (solo 256 colores)</code></pre>
                           </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">action · post · get</span><span class="desc"><b>action</b> dice a dónde se envía el formulario. <b>post</b> y <b>get</b> son las dos formas de enviarlo.</span></div>
             <pre class="example"><code>&lt;form action="/enviar" method="post"&gt;
   ...   &lt;!-- oculto: los datos van dentro del envío --&gt;
@@ -2121,7 +1924,7 @@ animacion.gif → animaciones sencillas (solo 256 colores)</code></pre>
                           </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;input type=""&gt;</span><span class="desc">El campo. Según su <b>type</b>: text, email, password, number, date, checkbox, radio, file…</span></div>
             <pre class="example"><code>&lt;input type="text" name="nombre"&gt;
 &lt;input type="email" name="email"&gt;
@@ -2149,7 +1952,7 @@ animacion.gif → animaciones sencillas (solo 256 colores)</code></pre>
                           </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;label for=""&gt;</span><span class="desc">La etiqueta de un campo, conectada a él por su <b>id</b>.</span></div>
             <pre class="example"><code>&lt;label for="nombre"&gt;Nombre&lt;/label&gt;
 &lt;input id="nombre" name="nombre" type="text"&gt;</code></pre>
@@ -2189,7 +1992,7 @@ animacion.gif → animaciones sencillas (solo 256 colores)</code></pre>
                           </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;button&gt;</span><span class="desc">Botón. Su <b>type</b> decide qué hace.</span></div>
             <pre class="example"><code>&lt;button type="submit"&gt;Enviar&lt;/button&gt;
 &lt;button type="reset"&gt;Vaciar&lt;/button&gt;
@@ -2245,7 +2048,7 @@ animacion.gif → animaciones sencillas (solo 256 colores)</code></pre>
         <div class="group">
           <h2>Atributos globales</h2>
           <p class="group-desc">Información extra que puedes añadir a casi cualquier etiqueta, sea cual sea, para identificarla o darle estilo.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">class=""</span><span class="desc">Asigna una o varias clases para dar estilo con CSS. En el CSS se escribe con punto: <b>.alerta</b>.</span></div>
             <pre class="example"><code>&lt;p class="aviso destacado"&gt;Cuidado&lt;/p&gt;</code></pre>
             <details class="pv">
@@ -2255,7 +2058,7 @@ animacion.gif → animaciones sencillas (solo 256 colores)</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">id=""</span><span class="desc">Identificador único del elemento en la página. En el CSS se escribe con almohadilla: <b>#cabecera</b>.</span></div>
             <pre class="example"><code>&lt;div id="cabecera"&gt;...&lt;/div&gt;</code></pre>
             <details class="pv">
@@ -2297,7 +2100,9 @@ animacion.gif → animaciones sencillas (solo 256 colores)</code></pre>
         <p><strong>CSS</strong> (Cascading Style Sheets) define el <strong>aspecto</strong>: colores, tamaños, posición. Funciona con reglas <b>selector { propiedad: valor; }</b> que se aplican en cascada sobre el HTML.</p>
       </div>
 
-      <div class="playground">
+      <details class="full-map">
+      <summary>▶ Probar el código en directo</summary>
+<div class="playground">
         <div class="playground-head">
           <div>
             <h2>Ejemplo interactivo</h2>
@@ -2365,6 +2170,7 @@ animacion.gif → animaciones sencillas (solo 256 colores)</code></pre>
           </div>
         </div>
       </div>
+    </details>
 
       <div class="groups">
         <div class="group">
@@ -2435,7 +2241,7 @@ animacion.gif → animaciones sencillas (solo 256 colores)</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">etiqueta</span><span class="desc">Selecciona por tipo, p. ej. <b>p</b>, <b>div</b>.</span></div>
             <pre class="example"><code>p {
   color: #333;
@@ -2448,7 +2254,7 @@ animacion.gif → animaciones sencillas (solo 256 colores)</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">.clase</span><span class="desc">Selecciona los elementos con <b>class="clase"</b>.</span></div>
             <pre class="example"><code>.aviso {
   background: yellow;
@@ -2461,7 +2267,7 @@ animacion.gif → animaciones sencillas (solo 256 colores)</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">#id</span><span class="desc">Selecciona el elemento con <b>id="id"</b> (único).</span></div>
             <pre class="example"><code>#cabecera {
   height: 80px;
@@ -2500,7 +2306,7 @@ animacion.gif → animaciones sencillas (solo 256 colores)</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">etiqueta · .clase · #id</span><span class="desc">Las 3 formas de elegir a qué elementos afecta una regla. Ojo al símbolo: la clase lleva <b>punto</b> y el id <b>almohadilla</b>, y solo en el CSS.</span></div>
             <pre class="example"><code>&lt;p class="alerta" id="cabecera"&gt;Hola&lt;/p&gt;
 
@@ -2588,7 +2394,7 @@ a[href$=".pdf"]    { font-weight: 700; } /* termina en .pdf */</code></pre>
         <div class="group">
           <h2>Pseudo-clases / elementos</h2>
           <p class="group-desc">Seleccionan un elemento según un estado (como al pasar el ratón) o su posición, sin tener que añadirle una clase en el HTML.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">:hover</span><span class="desc">Mientras el ratón está encima.</span></div>
             <pre class="example"><code>a:hover {
   text-decoration: underline;
@@ -2672,7 +2478,7 @@ p:first-of-type      { font-size: 1.2rem; }</code></pre>
         <div class="group">
           <h2>Box model</h2>
           <p class="group-desc">El modelo con el que el navegador calcula el tamaño real de cualquier elemento: contenido, espacio interior (padding), borde y espacio exterior (margin).</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">width / height</span><span class="desc">Ancho y alto del elemento.</span></div>
             <pre class="example"><code>.card {
   width: 300px;
@@ -2686,7 +2492,7 @@ p:first-of-type      { font-size: 1.2rem; }</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">padding</span><span class="desc">Espacio interior, entre el borde y el contenido.</span></div>
             <pre class="example"><code>.card {
   padding: 16px;
@@ -2699,7 +2505,7 @@ p:first-of-type      { font-size: 1.2rem; }</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">border</span><span class="desc">Borde: grosor, estilo y color.</span></div>
             <pre class="example"><code>.card {
   border: 1px solid #ddd;
@@ -2712,7 +2518,7 @@ p:first-of-type      { font-size: 1.2rem; }</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">margin</span><span class="desc">Espacio exterior, entre elementos.</span></div>
             <pre class="example"><code>.card {
   margin: 0 auto;
@@ -2751,7 +2557,7 @@ p:first-of-type      { font-size: 1.2rem; }</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">margin / padding: abreviaturas</span><span class="desc">Se puede escribir de 1 a 4 valores seguidos. Cuántos pongas decide a qué lados afecta.</span></div>
             <pre class="example"><code>margin: 20px;                /* los 4 lados */
 margin: 20px 10px;           /* arriba y abajo · izquierda y derecha */
@@ -2841,7 +2647,7 @@ margin-top: 20px;            /* un solo lado */</code></pre>
         <div class="group">
           <h2>Flexbox</h2>
           <p class="group-desc">Cómo repartir y alinear los hijos de un contenedor con <b>display: flex</b>. El contenedor es el padre; los ítems, sus hijos.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">display: flex</span><span class="desc">Convierte al padre en contenedor flex: los hijos se colocan en fila.</span></div>
             <pre class="example"><code>.menu {
   display: flex;
@@ -2867,7 +2673,7 @@ margin-top: 20px;            /* un solo lado */</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">justify-content</span><span class="desc">Reparte los hijos a lo largo de la dirección principal: <b>flex-start, center, flex-end, space-between, space-around, space-evenly</b>.</span></div>
             <pre class="example"><code>.menu {
   justify-content: space-between;
@@ -2880,7 +2686,7 @@ margin-top: 20px;            /* un solo lado */</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">align-items</span><span class="desc">Alinea los hijos en la otra dirección: <b>flex-start, center, flex-end, stretch, baseline</b>.</span></div>
             <pre class="example"><code>.menu {
   align-items: center;
@@ -3000,7 +2806,7 @@ margin-top: 20px;            /* un solo lado */</code></pre>
         <div class="group">
           <h2>Texto y color</h2>
           <p class="group-desc">El aspecto tipográfico y cromático: qué fuente, qué tamaño, y qué color de texto y de fondo.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">font-family / font-size</span><span class="desc">Tipografía y tamaño del texto.</span></div>
             <pre class="example"><code>body {
   font-family: "Inter", sans-serif;
@@ -3053,7 +2859,7 @@ margin-top: 20px;            /* un solo lado */</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">color / background-color</span><span class="desc">Color del texto / del fondo.</span></div>
             <pre class="example"><code>.alerta {
   color: white;
@@ -3067,7 +2873,7 @@ margin-top: 20px;            /* un solo lado */</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">@import url()</span><span class="desc">Carga una fuente de Google (u otro CSS). Debe ir <b>en la primera línea</b> del CSS, fuera de cualquier regla.</span></div>
             <pre class="example"><code>@import url('https://fonts.googleapis.com/css2?family=Lato&amp;display=swap');
 
@@ -3103,7 +2909,7 @@ body { font-family: "MiFuente", sans-serif; }</code></pre>
         <div class="group">
           <h2>Unidades y responsive</h2>
           <p class="group-desc">Las medidas con las que trabaja CSS y cómo adaptar esos estilos según el tamaño de la pantalla.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">px</span><span class="desc">Píxeles: medida fija.</span></div>
             <pre class="example"><code>.caja {
   width: 240px;
@@ -3143,7 +2949,7 @@ body { font-family: "MiFuente", sans-serif; }</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">@media (max-width: …)</span><span class="desc">Aplica reglas solo por debajo de ese ancho. Con <b>min-width</b> es al revés: solo por encima (p. ej. tablet en adelante: 768px).</span></div>
             <pre class="example"><code>@media (max-width: 600px) {
   .menu { flex-direction: column; }
@@ -3213,7 +3019,9 @@ body { font-family: "MiFuente", sans-serif; }</code></pre>
         <p><strong>JavaScript</strong> añade el <strong>comportamiento</strong>: reacciona a clics, valida formularios, modifica el HTML en tiempo real y habla con el servidor. Se ejecuta en el navegador y, con Node.js, también en un servidor.</p>
       </div>
 
-      <div class="playground">
+      <details class="full-map">
+      <summary>▶ Probar el código en directo</summary>
+<div class="playground">
         <div class="playground-head">
           <div>
             <h2>Ejemplo interactivo</h2>
@@ -3285,6 +3093,7 @@ render();
           </div>
         </div>
       </div>
+    </details>
 
       <div class="groups">
         <div class="group">
@@ -3317,6 +3126,21 @@ const sumar = (a, b) =&gt; a + b;   // flecha: lo mismo, más corto</pre></div>
             <div class="jv-body"><div class="jv-flow"><div class="jv-step hl"><b>Objeto</b><code>{ nombre: "Ana" }</code></div><span class="jv-arrow" aria-hidden="true">↓<small>JSON.stringify</small></span><div class="jv-step"><b>Texto JSON</b><code>'{"nombre":"Ana"}'</code></div><span class="jv-arrow" aria-hidden="true">↓<small>JSON.parse</small></span><div class="jv-step hl"><b>Objeto otra vez</b>listo para usar</div></div><p>Por la red y en <code>localStorage</code> solo viajan <b>textos</b>.</p></div>
           </div>
           <div class="entry core">
+            <div class="entry-head"><span class="tag">¿Qué es el DOM?</span><span class="desc">la página convertida en objetos</span></div>
+            <div class="jv-body"><div>
+      <p class="vm-sub" style="margin-bottom:0">El plano se convierte en una mesa servida, y JavaScript puede mover lo que hay en ella.</p>
+      <div class="dom-flow">
+        <div class="dom-step"><b>HTML</b>El <b style="display:inline;font-size:inherit">plano</b>: texto con etiquetas.</div>
+        <span class="dom-arrow" aria-hidden="true">→</span>
+        <div class="dom-step hl"><b>DOM</b>La <b style="display:inline;font-size:inherit">mesa servida</b>: cada etiqueta, convertida en un objeto.</div>
+        <span class="dom-arrow" aria-hidden="true">←</span>
+        <div class="dom-step"><b>JavaScript</b>El <b style="display:inline;font-size:inherit">camarero</b>: busca algo en la mesa y lo cambia.</div>
+      </div>
+      <pre class="vm-code">document.querySelector("h1").textContent = "Hola";   // busca el título y cambia su texto</pre>
+      <p class="dom-note"><b>React y Vue</b> lo hacen por ti: tú cambias los datos y ellos tocan el DOM.</p>
+    </div></div>
+          </div>
+          <div class="entry core">
             <div class="entry-head"><span class="tag">Buscar, escuchar y cambiar</span><span class="desc">el DOM y los eventos</span></div>
             <div class="jv-body"><div class="jv-flow"><div class="jv-step"><b>1 · Buscar</b><code>document.querySelector("#boton")</code></div><span class="jv-arrow" aria-hidden="true">↓<small></small></span><div class="jv-step hl"><b>2 · Escuchar</b><code>boton.addEventListener("click", f)</code></div><span class="jv-arrow" aria-hidden="true">↓<small>cuando se hace clic</small></span><div class="jv-step"><b>3 · Cambiar</b><code>texto.textContent = "Hola"</code></div></div></div>
           </div>
@@ -3329,7 +3153,7 @@ const sumar = (a, b) =&gt; a + b;   // flecha: lo mismo, más corto</pre></div>
         <div class="group">
           <h2>Variables y funciones</h2>
           <p class="group-desc">Cómo guardas valores con nombre y cómo agrupas código reutilizable en bloques que puedes llamar cuando los necesites.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">let / const</span><span class="desc">Declara una variable (reasignable / constante).</span></div>
             <pre class="example"><code>let edad = 25;
 edad = 26;              // bien: "let" permite cambiarlo
@@ -3344,7 +3168,7 @@ nombre = "Laura";       // ERROR: "const" no lo permite</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">function nombre(){}</span><span class="desc">Declara una función.</span></div>
             <pre class="example"><code>function saludar(nombre) {
   return "Hola " + nombre;
@@ -3357,7 +3181,7 @@ nombre = "Laura";       // ERROR: "const" no lo permite</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">(a, b) =&gt; a + b</span><span class="desc">Función flecha (arrow function), más corta.</span></div>
             <pre class="example"><code>const sumar = (a, b) => a + b;
 sumar(2, 3); // 5</code></pre>
@@ -3369,7 +3193,7 @@ sumar(2, 3); // 5</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">return</span><span class="desc">Devuelve un valor y termina la función.</span></div>
             <pre class="example"><code>function doble(x) {
   return x * 2;
@@ -3418,7 +3242,7 @@ operacion = (a, b) => a * b;    // 3. arrow function</code></pre>
         <div class="group">
           <h2>Tipos de datos</h2>
           <p class="group-desc">Las clases de valores que puede manejar JavaScript: texto, números, verdadero/falso, o la ausencia de valor.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">string / number / boolean</span><span class="desc">Los tres tipos básicos: texto, número y verdadero/falso.</span></div>
             <pre class="example"><code>const texto = "hola";
 const numero = 5;
@@ -3483,7 +3307,7 @@ isNaN(parseInt("hola"));  // true</code></pre>
         <div class="group">
           <h2>Sintaxis básica</h2>
           <p class="group-desc">Detalles del lenguaje que aparecen en casi cualquier línea: cómo comentar código y cómo modificar una variable de forma abreviada.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">// y /* */</span><span class="desc">Comentarios: de una línea o de varias. El navegador los ignora.</span></div>
             <pre class="example"><code>// esto es un comentario
 
@@ -3525,7 +3349,7 @@ total *= 2; // total = 30</code></pre>
         <div class="group">
           <h2>Operadores aritméticos</h2>
           <p class="group-desc">Las operaciones matemáticas básicas. Ojo con <b>%</b> y con el <b>+</b> aplicado a texto.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">+ - * /</span><span class="desc">Suma, resta, multiplicación y división.</span></div>
             <pre class="example"><code>7 + 2;  // 9
 7 / 2;  // 3.5</code></pre>
@@ -3536,7 +3360,7 @@ total *= 2; // total = 30</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">%</span><span class="desc">Resto de la división entera (módulo). Sirve, por ejemplo, para saber si un número es par.</span></div>
             <pre class="example"><code>5 % 2;            // 1
 numero % 2 === 0; // ¿es par?</code></pre>
@@ -3583,7 +3407,7 @@ numero % 2 === 0; // ¿es par?</code></pre>
         <div class="group">
           <h2>Booleanos y comparación</h2>
           <p class="group-desc">Cómo comparar dos valores para obtener un true o false: la base de cualquier condición.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">true / false</span><span class="desc">Los dos únicos valores booleanos.</span></div>
             <pre class="example"><code>const esMayorDeEdad = true;
 const haPagado = false;</code></pre>
@@ -3594,7 +3418,7 @@ const haPagado = false;</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">=== / !==</span><span class="desc">Igualdad estricta: compara valor <b>y</b> tipo. Úsala casi siempre.</span></div>
             <pre class="example"><code>5 === 5;    // true
 5 === "5";  // false (distinto tipo)
@@ -3618,7 +3442,7 @@ const haPagado = false;</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&gt; &lt; &gt;= &lt;=</span><span class="desc">Mayor, menor, mayor o igual, menor o igual.</span></div>
             <pre class="example"><code>edad >= 18;   // true o false
 precio < 100; // true o false</code></pre>
@@ -3645,7 +3469,7 @@ if ("") { ... }      // no se ejecuta (falsy)</code></pre>
         <div class="group">
           <h2>Operadores lógicos</h2>
           <p class="group-desc">Cómo combinar varias condiciones booleanas en una sola —o invertir una— para tomar decisiones más complejas.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&amp;&amp; (Y)</span><span class="desc">Verdadero solo si <b>ambas</b> condiciones son verdaderas.</span></div>
             <pre class="example"><code>if (edad >= 18 && tieneCarnet) {
   console.log("Puede conducir");
@@ -3658,7 +3482,7 @@ if ("") { ... }      // no se ejecuta (falsy)</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">|| (O)</span><span class="desc">Verdadero si <b>al menos una</b> condición lo es.</span></div>
             <pre class="example"><code>if (esAdmin || esEditor) {
   console.log("Tiene acceso");
@@ -3671,7 +3495,7 @@ if ("") { ... }      // no se ejecuta (falsy)</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">! (NO)</span><span class="desc">Invierte un valor booleano.</span></div>
             <pre class="example"><code>if (!estaLogueado) {
   console.log("Debes iniciar sesión");
@@ -3699,7 +3523,7 @@ if ("") { ... }      // no se ejecuta (falsy)</code></pre>
         <div class="group">
           <h2>Control de flujo</h2>
           <p class="group-desc">Las instrucciones que deciden qué código se ejecuta y cuántas veces, en vez de correr todo de arriba a abajo siempre igual.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">if / else</span><span class="desc">Ejecuta código según una condición.</span></div>
             <pre class="example"><code>if (edad >= 18) {
   console.log("Adulto");
@@ -3714,7 +3538,7 @@ if ("") { ... }      // no se ejecuta (falsy)</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">for (…)</span><span class="desc">Bucle con contador.</span></div>
             <pre class="example"><code>for (let i = 0; i < 5; i++) {
   console.log(i);
@@ -3727,7 +3551,7 @@ if ("") { ... }      // no se ejecuta (falsy)</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">while (…)</span><span class="desc">Bucle mientras se cumpla una condición.</span></div>
             <pre class="example"><code>while (stock > 0) {
   stock--;
@@ -3784,7 +3608,7 @@ if ("") { ... }      // no se ejecuta (falsy)</code></pre>
         <div class="group">
           <h2>Números aleatorios e interacción</h2>
           <p class="group-desc">Cómo generar números al azar, leer texto como número, y pedir o mostrar datos con ventanas emergentes nativas del navegador.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">Math.random()</span><span class="desc">Genera un decimal aleatorio entre 0 (incluido) y 1 (excluido).</span></div>
             <pre class="example"><code>Math.random(); // p.ej. 0.7328...</code></pre>
             <details class="pv">
@@ -3804,7 +3628,7 @@ if ("") { ... }      // no se ejecuta (falsy)</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">Math.floor(Math.random() * n) + 1</span><span class="desc">La fórmula clásica para un entero aleatorio entre 1 y <b>n</b>.</span></div>
             <pre class="example"><code>// entero entre 1 y 10
 Math.floor(Math.random() * 10) + 1;</code></pre>
@@ -3815,7 +3639,7 @@ Math.floor(Math.random() * 10) + 1;</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">parseInt()</span><span class="desc">Convierte un texto en un número entero.</span></div>
             <pre class="example"><code>parseInt("42");   // 42
 parseInt("3.9");  // 3</code></pre>
@@ -3826,7 +3650,7 @@ parseInt("3.9");  // 3</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">prompt()</span><span class="desc">Ventana emergente que pide un dato de texto al usuario.</span></div>
             <pre class="example"><code>let numero = prompt("Dime un numero");
 
@@ -3839,7 +3663,7 @@ const nota = +prompt("Dime la nota"); // el + convierte el texto en numero</code
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">alert()</span><span class="desc">Ventana emergente que muestra un mensaje.</span></div>
             <pre class="example"><code>alert("Has acertado");</code></pre>
             <details class="pv">
@@ -3862,7 +3686,7 @@ const nota = +prompt("Dime la nota"); // el + convierte el texto en numero</code
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">do { ... } while (…)</span><span class="desc">Como <b>while</b>, pero ejecuta el bloque <b>al menos una vez</b> antes de comprobar la condición.</span></div>
             <pre class="example"><code>let numero;
 do {
@@ -3880,7 +3704,7 @@ do {
         <div class="group">
           <h2>Arrays</h2>
           <p class="group-desc">Listas ordenadas de valores, con funciones incorporadas para recorrerlas y transformarlas sin escribir un bucle a mano.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">[valor1, valor2, ...]</span><span class="desc">Así se escribe un array: valores entre corchetes, separados por comas.</span></div>
             <pre class="example"><code>const frutas = ["manzana", "pera", "kiwi"];
 
@@ -3916,7 +3740,7 @@ frutas.length;  // 3</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">array.forEach()</span><span class="desc">Ejecuta una función por cada elemento.</span></div>
             <pre class="example"><code>["a", "b"].forEach(letra => console.log(letra));</code></pre>
             <details class="pv">
@@ -3937,7 +3761,7 @@ frutas.length;  // 3</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">array.push() / includes()</span><span class="desc">Añade un elemento / comprueba si existe.</span></div>
             <pre class="example"><code>frutas.push("kiwi");
 frutas.includes("kiwi"); // true</code></pre>
@@ -4018,7 +3842,7 @@ frutas.includes("kiwi"); // true</code></pre>
         <div class="group">
           <h2>Objetos</h2>
           <p class="group-desc">Una forma de agrupar datos relacionados bajo un mismo nombre, como una ficha con varios campos.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">{ clave: valor }</span><span class="desc">Estructura de datos clave-valor.</span></div>
             <pre class="example"><code>const usuario = { nombre: "Ana", edad: 25 };</code></pre>
             <details class="pv">
@@ -4028,7 +3852,7 @@ frutas.includes("kiwi"); // true</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">objeto.clave / objeto["clave"]</span><span class="desc">Acceso a una propiedad, por punto o corchete.</span></div>
             <pre class="example"><code>usuario.nombre;
 usuario["nombre"]; // "Ana"</code></pre>
@@ -4055,7 +3879,7 @@ usuario["nombre"]; // "Ana"</code></pre>
                 <div class="group">
           <h2>Objetos: métodos y this</h2>
           <p class="group-desc">Cómo un objeto puede llevar no solo datos, sino también funciones que actúan sobre sí mismo.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">objeto.metodo = function () { this... }</span><span class="desc">Una función guardada como propiedad de un objeto. Dentro, <b>this</b> significa «el objeto por el que me han llamado».</span></div>
             <pre class="example"><code>const persona = { nombre: "Ana", apellidos: "Ruiz" };
 
@@ -4176,7 +4000,7 @@ console.log("hola".toUpperCase()); // "sorpresa", en cualquier string del progra
         <div class="group">
           <h2>DOM</h2>
           <p class="group-desc">Cómo JavaScript encuentra elementos HTML ya cargados en la página y reacciona a lo que hace la persona con ellos.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">document.querySelector()</span><span class="desc">Busca el primer elemento que coincide con el selector CSS.</span></div>
             <pre class="example"><code>const boton = document.querySelector(".boton");</code></pre>
             <div class="simple-explain"><span class="se-label">En cristiano</span>Es como decirle a un camarero nuevo "ve a la mesa 5". <b>querySelector</b> busca un elemento concreto de la página, igual que localizas una mesa concreta dentro de todo el salón.</div>
@@ -4209,7 +4033,7 @@ console.log("hola".toUpperCase()); // "sorpresa", en cualquier string del progra
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">addEventListener()</span><span class="desc">Escucha un evento, p. ej. <b>'click'</b>.</span></div>
             <pre class="example"><code>boton.addEventListener("click", () => {
   alert("¡Hola!");
@@ -4235,7 +4059,7 @@ console.log("hola".toUpperCase()); // "sorpresa", en cualquier string del progra
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">.innerHTML / .textContent</span><span class="desc">Lee o cambia el contenido de un elemento.</span></div>
             <pre class="example"><code>div.textContent = "Nuevo texto";</code></pre>
             <div class="simple-explain"><span class="se-label">En cristiano</span>Es cambiar lo que pone en la pizarra de los platos del día. El cliente que mira la pizarra ve el cambio al instante, sin que nadie tenga que reimprimir el menú entero.</div>
@@ -4397,7 +4221,7 @@ customElements.define('jl-modal', Modal);
         <div class="group">
           <h2>Asíncrono y datos</h2>
           <p class="group-desc">Cómo pedir datos al servidor sin congelar la página mientras llega la respuesta, y cómo convertir esos datos a un formato que JavaScript entiende. Incluye la diferencia entre <b>.js</b> y <b>.json</b>, el CRUD y un mini ejercicio para practicar.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">.js vs .json: la diferencia</span><span class="desc"><b>.js</b> = código JavaScript que el navegador <b>ejecuta</b>. <b>.json</b> = <b>datos</b> escritos como texto, que el código <b>lee</b>. No se ejecuta nada dentro de un .json.</span></div>
             <pre class="example"><code>┌─────────────┬────────────────────────────┬──────────────────────────┐
 │             │ .js                        │ .json                    │
@@ -4509,7 +4333,7 @@ npx json-server json/productos.json --port 3001
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">Ejercicio: lee un .json y pinta la lista</span><span class="desc">Crea 3 archivos en una carpeta nueva. Rellena los huecos del <b>app.js</b>. Tres niveles: <b>1)</b> ver los datos en la consola, <b>2)</b> pintarlos en la lista, <b>3)</b> mostrar solo los de menos de 30 €.</span></div>
             <pre class="example"><code>// ---- productos.json (datos) ----
 [
@@ -4589,7 +4413,7 @@ const baratos = productos.filter(p =&gt; p.precio &lt; 30);
         <div class="group">
           <h2>Consola</h2>
           <p class="group-desc">Un panel de depuración del navegador donde imprimes mensajes para revisar qué valen tus variables. Solo lo ves tú (no las personas que visitan la web) y nunca cambia la página, a diferencia del DOM.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">F12 → Console</span><span class="desc">Cómo abrirla: <b>F12</b> (o <b>Cmd+Opt+J</b> en Mac con Chrome) y pestaña <b>Console</b>. También puedes escribir código JavaScript directamente ahí para probarlo.</span></div>
             <pre class="example"><code>&gt; 2 + 2
 4</code></pre>
@@ -4600,7 +4424,7 @@ const baratos = productos.filter(p =&gt; p.precio &lt; 30);
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">console.log()</span><span class="desc">Imprime valores para depurar. Acepta varios separados por comas.</span></div>
             <pre class="example"><code>console.log("valor:", x);
 console.log(tareas);</code></pre>
@@ -4660,7 +4484,7 @@ console.log(tareas);</code></pre>
         <div class="group">
           <h2>Buenas prácticas</h2>
           <p class="group-desc">Hábitos que evitan errores y hacen tu código más fácil de leer y de arreglar.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">DRY</span><span class="desc"><b>Don't Repeat Yourself</b>: si copias y pegas el mismo código, conviértelo en una función.</span></div>
             <pre class="example"><code>// mal: el mismo cálculo repetido
 let a = precio1 * 1.21;
@@ -4686,7 +4510,7 @@ const conIva = (precio) => precio * 1.21;</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">camelCase</span><span class="desc">Nombres que expliquen qué guardan, sin ñ ni tildes. JavaScript distingue mayúsculas: <b>edad</b> y <b>Edad</b> son variables distintas.</span></div>
             <pre class="example"><code>let numeroAleatorio = 7;  // bien
 let anio = 2026;          // año → anio
@@ -4858,16 +4682,16 @@ ES2017  async · await</code></pre>
         <div class="group">
           <h2>Instalación</h2>
           <p class="group-desc">Dos enlaces en tu HTML y ya puedes usar todas las clases de Bootstrap.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">link CSS</span><span class="desc">Enlaza la hoja de estilos de Bootstrap dentro del <b>head</b>.</span></div>
             <pre class="example"><code>&lt;link rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"&gt;</code></pre>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">script JS</span><span class="desc">Solo hace falta para componentes con comportamiento (menús desplegables, navbar en móvil). Va al final del <b>body</b>.</span></div>
             <pre class="example"><code>&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;</code></pre>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">meta viewport</span><span class="desc">Imprescindible para que la página se adapte bien a móvil.</span></div>
             <pre class="example"><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre>
           </div>
@@ -4890,7 +4714,7 @@ ES2017  async · await</code></pre>
         <div class="group">
           <h2>Rejilla (grid)</h2>
           <p class="group-desc">La página se divide en 12 columnas. Tú dices cuántas ocupa cada bloque según el tamaño de pantalla.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">container / container-fluid</span><span class="desc">Caja que centra el contenido con ancho máximo / que ocupa todo el ancho.</span></div>
             <pre class="example"><code>&lt;div class="container"&gt;...&lt;/div&gt;</code></pre>
             <details class="pv">
@@ -4900,7 +4724,7 @@ ES2017  async · await</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">row + col-N</span><span class="desc">Una fila con columnas. Las columnas de una fila suman 12.</span></div>
             <pre class="example"><code>&lt;div class="container"&gt;
   &lt;div class="row"&gt;
@@ -4915,7 +4739,7 @@ ES2017  async · await</code></pre>
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">col-md-N</span><span class="desc">Ocupa N columnas <b>desde ese tamaño en adelante</b>. Por debajo, se apila en vertical.</span></div>
             <pre class="example"><code>&lt;div class="col-12 col-md-6"&gt;...&lt;/div&gt;
 &lt;!-- móvil: ancho completo · tablet+: mitad --&gt;</code></pre>
@@ -4980,7 +4804,7 @@ ES2017  async · await</code></pre>
         <div class="group">
           <h2>Espaciado</h2>
           <p class="group-desc">Márgenes y rellenos con clases cortas: <b>m</b> (margin) o <b>p</b> (padding) + lado + tamaño.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">m-N / p-N</span><span class="desc">Todos los lados. N va de 0 a 5: 0, .25, .5, 1, 1.5 y 3 rem.</span></div>
             <pre class="example"><code>&lt;div class="p-3"&gt;...&lt;/div&gt;   &lt;!-- padding 1rem --&gt;</code></pre>
             <details class="pv">
@@ -5018,7 +4842,7 @@ ES2017  async · await</code></pre>
         <div class="group">
           <h2>Texto y color</h2>
           <p class="group-desc">Clases para alinear texto, cambiar colores y tamaños de título sin escribir CSS.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">text-center / start / end</span><span class="desc">Alineación del texto.</span></div>
             <pre class="example"><code>&lt;h2 class="text-center"&gt;Título&lt;/h2&gt;</code></pre>
             <details class="pv">
@@ -5129,7 +4953,7 @@ ES2017  async · await</code></pre>
         <div class="group">
           <h2>Componentes</h2>
           <p class="group-desc">Piezas ya diseñadas: botones y barra de navegación.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">btn btn-COLOR</span><span class="desc">Botón con estilo. <b>btn-outline-COLOR</b> lo deja solo con borde.</span></div>
             <pre class="example"><code>&lt;button class="btn btn-primary"&gt;Guardar&lt;/button&gt;
 &lt;button class="btn btn-outline-danger"&gt;Borrar&lt;/button&gt;</code></pre>
@@ -5201,7 +5025,7 @@ modal.addEventListener('show.bs.modal', (e) =&gt; {
         <div class="group">
           <h2>Formularios y tablas</h2>
           <p class="group-desc">Campos y tablas con buen aspecto usando solo clases.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">form-label / form-control</span><span class="desc">Etiqueta y campo de texto a ancho completo.</span></div>
             <pre class="example"><code>&lt;label for="email" class="form-label"&gt;Email&lt;/label&gt;
 &lt;input type="email" id="email" name="email" class="form-control"&gt;</code></pre>
@@ -5324,11 +5148,23 @@ modal.addEventListener('show.bs.modal', (e) =&gt; {
             <div class="entry-head"><span class="tag">Páginas con React Router</span><span class="desc">de la dirección al componente</span></div>
             <div class="jv-body"><div class="jv-flow"><div class="jv-step"><b>Dirección</b><code>/admin</code></div><span class="jv-arrow" aria-hidden="true">↓<small>router.jsx: path → Component</small></span><div class="jv-step hl"><b>Ruta</b><code>{ path: "admin", Component: Admin }</code></div><span class="jv-arrow" aria-hidden="true">↓<small>&lt;Outlet /&gt;</small></span><div class="jv-step"><b>Se pinta</b><code>Admin</code> dentro de <code>App</code></div></div></div>
           </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">De cero a una app (Vite)</span><span class="desc">los 5 pasos</span></div>
+            <div class="jv-body"><div class="steps-box">
+        <ol class="steps">
+          <li><span>Tener <b>Node.js</b> instalado (trae npm y npx).</span></li>
+          <li><span><b>Vite</b> crea el proyecto: <code>npm create vite@latest mi-app</code>. Eliges <b>React</b> o <b>Vue</b>.</span></li>
+          <li><span>Descargar las piezas: <code>npm install</code> (aparece <b>node_modules</b>).</span></li>
+          <li><span>Probar la web: <code>npm run dev</code>. Se recarga sola al guardar.</span></li>
+          <li><span>Publicar: <code>npm run build</code> prepara la versión final.</span></li>
+        </ol>
+      </div></div>
+          </div>
         </div>
         <div class="group">
           <h2>React en un solo archivo</h2>
           <p class="group-desc">Para probar sin instalar nada: una sola página HTML con React cargado desde internet (así empezó la clase).</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">React en un solo HTML</span><span class="desc">Tres <b>&lt;script&gt;</b> (React, ReactDOM y Babel) y tu código dentro de <b>&lt;script type="text/babel"&gt;</b>.</span></div>
             <pre class="example"><code>&lt;script src="https://unpkg.com/react@18/umd/react.development.js"&gt;&lt;/script&gt;
 &lt;script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"&gt;&lt;/script&gt;
@@ -5343,7 +5179,7 @@ modal.addEventListener('show.bs.modal', (e) =&gt; {
   ReactDOM.createRoot(document.getElementById("root")).render(&lt;App /&gt;);
 &lt;/script&gt;</code></pre>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">createRoot(…).render()</span><span class="desc">Le dice a React <b>en qué hueco</b> de la página dibujar (el <b>&lt;main id="root"&gt;</b>) y qué componente poner.</span></div>
             <pre class="example"><code>ReactDOM.createRoot(document.getElementById("root")).render(&lt;App /&gt;);</code></pre>
           </div>
@@ -5354,7 +5190,7 @@ modal.addEventListener('show.bs.modal', (e) =&gt; {
         <div class="group">
           <h2>Componentes y JSX</h2>
           <p class="group-desc">Las dos ideas base: dividir la pantalla en piezas y escribirlas como si fueran HTML.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">Componente</span><span class="desc">Una <b>función con nombre en Mayúscula</b> que devuelve JSX. Se usa como si fuera una etiqueta nueva.</span></div>
             <pre class="example"><code>function Titulo() {
   return &lt;h1&gt;Hola&lt;/h1&gt;;
@@ -5364,7 +5200,7 @@ modal.addEventListener('show.bs.modal', (e) =&gt; {
 &lt;Titulo /&gt;</code></pre>
             <div class="simple-explain"><span class="se-label">En cristiano</span>Es una plantilla de cocina: la escribes una vez y la usas tantas veces como quieras.</div>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">JSX</span><span class="desc">HTML escrito <b>dentro de JavaScript</b>. Reglas: una sola etiqueta raíz, cerrar todas (<b>&lt;img /&gt;</b>) y <b>class</b> se escribe <b>className</b>.</span></div>
             <pre class="example"><code>return (
   &lt;div className="caja"&gt;
@@ -5372,14 +5208,14 @@ modal.addEventListener('show.bs.modal', (e) =&gt; {
   &lt;/div&gt;
 );</code></pre>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">{ } en JSX</span><span class="desc">Entre llaves metes <b>cualquier expresión de JavaScript</b>: una variable, una cuenta, una llamada a función.</span></div>
             <pre class="example"><code>const nombre = "Tania";
 
 &lt;h1&gt;Hola, {nombre}&lt;/h1&gt;
 &lt;p&gt;{2 + 3}&lt;/p&gt;</code></pre>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">props</span><span class="desc">Los <b>datos que le pasas</b> a un componente, como atributos. El componente los recibe entre llaves.</span></div>
             <pre class="example"><code>function Titulo({ texto }) {
   return &lt;h1&gt;{texto}&lt;/h1&gt;;
@@ -5401,7 +5237,7 @@ modal.addEventListener('show.bs.modal', (e) =&gt; {
   return &lt;h1&gt;{texto}&lt;/h1&gt;;
 }</code></pre>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">Fragmento &lt;&gt;…&lt;/&gt;</span><span class="desc">Agrupa varias etiquetas <b>sin añadir una etiqueta extra</b> al HTML.</span></div>
             <pre class="example"><code>return (
   &lt;&gt;
@@ -5410,7 +5246,7 @@ modal.addEventListener('show.bs.modal', (e) =&gt; {
   &lt;/&gt;
 );</code></pre>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">onClick={…}</span><span class="desc">Los eventos se escriben en <b>camelCase</b> (onClick, onChange…) y reciben una <b>función</b> entre llaves, no un texto.</span></div>
             <pre class="example"><code>&lt;button onClick={() =&gt; alert('Hola')}&gt;Púlsame&lt;/button&gt;</code></pre>
           </div>
@@ -5418,7 +5254,7 @@ modal.addEventListener('show.bs.modal', (e) =&gt; {
         <div class="group">
           <h2>Datos que cambian (estado)</h2>
           <p class="group-desc">Cuando un dato cambia, la pantalla tiene que enterarse. React lo hace con el estado.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">useState</span><span class="desc">Una variable que React <b>vigila</b>: se cambia con su función (<b>setUsuario</b>), nunca con <b>=</b>, y al cambiarla React <b>redibuja</b> el componente.</span></div>
             <pre class="example"><code>import { useState } from 'react';
 
@@ -5436,7 +5272,7 @@ function App() {
               </div>
             </details>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">Función como prop</span><span class="desc">El hijo <b>avisa al padre</b>: el padre le pasa una función como prop y el hijo la llama cuando pasa algo.</span></div>
             <pre class="example"><code>// App.jsx (el padre)
 &lt;Login onLogin={u =&gt; setUsuario(u)} /&gt;
@@ -5456,18 +5292,18 @@ export function Login({ onLogin }) {
         <div class="group">
           <h2>Condiciones, listas y formularios</h2>
           <p class="group-desc">Cómo decidir qué se pinta, pintar una lista de datos y recoger lo que escribe la persona.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">cond &amp;&amp; &lt;Etiqueta /&gt;</span><span class="desc">Pinta algo <b>solo si</b> la condición es verdadera; si no, no pinta nada. Va dentro de llaves.</span></div>
             <pre class="example"><code>{usuario &amp;&amp; &lt;Listado elementos={['Prueba1', 'Prueba2']} /&gt;}</code></pre>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">cond ? A : B</span><span class="desc">Pinta <b>una cosa u otra</b> según la condición (el operador ternario).</span></div>
             <pre class="example"><code>{usuario
   ? &lt;p&gt;{usuario.email}&lt;/p&gt;
   : &lt;p&gt;No hay usuario&lt;/p&gt;
 }</code></pre>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">.map() + key</span><span class="desc">Convierte una lista de datos en una lista de etiquetas. Cada elemento lleva un <b>key</b> único para que React sepa cuál es cuál.</span></div>
             <pre class="example"><code>export function Listado({ elementos }) {
   return (
@@ -5478,7 +5314,7 @@ export function Login({ onLogin }) {
 }</code></pre>
             <div class="simple-explain"><span class="se-label">En cristiano</span>El <b>key</b> es el nombre escrito en cada plato de la bandeja: así el camarero sabe cuál has cambiado. Sin él, React avisa en la consola.</div>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">Formulario: onSubmit</span><span class="desc">Se recoge con <b>onSubmit</b>; <b>preventDefault()</b> evita que la página se recargue y los valores se leen por el <b>name</b> de cada campo.</span></div>
             <pre class="example"><code>function comprobarLogin(e) {
   e.preventDefault();
@@ -5497,7 +5333,7 @@ export function Login({ onLogin }) {
         <div class="group">
           <h2>Pensar en React</h2>
           <p class="group-desc">El método de clase («Thinking in React») para construir una pantalla paso a paso: una tabla de productos con buscador.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">Los 5 pasos</span><span class="desc">Antes de escribir código, se piensa la pantalla en este orden.</span></div>
             <pre class="example"><code>0. Maqueta en HTML normal
 1. Dividir la pantalla en una jerarquía de componentes
@@ -5507,7 +5343,7 @@ export function Login({ onLogin }) {
 5. Flujo inverso: los hijos avisan al padre</code></pre>
             <div class="simple-explain"><span class="se-label">En cristiano</span>Es como montar una cocina: primero el plano (1), luego las piezas sin encender (2) y, al final, decidir quién maneja el interruptor (4 y 5).</div>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">Jerarquía de componentes</span><span class="desc">Cada caja de la maqueta es un componente. Los de dentro son <b>hijos</b> y los de fuera, <b>padres</b>. En clase, cada hijo tiene su carpeta.</span></div>
             <pre class="example"><code>FilterableProductTable      ← el padre de todo
 ├─ SearchBar                ← buscador y casilla
@@ -5515,7 +5351,7 @@ export function Login({ onLogin }) {
    ├─ ProductCategoryRow    ← fila de categoría
    └─ ProductRow            ← fila de producto</code></pre>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">Elevar el estado</span><span class="desc">El estado va en el <b>padre común</b> más cercano de todos los que lo necesitan. Los hijos lo reciben por <b>props</b>.</span></div>
             <pre class="example"><code>export function FilterableProductTable({ products }) {
   const [filterText, setFilterText] = useState('');
@@ -5533,7 +5369,7 @@ export function Login({ onLogin }) {
 }</code></pre>
             <div class="simple-explain"><span class="se-label">En cristiano</span>El buscador y la tabla necesitan el mismo dato, así que lo guarda el <b>jefe de sala</b> y se lo reparte a los dos.</div>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">Input controlado</span><span class="desc">Un campo cuyo valor <b>manda React</b>: <b>value</b> (o <b>checked</b>) viene del estado y <b>onChange</b> avisa al padre del cambio. Y <b>for</b> se escribe <b>htmlFor</b>.</span></div>
             <pre class="example"><code>&lt;input type="search" value={filterText}
   onChange={e =&gt; onFilterTextChange(e.target.value)} /&gt;
@@ -5546,7 +5382,7 @@ export function Login({ onLogin }) {
         <div class="group">
           <h2>Cargar datos y navegar</h2>
           <p class="group-desc">Lo que se vio en el proyecto «tienda»: datos desde un JSON y varias páginas dentro de la misma app.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">useEffect + fetch</span><span class="desc">Ejecuta código <b>cuando el componente aparece</b> en pantalla, por ejemplo para cargar datos. El <b>[]</b> del final significa «solo una vez». El <b>async</b> va en una función de dentro.</span></div>
             <pre class="example"><code>const [productos, setProductos] = useState([]);
 
@@ -5562,7 +5398,7 @@ useEffect(() =&gt; {
 }, []);</code></pre>
             <div class="simple-explain"><span class="se-label">En cristiano</span>Es el aviso al repartidor: «cuando abras el local, ve a por el pedido». Al llegar, <b>setProductos</b> actualiza el estado y la pantalla se redibuja sola.</div>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">Listar con .map()</span><span class="desc">Con los datos en el estado, cada uno se pinta como un componente. El <b>key</b> mejor con el <b>id</b> del dato.</span></div>
             <pre class="example"><code>{productos.map(producto =&gt;
   &lt;div key={producto.id} className="col"&gt;
@@ -5570,7 +5406,7 @@ useEffect(() =&gt; {
   &lt;/div&gt;
 )}</code></pre>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">React Router</span><span class="desc">Biblioteca aparte para tener <b>varias páginas</b> en la misma app. Se instala con <b>npm install react-router</b> y se define qué componente sale en cada dirección.</span></div>
             <pre class="example"><code>// router.jsx
 export const router = createBrowserRouter([
@@ -5588,7 +5424,7 @@ export const router = createBrowserRouter([
 &lt;RouterProvider router={router} /&gt;</code></pre>
             <div class="simple-explain"><span class="se-label">En cristiano</span>Es el <b>cartel de la entrada</b>: dice qué sala se abre según la dirección que escribas.</div>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;Outlet /&gt;</span><span class="desc">El <b>hueco</b> donde se pinta la página hija. Lo que rodea al Outlet (menú, pie) se ve siempre.</span></div>
             <pre class="example"><code>function App() {
   return (
@@ -5602,7 +5438,7 @@ export const router = createBrowserRouter([
   );
 }</code></pre>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">&lt;NavLink to&gt;</span><span class="desc">Un enlace que <b>no recarga</b> la página. Con <b>end</b> solo se marca como activo en esa dirección exacta.</span></div>
             <pre class="example"><code>&lt;NavLink className="nav-link" to="/admin" end&gt;Administración&lt;/NavLink&gt;</code></pre>
           </div>
@@ -5618,14 +5454,14 @@ export const router = createBrowserRouter([
         <div class="group">
           <h2>Un proyecto con Vite</h2>
           <p class="group-desc">Lo mismo, pero como un proyecto de verdad: cada componente en su archivo y Vite se encarga del resto.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">npm create vite@latest</span><span class="desc">Crea el proyecto. Te pregunta qué usar (<b>React</b>) y la variante; en clase: <b>JavaScript</b>, <b>React Compiler</b> y <b>OxLint</b>.</span></div>
             <pre class="example"><code>npm create vite@latest ejemplo
 cd ejemplo
 npm install      # descarga las piezas (node_modules)
 npm run dev      # arranca la web de pruebas</code></pre>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">Estructura del proyecto</span><span class="desc">Qué hay en cada sitio. Los componentes viven en <b>src/</b>, en archivos <b>.jsx</b> (JavaScript que admite JSX).</span></div>
             <pre class="example"><code>ejemplo/
 ├─ index.html      la única página, con el hueco &lt;div id="root"&gt;
@@ -5638,7 +5474,7 @@ npm run dev      # arranca la web de pruebas</code></pre>
    ├─ Titulo.jsx   un componente nuestro
    └─ Titulo.css   su estilo</code></pre>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">import / export</span><span class="desc">Cada componente va en <b>su archivo</b>: <b>export</b> lo ofrece e <b>import</b> lo trae. Con llaves, si se exportó con nombre; sin llaves, si es <b>export default</b>.</span></div>
             <pre class="example"><code>// Titulo.jsx
 import './Titulo.css'
@@ -5778,7 +5614,7 @@ npm run preview   # prueba la versión ya construida</code></pre>
                 <div class="jv-step"><b>Se ejecuta</b>en Windows, Mac o Linux.</div>
               </div></div>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">JDK · JRE · JVM</span><span class="desc">tres cajas, una dentro de otra</span></div>
             <div class="jv-body">
               <div class="jv-nest"><b>JDK</b> · para programar (trae <code>javac</code>)
@@ -5801,14 +5637,14 @@ npm run preview   # prueba la versión ya construida</code></pre>
             <div class="entry-head"><span class="tag">Los 8 tipos</span><span class="desc">los resaltados son los de siempre</span></div>
             <div class="jv-body"><div class="jv-tiles"><div class="jv-tile main"><b>int</b><span>entero</span><code>5</code></div><div class="jv-tile main"><b>double</b><span>decimal</span><code>32.5</code></div><div class="jv-tile main"><b>boolean</b><span>verdadero o falso</span><code>true</code></div><div class="jv-tile main"><b>char</b><span>un carácter</span><code>'a'</code></div><div class="jv-tile"><b>long</b><span>entero enorme</span><code>5L</code></div><div class="jv-tile"><b>float</b><span>decimal corto</span><code>32.5F</code></div><div class="jv-tile"><b>short</b><span>entero pequeño</span></div><div class="jv-tile"><b>byte</b><span>entero mínimo</span></div></div></div>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">Declarar variables</span><span class="desc">tipo, nombre y valor</span></div>
             <div class="jv-body"><pre class="vm-code">int edad = 33;
 double precio = 9.99;
 String nombre = "Tania";   // texto: es una clase
 final double IVA = 0.21;   // constante: no cambia</pre></div>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">Convertir texto en número</span><span class="desc">lo que se lee siempre llega como texto</span></div>
             <div class="jv-body"><pre class="vm-code">int n = Integer.parseInt("42");
 double d = Double.parseDouble("3.5");</pre></div>
@@ -5850,18 +5686,18 @@ x == y         // ¿misma dirección?</pre></div>
     }
 }</pre><p>El archivo se llama igual que la clase: <code>Programa.java</code>.</p></div>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">Java 25: más corto</span><span class="desc">sin class, sin public static</span></div>
             <div class="jv-body"><pre class="vm-code">void main() {
     IO.println("Hola");
     String t = IO.readln("Tu nombre: ");
 }</pre><p>Sin <code>class</code>, sin <code>public static</code> y sin <code>import</code>.</p></div>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">Mostrar y leer</span><span class="desc">println, Scanner, IO</span></div>
             <div class="jv-body"><ul class="glist"><li><span class="chip">println</span><span>escribe y salta de línea</span></li><li><span class="chip">print</span><span>escribe sin saltar</span></li><li><span class="chip">Scanner</span><span>lee lo que se teclea</span></li><li><span class="chip">IO.readln</span><span>pregunta y lee (Java 25)</span></li></ul></div>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">void y lo que devuelve un método</span><span class="desc">qué entrega un método</span></div>
             <div class="jv-body"><ul class="glist"><li><span class="chip">void</span><span>no devuelve nada</span></li><li><span class="chip">int</span><span>devuelve un número</span></li><li><span class="chip">String</span><span>devuelve un texto</span></li><li><span class="chip">return</span><span>entrega el resultado</span></li></ul></div>
           </div>
@@ -5893,7 +5729,7 @@ x == y         // ¿misma dirección?</pre></div>
     ...
 }</pre></div>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">while y do…while</span><span class="desc">repetir mientras</span></div>
             <div class="jv-body"><pre class="vm-code">while (condicion) { ... }
 
@@ -5976,7 +5812,7 @@ l.size();             // cuántos hay</pre><p>El tipo de lo que guarda va entre 
             <div class="entry-head"><span class="tag">Más con texto</span><span class="desc">unir, formatear, bloques</span></div>
             <div class="jv-body"><ul class="glist"><li><span class="chip">"a" + "b"</span><span>unir textos</span></li><li><span class="chip">String.format</span><span>«Hola %s»</span></li><li><span class="chip">"""</span><span>bloque de varias líneas</span></li><li><span class="chip">Math.pow</span><span>potencias (^ no lo es)</span></li></ul></div>
           </div>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">LocalDateTime</span><span class="desc">la fecha moderna</span></div>
             <div class="jv-body"><pre class="vm-code">LocalDateTime ahora = LocalDateTime.now();</pre><p>También <code>LocalDate</code>, <code>LocalTime</code>, <code>Duration</code> y <code>Period</code>. No se modifica: cada cambio crea una fecha nueva.</p></div>
           </div>
@@ -5989,7 +5825,7 @@ GregorianCalendar gc = new GregorianCalendar();</pre><div class="jv-warn"><b>Ojo
         <div class="group">
           <h2>Eclipse</h2>
           <p class="group-desc">Trucos para programar más rápido. En Mac, ⌘ en lugar de Ctrl.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">Atajos y plantillas</span><span class="desc">main, sysout, formatear</span></div>
             <div class="jv-body"><ul class="glist"><li><span class="chip">main</span><span>Ctrl+Espacio: escribe el main entero</span></li><li><span class="chip">sysout</span><span>Ctrl+Espacio: escribe System.out.println()</span></li><li><span class="chip">Ctrl+Shift+F</span><span>ordena el código</span></li><li><span class="chip">Alt+Shift+M</span><span>Extract Method</span></li></ul></div>
           </div>
@@ -6015,7 +5851,7 @@ r = comparar(a, b);</pre><p>Se lee mejor, se reutiliza (<b>DRY</b>) y se arregla
         <div class="group">
           <h2>Versiones de Java</h2>
           <p class="group-desc">Las marcadas con <b>LTS</b> tienen soporte largo y son las que usan las empresas.</p>
-          <div class="entry core">
+          <div class="entry">
             <div class="entry-head"><span class="tag">Versiones LTS</span><span class="desc">8, 11, 17, 21 y 25</span></div>
             <div class="jv-body"><div class="jv-chips"><span class="chip lts">Java 8 · LTS</span><span class="chip lts">Java 11 · LTS</span><span class="chip lts">Java 17 · LTS</span><span class="chip lts">Java 21 · LTS</span><span class="chip lts">Java 25 · LTS</span></div></div>
           </div>
@@ -6038,7 +5874,7 @@ r = comparar(a, b);</pre><p>Se lee mejor, se reutiliza (<b>DRY</b>) y se arregla
     <section class="panel" id="panel-org" style="--dot:var(--ink-soft); --dot-soft:var(--surface-2)">
       <div class="panel-intro">
         <span class="glyph">├─</span>
-        <p>El <strong>organigrama</strong> muestra qué cuelga de qué. A la izquierda, los niveles de arriba: el desarrollo web y sus grandes áreas (frontend, backend, herramientas). A la derecha, cada tecnología con sus grupos y sus elementos principales. Los colores son los de cada pestaña: <strong>naranja</strong> HTML, <strong>azul</strong> CSS, <strong>ámbar</strong> JavaScript, <strong>violeta</strong> Bootstrap. En Esencial se ocultan los grupos menos importantes.</p>
+        <p>El <strong>organigrama</strong> muestra qué cuelga de qué. A la izquierda, los niveles de arriba: el desarrollo web y sus grandes áreas (frontend, backend, herramientas). A la derecha, cada tecnología con sus grupos y sus elementos principales. Los colores son los de cada pestaña: <strong>naranja</strong> HTML y Java, <strong>azul</strong> CSS, <strong>ámbar</strong> JavaScript, <strong>violeta</strong> Bootstrap, <strong>verde</strong> React. En Esencial se ocultan los grupos menos importantes.</p>
       </div>
 
       <figure class="org-fig">
@@ -6054,64 +5890,65 @@ r = comparar(a, b);</pre><p>Se lee mejor, se reutiliza (<b>DRY</b>) y se arregla
                     <ul>
 
                       <li class="t-html">
-                        <div class="node l2"><b>HTML</b><small>estándar: WHATWG</small></div>
+                        <div class="node l2"><b>HTML</b><small>lo que hay en la página</small></div>
                         <ul>
-                          <li><div class="node br"><b>Documento</b><small>esqueleto de la página</small></div><div class="leaves"><span>html</span><span>head</span><span>body</span><span>meta</span><span>title</span></div></li>
-                          <li><div class="node br"><b>Semántica</b><small>bloques con significado</small></div><div class="leaves"><span>header</span><span>nav</span><span>main</span><span>section</span><span>article</span><span>aside</span><span>footer</span></div></li>
-                          <li><div class="node br"><b>Texto</b><small>títulos y párrafos</small></div><div class="leaves"><span>h1–h6</span><span>p</span><span>span</span><span>strong</span><span>em</span></div></li>
-                          <li><div class="node br"><b>Listas y tablas</b><small>datos en lista o tabla</small></div><div class="leaves"><span>ul</span><span>ol</span><span>li</span><span>table</span><span>tr</span><span>td</span></div></li>
-                          <li><div class="node br"><b>Enlaces y medios</b><small>links, imágenes, vídeo</small></div><div class="leaves"><span>a</span><span>img</span><span>video</span><span>audio</span><span>iframe</span></div></li>
-                          <li><div class="node br"><b>Formularios</b><small>campos para escribir</small></div><div class="leaves"><span>form</span><span>input</span><span>label</span><span>select</span><span>textarea</span><span>button</span></div></li>
-                          <li><div class="node br"><b>Atributos</b><small>datos extra en etiquetas</small></div><div class="leaves"><span>class</span><span>id</span><span>data-*</span><span>style</span></div></li>
+                          <li><div class="node br"><b>Esqueleto</b><small>la base de la página</small></div><div class="leaves"><span>html</span><span>head</span><span>body</span><span>title</span><span>meta</span></div></li>
+                          <li><div class="node br"><b>Estructura</b><small>bloques con significado</small></div><div class="leaves"><span>header</span><span>nav</span><span>main</span><span>section</span><span>article</span><span>aside</span><span>footer</span></div></li>
+                          <li><div class="node br"><b>Texto y listas</b><small>títulos, párrafos, listas</small></div><div class="leaves"><span>h1–h6</span><span>p</span><span>strong</span><span>ul</span><span>ol</span><span>li</span></div></li>
+                          <li><div class="node br"><b>Enlaces e imágenes</b><small>links y medios</small></div><div class="leaves"><span>a</span><span>img</span><span>figure</span><span>video</span></div></li>
+                          <li><div class="node br"><b>Formularios</b><small>campos para escribir</small></div><div class="leaves"><span>form</span><span>label</span><span>input</span><span>select</span><span>button</span></div></li>
+                          <li class="adv"><div class="node br"><b>Tablas</b><small>datos en filas</small></div><div class="leaves"><span>table</span><span>tr</span><span>th</span><span>td</span></div></li>
+                          <li class="adv"><div class="node br"><b>Atributos</b><small>datos extra en las etiquetas</small></div><div class="leaves"><span>id</span><span>class</span><span>href</span><span>src</span></div></li>
                         </ul>
                       </li>
 
                       <li class="t-css">
-                        <div class="node l2"><b>CSS</b><small>estándar: W3C</small></div>
+                        <div class="node l2"><b>CSS</b><small>cómo se ve</small></div>
                         <ul>
-                          <li><div class="node br"><b>Selectores</b><small>a qué elementos afecta</small></div><div class="leaves"><span>*</span><span>etiqueta</span><span>.clase</span><span>#id</span><span>[atributo]</span></div></li>
-                          <li class="adv"><div class="node br"><b>Combinadores</b><small>según la relación</small></div><div class="leaves"><span>padre &gt; hijo</span><span>descendiente</span><span>a, b</span></div></li>
-                          <li><div class="node br"><b>Pseudo-clases</b><small>estados y posiciones</small></div><div class="leaves"><span>:hover</span><span>:nth-child</span><span>:not()</span><span>::before</span><span>::after</span></div></li>
-                          <li><div class="node br"><b>Box model</b><small>tamaño de cada caja</small></div><div class="leaves"><span>width</span><span>height</span><span>padding</span><span>border</span><span>margin</span></div></li>
-                          <li class="adv"><div class="node br"><b>Layout</b><small>cómo se colocan</small></div><div class="leaves"><span>display</span><span>position</span><span>grid</span><span>gap</span></div></li>
-                          <li><div class="node br"><b>Flexbox</b><small>alinear en fila o columna</small></div><div class="leaves"><span>flex-direction</span><span>justify-content</span><span>align-items</span><span>flex-wrap</span><span>flex-grow</span></div></li>
-                          <li class="adv"><div class="node br"><b>Visibilidad</b><small>mostrar, ocultar, recortar</small></div><div class="leaves"><span>display: none</span><span>visibility</span><span>opacity</span><span>overflow</span></div></li>
-                          <li><div class="node br"><b>Texto y color</b><small>fuentes y colores</small></div><div class="leaves"><span>font-family</span><span>font-size</span><span>color</span><span>background</span></div></li>
-                          <li><div class="node br"><b>Unidades y responsive</b><small>medidas y pantallas</small></div><div class="leaves"><span>px</span><span>%</span><span>rem</span><span>vh</span><span>@media</span></div></li>
-                          <li class="adv"><div class="node br"><b>Transiciones y anidado</b><small>animar y agrupar</small></div><div class="leaves"><span>transition</span><span>max-height</span><span>&amp;.clase</span></div></li>
+                          <li><div class="node br"><b>Regla</b><small>selector { propiedad: valor }</small></div><div class="leaves"><span>selector</span><span>propiedad</span><span>valor</span></div></li>
+                          <li><div class="node br"><b>Selectores</b><small>a quién se aplica</small></div><div class="leaves"><span>etiqueta</span><span>.clase</span><span>#id</span><span>:hover</span><span>::before</span></div></li>
+                          <li><div class="node br"><b>Modelo de caja</b><small>el tamaño de cada caja</small></div><div class="leaves"><span>margin</span><span>border</span><span>padding</span><span>contenido</span></div></li>
+                          <li><div class="node br"><b>Flexbox</b><small>alinear en fila o columna</small></div><div class="leaves"><span>display: flex</span><span>justify-content</span><span>align-items</span><span>flex-direction</span></div></li>
+                          <li><div class="node br"><b>Unidades y responsive</b><small>medidas y pantallas</small></div><div class="leaves"><span>px</span><span>rem</span><span>%</span><span>vw</span><span>@media</span></div></li>
+                          <li class="adv"><div class="node br"><b>Texto y color</b><small>fuentes y colores</small></div><div class="leaves"><span>font-family</span><span>font-size</span><span>color</span><span>background</span></div></li>
+                          <li class="adv"><div class="node br"><b>Cascada</b><small>quién gana si chocan</small></div><div class="leaves"><span>especificidad</span><span>!important</span></div></li>
                         </ul>
                       </li>
 
                       <li class="t-js">
-                        <div class="node l2"><b>JavaScript</b><small>estándar: ECMAScript</small></div>
+                        <div class="node l2"><b>JavaScript</b><small>lo que hace</small></div>
                         <ul>
-                          <li><div class="node br"><b>Variables y funciones</b><small>guardar y reutilizar</small></div><div class="leaves"><span>let</span><span>const</span><span>function</span><span>=&gt;</span><span>return</span></div></li>
-                          <li><div class="node br"><b>Tipos de datos</b><small>texto, números, true/false</small></div><div class="leaves"><span>string</span><span>number</span><span>boolean</span><span>null</span><span>typeof</span></div></li>
-                          <li><div class="node br"><b>Operadores aritméticos</b><small>cálculos con números</small></div><div class="leaves"><span>+ - * /</span><span>%</span><span>**</span><span>Math.sqrt</span></div></li>
-                          <li><div class="node br"><b>Booleanos y lógica</b><small>comparar y decidir</small></div><div class="leaves"><span>===</span><span>&amp;&amp;</span><span>||</span><span>!</span><span>? :</span></div></li>
-                          <li><div class="node br"><b>Control de flujo</b><small>decidir y repetir</small></div><div class="leaves"><span>if / else</span><span>for</span><span>while</span><span>switch</span><span>do…while</span></div></li>
-                          <li><div class="node br"><b>Arrays</b><small>listas de valores</small></div><div class="leaves"><span>map</span><span>filter</span><span>forEach</span><span>reduce</span><span>push</span></div></li>
-                          <li class="adv"><div class="node br"><b>Strings</b><small>trabajar con texto</small></div><div class="leaves"><span>length</span><span>includes</span><span>slice</span><span>split</span><span>trim</span></div></li>
-                          <li><div class="node br"><b>Objetos</b><small>datos agrupados</small></div><div class="leaves"><span>{ clave: valor }</span><span>Object.keys</span></div></li>
-                          <li><div class="node br"><b>Números y azar</b><small>aleatorios y ventanas</small></div><div class="leaves"><span>Math.random</span><span>Math.floor</span><span>parseInt</span><span>prompt</span><span>alert</span></div></li>
-                          <li><div class="node br"><b>DOM</b><small>tocar la página</small></div><div class="leaves"><span>querySelector</span><span>addEventListener</span><span>classList</span><span>createElement</span><span>textContent</span><span>dataset</span></div></li>
-                          <li class="adv"><div class="node br"><b>Custom Elements</b><small>tus propias etiquetas</small></div><div class="leaves"><span>extends HTMLElement</span><span>connectedCallback</span><span>customElements.define</span></div></li>
-                          <li><div class="node br"><b>Asíncrono y datos</b><small>pedir datos al servidor</small></div><div class="leaves"><span>fetch</span><span>async / await</span><span>GET / POST / PUT / DELETE</span><span>JSON.parse</span><span>JSON.stringify</span></div></li>
-                          <li><div class="node br"><b>Consola</b><small>depurar (solo tú)</small></div><div class="leaves"><span>console.log</span><span>error</span><span>warn</span><span>table</span></div></li>
-                          <li><div class="node br"><b>Buenas prácticas</b><small>hábitos que evitan fallos</small></div><div class="leaves"><span>DRY</span><span>rubber duck</span><span>camelCase</span><span>const / let</span><span>use strict</span><span>sin eval</span></div></li>
+                          <li><div class="node br"><b>Tipos y variables</b><small>guardar datos</small></div><div class="leaves"><span>string</span><span>number</span><span>boolean</span><span>let</span><span>const</span></div></li>
+                          <li><div class="node br"><b>Funciones</b><small>agrupar código</small></div><div class="leaves"><span>function</span><span>=&gt;</span><span>return</span></div></li>
+                          <li><div class="node br"><b>Control de flujo</b><small>decidir y repetir</small></div><div class="leaves"><span>if / else</span><span>for</span><span>while</span><span>switch</span></div></li>
+                          <li><div class="node br"><b>Arrays</b><small>listas de valores</small></div><div class="leaves"><span>map</span><span>filter</span><span>reduce</span><span>find</span></div></li>
+                          <li><div class="node br"><b>Objetos y JSON</b><small>datos con nombre</small></div><div class="leaves"><span>{ clave: valor }</span><span>JSON.parse</span><span>JSON.stringify</span></div></li>
+                          <li><div class="node br"><b>DOM y eventos</b><small>tocar la página</small></div><div class="leaves"><span>querySelector</span><span>addEventListener</span><span>textContent</span><span>classList</span></div></li>
+                          <li><div class="node br"><b>Datos del servidor</b><small>pedir y mandar</small></div><div class="leaves"><span>fetch</span><span>async / await</span><span>GET</span><span>POST</span><span>PUT</span><span>DELETE</span></div></li>
                         </ul>
                       </li>
 
                       <li class="t-bs">
                         <div class="node l2"><b>Bootstrap</b><small>CSS + JS ya hechos</small></div>
                         <ul>
-                          <li><div class="node br"><b>Instalación</b><small>2 enlaces en el HTML</small></div><div class="leaves"><span>link CSS</span><span>script JS</span><span>viewport</span></div></li>
-                          <li><div class="node br"><b>Rejilla</b><small>12 columnas</small></div><div class="leaves"><span>container</span><span>row</span><span>col-md-6</span><span>offset</span></div></li>
-                          <li><div class="node br"><b>Espaciado</b><small>márgenes y rellenos</small></div><div class="leaves"><span>m-3</span><span>p-3</span><span>mt-2</span><span>mx-auto</span></div></li>
-                          <li><div class="node br"><b>Texto y color</b><small>clases de estilo</small></div><div class="leaves"><span>text-center</span><span>text-danger</span><span>bg-primary</span><span>display-1</span></div></li>
-                          <li class="adv"><div class="node br"><b>Tamaños y bordes</b><small>ancho, alto, esquinas</small></div><div class="leaves"><span>w-100</span><span>h-100</span><span>rounded</span><span>ratio</span></div></li>
-                          <li><div class="node br"><b>Componentes</b><small>piezas ya hechas</small></div><div class="leaves"><span>btn</span><span>navbar</span><span>bi bi-*</span><span>modal</span></div></li>
-                          <li><div class="node br"><b>Formularios y tablas</b><small>campos y datos</small></div><div class="leaves"><span>form-control</span><span>form-select</span><span>table</span><span>img-fluid</span></div></li>
+                          <li><div class="node br"><b>Instalación</b><small>2 enlaces en el HTML</small></div><div class="leaves"><span>link CSS</span><span>script JS</span></div></li>
+                          <li><div class="node br"><b>Rejilla</b><small>12 columnas</small></div><div class="leaves"><span>container</span><span>row</span><span>col-md-6</span></div></li>
+                          <li><div class="node br"><b>Espaciado</b><small>márgenes y rellenos</small></div><div class="leaves"><span>m-3</span><span>p-3</span><span>mt-2</span></div></li>
+                          <li><div class="node br"><b>Colores</b><small>clases de color</small></div><div class="leaves"><span>text-danger</span><span>bg-primary</span><span>btn-success</span></div></li>
+                          <li><div class="node br"><b>Componentes</b><small>piezas ya hechas</small></div><div class="leaves"><span>btn</span><span>card</span><span>navbar</span><span>modal</span></div></li>
+                          <li class="adv"><div class="node br"><b>Formularios y tablas</b><small>campos y datos</small></div><div class="leaves"><span>form-control</span><span>form-select</span><span>table</span></div></li>
+                        </ul>
+                      </li>
+
+                      <li class="t-pr">
+                        <div class="node l2"><b>React</b><small>pantallas con componentes</small></div>
+                        <ul>
+                          <li><div class="node br"><b>Componentes</b><small>piezas reutilizables</small></div><div class="leaves"><span>función</span><span>JSX</span><span>props</span></div></li>
+                          <li><div class="node br"><b>Estado</b><small>datos que cambian</small></div><div class="leaves"><span>useState</span><span>setX</span></div></li>
+                          <li><div class="node br"><b>Condiciones y listas</b><small>qué se pinta</small></div><div class="leaves"><span>&amp;&amp;</span><span>? :</span><span>map</span><span>key</span></div></li>
+                          <li><div class="node br"><b>Efectos y datos</b><small>cargar al aparecer</small></div><div class="leaves"><span>useEffect</span><span>fetch</span></div></li>
+                          <li><div class="node br"><b>Páginas</b><small>varias rutas</small></div><div class="leaves"><span>React Router</span><span>Outlet</span><span>NavLink</span></div></li>
+                          <li class="adv"><div class="node br"><b>Proyecto con Vite</b><small>cómo se crea</small></div><div class="leaves"><span>npm create vite</span><span>main.jsx</span><span>App.jsx</span></div></li>
                         </ul>
                       </li>
 
@@ -6121,17 +5958,31 @@ r = comparar(a, b);</pre><p>Se lee mejor, se reutiliza (<b>DRY</b>) y se arregla
                   <li>
                     <div class="node l1"><b>Backend</b><small>el servidor</small></div>
                     <ul>
-                      <li><div class="node l2"><b>Java</b><small>lógica del servidor</small></div><div class="leaves"><span>servicio REST</span><span>lógica de negocio</span></div></li>
-                      <li><div class="node l2"><b>API REST</b><small>cliente ⇄ servidor</small></div><div class="leaves"><span>HTTP</span><span>GET</span><span>POST</span><span>JSON</span></div></li>
-                      <li><div class="node l2"><b>MySQL</b><small>base de datos · SQL</small></div><div class="leaves"><span>SELECT</span><span>INSERT</span><span>UPDATE</span><span>DELETE</span><span>JOIN</span></div></li>
+
+                      <li class="t-html">
+                        <div class="node l2"><b>Java</b><small>el lenguaje del servidor</small></div>
+                        <ul>
+                          <li><div class="node br"><b>Cómo se ejecuta</b><small>del código al programa</small></div><div class="leaves"><span>javac</span><span>.class</span><span>JVM</span><span>JDK</span></div></li>
+                          <li><div class="node br"><b>Tipos y referencias</b><small>qué guarda cada variable</small></div><div class="leaves"><span>int</span><span>double</span><span>String</span><span>==</span><span>equals</span><span>null</span></div></li>
+                          <li><div class="node br"><b>Control de flujo</b><small>decidir y repetir</small></div><div class="leaves"><span>if / else</span><span>for</span><span>while</span><span>for-each</span></div></li>
+                          <li><div class="node br"><b>Listas</b><small>varios datos</small></div><div class="leaves"><span>array</span><span>ArrayList</span></div></li>
+                          <li><div class="node br"><b>Clases y objetos</b><small>el molde y sus piezas</small></div><div class="leaves"><span>class</span><span>new</span><span>static</span><span>final</span><span>public / private</span></div></li>
+                          <li><div class="node br"><b>Textos y fechas</b><small>String y LocalDateTime</small></div><div class="leaves"><span>length</span><span>trim</span><span>LocalDateTime</span></div></li>
+                          <li class="adv"><div class="node br"><b>Eclipse</b><small>trucos del editor</small></div><div class="leaves"><span>sysout</span><span>Ctrl+Shift+F</span><span>Extract Method</span></div></li>
+                        </ul>
+                      </li>
+
+                      <li><div class="node l2"><b>API REST</b><small>cliente ⇄ servidor</small></div><div class="leaves"><span>HTTP</span><span>GET</span><span>POST</span><span>PUT</span><span>DELETE</span><span>JSON</span><span>json-server</span></div></li>
+                      <li><div class="node l2"><b>Base de datos</b><small>por ver · SQL</small></div><div class="leaves"><span>MySQL</span><span>SELECT</span><span>INSERT</span><span>UPDATE</span><span>DELETE</span><span>Spring</span></div></li>
                     </ul>
                   </li>
 
                   <li>
                     <div class="node l1"><b>Herramientas</b><small>cómo trabajas</small></div>
                     <ul>
-                      <li><div class="node l2"><b>VS Code</b><small>editor</small></div><div class="leaves"><span>Emmet</span><span>extensiones</span><span>atajos</span></div></li>
+                      <li><div class="node l2"><b>Editores</b><small>donde escribes</small></div><div class="leaves"><span>VS Code</span><span>Eclipse</span><span>Live Server</span></div></li>
                       <li><div class="node l2"><b>Git + GitHub</b><small>control de versiones</small></div><div class="leaves"><span>commit</span><span>push</span><span>pull</span></div></li>
+                      <li><div class="node l2"><b>Node y paquetes</b><small>para React</small></div><div class="leaves"><span>Node.js</span><span>npm</span><span>Vite</span></div></li>
                       <li><div class="node l2"><b>DevTools · F12</b><small>depurar</small></div><div class="leaves"><span>Consola</span><span>Elementos</span><span>Red</span></div></li>
                     </ul>
                   </li>
@@ -6164,7 +6015,7 @@ r = comparar(a, b);</pre><p>Se lee mejor, se reutiliza (<b>DRY</b>) y se arregla
   const modeCore = document.getElementById('modeCore');
   const modePro = document.getElementById('modePro');
   let coreOnly = true;
-  try { if (localStorage.getItem('chuleta-core') === 'off') coreOnly = false; } catch (e) {}
+  try { if (localStorage.getItem('chuleta-core-v2') === 'off') coreOnly = false; } catch (e) {}
   const emptyState = document.getElementById('emptyState');
 
   tabs.forEach(tab => {
@@ -6227,7 +6078,7 @@ r = comparar(a, b);</pre><p>Se lee mejor, se reutiliza (<b>DRY</b>) y se arregla
     coreOnly = core;
     modeCore.setAttribute('aria-pressed', String(core));
     modePro.setAttribute('aria-pressed', String(!core));
-    try { localStorage.setItem('chuleta-core', core ? 'on' : 'off'); } catch (e) {}
+    try { localStorage.setItem('chuleta-core-v2', core ? 'on' : 'off'); } catch (e) {}
     applyFilter();
     updateOrg();
   }
