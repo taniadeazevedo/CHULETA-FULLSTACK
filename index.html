@@ -5436,7 +5436,7 @@ npm run preview   # prueba la versión ya construida</code></pre>
     <section class="panel" id="panel-java" style="--dot:var(--accent-html); --dot-soft:var(--accent-html-soft)">
       <div class="panel-intro">
         <span class="glyph">&lt;/&gt;</span>
-        <p><strong>Java</strong> es el <strong>lenguaje del servidor</strong> (el backend): donde se escriben las reglas. Esto es una <strong>base general</strong> de las primeras clases; se irá ajustando con lo que veáis en clase.</p>
+        <p><strong>Java</strong> es el <strong>lenguaje del servidor</strong> (el backend): donde se escriben las reglas. Aquí está <strong>lo visto en clase</strong>: el proyecto <strong>holamundo</strong> en Eclipse, con <strong>Java 25</strong>.</p>
       </div>
 
       <div class="groups">
@@ -5448,17 +5448,15 @@ npm run preview   # prueba la versión ya construida</code></pre>
             <div class="simple-explain"><span class="se-label">En cristiano</span>Como «Carne» y «Carnet»: suenan parecido y no tienen nada que ver.</div>
           </div>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">Compilar y ejecutar</span><span class="desc">Java primero se <b>traduce</b> (compila) a un código intermedio llamado <b>bytecode</b>, y la <b>JVM</b> lo ejecuta. JavaScript, en cambio, se ejecuta tal cual.</span></div>
+            <div class="entry-head"><span class="tag">Compilar y ejecutar</span><span class="desc">Java primero se <b>traduce</b> (compila) a un código intermedio llamado <b>bytecode</b>, y la <b>JVM</b> lo ejecuta. JavaScript se ejecuta tal cual. Eclipse lo hace por ti al pulsar «Run».</span></div>
             <pre class="example"><code>Hola.java   ──javac──▶   Hola.class   ──java──▶   se ejecuta
 (tu código)              (bytecode)               (la JVM)</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Escribes la receta en español (.java), un traductor la pasa a un idioma universal (.class) y cualquier cocina con JVM sabe cocinarla, sea Windows, Mac o Linux.</div>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Escribes la receta (.java), un traductor la pasa a un idioma universal (.class) y cualquier cocina con JVM sabe cocinarla, sea Windows, Mac o Linux.</div>
           </div>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">JVM · JRE · JDK</span><span class="desc">Tres siglas que se mezclan: la <b>JVM</b> ejecuta; el <b>JRE</b> es la JVM más las librerías; el <b>JDK</b> es el JRE más las herramientas para programar (como <b>javac</b>).</span></div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">JVM · JRE · JDK</span><span class="desc">La <b>JVM</b> ejecuta; el <b>JRE</b> es la JVM más las librerías; el <b>JDK</b> es el JRE más las herramientas para programar (como <b>javac</b>). Para programar necesitas el <b>JDK</b>. En clase se usa <b>Java 25</b>.</span></div>
             <pre class="example"><code>JDK  =  JRE  +  herramientas (javac, ...)
-JRE  =  JVM  +  librerías
-JVM  =  la que ejecuta el bytecode</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Para programar necesitas el <b>JDK</b>.</div>
+JRE  =  JVM  +  librerías</code></pre>
           </div>
           <div class="entry">
             <div class="entry-head"><span class="tag">Tipado estático</span><span class="desc">En Java <b>cada variable tiene un tipo declarado</b> y no puede cambiarlo. Si te equivocas, el compilador avisa <b>antes</b> de ejecutar.</span></div>
@@ -5472,152 +5470,263 @@ dato = "cinco";      // ERROR al compilar</code></pre>
           </div>
         </div>
         <div class="group">
-          <h2>Primer programa</h2>
-          <p class="group-desc">La estructura mínima de cualquier programa Java.</p>
+          <h2>Primer programa (Eclipse)</h2>
+          <p class="group-desc">El proyecto <b>holamundo</b> de clase: un Java Project con la carpeta <b>src</b> y un <b>package</b>.</p>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">class + main</span><span class="desc">Todo va dentro de una <b>clase</b>. El programa empieza en el método <b>main</b>. El archivo se llama igual que la clase (<b>Hola.java</b>).</span></div>
-            <pre class="example"><code>public class Hola {
+            <div class="entry-head"><span class="tag">class + main</span><span class="desc">Todo va dentro de una <b>clase</b>. El programa empieza en el método <b>main</b>. El archivo se llama igual que la clase (<b>HolaMundo.java</b>) y la primera línea dice en qué <b>package</b> está.</span></div>
+            <pre class="example"><code>package holamundo;
+
+public class HolaMundo {
     public static void main(String[] args) {
-        System.out.println("Hola, mundo");
+        System.out.println("Hola");
     }
 }</code></pre>
             <div class="simple-explain"><span class="se-label">En cristiano</span>La clase es el local; el <b>main</b> es la puerta por la que entra el primer cliente.</div>
           </div>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">System.out.println</span><span class="desc">Escribe un texto en la consola y salta de línea. Es el <b>console.log</b> de Java.</span></div>
-            <pre class="example"><code>System.out.println("Hola");      // con salto de línea
-System.out.print("Hola");        // sin salto de línea</code></pre>
+            <div class="entry-head"><span class="tag">main() sin clase (Java 25)</span><span class="desc">En Java 25 un programa pequeño puede ser <b>solo un método main()</b>, sin <b>class</b>, sin <b>public static</b> y sin <b>imports</b>. Es lo que se usa en <b>AdivinaElNumero.java</b>, <b>EjemploArrays.java</b> y <b>Colecciones.java</b>.</span></div>
+            <pre class="example"><code>void main() {
+    ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();   // sin import
+    IO.println("Hola");
+}</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Es la versión «para llevar»: pides directamente al camarero, sin montar el local entero.</div>
           </div>
           <div class="entry">
-            <div class="entry-head"><span class="tag">Sintaxis básica</span><span class="desc">Cada instrucción acaba en <b>;</b>, los bloques van entre <b>{ }</b> y Java distingue mayúsculas de minúsculas. Los comentarios son iguales que en JavaScript.</span></div>
-            <pre class="example"><code>// comentario de una línea
-/* comentario
-   de varias líneas */
+            <div class="entry-head"><span class="tag">Comentarios y Javadoc</span><span class="desc">Dos comentarios como en JavaScript (<b>//</b> y <b>/* */</b>) y uno nuevo: <b>/** */</b>, el <b>Javadoc</b>, que documenta la clase o el método y sirve para generar la ayuda.</span></div>
+            <pre class="example"><code>// una línea
+/* varias
+   líneas */
 
-int total = 5;   // el ; es obligatorio</code></pre>
+/**
+ * Método de inicio de la aplicación
+ * @param args argumentos recibidos por consola
+ */</code></pre>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Quitar module-info</span><span class="desc">Eclipse puede crear un archivo <b>module-info.java</b>. En clase se borra («Quitamos module-info»): para estos ejemplos no hace falta.</span></div>
           </div>
         </div>
         <div class="group">
           <h2>Variables y tipos</h2>
-          <p class="group-desc">Los tipos básicos y cómo se declaran.</p>
+          <p class="group-desc">Los tipos básicos y las cosas que se vieron en <b>HolaMundo.java</b>.</p>
           <div class="entry core">
             <div class="entry-head"><span class="tag">Tipos básicos</span><span class="desc">Los más usados. <b>String</b> (con mayúscula) es una clase, no un tipo básico.</span></div>
-            <pre class="example"><code>int edad = 33;               // entero
-double precio = 9.99;        // decimal
-boolean activo = true;       // true o false
-char letra = 'A';            // un carácter (comillas simples)
-String nombre = "Tania";     // texto (comillas dobles)</code></pre>
+            <pre class="example"><code>int x = 5;                    // entero
+double d = 0.1;               // decimal
+boolean activo = true;        // true o false
+char letra = 'A';             // un carácter (comillas simples)
+String nombre = "Pepe";       // texto (comillas dobles)</code></pre>
           </div>
           <div class="entry core">
+            <div class="entry-head"><span class="tag">long y la L</span><span class="desc">Un entero muy grande no cabe en <b>int</b> (llega a unos 2.147 millones). Para eso está <b>long</b>, y el número se escribe con una <b>L</b> al final.</span></div>
+            <pre class="example"><code>long l = 21470000000L;</code></pre>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">0.1 + 0.2</span><span class="desc">Los decimales no son exactos: <b>double</b> guarda aproximaciones, y esa suma no da justo 0,3.</span></div>
+            <pre class="example"><code>double suma = 0.1 + 0.2;
+System.out.println(suma);   // 0.30000000000000004</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Es como medir con una regla sin décimas: casi todo cuadra, pero algunas cuentas se desvían un pelín. Pasa igual en JavaScript.</div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Texto: unir, formatear y bloques</span><span class="desc">El texto se une con <b>+</b>, se formatea con <b>String.format</b> (<b>%s</b> es el hueco) y un <b>bloque de texto</b> con tres comillas permite varias líneas.</span></div>
+            <pre class="example"><code>String nombre = "Pepe";
+System.out.println("Hola " + nombre);
+
+String saludo = String.format("Hola %s", nombre);
+
+System.out.println("""
+        Hola a todos
+        Texto multilínea
+        """);</code></pre>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">\n</span><span class="desc">El salto de línea dentro de un texto.</span></div>
+            <pre class="example"><code>System.out.println("Hola\n" + "Que tal\n" + "Prueba");</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Math.pow</span><span class="desc">Potencias (no hay <b>**</b> como en JavaScript).</span></div>
+            <pre class="example"><code>System.out.println(Math.pow(5, 3));   // 125.0</code></pre>
+          </div>
+          <div class="entry">
             <div class="entry-head"><span class="tag">final</span><span class="desc">Una variable <b>que no se puede cambiar</b> después: es el <b>const</b> de Java. Por costumbre se escribe en MAYÚSCULAS.</span></div>
             <pre class="example"><code>final double IVA = 0.21;</code></pre>
           </div>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">Comparar textos: equals</span><span class="desc">Con los números se usa <b>==</b>, pero los textos se comparan con <b>.equals()</b>. Con <b>==</b> no se compara el contenido.</span></div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Comparar textos: equals</span><span class="desc">Con los números se usa <b>==</b>, pero los textos se comparan con <b>.equals()</b>.</span></div>
             <pre class="example"><code>String a = "hola";
-String b = "hola";
-
-a.equals(b);        // true: compara el contenido
-a == b;             // no uses esto con textos</code></pre>
+a.equals("hola");        // true: compara el contenido</code></pre>
             <div class="simple-explain"><span class="se-label">En cristiano</span>Con <b>equals</b> preguntas «¿dicen lo mismo?»; con <b>==</b> preguntarías «¿son el mismo objeto?».</div>
           </div>
           <div class="entry">
-            <div class="entry-head"><span class="tag">var</span><span class="desc">Java puede <b>deducir el tipo</b> por ti con <b>var</b> (desde Java 10). La variable sigue teniendo tipo fijo.</span></div>
-            <pre class="example"><code>var numero = 5;        // Java deduce que es int
-var texto = "hola";    // y esta, String</code></pre>
+            <div class="entry-head"><span class="tag">@SuppressWarnings("unused")</span><span class="desc">Una <b>anotación</b> que le dice a Eclipse que no avise de que esa variable no se usa. En clase aparece porque las variables eran solo de prueba.</span></div>
+            <pre class="example"><code>@SuppressWarnings("unused")
+long l = 21470000000L;</code></pre>
           </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Convertir tipos</span><span class="desc">Pasar de un tipo a otro: con <b>(tipo)</b> entre números, y con los métodos <b>parse</b> desde un texto.</span></div>
-            <pre class="example"><code>int entero = (int) 3.7;                  // 3
-int numero = Integer.parseInt("42");     // de texto a número
-String texto = String.valueOf(42);       // de número a texto</code></pre>
+        </div>
+        <div class="group">
+          <h2>Consola: leer y escribir</h2>
+          <p class="group-desc">Cómo pedir datos a la persona y mostrar resultados.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">println · print</span><span class="desc"><b>println</b> escribe y salta de línea; <b>print</b> no salta. Es el <b>console.log</b> de Java.</span></div>
+            <pre class="example"><code>System.out.println("Hola");     // con salto de línea
+System.out.print("Hola ");      // sin salto</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Scanner</span><span class="desc">Lee lo que la persona <b>escribe en la consola</b>. Se crea con <b>System.in</b>, se lee con <b>nextLine()</b> y se <b>cierra</b> al terminar.</span></div>
+            <pre class="example"><code>Scanner sc = new Scanner(System.in);
+
+System.out.print("Dime tu nombre: ");
+String nombre = sc.nextLine();
+
+System.out.println("Hola " + nombre);
+sc.close();</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Es el <b>cuaderno de comandas</b>: lo abres, apuntas lo que dice el cliente y lo cierras.</div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">IO.println · IO.readln (Java 25)</span><span class="desc">La forma corta de Java 25: <b>IO.readln</b> muestra el mensaje y <b>lee</b> en una sola línea. Devuelve siempre un <b>String</b>.</span></div>
+            <pre class="example"><code>IO.println("Hola");
+String texto = IO.readln("Dime un número de 1 a 10: ");</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Integer.parseInt</span><span class="desc">Convierte un <b>texto</b> en un <b>número</b> entero. Hace falta porque lo que se lee por consola siempre llega como texto.</span></div>
+            <pre class="example"><code>int numero = Integer.parseInt(IO.readln("Dime un número: "));</code></pre>
           </div>
         </div>
         <div class="group">
           <h2>Control de flujo</h2>
-          <p class="group-desc">Casi igual que en JavaScript.</p>
+          <p class="group-desc">Casi igual que en JavaScript. Mira el juego <b>AdivinaElNumero.java</b>.</p>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">if / else</span><span class="desc">Igual que en JavaScript, pero la condición tiene que ser un <b>boolean</b> de verdad.</span></div>
-            <pre class="example"><code>if (edad &gt;= 18) {
-    System.out.println("Mayor de edad");
+            <div class="entry-head"><span class="tag">if / else if / else</span><span class="desc">Igual que en JavaScript, pero la condición tiene que ser un <b>boolean</b> de verdad.</span></div>
+            <pre class="example"><code>if (numeroAleatorio &lt; numero) {
+    resultado = "Es menor";
+} else if (numeroAleatorio &gt; numero) {
+    resultado = "Es MAYOR";
 } else {
-    System.out.println("Menor");
+    resultado = "¡HAS ACERTADO!";
 }</code></pre>
           </div>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">for / while</span><span class="desc">Los bucles se escriben igual. El contador lleva su tipo.</span></div>
-            <pre class="example"><code>for (int i = 1; i &lt;= 10; i++) {
-    System.out.println(i);
-}
-
-while (activo) { ... }</code></pre>
+            <div class="entry-head"><span class="tag">do … while</span><span class="desc">Hace el bloque <b>al menos una vez</b> y repite mientras la condición sea verdadera. Ideal para «pedir hasta acertar».</span></div>
+            <pre class="example"><code>do {
+    numero = Integer.parseInt(IO.readln("Dime un número: "));
+    ...
+} while (numero != numeroAleatorio);</code></pre>
           </div>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">for-each</span><span class="desc">Recorre una lista o un array sin contador (el <b>for…of</b> de JavaScript).</span></div>
-            <pre class="example"><code>for (String nombre : nombres) {
-    System.out.println(nombre);
+            <div class="entry-head"><span class="tag">Random.nextInt</span><span class="desc">Un número aleatorio entero. El primero entra y el último <b>no</b>: <b>nextInt(1, 10)</b> da de <b>1 a 9</b>.</span></div>
+            <pre class="example"><code>Random aleatorio = new Random();
+int numeroAleatorio = aleatorio.nextInt(1, 10);   // 1..9</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Como un dado de 9 caras numerado del 1 al 9: el 10 nunca sale. Si quieres que salga, <b>nextInt(1, 11)</b>.</div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">for · for-each</span><span class="desc">El <b>for</b> con contador se escribe igual; el <b>for-each</b> recorre una lista o un array sin contador (el <b>for…of</b> de JavaScript).</span></div>
+            <pre class="example"><code>for (int i = 0; i &lt; arr.length; i++) {
+    IO.print(arr[i] + " ");
+}
+
+for (int dato : arr) {
+    IO.print(dato + " ");
 }</code></pre>
           </div>
           <div class="entry">
-            <div class="entry-head"><span class="tag">switch</span><span class="desc">Elige según un valor. Cada caso acaba con <b>break</b>.</span></div>
-            <pre class="example"><code>switch (dia) {
-    case 1: System.out.println("Lunes"); break;
-    case 2: System.out.println("Martes"); break;
-    default: System.out.println("Otro");
+            <div class="entry-head"><span class="tag">Operador ternario</span><span class="desc">Elige entre dos valores en una sola línea: <b>condición ? si_es_verdad : si_no</b>.</span></div>
+            <pre class="example"><code>IO.print((columna != 0 ? columna : '.') + " ");</code></pre>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Arrays</h2>
+          <p class="group-desc">Una lista de <b>tamaño fijo</b> y de un solo tipo. Mira <b>EjemploArrays.java</b>.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Crear y usar un array</span><span class="desc">Se crea con su <b>tamaño</b>; los huecos se numeran desde <b>0</b>. Con <b>length</b> sabes cuántos tiene.</span></div>
+            <pre class="example"><code>int[] arr = new int[3];
+
+arr[0] = 5;
+arr[1] = 6;
+arr[2] = 7;
+arr[1] = 10;            // cambia el segundo
+
+arr.length;             // 3</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Es una <b>caja de huevos</b> con huecos numerados: tiene los que tiene, y no puedes meter un huevo más.</div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">ArrayIndexOutOfBoundsException</span><span class="desc">El error que sale al usar un hueco que <b>no existe</b>. Un array de 3 tiene los huecos 0, 1 y 2; el <b>arr[3]</b> da error.</span></div>
+            <pre class="example"><code>int[] arr = new int[3];
+arr[3] = 8;   // ERROR: ArrayIndexOutOfBoundsException</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Arrays.toString</span><span class="desc">Para <b>escribir</b> el contenido de un array. Si haces <b>println(arr)</b> sin más, sale un código raro.</span></div>
+            <pre class="example"><code>System.out.println(Arrays.toString(arr));   // [5, 10, 7]</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Matrices (arrays de arrays)</span><span class="desc">Un array de dos dimensiones, como un <b>tablero</b>: <b>[fila][columna]</b>. Los <b>char</b> sin rellenar valen <b>0</b>.</span></div>
+            <pre class="example"><code>char[][] tablero = new char[8][8];
+
+tablero[0][0] = 'T';
+tablero[0][1] = 'C';
+tablero[7][7] = 't';
+
+for (char[] fila : tablero) {
+    for (char columna : fila) {
+        IO.print((columna != 0 ? columna : '.') + " ");
+    }
+    IO.println();
 }</code></pre>
           </div>
         </div>
         <div class="group">
-          <h2>Clases y objetos</h2>
-          <p class="group-desc">La base de Java: todo se organiza en clases.</p>
+          <h2>Colecciones: ArrayList</h2>
+          <p class="group-desc">Una lista que <b>crece y se encoge</b>. Mira <b>Colecciones.java</b>. El tipo de lo que guarda va entre <b>&lt; &gt;</b>.</p>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">Clase y objeto</span><span class="desc">La <b>clase</b> es el molde y el <b>objeto</b> es cada pieza hecha con él. Se crea con <b>new</b>.</span></div>
-            <pre class="example"><code>public class Persona {
-    private String nombre;
+            <div class="entry-head"><span class="tag">Crear y añadir</span><span class="desc"><b>add</b> añade al final y <b>addFirst</b> al principio.</span></div>
+            <pre class="example"><code>ArrayList&lt;Integer&gt; enteros = new ArrayList&lt;Integer&gt;();
 
-    public Persona(String nombre) {      // constructor
-        this.nombre = nombre;
-    }
-
-    public String getNombre() {          // getter
-        return nombre;
-    }
-}
-
-Persona p = new Persona("Tania");
-System.out.println(p.getNombre());</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>La clase es el <b>molde de las galletas</b>; cada galleta (objeto) sale del molde con su propio sabor (los datos).</div>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">public · private</span><span class="desc">Quién puede ver cada cosa. <b>private</b>: solo la propia clase. <b>public</b>: todo el mundo. Los datos suelen ser privados y se leen con <b>getters</b>.</span></div>
-            <pre class="example"><code>private String nombre;           // solo dentro de la clase
-public String getNombre() { ... } // accesible desde fuera</code></pre>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">this</span><span class="desc">Se refiere al <b>propio objeto</b>. Sirve para distinguir el dato de la clase del parámetro que se llama igual.</span></div>
-            <pre class="example"><code>public Persona(String nombre) {
-    this.nombre = nombre;   // el atributo = el parámetro
-}</code></pre>
-          </div>
-        </div>
-        <div class="group">
-          <h2>Listas</h2>
-          <p class="group-desc">Guardar varios datos juntos.</p>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">Array</span><span class="desc">Una lista de <b>tamaño fijo</b> y de un solo tipo.</span></div>
-            <pre class="example"><code>int[] numeros = {4, 8, 15};
-System.out.println(numeros[0]);        // 4
-System.out.println(numeros.length);    // 3</code></pre>
-          </div>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">ArrayList</span><span class="desc">Una lista que <b>crece y se encoge</b>. El tipo de lo que guarda va entre <b>&lt; &gt;</b>.</span></div>
-            <pre class="example"><code>ArrayList&lt;String&gt; nombres = new ArrayList&lt;&gt;();
-nombres.add("Tania");
-nombres.add("Cris");
-nombres.get(0);        // "Tania"
-nombres.size();        // 2
-nombres.remove(0);</code></pre>
+enteros.add(5);          // [5]
+enteros.add(6);          // [5, 6]
+enteros.addFirst(4);     // [4, 5, 6]</code></pre>
             <div class="simple-explain"><span class="se-label">En cristiano</span>Es el <b>array</b> de JavaScript, pero tienes que decir de qué tipo son sus elementos.</div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Insertar, quitar y cambiar</span><span class="desc">Con el <b>número de posición</b> (empieza en 0).</span></div>
+            <pre class="example"><code>enteros.add(0, 4);       // inserta el 4 en la posición 0
+enteros.remove(2);       // quita lo que hay en la posición 2
+enteros.set(1, 10);      // cambia la posición 1 por un 10</code></pre>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Recorrer</span><span class="desc">Con <b>for-each</b>, igual que un array.</span></div>
+            <pre class="example"><code>for (Integer entero : enteros) {
+    IO.println(entero);
+}</code></pre>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Array o ArrayList</span><span class="desc">El <b>array</b> tiene tamaño fijo y se usa con <b>[ ]</b>; el <b>ArrayList</b> crece y se usa con métodos (<b>add</b>, <b>remove</b>, <b>set</b>).</span></div>
+            <pre class="example"><code>arr[1] = 10;            // array
+enteros.set(1, 10);     // ArrayList</code></pre>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Fechas</h2>
+          <p class="group-desc">Lo que salió al final de <b>HolaMundo.java</b>: tres formas de tener la fecha de hoy.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">LocalDateTime (la moderna)</span><span class="desc">Es lo que se recomienda hoy. Está en <b>java.time</b> y no se modifica: cada cambio crea una fecha nueva.</span></div>
+            <pre class="example"><code>import java.time.LocalDateTime;
+
+LocalDateTime ahora = LocalDateTime.now();
+System.out.println(ahora);</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>Es una <b>ficha de fecha</b>: si quieres otra, sacas una nueva en vez de tachar la anterior.</div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Date y GregorianCalendar (las antiguas)</span><span class="desc">Las clases de siempre, de <b>java.util</b>. Funcionan, pero son más incómodas (en <b>GregorianCalendar</b> los meses empiezan en <b>0</b>). Se vieron para compararlas con la moderna.</span></div>
+            <pre class="example"><code>import java.util.Date;
+import java.util.GregorianCalendar;
+
+Date date = new Date();
+GregorianCalendar gc = new GregorianCalendar();</code></pre>
+            <div class="simple-explain"><span class="se-label">En cristiano</span>El <b>calendario gregoriano</b> es el que usamos hoy (desde 1582); la clase lleva su nombre.</div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">import</span><span class="desc">Para usar una clase que no es básica hay que <b>importarla</b> arriba. En el modo <b>main()</b> de Java 25 no hace falta para las de <b>java.base</b>, como <b>ArrayList</b>, <b>Random</b> o <b>Arrays</b>.</span></div>
+            <pre class="example"><code>import java.util.Scanner;
+import java.time.LocalDateTime;</code></pre>
           </div>
         </div>
       </div>
@@ -5957,6 +6066,7 @@ nombres.remove(0);</code></pre>
     li.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
   });
 </script>
+
 
 
 
