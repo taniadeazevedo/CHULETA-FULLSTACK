@@ -1549,6 +1549,72 @@
       </div>
 
       <div class="groups">
+        <div class="group">
+          <h2>Mapa visual</h2>
+          <p class="group-desc">Las ideas de HTML en esquemas, antes del detalle de cada etiqueta.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Esqueleto de una página</span><span class="desc">html → head + body</span></div>
+            <div class="jv-body">
+        <div class="jv-nest"><b>&lt;html&gt;</b> · toda la página
+          <div class="n2"><b>&lt;head&gt;</b> · lo que NO se ve: <code>title</code>, <code>meta</code>, <code>link</code>
+          </div>
+          <div class="n2"><b>&lt;body&gt;</b> · lo que SÍ se ve
+            <div class="n3">header · nav · main · footer…</div>
+          </div>
+        </div><pre class="vm-code">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+  &lt;head&gt; &lt;title&gt;Mi web&lt;/title&gt; &lt;/head&gt;
+  &lt;body&gt; ... &lt;/body&gt;
+&lt;/html&gt;</pre></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Estructura de la página</span><span class="desc">header, nav, main, aside, footer</span></div>
+            <div class="jv-body">
+        <div class="wf">
+          <div class="wf-b">&lt;header&gt;</div>
+          <div class="wf-b">&lt;nav&gt;</div>
+          <div class="wf-row">
+            <div class="wf-main"><div class="wf-b">&lt;main&gt;<br>&lt;section&gt; · &lt;article&gt;</div></div>
+            <div class="wf-b wf-aside">&lt;aside&gt;</div>
+          </div>
+          <div class="wf-b">&lt;footer&gt;</div>
+        </div>
+        <p>Etiquetas <b>semánticas</b>: dicen <b>qué es</b> cada zona. Un <code>&lt;div&gt;</code> es una caja sin significado.</p></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Anatomía de una etiqueta</span><span class="desc">apertura, atributo, contenido, cierre</span></div>
+            <div class="jv-body"><pre class="vm-code">&lt;a href="https://google.es" class="boton"&gt;Entrar&lt;/a&gt;</pre><ul class="glist"><li><span class="chip">&lt;a&gt;</span><span>etiqueta de apertura</span></li><li><span class="chip">href="…"</span><span>atributo: nombre="valor"</span></li><li><span class="chip">Entrar</span><span>el contenido</span></li><li><span class="chip">&lt;/a&gt;</span><span>etiqueta de cierre</span></li></ul></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Bloque o en línea</span><span class="desc">ocupan la línea o solo lo que miden</span></div>
+            <div class="jv-body">
+        <div class="bl">
+          <div class="b1">&lt;div&gt; · &lt;p&gt; · &lt;h1&gt; · &lt;ul&gt; — toda la línea, cada uno en la suya</div>
+          <div class="b1">&lt;section&gt; — otra línea</div>
+          <div class="ln"><span>&lt;span&gt;</span><span>&lt;a&gt;</span><span>&lt;strong&gt;</span><span>&lt;img&gt;</span></div>
+        </div>
+        <p><b>Bloque</b>: empieza en línea nueva y ocupa todo el ancho. <b>En línea</b>: va dentro del texto y mide lo justo.</p></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Etiquetas por familias</span><span class="desc">las que más se usan</span></div>
+            <div class="jv-body">
+        <div class="vm-grid"><div class="gcard vm-html"><h4>Texto</h4><ul class="glist"><li><span class="chip">h1 – h6</span><span>títulos</span></li><li><span class="chip">p</span><span>párrafo</span></li><li><span class="chip">strong · em</span><span>negrita · cursiva</span></li><li><span class="chip">br</span><span>salto de línea</span></li></ul></div><div class="gcard vm-js"><h4>Listas y enlaces</h4><ul class="glist"><li><span class="chip">ul · ol · li</span><span>listas</span></li><li><span class="chip">a</span><span>enlace</span></li><li><span class="chip">img</span><span>imagen</span></li><li><span class="chip">figure</span><span>imagen con pie</span></li></ul></div><div class="gcard vm-css"><h4>Tablas</h4><ul class="glist"><li><span class="chip">table</span><span>la tabla</span></li><li><span class="chip">tr</span><span>fila</span></li><li><span class="chip">th · td</span><span>cabecera · celda</span></li><li><span class="chip">thead · tbody</span><span>partes</span></li></ul></div><div class="gcard vm-bs"><h4>Formularios</h4><ul class="glist"><li><span class="chip">form</span><span>el formulario</span></li><li><span class="chip">label</span><span>su etiqueta</span></li><li><span class="chip">input</span><span>campo</span></li><li><span class="chip">select · textarea</span><span>lista · texto largo</span></li><li><span class="chip">button</span><span>botón</span></li></ul></div></div></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">id y class</span><span class="desc">un nombre único o un grupo</span></div>
+            <div class="jv-body">
+        <div class="vs2"><span class="a">id="menu"</span><span class="m">→ <b>único</b>: un solo elemento · CSS: <code>#menu</code></span></div>
+        <div class="vs2"><span class="a">class="boton"</span><span class="m">→ <b>reutilizable</b>: muchos elementos · CSS: <code>.boton</code></span></div><pre class="vm-code">&lt;button id="enviar" class="boton grande"&gt;Enviar&lt;/button&gt;</pre><p>Un elemento puede tener <b>varias clases</b>, separadas por espacios.</p></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Formulario: cómo encaja</span><span class="desc">label + input + button</span></div>
+            <div class="jv-body"><pre class="vm-code">&lt;form&gt;
+  &lt;label for="nombre"&gt;Nombre&lt;/label&gt;
+  &lt;input id="nombre" name="nombre" type="text"&gt;
+  &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</pre><ul class="glist"><li><span class="chip">for = id</span><span>une la etiqueta con su campo</span></li><li><span class="chip">name</span><span>cómo se llama el dato al enviarlo</span></li><li><span class="chip">type</span><span>qué clase de campo es</span></li></ul></div>
+          </div>
+        </div>
 
         <div class="group">
           <h2>Documento</h2>
@@ -2301,6 +2367,57 @@ animacion.gif → animaciones sencillas (solo 256 colores)</code></pre>
       </div>
 
       <div class="groups">
+        <div class="group">
+          <h2>Mapa visual</h2>
+          <p class="group-desc">Las ideas de CSS en esquemas, antes del detalle de cada propiedad.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Anatomía de una regla</span><span class="desc">selector { propiedad: valor }</span></div>
+            <div class="jv-body"><pre class="vm-code">p {                    /* selector: A QUIÉN */
+  color: red;          /* propiedad: valor; = declaración */
+  font-size: 18px;
+}</pre><ul class="glist"><li><span class="chip">p</span><span>selector: a quién se aplica</span></li><li><span class="chip">color</span><span>propiedad: qué cambia</span></li><li><span class="chip">red</span><span>valor: cómo queda</span></li><li><span class="chip">{ }</span><span>el bloque de la regla</span></li></ul></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">El modelo de caja</span><span class="desc">margin, border, padding, contenido</span></div>
+            <div class="jv-body">
+        <div class="bm bm-margin"><span>margin · fuera</span>
+          <div class="bm bm-border"><span>border · el borde</span>
+            <div class="bm bm-padding"><span>padding · dentro</span>
+              <div class="bm-content">contenido</div>
+            </div>
+          </div>
+        </div>
+        <p>Todo elemento es una <b>caja</b>. Con <code>box-sizing: border-box</code> el ancho incluye padding y borde.</p></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Selectores de un vistazo</span><span class="desc">a quién se aplica</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">p</span><span>todas las etiquetas p</span></li><li><span class="chip">.clase</span><span>las que tienen class="clase"</span></li><li><span class="chip">#id</span><span>la que tiene id="id"</span></li><li><span class="chip">ul li</span><span>li dentro de un ul</span></li><li><span class="chip">div &gt; p</span><span>p hijos directos de un div</span></li><li><span class="chip">a:hover</span><span>el enlace al pasar el ratón</span></li><li><span class="chip">[type="text"]</span><span>por atributo</span></li><li><span class="chip">::before</span><span>contenido añadido antes</span></li></ul></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Flexbox</span><span class="desc">colocar cajas en una fila o columna</span></div>
+            <div class="jv-body"><p>El contenedor lleva <code>display: flex</code>; sus hijos se colocan solos.</p><div class="fxr"><code>justify-content: flex-start</code><div class="fx" style="justify-content:flex-start"><i></i><i></i><i></i></div></div><div class="fxr"><code>justify-content: center</code><div class="fx" style="justify-content:center"><i></i><i></i><i></i></div></div><div class="fxr"><code>justify-content: space-between</code><div class="fx" style="justify-content:space-between"><i></i><i></i><i></i></div></div><div class="fxr"><code>justify-content: space-around</code><div class="fx" style="justify-content:space-around"><i></i><i></i><i></i></div></div><div class="fxr"><code>align-items: center</code><div class="fx" style="align-items:center"><i></i><i></i><i></i></div></div><div class="fxr"><code>flex-direction: column</code><div class="fx col"><i></i><i></i><i></i></div></div></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Quién gana: la cascada</span><span class="desc">si dos reglas chocan</span></div>
+            <div class="jv-body">
+        <div class="esc">
+          <div><b>!important</b><span>gana a todo</span></div>
+          <div><b>style="…"</b><span>en la propia etiqueta</span></div>
+          <div><b>#id</b><span>muy específico</span></div>
+          <div><b>.clase</b><span>específico</span></div>
+          <div><b>etiqueta</b><span>general</span></div>
+        </div>
+        <p>Gana el <b>más específico</b>; si empatan, el que va <b>más abajo</b> en el archivo.</p></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Unidades</span><span class="desc">px, rem, %, vw…</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">px</span><span>píxeles: fijo</span></li><li><span class="chip">rem</span><span>relativo a la letra de la página</span></li><li><span class="chip">em</span><span>relativo a la letra del elemento</span></li><li><span class="chip">%</span><span>del tamaño del padre</span></li><li><span class="chip">vw · vh</span><span>de la ventana</span></li><li><span class="chip">fr</span><span>una parte del espacio (grid)</span></li></ul></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">position</span><span class="desc">dónde se coloca una caja</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">static</span><span>normal: sigue el flujo</span></li><li><span class="chip">relative</span><span>normal, pero se puede mover</span></li><li><span class="chip">absolute</span><span>se coloca respecto a su padre</span></li><li><span class="chip">fixed</span><span>clavada en la ventana</span></li><li><span class="chip">sticky</span><span>se pega al hacer scroll</span></li></ul></div>
+          </div>
+        </div>
 
         <div class="group">
           <h2>Selectores básicos</h2>
@@ -3170,6 +3287,44 @@ render();
       </div>
 
       <div class="groups">
+        <div class="group">
+          <h2>Mapa visual</h2>
+          <p class="group-desc">Las ideas de JavaScript en esquemas, antes del detalle de cada función.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Los tipos de datos</span><span class="desc">qué puede guardar una variable</span></div>
+            <div class="jv-body"><div class="jv-tiles"><div class="jv-tile main"><b>string</b><span>texto</span><code>"hola"</code></div><div class="jv-tile main"><b>number</b><span>número</span><code>5  3.14</code></div><div class="jv-tile main"><b>boolean</b><span>verdadero o falso</span><code>true</code></div><div class="jv-tile main"><b>array</b><span>una lista</span><code>[1, 2, 3]</code></div><div class="jv-tile"><b>object</b><span>datos con nombre</span><code>{ edad: 33 }</code></div><div class="jv-tile"><b>function</b><span>una acción</span><code>() => {}</code></div><div class="jv-tile"><b>null</b><span>vacío a propósito</span></div><div class="jv-tile"><b>undefined</b><span>sin valor aún</span></div></div></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">let, const y var</span><span class="desc">cómo declarar</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">const</span><span>no se vuelve a asignar (la de siempre)</span></li><li><span class="chip">let</span><span>puede cambiar</span></li><li><span class="chip">var</span><span>la antigua: mejor no usarla</span></li></ul><pre class="vm-code">const IVA = 0.21;     // no cambia
+let total = 0;        // cambia
+total = total + 5;</pre></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Funciones</span><span class="desc">normal y flecha</span></div>
+            <div class="jv-body"><pre class="vm-code">function sumar(a, b) {      // normal
+  return a + b;
+}
+
+const sumar = (a, b) =&gt; a + b;   // flecha: lo mismo, más corto</pre></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Métodos de array</span><span class="desc">transformar listas</span></div>
+            <div class="jv-body"><div class="vs2"><span class="a">[1, 2, 3]</span><span class="m">.map(x => x * 2)</span><span class="r">[2, 4, 6]</span></div><p><b>map</b>: cambia cada elemento.</p><div class="vs2"><span class="a">[1, 2, 3, 4]</span><span class="m">.filter(x => x % 2 === 0)</span><span class="r">[2, 4]</span></div><p><b>filter</b>: se queda con los que cumplen.</p><div class="vs2"><span class="a">[1, 2, 3]</span><span class="m">.reduce((s, x) => s + x, 0)</span><span class="r">6</span></div><p><b>reduce</b>: junta todo en un solo valor.</p><div class="vs2"><span class="a">[5, 8, 12]</span><span class="m">.find(x => x > 6)</span><span class="r">8</span></div><p><b>find</b>: el primero que cumple.</p></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Objeto ↔ JSON</span><span class="desc">objeto de JavaScript y texto JSON</span></div>
+            <div class="jv-body"><div class="jv-flow"><div class="jv-step hl"><b>Objeto</b><code>{ nombre: "Ana" }</code></div><span class="jv-arrow" aria-hidden="true">↓<small>JSON.stringify</small></span><div class="jv-step"><b>Texto JSON</b><code>'{"nombre":"Ana"}'</code></div><span class="jv-arrow" aria-hidden="true">↓<small>JSON.parse</small></span><div class="jv-step hl"><b>Objeto otra vez</b>listo para usar</div></div><p>Por la red y en <code>localStorage</code> solo viajan <b>textos</b>.</p></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Buscar, escuchar y cambiar</span><span class="desc">el DOM y los eventos</span></div>
+            <div class="jv-body"><div class="jv-flow"><div class="jv-step"><b>1 · Buscar</b><code>document.querySelector("#boton")</code></div><span class="jv-arrow" aria-hidden="true">↓<small></small></span><div class="jv-step hl"><b>2 · Escuchar</b><code>boton.addEventListener("click", f)</code></div><span class="jv-arrow" aria-hidden="true">↓<small>cuando se hace clic</small></span><div class="jv-step"><b>3 · Cambiar</b><code>texto.textContent = "Hola"</code></div></div></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Pedir datos: fetch</span><span class="desc">del servidor a la pantalla</span></div>
+            <div class="jv-body"><div class="jv-flow"><div class="jv-step"><b>fetch(url)</b>hace la petición</div><span class="jv-arrow" aria-hidden="true">↓<small>await</small></span><div class="jv-step"><b>respuesta</b>llega del servidor</div><span class="jv-arrow" aria-hidden="true">↓<small>.json()</small></span><div class="jv-step hl"><b>datos</b>una lista u objeto</div><span class="jv-arrow" aria-hidden="true">↓<small>recorrer y pintar</small></span><div class="jv-step"><b>DOM</b>se ve en la página</div></div></div>
+          </div>
+        </div>
 
         <div class="group">
           <h2>Variables y funciones</h2>
@@ -4651,6 +4806,54 @@ ES2017  async · await</code></pre>
       </div>
 
       <div class="groups">
+        <div class="group">
+          <h2>Mapa visual</h2>
+          <p class="group-desc">Las ideas de Bootstrap en esquemas, antes del detalle de cada clase.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">La rejilla de 12 columnas</span><span class="desc">row + col-N</span></div>
+            <div class="jv-body"><div class="g12 reg"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i><i>9</i><i>10</i><i>11</i><i>12</i></div><div class="g12"><b style="grid-column:span 6">col-6</b><b style="grid-column:span 6">col-6</b></div><div class="g12"><b style="grid-column:span 4">col-4</b><b style="grid-column:span 4">col-4</b><b style="grid-column:span 4">col-4</b></div><div class="g12"><b style="grid-column:span 3">col-3</b><b style="grid-column:span 3">col-3</b><b style="grid-column:span 3">col-3</b><b style="grid-column:span 3">col-3</b></div><div class="g12"><b style="grid-column:span 8">col-8</b><b style="grid-column:span 4">col-4</b></div><div class="g12"><b style="grid-column:span 12">col-12</b></div><p>Cada <b>fila</b> (<code>row</code>) tiene <b>12</b> trozos. Las columnas suman 12 (si sobran, bajan de línea).</p><pre class="vm-code">&lt;div class="row"&gt;
+  &lt;div class="col-8"&gt;...&lt;/div&gt;
+  &lt;div class="col-4"&gt;...&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Breakpoints</span><span class="desc">cambia según el ancho</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">xs</span><span>menos de 576 · móvil vertical</span></li><li><span class="chip">sm</span><span>576 o más · móvil horizontal</span></li><li><span class="chip">md</span><span>768 o más · tablet</span></li><li><span class="chip">lg</span><span>992 o más · portátil</span></li><li><span class="chip">xl</span><span>1200 o más · escritorio</span></li><li><span class="chip">xxl</span><span>1400 o más · escritorio grande</span></li></ul><pre class="vm-code">&lt;div class="col-12 col-md-6 col-lg-4"&gt;...&lt;/div&gt;</pre><p>1 columna en móvil, 2 en tablet y 3 en portátil.</p></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Espaciado: m y p</span><span class="desc">margin y padding</span></div>
+            <div class="jv-body"><div class="jv-tiles"><div class="jv-tile"><b>0</b><span>0</span></div><div class="jv-tile"><b>1</b><span>.25rem</span></div><div class="jv-tile"><b>2</b><span>.5rem</span></div><div class="jv-tile main"><b>3</b><span>1rem</span></div><div class="jv-tile"><b>4</b><span>1.5rem</span></div><div class="jv-tile"><b>5</b><span>3rem</span></div></div><ul class="glist"><li><span class="chip">m · p</span><span>margin (fuera) · padding (dentro)</span></li><li><span class="chip">t b s e</span><span>arriba · abajo · inicio · final</span></li><li><span class="chip">x · y</span><span>los dos lados · arriba y abajo</span></li></ul><pre class="vm-code">&lt;div class="mt-3 px-4 mb-5"&gt;...&lt;/div&gt;</pre></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Estructura de una card</span><span class="desc">imagen, cuerpo y pie</span></div>
+            <div class="jv-body">
+        <div class="cardx">
+          <div>card-img-top · la imagen</div>
+          <div class="bd">card-body<br>&nbsp;&nbsp;card-title · card-text · btn</div>
+          <div class="ft">card-footer · el pie</div>
+        </div><pre class="vm-code">&lt;div class="card"&gt;
+  &lt;img class="card-img-top" src="..." alt=""&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h5 class="card-title"&gt;Título&lt;/h5&gt;
+    &lt;p class="card-text"&gt;Texto&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Colores</span><span class="desc">primary, success, danger…</span></div>
+            <div class="jv-body">
+        <div class="sw">
+          <span style="background:#0d6efd;color:#fff">primary</span><span style="background:#6c757d;color:#fff">secondary</span>
+          <span style="background:#198754;color:#fff">success</span><span style="background:#dc3545;color:#fff">danger</span>
+          <span style="background:#ffc107;color:#000">warning</span><span style="background:#0dcaf0;color:#000">info</span>
+          <span style="background:#f8f9fa;color:#000">light</span><span style="background:#212529;color:#fff">dark</span>
+        </div><ul class="glist"><li><span class="chip">btn-primary</span><span>botón de ese color</span></li><li><span class="chip">text-danger</span><span>texto de ese color</span></li><li><span class="chip">bg-success</span><span>fondo de ese color</span></li><li><span class="chip">alert-warning</span><span>aviso de ese color</span></li></ul></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Componentes habituales</span><span class="desc">las piezas ya hechas</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">btn</span><span>botones</span></li><li><span class="chip">card</span><span>tarjetas</span></li><li><span class="chip">navbar</span><span>barra de menú</span></li><li><span class="chip">modal</span><span>ventana emergente</span></li><li><span class="chip">alert</span><span>avisos</span></li><li><span class="chip">badge</span><span>etiquetita</span></li><li><span class="chip">form-control</span><span>campos de formulario</span></li><li><span class="chip">table</span><span>tablas</span></li></ul></div>
+          </div>
+        </div>
 
         <div class="group">
           <h2>Instalación</h2>
@@ -5087,6 +5290,42 @@ modal.addEventListener('show.bs.modal', (e) =&gt; {
 
       <div class="groups">
         <div class="group">
+          <h2>Mapa visual</h2>
+          <p class="group-desc">Las ideas de React en esquemas, antes del detalle de cada concepto.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Árbol de componentes</span><span class="desc">unos dentro de otros</span></div>
+            <div class="jv-body">
+        <ul class="tr"><li><span class="chip js">App</span>
+          <ul><li><span class="chip">Menu</span></li>
+              <li><span class="chip">Listado</span>
+                <ul><li><span class="chip">Ficha</span></li><li><span class="chip">Ficha</span></li></ul></li>
+              <li><span class="chip">Pie</span></li></ul></li></ul>
+        <p>Cada caja es un <b>componente</b>. El de arriba es el <b>padre</b>; los de dentro, sus <b>hijos</b>.</p></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Cómo viajan los datos</span><span class="desc">props hacia abajo, avisos hacia arriba</span></div>
+            <div class="jv-body"><div class="jv-flow"><div class="jv-step hl"><b>Padre</b>tiene el <b>estado</b></div><span class="jv-arrow" aria-hidden="true">↓<small>props: los datos bajan</small></span><div class="jv-step"><b>Hijo</b>los muestra</div><span class="jv-arrow" aria-hidden="true">↓<small>onCambio(): el aviso sube</small></span><div class="jv-step hl"><b>Padre</b>cambia el estado</div></div></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Qué pasa al cambiar el estado</span><span class="desc">el ciclo de React</span></div>
+            <div class="jv-body"><div class="jv-flow"><div class="jv-step"><b>1 · Algo ocurre</b>un clic, escribir…</div><span class="jv-arrow" aria-hidden="true">↓<small></small></span><div class="jv-step hl"><b>2 · setUsuario(valor)</b>se cambia el estado</div><span class="jv-arrow" aria-hidden="true">↓<small>React vuelve a ejecutar</small></span><div class="jv-step"><b>3 · El componente</b>se dibuja otra vez</div><span class="jv-arrow" aria-hidden="true">↓<small></small></span><div class="jv-step"><b>4 · La pantalla</b>muestra lo nuevo</div></div></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Reglas de JSX</span><span class="desc">HTML dentro de JavaScript</span></div>
+            <div class="jv-body"><div class="jv-tiles"><div class="jv-tile main"><b>1 raíz</b><span>solo un elemento de primer nivel</span></div><div class="jv-tile main"><b>&lt;&gt;&lt;/&gt;</b><span>fragmento si hay varios</span></div><div class="jv-tile"><b>cierre</b><span>todas las etiquetas se cierran</span><code>&lt;img /&gt;</code></div><div class="jv-tile main"><b>className</b><span>en vez de class</span></div><div class="jv-tile main"><b>{ }</b><span>JavaScript dentro</span><code>{nombre}</code></div><div class="jv-tile"><b>Mayúscula</b><span>los componentes empiezan así</span><code>&lt;Ficha /&gt;</code></div></div></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">useEffect: cuándo se ejecuta</span><span class="desc">según el segundo parámetro</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">useEffect(f)</span><span>después de cada dibujado</span></li><li><span class="chip">useEffect(f, [])</span><span>una sola vez, al aparecer</span></li><li><span class="chip">useEffect(f, [x])</span><span>al aparecer y cada vez que x cambia</span></li></ul><pre class="vm-code">useEffect(() =&gt; {
+  cargarDatos();     // pide los datos al aparecer
+}, []);</pre></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Páginas con React Router</span><span class="desc">de la dirección al componente</span></div>
+            <div class="jv-body"><div class="jv-flow"><div class="jv-step"><b>Dirección</b><code>/admin</code></div><span class="jv-arrow" aria-hidden="true">↓<small>router.jsx: path → Component</small></span><div class="jv-step hl"><b>Ruta</b><code>{ path: "admin", Component: Admin }</code></div><span class="jv-arrow" aria-hidden="true">↓<small>&lt;Outlet /&gt;</small></span><div class="jv-step"><b>Se pinta</b><code>Admin</code> dentro de <code>App</code></div></div></div>
+          </div>
+        </div>
+        <div class="group">
           <h2>React en un solo archivo</h2>
           <p class="group-desc">Para probar sin instalar nada: una sola página HTML con React cargado desde internet (así empezó la clase).</p>
           <div class="entry core">
@@ -5432,301 +5671,364 @@ npm run preview   # prueba la versión ya construida</code></pre>
       </div>
     </section>
 
+    <style>
+  .wf{ display:flex; flex-direction:column; gap:6px; }
+  .wf-b{ border:1.5px dashed var(--dot); border-radius:8px; padding:6px 10px; font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:12px; background:var(--dot-soft); color:var(--dot); }
+  .wf-row{ display:flex; gap:6px; }
+  .wf-main{ flex:3; display:flex; flex-direction:column; gap:6px; }
+  .wf-aside{ flex:1; }
+  .bm{ border-radius:8px; padding:20px 16px 16px; position:relative; font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:11px; color:var(--ink-soft); }
+  .bm > span{ position:absolute; top:4px; left:10px; font-size:10px; letter-spacing:.06em; text-transform:uppercase; }
+  .bm-margin{ background:var(--accent-js-soft); border:1.5px dashed var(--accent-js); }
+  .bm-border{ background:var(--accent-html-soft); border:3px solid var(--accent-html); }
+  .bm-padding{ background:var(--accent-pr-soft); border:1.5px dashed var(--accent-pr); }
+  .bm-content{ background:var(--accent-css-soft); border:1.5px solid var(--accent-css); border-radius:6px; padding:10px; text-align:center; color:var(--ink); }
+  .fxr{ display:flex; flex-direction:column; gap:3px; }
+  .fxr code{ font-size:11.5px; color:var(--ink); }
+  .fx{ display:flex; gap:4px; padding:6px; background:var(--surface-2); border-radius:8px; min-height:50px; }
+  .fx i{ display:block; width:24px; border-radius:5px; background:var(--dot); opacity:.85; }
+  .fx i:nth-child(1){ height:18px; } .fx i:nth-child(2){ height:30px; } .fx i:nth-child(3){ height:22px; }
+  .fx.col{ flex-direction:column; min-height:0; } .fx.col i{ width:46px; height:14px; }
+  .g12{ display:grid; grid-template-columns:repeat(12,1fr); gap:3px; margin-bottom:4px; }
+  .g12 b{ background:var(--dot-soft); border:1px solid var(--dot); border-radius:5px; text-align:center; font:600 11px "IBM Plex Mono", ui-monospace, monospace; padding:4px 0; color:var(--dot); }
+  .g12.reg i{ font:normal 9.5px "IBM Plex Mono", ui-monospace, monospace; text-align:center; color:var(--ink-faint); }
+  .sw{ display:flex; flex-wrap:wrap; gap:6px; }
+  .sw span{ padding:5px 10px; border-radius:6px; font:600 12px "IBM Plex Mono", ui-monospace, monospace; }
+  .tr, .tr ul{ list-style:none; margin:0; padding:0; }
+  .tr ul{ margin:4px 0 0 12px; padding-left:12px; border-left:2px solid var(--border); display:flex; flex-direction:column; gap:4px; }
+  .tr li{ display:flex; flex-direction:column; align-items:flex-start; gap:4px; font-size:12px; color:var(--ink-soft); }
+  .esc div{ padding:5px 10px; border-radius:8px; margin:4px 0; border:1px solid var(--border); background:var(--surface); font-size:12.5px; color:var(--ink-soft); display:flex; justify-content:space-between; gap:8px; }
+  .esc div b{ font-family:"IBM Plex Mono", ui-monospace, monospace; color:var(--ink); }
+  .esc div:nth-child(1){ width:100%; background:var(--dot-soft); border-color:var(--dot); }
+  .esc div:nth-child(2){ width:86%; } .esc div:nth-child(3){ width:72%; } .esc div:nth-child(4){ width:58%; } .esc div:nth-child(5){ width:44%; min-width:170px; }
+  .bl{ display:flex; flex-direction:column; gap:5px; }
+  .bl .b1{ border:1.5px solid var(--dot); background:var(--dot-soft); border-radius:6px; padding:4px 10px; font:12px "IBM Plex Mono", ui-monospace, monospace; color:var(--dot); }
+  .bl .ln{ display:flex; gap:5px; flex-wrap:wrap; }
+  .bl .ln span{ border:1.5px solid var(--accent-css); background:var(--accent-css-soft); border-radius:6px; padding:4px 10px; font:12px "IBM Plex Mono", ui-monospace, monospace; color:var(--accent-css); }
+  .vs2{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .vs2 .a, .vs2 .r{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:12px; padding:4px 10px; border-radius:6px; border:1.5px solid var(--ink-soft); background:var(--surface-2); color:var(--ink); }
+  .vs2 .r{ border-color:var(--dot); background:var(--dot-soft); color:var(--dot); }
+  .vs2 .m{ font-size:11.5px; color:var(--ink-soft); }
+  .cardx{ border:1.5px solid var(--border); border-radius:10px; overflow:hidden; background:var(--surface); font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:11.5px; color:var(--ink-soft); }
+  .cardx > div{ padding:8px 12px; border-top:1px solid var(--border); }
+  .cardx > div:first-child{ border-top:0; background:var(--dot-soft); color:var(--dot); }
+  .cardx .bd{ background:var(--surface); }
+  .cardx .ft{ background:var(--surface-2); }
+</style>
     <!-- JAVA -->
     <section class="panel" id="panel-java" style="--dot:var(--accent-html); --dot-soft:var(--accent-html-soft)">
+<style>
+  .jv-body{ display:flex; flex-direction:column; gap:10px; }
+  .jv-body p{ margin:0; font-size:13px; line-height:1.45; color:var(--ink-soft); }
+  .jv-body p b{ color:var(--ink); }
+  .jv-flow{ display:flex; flex-direction:column; align-items:stretch; gap:4px; }
+  .jv-step{ background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:8px 12px; font-size:12.5px; line-height:1.4; color:var(--ink-soft); min-width:0; }
+  .jv-step b{ display:block; color:var(--ink); font-size:13.5px; margin-bottom:1px; }
+  .jv-step.hl{ border:1.5px solid var(--dot); background:var(--dot-soft); }
+  .jv-arrow{ align-self:center; color:var(--ink-faint); font-size:15px; line-height:1; text-align:center; }
+  .jv-arrow small{ margin-left:6px; font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10.5px; color:var(--ink-soft); }
+  .jv-nest{ border:1.5px solid var(--border); background:var(--surface-2); border-radius:12px; padding:10px 12px; font-size:12.5px; color:var(--ink-soft); }
+  .jv-nest .n2{ margin-top:8px; border:1.5px solid var(--border); background:var(--surface); border-radius:10px; padding:8px 10px; }
+  .jv-nest .n3{ margin-top:8px; border:1.5px solid var(--dot); background:var(--dot-soft); border-radius:8px; padding:6px 10px; }
+  .jv-nest b{ color:var(--ink); }
+  .jv-tiles{ display:grid; grid-template-columns:repeat(auto-fill, minmax(104px,1fr)); gap:6px; }
+  .jv-tile{ background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:7px 10px; display:flex; flex-direction:column; gap:1px; min-width:0; }
+  .jv-tile.main{ border:1.5px solid var(--dot); background:var(--dot-soft); }
+  .jv-tile b{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:13.5px; color:var(--ink); }
+  .jv-tile span{ font-size:11.5px; color:var(--ink-soft); line-height:1.3; }
+  .jv-tile code{ font-size:11.5px; color:var(--dot); }
+  .jv-mem{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; font-size:12.5px; color:var(--ink-soft); }
+  .jv-mem .v{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-weight:600; color:var(--ink); }
+  .jv-box{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-weight:600; font-size:13px; padding:4px 12px; border-radius:6px; border:1.5px solid var(--ink-soft); background:var(--surface-2); color:var(--ink); }
+  .jv-box.ref{ border-color:var(--dot); background:var(--dot-soft); color:var(--dot); }
+  .jv-box.obj{ border-style:dashed; }
+  .jv-lad div{ padding:6px 12px; border-radius:8px; margin:5px 0; font-size:13px; color:var(--ink-soft); border:1px solid var(--border); background:var(--surface); }
+  .jv-lad div b{ font-family:"IBM Plex Mono", ui-monospace, monospace; color:var(--ink); }
+  .jv-lad div:nth-child(1){ width:60%; min-width:170px; border-color:var(--dot); }
+  .jv-lad div:nth-child(2){ width:74%; min-width:200px; }
+  .jv-lad div:nth-child(3){ width:88%; min-width:230px; }
+  .jv-lad div:nth-child(4){ width:100%; background:var(--dot-soft); border-color:var(--dot); }
+  .jv-chips{ display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+  .chip.lts{ --c:var(--accent-html); --cs:var(--accent-html-soft); font-size:13px; padding:4px 12px; }
+  .jv-semver{ display:flex; align-items:flex-start; gap:6px; font-family:"IBM Plex Mono", ui-monospace, monospace; }
+  .jv-semver div{ text-align:center; font-size:10.5px; color:var(--ink-soft); line-height:1.3; }
+  .jv-semver div strong{ display:block; font-size:28px; line-height:1.1; color:var(--ink); }
+  .jv-semver .dot{ font-size:28px; color:var(--ink-faint); line-height:1.1; }
+  .jv-warn{ padding:7px 10px; border-radius:8px; background:var(--accent-html-soft); border:1px solid var(--accent-html); font-size:12.5px; line-height:1.45; color:var(--ink); }
+  .jv-warn b{ color:var(--accent-html); }
+  .jv-body .glist{ padding:0; }
+</style>
       <div class="panel-intro">
         <span class="glyph">&lt;/&gt;</span>
-        <p><strong>Java</strong> es el <strong>lenguaje del servidor</strong> (el backend): donde se escriben las reglas. Aquí está <strong>lo visto en clase</strong>: el proyecto <strong>holamundo</strong> en Eclipse, con <strong>Java 25</strong>.</p>
+        <p><strong>Java</strong> es el <strong>lenguaje del servidor</strong> (el backend): donde se escriben las reglas. Pulsa el <strong>+</strong> de cada fila para abrirla, igual que en las otras pestañas.</p>
       </div>
 
       <div class="groups">
         <div class="group">
-          <h2>Qué es Java y cómo se ejecuta</h2>
-          <p class="group-desc">Lo primero: de dónde sale el programa y quién lo ejecuta.</p>
+          <h2>Cómo se ejecuta un programa</h2>
+          <p class="group-desc">Se escribe una sola vez y funciona en cualquier sistema.</p>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">Java no es JavaScript</span><span class="desc">Son <b>dos lenguajes distintos</b> que solo comparten parte del nombre. Java se usa sobre todo en el <b>servidor</b>; JavaScript, en el navegador.</span></div>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Como «Carne» y «Carnet»: suenan parecido y no tienen nada que ver.</div>
-          </div>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">Compilar y ejecutar</span><span class="desc">Java primero se <b>traduce</b> (compila) a un código intermedio llamado <b>bytecode</b>, y la <b>JVM</b> lo ejecuta. JavaScript se ejecuta tal cual. Eclipse lo hace por ti al pulsar «Run».</span></div>
-            <pre class="example"><code>Hola.java   ──javac──▶   Hola.class   ──java──▶   se ejecuta
-(tu código)              (bytecode)               (la JVM)</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Escribes la receta (.java), un traductor la pasa a un idioma universal (.class) y cualquier cocina con JVM sabe cocinarla, sea Windows, Mac o Linux.</div>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">JVM · JRE · JDK</span><span class="desc">La <b>JVM</b> ejecuta; el <b>JRE</b> es la JVM más las librerías; el <b>JDK</b> es el JRE más las herramientas para programar (como <b>javac</b>). Para programar necesitas el <b>JDK</b>. En clase se usa <b>Java 25</b>.</span></div>
-            <pre class="example"><code>JDK  =  JRE  +  herramientas (javac, ...)
-JRE  =  JVM  +  librerías</code></pre>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Tipado estático</span><span class="desc">En Java <b>cada variable tiene un tipo declarado</b> y no puede cambiarlo. Si te equivocas, el compilador avisa <b>antes</b> de ejecutar.</span></div>
-            <pre class="example"><code>// JavaScript: el tipo cambia
-let dato = 5;
-dato = "cinco";      // vale
-
-// Java: el tipo es fijo
-int dato = 5;
-dato = "cinco";      // ERROR al compilar</code></pre>
-          </div>
-        </div>
-        <div class="group">
-          <h2>Primer programa (Eclipse)</h2>
-          <p class="group-desc">El proyecto <b>holamundo</b> de clase: un Java Project con la carpeta <b>src</b> y un <b>package</b>.</p>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">class + main</span><span class="desc">Todo va dentro de una <b>clase</b>. El programa empieza en el método <b>main</b>. El archivo se llama igual que la clase (<b>HolaMundo.java</b>) y la primera línea dice en qué <b>package</b> está.</span></div>
-            <pre class="example"><code>package holamundo;
-
-public class HolaMundo {
-    public static void main(String[] args) {
-        System.out.println("Hola");
-    }
-}</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>La clase es el local; el <b>main</b> es la puerta por la que entra el primer cliente.</div>
+            <div class="entry-head"><span class="tag">Del código al programa</span><span class="desc">de <b>.java</b> a un programa que funciona</span></div>
+            <div class="jv-body">
+              <div class="jv-flow">
+                <div class="jv-step"><b>Tu código</b><code>.java</code>, el texto que escribes.</div>
+                <span class="jv-arrow" aria-hidden="true">↓<small>javac</small></span>
+                <div class="jv-step hl"><b>Bytecode</b><code>.class</code>, un «código máquina genérico».</div>
+                <span class="jv-arrow" aria-hidden="true">↓<small>JVM</small></span>
+                <div class="jv-step"><b>Se ejecuta</b>en Windows, Mac o Linux.</div>
+              </div></div>
           </div>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">main() sin clase (Java 25)</span><span class="desc">En Java 25 un programa pequeño puede ser <b>solo un método main()</b>, sin <b>class</b>, sin <b>public static</b> y sin <b>imports</b>. Es lo que se usa en <b>AdivinaElNumero.java</b>, <b>EjemploArrays.java</b> y <b>Colecciones.java</b>.</span></div>
-            <pre class="example"><code>void main() {
-    ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();   // sin import
-    IO.println("Hola");
-}</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Es la versión «para llevar»: pides directamente al camarero, sin montar el local entero.</div>
+            <div class="entry-head"><span class="tag">JDK · JRE · JVM</span><span class="desc">tres cajas, una dentro de otra</span></div>
+            <div class="jv-body">
+              <div class="jv-nest"><b>JDK</b> · para programar (trae <code>javac</code>)
+                <div class="n2"><b>JRE</b> · para ejecutar (las librerías)
+                  <div class="n3"><b>JVM</b> · el «procesador virtual» que ejecuta el bytecode</div>
+                </div>
+              </div></div>
           </div>
           <div class="entry">
-            <div class="entry-head"><span class="tag">Comentarios y Javadoc</span><span class="desc">Dos comentarios como en JavaScript (<b>//</b> y <b>/* */</b>) y uno nuevo: <b>/** */</b>, el <b>Javadoc</b>, que documenta la clase o el método y sirve para generar la ayuda.</span></div>
-            <pre class="example"><code>// una línea
-/* varias
-   líneas */
-
-/**
- * Método de inicio de la aplicación
- * @param args argumentos recibidos por consola
- */</code></pre>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Quitar module-info</span><span class="desc">Eclipse puede crear un archivo <b>module-info.java</b>. En clase se borra («Quitamos module-info»): para estos ejemplos no hace falta.</span></div>
+            <div class="entry-head"><span class="tag">Compilado o interpretado</span><span class="desc">dos formas de traducir un programa</span></div>
+            <div class="jv-body">
+              <p><b>Interpretado</b> (JavaScript, Python): se traduce mientras se ejecuta, como un <b>traductor simultáneo</b>. Más lento.</p>
+              <p><b>Compilado</b> (Java): se traduce antes, como una <b>transcripción</b> entera. Más rápido.</p></div>
           </div>
         </div>
         <div class="group">
           <h2>Variables y tipos</h2>
-          <p class="group-desc">Los tipos básicos y las cosas que se vieron en <b>HolaMundo.java</b>.</p>
+          <p class="group-desc">Cada variable tiene un <b>tipo fijo</b>.</p>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">Tipos básicos</span><span class="desc">Los más usados. <b>String</b> (con mayúscula) es una clase, no un tipo básico.</span></div>
-            <pre class="example"><code>int x = 5;                    // entero
-double d = 0.1;               // decimal
-boolean activo = true;        // true o false
-char letra = 'A';             // un carácter (comillas simples)
-String nombre = "Pepe";       // texto (comillas dobles)</code></pre>
+            <div class="entry-head"><span class="tag">Los 8 tipos</span><span class="desc">los resaltados son los de siempre</span></div>
+            <div class="jv-body"><div class="jv-tiles"><div class="jv-tile main"><b>int</b><span>entero</span><code>5</code></div><div class="jv-tile main"><b>double</b><span>decimal</span><code>32.5</code></div><div class="jv-tile main"><b>boolean</b><span>verdadero o falso</span><code>true</code></div><div class="jv-tile main"><b>char</b><span>un carácter</span><code>'a'</code></div><div class="jv-tile"><b>long</b><span>entero enorme</span><code>5L</code></div><div class="jv-tile"><b>float</b><span>decimal corto</span><code>32.5F</code></div><div class="jv-tile"><b>short</b><span>entero pequeño</span></div><div class="jv-tile"><b>byte</b><span>entero mínimo</span></div></div></div>
           </div>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">long y la L</span><span class="desc">Un entero muy grande no cabe en <b>int</b> (llega a unos 2.147 millones). Para eso está <b>long</b>, y el número se escribe con una <b>L</b> al final.</span></div>
-            <pre class="example"><code>long l = 21470000000L;</code></pre>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">0.1 + 0.2</span><span class="desc">Los decimales no son exactos: <b>double</b> guarda aproximaciones, y esa suma no da justo 0,3.</span></div>
-            <pre class="example"><code>double suma = 0.1 + 0.2;
-System.out.println(suma);   // 0.30000000000000004</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Es como medir con una regla sin décimas: casi todo cuadra, pero algunas cuentas se desvían un pelín. Pasa igual en JavaScript.</div>
+            <div class="entry-head"><span class="tag">Declarar variables</span><span class="desc">tipo, nombre y valor</span></div>
+            <div class="jv-body"><pre class="vm-code">int edad = 33;
+double precio = 9.99;
+String nombre = "Tania";   // texto: es una clase
+final double IVA = 0.21;   // constante: no cambia</pre></div>
           </div>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">Texto: unir, formatear y bloques</span><span class="desc">El texto se une con <b>+</b>, se formatea con <b>String.format</b> (<b>%s</b> es el hueco) y un <b>bloque de texto</b> con tres comillas permite varias líneas.</span></div>
-            <pre class="example"><code>String nombre = "Pepe";
-System.out.println("Hola " + nombre);
-
-String saludo = String.format("Hola %s", nombre);
-
-System.out.println("""
-        Hola a todos
-        Texto multilínea
-        """);</code></pre>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">\n</span><span class="desc">El salto de línea dentro de un texto.</span></div>
-            <pre class="example"><code>System.out.println("Hola\n" + "Que tal\n" + "Prueba");</code></pre>
-          </div>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">Math.pow</span><span class="desc">Potencias (no hay <b>**</b> como en JavaScript).</span></div>
-            <pre class="example"><code>System.out.println(Math.pow(5, 3));   // 125.0</code></pre>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">final</span><span class="desc">Una variable <b>que no se puede cambiar</b> después: es el <b>const</b> de Java. Por costumbre se escribe en MAYÚSCULAS.</span></div>
-            <pre class="example"><code>final double IVA = 0.21;</code></pre>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Comparar textos: equals</span><span class="desc">Con los números se usa <b>==</b>, pero los textos se comparan con <b>.equals()</b>.</span></div>
-            <pre class="example"><code>String a = "hola";
-a.equals("hola");        // true: compara el contenido</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Con <b>equals</b> preguntas «¿dicen lo mismo?»; con <b>==</b> preguntarías «¿son el mismo objeto?».</div>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">@SuppressWarnings("unused")</span><span class="desc">Una <b>anotación</b> que le dice a Eclipse que no avise de que esa variable no se usa. En clase aparece porque las variables eran solo de prueba.</span></div>
-            <pre class="example"><code>@SuppressWarnings("unused")
-long l = 21470000000L;</code></pre>
+            <div class="entry-head"><span class="tag">Convertir texto en número</span><span class="desc">lo que se lee siempre llega como texto</span></div>
+            <div class="jv-body"><pre class="vm-code">int n = Integer.parseInt("42");
+double d = Double.parseDouble("3.5");</pre></div>
           </div>
         </div>
         <div class="group">
-          <h2>Consola: leer y escribir</h2>
-          <p class="group-desc">Cómo pedir datos a la persona y mostrar resultados.</p>
+          <h2>Primitivo o referencia</h2>
+          <p class="group-desc">La idea que más confunde: <b>qué guarda</b> la variable.</p>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">println · print</span><span class="desc"><b>println</b> escribe y salta de línea; <b>print</b> no salta. Es el <b>console.log</b> de Java.</span></div>
-            <pre class="example"><code>System.out.println("Hola");     // con salto de línea
-System.out.print("Hola ");      // sin salto</code></pre>
+            <div class="entry-head"><span class="tag">Qué guarda cada una</span><span class="desc">el valor o la dirección</span></div>
+            <div class="jv-body">
+              <p><b>Primitivo</b> (int, double, boolean…): la caja guarda <b>el valor</b>.</p>
+              <div class="jv-mem"><span class="v">x</span><span class="jv-box">7</span></div>
+              <div class="jv-mem"><span class="v">y = x</span><span class="jv-box">7</span><span>← copia el valor</span></div>
+              <p><b>Referencia</b> (String, arrays, objetos): la caja guarda <b>la dirección</b> donde está el objeto.</p>
+              <div class="jv-mem"><span class="v">x</span><span class="jv-box ref">0x100</span><span>→</span><span class="jv-box obj">"PRUEBA"</span></div>
+              <div class="jv-mem"><span class="v">y = x</span><span class="jv-box ref">0x100</span><span>→ el mismo objeto</span></div></div>
           </div>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">Scanner</span><span class="desc">Lee lo que la persona <b>escribe en la consola</b>. Se crea con <b>System.in</b>, se lee con <b>nextLine()</b> y se <b>cierra</b> al terminar.</span></div>
-            <pre class="example"><code>Scanner sc = new Scanner(System.in);
-
-System.out.print("Dime tu nombre: ");
-String nombre = sc.nextLine();
-
-System.out.println("Hola " + nombre);
-sc.close();</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Es el <b>cuaderno de comandas</b>: lo abres, apuntas lo que dice el cliente y lo cierras.</div>
+            <div class="entry-head"><span class="tag">== frente a equals</span><span class="desc">dirección o contenido</span></div>
+            <div class="jv-body">
+              <p><b>==</b> compara las <b>direcciones</b> (¿es el mismo objeto?).<br><b>.equals()</b> compara el <b>contenido</b> (¿dicen lo mismo?).</p><pre class="vm-code">x.equals(y)    // ¿mismo contenido?
+x == y         // ¿misma dirección?</pre></div>
           </div>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">IO.println · IO.readln (Java 25)</span><span class="desc">La forma corta de Java 25: <b>IO.readln</b> muestra el mensaje y <b>lee</b> en una sola línea. Devuelve siempre un <b>String</b>.</span></div>
-            <pre class="example"><code>IO.println("Hola");
-String texto = IO.readln("Dime un número de 1 a 10: ");</code></pre>
-          </div>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">Integer.parseInt</span><span class="desc">Convierte un <b>texto</b> en un <b>número</b> entero. Hace falta porque lo que se lee por consola siempre llega como texto.</span></div>
-            <pre class="example"><code>int numero = Integer.parseInt(IO.readln("Dime un número: "));</code></pre>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">null</span><span class="desc">una referencia sin objeto</span></div>
+            <div class="jv-body">
+              <p>Una referencia que <b>no apunta a nada</b> vale <code>null</code>. Un primitivo nunca es null.</p><pre class="vm-code">String x;   // sin objeto: null</pre></div>
           </div>
         </div>
         <div class="group">
-          <h2>Control de flujo</h2>
-          <p class="group-desc">Casi igual que en JavaScript. Mira el juego <b>AdivinaElNumero.java</b>.</p>
+          <h2>Un programa y la consola</h2>
+          <p class="group-desc">La estructura mínima y cómo hablar con la persona.</p>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">if / else if / else</span><span class="desc">Igual que en JavaScript, pero la condición tiene que ser un <b>boolean</b> de verdad.</span></div>
-            <pre class="example"><code>if (numeroAleatorio &lt; numero) {
-    resultado = "Es menor";
-} else if (numeroAleatorio &gt; numero) {
-    resultado = "Es MAYOR";
-} else {
-    resultado = "¡HAS ACERTADO!";
-}</code></pre>
+            <div class="entry-head"><span class="tag">Estructura mínima</span><span class="desc">clase + main</span></div>
+            <div class="jv-body"><pre class="vm-code">public class Programa {                        // la clase
+    public static void main(String[] args) {   // por aquí empieza
+        System.out.println("Hola");            // escribe
+    }
+}</pre><p>El archivo se llama igual que la clase: <code>Programa.java</code>.</p></div>
           </div>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">do … while</span><span class="desc">Hace el bloque <b>al menos una vez</b> y repite mientras la condición sea verdadera. Ideal para «pedir hasta acertar».</span></div>
-            <pre class="example"><code>do {
-    numero = Integer.parseInt(IO.readln("Dime un número: "));
+            <div class="entry-head"><span class="tag">Java 25: más corto</span><span class="desc">sin class, sin public static</span></div>
+            <div class="jv-body"><pre class="vm-code">void main() {
+    IO.println("Hola");
+    String t = IO.readln("Tu nombre: ");
+}</pre><p>Sin <code>class</code>, sin <code>public static</code> y sin <code>import</code>.</p></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Mostrar y leer</span><span class="desc">println, Scanner, IO</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">println</span><span>escribe y salta de línea</span></li><li><span class="chip">print</span><span>escribe sin saltar</span></li><li><span class="chip">Scanner</span><span>lee lo que se teclea</span></li><li><span class="chip">IO.readln</span><span>pregunta y lee (Java 25)</span></li></ul></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">void y lo que devuelve un método</span><span class="desc">qué entrega un método</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">void</span><span>no devuelve nada</span></li><li><span class="chip">int</span><span>devuelve un número</span></li><li><span class="chip">String</span><span>devuelve un texto</span></li><li><span class="chip">return</span><span>entrega el resultado</span></li></ul></div>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Decidir y repetir</h2>
+          <p class="group-desc">Casi igual que en JavaScript.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">if / else</span><span class="desc">decidir</span></div>
+            <div class="jv-body"><pre class="vm-code">if (edad &gt;= 18) {
     ...
-} while (numero != numeroAleatorio);</code></pre>
+} else if (edad &gt;= 16) {
+    ...
+} else {
+    ...
+}</pre></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">switch</span><span class="desc">elegir según un valor</span></div>
+            <div class="jv-body"><pre class="vm-code">switch (dia) {
+    case 1: ...; break;
+    case 2: ...; break;
+    default: ...;
+}</pre></div>
           </div>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">Random.nextInt</span><span class="desc">Un número aleatorio entero. El primero entra y el último <b>no</b>: <b>nextInt(1, 10)</b> da de <b>1 a 9</b>.</span></div>
-            <pre class="example"><code>Random aleatorio = new Random();
-int numeroAleatorio = aleatorio.nextInt(1, 10);   // 1..9</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Como un dado de 9 caras numerado del 1 al 9: el 10 nunca sale. Si quieres que salga, <b>nextInt(1, 11)</b>.</div>
+            <div class="entry-head"><span class="tag">for</span><span class="desc">repetir con contador</span></div>
+            <div class="jv-body"><pre class="vm-code">for (int i = 0; i &lt; 10; i++) {
+    ...
+}</pre></div>
           </div>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">for · for-each</span><span class="desc">El <b>for</b> con contador se escribe igual; el <b>for-each</b> recorre una lista o un array sin contador (el <b>for…of</b> de JavaScript).</span></div>
-            <pre class="example"><code>for (int i = 0; i &lt; arr.length; i++) {
-    IO.print(arr[i] + " ");
+            <div class="entry-head"><span class="tag">while y do…while</span><span class="desc">repetir mientras</span></div>
+            <div class="jv-body"><pre class="vm-code">while (condicion) { ... }
+
+do {
+    ...          // al menos UNA vez
+} while (condicion);</pre></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">for-each</span><span class="desc">recorrer una lista sin contador</span></div>
+            <div class="jv-body"><pre class="vm-code">for (String nombre : nombres) {
+    ...
+}</pre></div>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Arrays y ArrayList</h2>
+          <p class="group-desc">Las dos formas de guardar varios datos.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Array</span><span class="desc">tamaño fijo</span></div>
+            <div class="jv-body"><pre class="vm-code">int[] n = new int[3];
+
+n[0] = 5;
+n[1] = 6;
+n.length;        // 3</pre>
+              <div class="jv-warn"><b>Ojo:</b> los huecos son 0, 1 y 2. <code>n[3]</code> da <code>ArrayIndexOutOfBoundsException</code>.</div>
+              <p>Para ver su contenido: <code>Arrays.toString(n)</code>. Una <b>matriz</b> es un array de arrays: <code>char[][] t = new char[8][8];</code></p></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">ArrayList</span><span class="desc">crece y se encoge</span></div>
+            <div class="jv-body"><pre class="vm-code">ArrayList&lt;String&gt; l = new ArrayList&lt;&gt;();
+
+l.add("a");           // al final
+l.addFirst("b");      // al principio
+l.get(0);             // leer
+l.set(1, "c");        // cambiar
+l.remove(0);          // quitar
+l.size();             // cuántos hay</pre><p>El tipo de lo que guarda va entre <code>&lt; &gt;</code>.</p></div>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Clases y objetos</h2>
+          <p class="group-desc">La clase es el molde; cada objeto sale de él.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Clase, objeto e instancia</span><span class="desc">molde → galleta</span></div>
+            <div class="jv-body">
+              <div class="jv-flow">
+                <div class="jv-step hl"><b>Clase</b><code>Persona</code>, el molde (prototipo).</div>
+                <span class="jv-arrow" aria-hidden="true">↓<small>new</small></span>
+                <div class="jv-step"><b>Objeto</b>una zona de memoria con sus datos.</div>
+                <span class="jv-arrow" aria-hidden="true">=</span>
+                <div class="jv-step"><b>Instancia</b>un objeto creado desde una clase.</div>
+              </div><pre class="vm-code">Persona p = new Persona("Tania");</pre></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">static y final</span><span class="desc">de la clase · no cambia</span></div>
+            <div class="jv-body">
+              <div class="jv-chips"><span class="chip html">static</span><span>de la clase: una sola copia</span></div>
+              <div class="jv-chips"><span class="chip html">final</span><span>no puede cambiar</span></div>
+              <div class="jv-chips"><span class="chip html">static final</span><span>constante</span></div><pre class="vm-code">public static final double IVA = 0.21;</pre></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Quién puede verlo</span><span class="desc">private, paquete, protected, public</span></div>
+            <div class="jv-body">
+              <div class="jv-lad">
+                <div><b>private</b> · solo la propia clase</div>
+                <div><b>(nada)</b> · el mismo paquete</div>
+                <div><b>protected</b> · paquete e hijos</div>
+                <div><b>public</b> · todo el mundo</div>
+              </div></div>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Textos y fechas</h2>
+          <p class="group-desc">Lo que más se usa con un <code>String</code> y con las fechas.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Métodos de String</span><span class="desc">length, trim, charAt, indexOf…</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">length()</span><span>cuántos caracteres</span></li><li><span class="chip">trim()</span><span>quita espacios de los lados</span></li><li><span class="chip">charAt(2)</span><span>el carácter en esa posición</span></li><li><span class="chip">indexOf("a")</span><span>dónde está (-1 si no)</span></li><li><span class="chip">contains("a")</span><span>true o false</span></li><li><span class="chip">replace("a","b")</span><span>cambia un trozo</span></li><li><span class="chip">String.valueOf(5)</span><span>pasa a texto</span></li></ul></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Más con texto</span><span class="desc">unir, formatear, bloques</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">"a" + "b"</span><span>unir textos</span></li><li><span class="chip">String.format</span><span>«Hola %s»</span></li><li><span class="chip">"""</span><span>bloque de varias líneas</span></li><li><span class="chip">Math.pow</span><span>potencias (^ no lo es)</span></li></ul></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">LocalDateTime</span><span class="desc">la fecha moderna</span></div>
+            <div class="jv-body"><pre class="vm-code">LocalDateTime ahora = LocalDateTime.now();</pre><p>También <code>LocalDate</code>, <code>LocalTime</code>, <code>Duration</code> y <code>Period</code>. No se modifica: cada cambio crea una fecha nueva.</p></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Date y GregorianCalendar</span><span class="desc">las fechas antiguas</span></div>
+            <div class="jv-body"><pre class="vm-code">Date fecha = new Date();
+GregorianCalendar gc = new GregorianCalendar();</pre><div class="jv-warn"><b>Ojo:</b> en <code>GregorianCalendar</code> los meses empiezan en <b>0</b>.</div></div>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Eclipse</h2>
+          <p class="group-desc">Trucos para programar más rápido. En Mac, ⌘ en lugar de Ctrl.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Atajos y plantillas</span><span class="desc">main, sysout, formatear</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">main</span><span>Ctrl+Espacio: escribe el main entero</span></li><li><span class="chip">sysout</span><span>Ctrl+Espacio: escribe System.out.println()</span></li><li><span class="chip">Ctrl+Shift+F</span><span>ordena el código</span></li><li><span class="chip">Alt+Shift+M</span><span>Extract Method</span></li></ul></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Cómo se organiza</span><span class="desc">workspace, proyecto, perspectiva</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">Workspace</span><span>la carpeta de todos tus proyectos</span></li><li><span class="chip">Proyecto</span><span>los ficheros de una aplicación</span></li><li><span class="chip">Perspectiva</span><span>ventanas colocadas de una forma</span></li></ul></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Extract Method</span><span class="desc">convertir líneas en un método</span></div>
+            <div class="jv-body"><p><b>Antes</b></p><pre class="vm-code">// todo dentro del main
+if (a &lt; b) {
+    r = "menor";
+} else {
+    r = "mayor";
+}</pre><p><b>Después</b></p><pre class="vm-code">String comparar(int a, int b) {
+    if (a &lt; b) return "menor";
+    return "mayor";
 }
 
-for (int dato : arr) {
-    IO.print(dato + " ");
-}</code></pre>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Operador ternario</span><span class="desc">Elige entre dos valores en una sola línea: <b>condición ? si_es_verdad : si_no</b>.</span></div>
-            <pre class="example"><code>IO.print((columna != 0 ? columna : '.') + " ");</code></pre>
+r = comparar(a, b);</pre><p>Se lee mejor, se reutiliza (<b>DRY</b>) y se arregla en un solo sitio.</p></div>
           </div>
         </div>
         <div class="group">
-          <h2>Arrays</h2>
-          <p class="group-desc">Una lista de <b>tamaño fijo</b> y de un solo tipo. Mira <b>EjemploArrays.java</b>.</p>
+          <h2>Versiones de Java</h2>
+          <p class="group-desc">Las marcadas con <b>LTS</b> tienen soporte largo y son las que usan las empresas.</p>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">Crear y usar un array</span><span class="desc">Se crea con su <b>tamaño</b>; los huecos se numeran desde <b>0</b>. Con <b>length</b> sabes cuántos tiene.</span></div>
-            <pre class="example"><code>int[] arr = new int[3];
-
-arr[0] = 5;
-arr[1] = 6;
-arr[2] = 7;
-arr[1] = 10;            // cambia el segundo
-
-arr.length;             // 3</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Es una <b>caja de huevos</b> con huecos numerados: tiene los que tiene, y no puedes meter un huevo más.</div>
-          </div>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">ArrayIndexOutOfBoundsException</span><span class="desc">El error que sale al usar un hueco que <b>no existe</b>. Un array de 3 tiene los huecos 0, 1 y 2; el <b>arr[3]</b> da error.</span></div>
-            <pre class="example"><code>int[] arr = new int[3];
-arr[3] = 8;   // ERROR: ArrayIndexOutOfBoundsException</code></pre>
-          </div>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">Arrays.toString</span><span class="desc">Para <b>escribir</b> el contenido de un array. Si haces <b>println(arr)</b> sin más, sale un código raro.</span></div>
-            <pre class="example"><code>System.out.println(Arrays.toString(arr));   // [5, 10, 7]</code></pre>
-          </div>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">Matrices (arrays de arrays)</span><span class="desc">Un array de dos dimensiones, como un <b>tablero</b>: <b>[fila][columna]</b>. Los <b>char</b> sin rellenar valen <b>0</b>.</span></div>
-            <pre class="example"><code>char[][] tablero = new char[8][8];
-
-tablero[0][0] = 'T';
-tablero[0][1] = 'C';
-tablero[7][7] = 't';
-
-for (char[] fila : tablero) {
-    for (char columna : fila) {
-        IO.print((columna != 0 ? columna : '.') + " ");
-    }
-    IO.println();
-}</code></pre>
-          </div>
-        </div>
-        <div class="group">
-          <h2>Colecciones: ArrayList</h2>
-          <p class="group-desc">Una lista que <b>crece y se encoge</b>. Mira <b>Colecciones.java</b>. El tipo de lo que guarda va entre <b>&lt; &gt;</b>.</p>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">Crear y añadir</span><span class="desc"><b>add</b> añade al final y <b>addFirst</b> al principio.</span></div>
-            <pre class="example"><code>ArrayList&lt;Integer&gt; enteros = new ArrayList&lt;Integer&gt;();
-
-enteros.add(5);          // [5]
-enteros.add(6);          // [5, 6]
-enteros.addFirst(4);     // [4, 5, 6]</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Es el <b>array</b> de JavaScript, pero tienes que decir de qué tipo son sus elementos.</div>
-          </div>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">Insertar, quitar y cambiar</span><span class="desc">Con el <b>número de posición</b> (empieza en 0).</span></div>
-            <pre class="example"><code>enteros.add(0, 4);       // inserta el 4 en la posición 0
-enteros.remove(2);       // quita lo que hay en la posición 2
-enteros.set(1, 10);      // cambia la posición 1 por un 10</code></pre>
-          </div>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">Recorrer</span><span class="desc">Con <b>for-each</b>, igual que un array.</span></div>
-            <pre class="example"><code>for (Integer entero : enteros) {
-    IO.println(entero);
-}</code></pre>
+            <div class="entry-head"><span class="tag">Versiones LTS</span><span class="desc">8, 11, 17, 21 y 25</span></div>
+            <div class="jv-body"><div class="jv-chips"><span class="chip lts">Java 8 · LTS</span><span class="chip lts">Java 11 · LTS</span><span class="chip lts">Java 17 · LTS</span><span class="chip lts">Java 21 · LTS</span><span class="chip lts">Java 25 · LTS</span></div></div>
           </div>
           <div class="entry">
-            <div class="entry-head"><span class="tag">Array o ArrayList</span><span class="desc">El <b>array</b> tiene tamaño fijo y se usa con <b>[ ]</b>; el <b>ArrayList</b> crece y se usa con métodos (<b>add</b>, <b>remove</b>, <b>set</b>).</span></div>
-            <pre class="example"><code>arr[1] = 10;            // array
-enteros.set(1, 10);     // ArrayList</code></pre>
-          </div>
-        </div>
-        <div class="group">
-          <h2>Fechas</h2>
-          <p class="group-desc">Lo que salió al final de <b>HolaMundo.java</b>: tres formas de tener la fecha de hoy.</p>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">LocalDateTime (la moderna)</span><span class="desc">Es lo que se recomienda hoy. Está en <b>java.time</b> y no se modifica: cada cambio crea una fecha nueva.</span></div>
-            <pre class="example"><code>import java.time.LocalDateTime;
-
-LocalDateTime ahora = LocalDateTime.now();
-System.out.println(ahora);</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>Es una <b>ficha de fecha</b>: si quieres otra, sacas una nueva en vez de tachar la anterior.</div>
+            <div class="entry-head"><span class="tag">Qué trajo cada una</span><span class="desc">de la 5 a la 16</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">5</span><span>genéricos, @anotaciones, for-each</span></li><li><span class="chip">7</span><span>try-with-resources</span></li><li><span class="chip">8</span><span>lambdas, streams, java.time</span></li><li><span class="chip">9</span><span>módulos</span></li><li><span class="chip">10</span><span>var</span></li><li><span class="chip">15</span><span>bloques de texto """</span></li><li><span class="chip">16</span><span>record, instanceof con patrón</span></li></ul></div>
           </div>
           <div class="entry">
-            <div class="entry-head"><span class="tag">Date y GregorianCalendar (las antiguas)</span><span class="desc">Las clases de siempre, de <b>java.util</b>. Funcionan, pero son más incómodas (en <b>GregorianCalendar</b> los meses empiezan en <b>0</b>). Se vieron para compararlas con la moderna.</span></div>
-            <pre class="example"><code>import java.util.Date;
-import java.util.GregorianCalendar;
-
-Date date = new Date();
-GregorianCalendar gc = new GregorianCalendar();</code></pre>
-            <div class="simple-explain"><span class="se-label">En cristiano</span>El <b>calendario gregoriano</b> es el que usamos hoy (desde 1582); la clase lleva su nombre.</div>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">import</span><span class="desc">Para usar una clase que no es básica hay que <b>importarla</b> arriba. En el modo <b>main()</b> de Java 25 no hace falta para las de <b>java.base</b>, como <b>ArrayList</b>, <b>Random</b> o <b>Arrays</b>.</span></div>
-            <pre class="example"><code>import java.util.Scanner;
-import java.time.LocalDateTime;</code></pre>
+            <div class="entry-head"><span class="tag">Los números de una versión</span><span class="desc">versión · subversión · revisión</span></div>
+            <div class="jv-body">
+              <div class="jv-semver"><div><strong>2</strong>versión<br>rompe lo anterior</div><span class="dot">.</span><div><strong>4</strong>subversión<br>novedades compatibles</div><span class="dot">.</span><div><strong>1</strong>revisión<br>arreglos y parches</div></div>
+              <div class="jv-chips"><span class="chip html">Java SE</span><span class="chip ">Jakarta EE</span><span class="chip ">Java ME</span></div>
+              <p><b>SE</b> (Standard) es la de siempre; <b>Jakarta EE</b> es para servidores; <b>ME</b>, para aparatos pequeños.</p></div>
           </div>
         </div>
       </div>
