@@ -5703,10 +5703,15 @@ npm run preview   # prueba la versión ya construida</code></pre>
   .jv-warn{ padding:7px 10px; border-radius:8px; background:var(--accent-html-soft); border:1px solid var(--accent-html); font-size:12.5px; line-height:1.45; color:var(--ink); }
   .jv-warn b{ color:var(--accent-html); }
   .jv-body .glist{ padding:0; }
+  .jv-lista{ margin:0; padding-left:18px; font-size:13px; line-height:1.5; color:var(--ink-soft); }
+  .jv-lista li{ margin:4px 0; }
+  .jv-lista b, .jv-lista code{ color:var(--ink); }
+  .jv-num{ padding-left:22px; }
+  .jv-body p code, .jv-lista code{ font-size:12px; }
 </style>
       <div class="panel-intro">
         <span class="glyph">&lt;/&gt;</span>
-        <p><strong>Java</strong> es el <strong>lenguaje del servidor</strong> (el backend): donde se escriben las reglas. Pulsa el <strong>+</strong> de cada fila para abrirla, igual que en las otras pestañas.</p>
+        <p><strong>Java</strong> es el <strong>lenguaje del servidor</strong> (el backend): donde se escriben las reglas. Cada fila explica <strong>qué es</strong>, cómo se escribe <strong>línea a línea</strong>, los <strong>errores típicos</strong> y un símil. Pulsa el <strong>+</strong> para abrirla.</p>
       </div>
 
             <details class="full-map pg">
@@ -5768,270 +5773,525 @@ Total con IVA: 12.1
 
       <div class="groups">
         <div class="group">
-          <h2>Cómo se ejecuta un programa</h2>
-          <p class="group-desc">Se escribe una sola vez y funciona en cualquier sistema.</p>
+          <h2>Cómo funciona Java</h2>
+          <p class="group-desc">Antes de escribir una línea: qué es Java, cómo se ejecuta y qué errores te vas a encontrar.</p>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">Del código al programa</span><span class="desc">de <b>.java</b> a un programa que funciona</span></div>
-            <div class="jv-body">
-              <div class="jv-flow">
-                <div class="jv-step"><b>Tu código</b><code>.java</code>, el texto que escribes.</div>
-                <span class="jv-arrow" aria-hidden="true">↓<small>javac</small></span>
-                <div class="jv-step hl"><b>Bytecode</b><code>.class</code>, un «código máquina genérico».</div>
-                <span class="jv-arrow" aria-hidden="true">↓<small>JVM</small></span>
-                <div class="jv-step"><b>Se ejecuta</b>en Windows, Mac o Linux.</div>
-              </div></div>
+            <div class="entry-head"><span class="tag">Qué es Java</span><span class="desc">un lenguaje para el servidor</span></div>
+            <div class="jv-body"><p><b>Java</b> es un <b>lenguaje de programación</b> creado en 1995 (en Sun Microsystems, hoy de Oracle). Se usa sobre todo en el <b>servidor</b> (el backend): bancos, tiendas online, aplicaciones de empresa y la parte que atiende las peticiones de una web.</p><ul class="jv-lista"><li>Es un lenguaje <b>compilado</b>: primero se traduce y luego se ejecuta.</li><li>Es de <b>tipado estático</b>: cada variable tiene un tipo y no lo puede cambiar.</li><li>Es <b>multiplataforma</b>: el mismo programa funciona en Windows, Mac y Linux.</li></ul><div class="jv-warn"><b>Ojo:</b> <b>Java no es JavaScript.</b> Solo comparten parte del nombre; son dos lenguajes distintos.</div><div class="simple-explain"><span class="se-label">En cristiano</span>Si el navegador es el comedor, Java es <b>la cocina</b>: el cliente no la ve, pero es donde se prepara todo.</div></div>
           </div>
-          <div class="entry">
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Del código al programa</span><span class="desc">qué pasa al pulsar «Run»</span></div>
+            <div class="jv-body"><div class="jv-flow"><div class="jv-step"><b>1 · Tú escribes</b>Programa.java: el texto con tu código.</div><span class="jv-arrow" aria-hidden="true">↓<small>javac (el compilador)</small></span><div class="jv-step hl"><b>2 · Se compila</b>Programa.class: el bytecode, un «código máquina genérico».</div><span class="jv-arrow" aria-hidden="true">↓<small>JVM (la máquina virtual)</small></span><div class="jv-step"><b>3 · Se ejecuta</b>la JVM lo traduce al procesador real y se ve el resultado.</div></div><ul class="jv-lista"><li>El <b>compilador</b> (<code>javac</code>) lee tu código y avisa si hay errores de escritura <b>antes</b> de ejecutar nada.</li><li>El <b>bytecode</b> es igual en todos los sistemas. Por eso el mismo <code>.class</code> funciona en Windows, Mac y Linux.</li><li>La <b>JVM</b> (Java Virtual Machine) es el «procesador virtual» que entiende el bytecode.</li><li>En <b>Eclipse</b> todo esto lo hace solo el botón <b>Run</b>.</li></ul><div class="simple-explain"><span class="se-label">En cristiano</span>Escribes la receta en español, un traductor la pasa a un <b>idioma universal</b> y cada cocina del mundo tiene un cocinero que lo entiende.</div></div>
+          </div>
+          <div class="entry core">
             <div class="entry-head"><span class="tag">JDK · JRE · JVM</span><span class="desc">tres cajas, una dentro de otra</span></div>
-            <div class="jv-body">
-              <div class="jv-nest"><b>JDK</b> · para programar (trae <code>javac</code>)
-                <div class="n2"><b>JRE</b> · para ejecutar (las librerías)
-                  <div class="n3"><b>JVM</b> · el «procesador virtual» que ejecuta el bytecode</div>
-                </div>
-              </div></div>
+            <div class="jv-body"><div class="jv-nest"><b>JDK</b> · para programar (trae <code>javac</code>, <code>javadoc</code>…)<div class="n2"><b>JRE</b> · para ejecutar (las librerías de Java)<div class="n3"><b>JVM</b> · la que ejecuta el bytecode</div></div></div><ul class="jv-lista"><li><b>JVM</b>: ejecuta el programa.</li><li><b>JRE</b>: la JVM más las librerías estándar (<code>String</code>, <code>ArrayList</code>…).</li><li><b>JDK</b>: el JRE más las herramientas para <b>crear</b> programas.</li></ul><p>Para programar necesitas instalar el <b>JDK</b>. En clase se usa <b>Java 25</b>.</p></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Errores: de compilación y de ejecución</span><span class="desc">tres tipos de fallo, y cuándo se ven</span></div>
+            <div class="jv-body"><ul class="jv-lista"><li><b>De compilación</b>: el código está mal escrito (falta un <code>;</code>, un tipo no encaja…). Eclipse lo subraya en <b>rojo</b> y el programa ni arranca.</li><li><b>De ejecución</b> (excepciones): el programa arranca y falla por el camino. Ejemplos: <code>ArrayIndexOutOfBoundsException</code>, <code>NumberFormatException</code>, <code>NullPointerException</code>.</li><li><b>De lógica</b>: no da error, pero el resultado es otro del que querías. Son los más difíciles de ver.</li></ul><pre class="vm-code">int numero = "hola";            // COMPILACIÓN: un texto no cabe en un int
+Integer.parseInt("abc");        // EJECUCIÓN: NumberFormatException
+int media = suma / 2;           // LÓGICA: ¿y si eran 3 elementos?</pre><p>Al fallar, Java escribe la <b>traza</b> del error: lee la primera línea (qué excepción es) y busca tu archivo y el número de línea.</p><div class="simple-explain"><span class="se-label">En cristiano</span>Es como una receta: un error de <b>compilación</b> es un ingrediente mal escrito; uno de <b>ejecución</b> es quedarte sin huevos a mitad; uno de <b>lógica</b> es que te sale un plato distinto del que querías.</div></div>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Primer programa</h2>
+          <p class="group-desc">La estructura mínima, qué significa cada palabra y cómo hablar con la persona.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Estructura mínima, línea a línea</span><span class="desc">class + main</span></div>
+            <div class="jv-body"><pre class="vm-code">package programas;                          // 1
+
+public class Programa {                     // 2
+    public static void main(String[] args) { // 3
+        System.out.println("Hola");         // 4
+    }                                       // 5
+}                                           // 6</pre><ol class="jv-lista jv-num"><li><code>package</code>: la carpeta lógica donde vive la clase (opcional en programas pequeños).</li><li><code>class Programa</code>: todo en Java va dentro de una <b>clase</b>. El archivo se tiene que llamar igual: <code>Programa.java</code>.</li><li><code>main</code>: <b>por aquí empieza</b> el programa. Siempre se escribe igual.</li><li><code>System.out.println(...)</code>: escribe un texto en la consola y salta de línea.</li><li>Las llaves <code>{ }</code> abren y cierran bloques: de la clase (2–6) y del método (3–5).</li></ol><div class="simple-explain"><span class="se-label">En cristiano</span>La <b>clase</b> es el local; el <b>main</b> es la puerta por la que entra el primer cliente.</div></div>
           </div>
           <div class="entry">
-            <div class="entry-head"><span class="tag">Compilado o interpretado</span><span class="desc">dos formas de traducir un programa</span></div>
-            <div class="jv-body">
-              <p><b>Interpretado</b> (JavaScript, Python): se traduce mientras se ejecuta, como un <b>traductor simultáneo</b>. Más lento.</p>
-              <p><b>Compilado</b> (Java): se traduce antes, como una <b>transcripción</b> entera. Más rápido.</p></div>
+            <div class="entry-head"><span class="tag">Las palabras de main</span><span class="desc">public static void main(String[] args)</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">public</span><span>visible desde fuera: la JVM tiene que poder llamarlo</span></li><li><span class="chip">static</span><span>se puede usar sin crear un objeto antes</span></li><li><span class="chip">void</span><span>no devuelve ningún resultado</span></li><li><span class="chip">main</span><span>el nombre fijo del método de arranque</span></li><li><span class="chip">String[] args</span><span>una lista de textos con lo que se escribió al ejecutar</span></li></ul><div class="jv-warn"><b>Ojo:</b> Si cambias una sola de estas palabras (por ejemplo, <code>Main</code> con mayúscula), la JVM no encuentra por dónde empezar.</div></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">main() sin clase (Java 25)</span><span class="desc">la versión corta para programas pequeños</span></div>
+            <div class="jv-body"><p>Desde Java 25 un programa pequeño puede ser <b>solo un método <code>main()</code></b>: sin <code>class</code>, sin <code>public static</code> y sin <code>import</code>.</p><pre class="vm-code">void main() {
+    ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();  // sin import
+    lista.add("a");
+    IO.println(lista);                            // IO.println en vez de System.out
+}</pre><ul class="jv-lista"><li>Java <b>importa solo</b> las clases básicas (<code>ArrayList</code>, <code>Random</code>, <code>Arrays</code>…).</li><li>Existe la clase <b>IO</b> con <code>IO.println</code>, <code>IO.print</code> y <code>IO.readln</code> para escribir y leer.</li><li>Los métodos que escribes en el mismo archivo <b>no necesitan <code>static</code></b>.</li></ul><div class="jv-warn"><b>Ojo:</b> Es solo para programas de un archivo. En un proyecto grande sigues usando <code>public class</code>.</div></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Imprimir: println, print y printf</span><span class="desc">tres formas de escribir en pantalla</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">println</span><span>escribe y salta de línea</span></li><li><span class="chip">print</span><span>escribe sin saltar</span></li><li><span class="chip">printf</span><span>escribe con formato (no salta de línea solo)</span></li></ul><pre class="vm-code">System.out.println("Hola");              // Hola + salto
+System.out.print("Hola ");               // Hola (sin salto)
+System.out.printf("%s tiene %d años\n", "Ana", 30);</pre><p>En <b>printf</b> el texto lleva «huecos» que se rellenan con los valores de después:</p><ul class="glist"><li><span class="chip">%s</span><span>un texto</span></li><li><span class="chip">%d</span><span>un entero</span></li><li><span class="chip">%f · %.2f</span><span>un decimal · con 2 decimales</span></li><li><span class="chip">%-10s</span><span>texto alineado a la izquierda en 10 espacios</span></li><li><span class="chip">%10s</span><span>alineado a la derecha</span></li><li><span class="chip">\n</span><span>salto de línea</span></li></ul><div class="jv-warn"><b>Ojo:</b> Con <code>%.2f</code> el separador decimal depende del idioma del sistema: en español puede salir <b>coma</b> (3,14).</div></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Leer lo que escribe la persona</span><span class="desc">Scanner e IO.readln</span></div>
+            <div class="jv-body"><pre class="vm-code">Scanner sc = new Scanner(System.in);     // abre la entrada del teclado
+System.out.print("Dime tu nombre: ");
+String nombre = sc.nextLine();           // lee una línea entera
+System.out.println("Hola " + nombre);
+sc.close();                              // la cierra al terminar
+
+// Java 25, más corto:
+String texto = IO.readln("Dime tu nombre: ");</pre><ul class="jv-lista"><li><b>System.in</b> es «lo que llega del teclado».</li><li><code>nextLine()</code> y <code>IO.readln()</code> devuelven <b>siempre un texto</b>, aunque la persona escriba un número.</li><li>Para usarlo como número hay que convertirlo: <code>Integer.parseInt(texto)</code>.</li></ul><div class="simple-explain"><span class="se-label">En cristiano</span>El <b>Scanner</b> es el cuaderno de comandas: lo abres, apuntas lo que dice el cliente y lo cierras.</div></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Comentarios y Javadoc</span><span class="desc">notas que Java ignora</span></div>
+            <div class="jv-body"><pre class="vm-code">// una línea
+/* varias
+   líneas */
+
+/**
+ * Suma dos números.
+ * @param a el primero
+ * @param b el segundo
+ * @return la suma
+ */</pre><p>El <b>Javadoc</b> (<code>/** */</code>) documenta una clase o un método. Con la herramienta <code>javadoc</code> se genera una página web de ayuda a partir de esos comentarios.</p></div>
           </div>
         </div>
         <div class="group">
           <h2>Variables y tipos</h2>
-          <p class="group-desc">Cada variable tiene un <b>tipo fijo</b>.</p>
+          <p class="group-desc">Dónde se guarda un dato y de qué clase es.</p>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">Los 8 tipos</span><span class="desc">los resaltados son los de siempre</span></div>
-            <div class="jv-body"><div class="jv-tiles"><div class="jv-tile main"><b>int</b><span>entero</span><code>5</code></div><div class="jv-tile main"><b>double</b><span>decimal</span><code>32.5</code></div><div class="jv-tile main"><b>boolean</b><span>verdadero o falso</span><code>true</code></div><div class="jv-tile main"><b>char</b><span>un carácter</span><code>'a'</code></div><div class="jv-tile"><b>long</b><span>entero enorme</span><code>5L</code></div><div class="jv-tile"><b>float</b><span>decimal corto</span><code>32.5F</code></div><div class="jv-tile"><b>short</b><span>entero pequeño</span></div><div class="jv-tile"><b>byte</b><span>entero mínimo</span></div></div></div>
+            <div class="entry-head"><span class="tag">Qué es una variable</span><span class="desc">una caja con nombre y tipo</span></div>
+            <div class="jv-body"><p>Una <b>variable</b> es un hueco en la memoria con un <b>nombre</b>, para guardar un dato. En Java hay que decir de qué <b>tipo</b> es.</p><pre class="vm-code">int edad;              // 1. declarar: reservo un hueco para un entero
+edad = 33;             // 2. asignar: guardo un valor
+int altura = 163;      // 3. las dos cosas juntas (lo más habitual)
+edad = 34;             // 4. cambiar el valor (mismo tipo)</pre><ul class="jv-lista"><li>El <b>nombre</b> va en <b>camelCase</b>: <code>numeroAleatorio</code>. Sin tildes ni <code>ñ</code>, sin espacios y sin empezar por un número.</li><li>No puedes usar <b>palabras reservadas</b> (<code>class</code>, <code>int</code>, <code>for</code>…).</li><li>Una variable declarada <b>dentro de un bloque</b> <code>{ }</code> solo existe dentro de ese bloque (su <b>ámbito</b>).</li></ul><div class="jv-warn"><b>Ojo:</b> Java distingue mayúsculas y minúsculas: <code>edad</code> y <code>Edad</code> son dos variables distintas.</div><div class="simple-explain"><span class="se-label">En cristiano</span>Una variable es un <b>tarro con etiqueta</b>: la etiqueta es el nombre y el tipo dice qué cabe dentro (harina, no agua).</div></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Los 8 tipos primitivos</span><span class="desc">los ladrillos de los datos</span></div>
+            <div class="jv-body"><div class="jv-tiles"><div class="jv-tile main"><b>int</b><span>entero</span><code>5</code></div><div class="jv-tile main"><b>double</b><span>decimal</span><code>32.5</code></div><div class="jv-tile main"><b>boolean</b><span>verdadero o falso</span><code>true</code></div><div class="jv-tile main"><b>char</b><span>un carácter</span><code>'a'</code></div><div class="jv-tile"><b>long</b><span>entero enorme</span><code>5L</code></div><div class="jv-tile"><b>float</b><span>decimal corto</span><code>32.5F</code></div><div class="jv-tile"><b>short</b><span>entero pequeño</span></div><div class="jv-tile"><b>byte</b><span>entero mínimo</span></div></div><ul class="glist"><li><span class="chip">byte</span><span>8 bits · de -128 a 127</span></li><li><span class="chip">short</span><span>16 bits · de -32.768 a 32.767</span></li><li><span class="chip">int</span><span>32 bits · de unos -2.147 a 2.147 millones</span></li><li><span class="chip">long</span><span>64 bits · hasta unos 9 trillones (se escribe 5L)</span></li><li><span class="chip">float</span><span>decimal de 32 bits (se escribe 32.5F)</span></li><li><span class="chip">double</span><span>decimal de 64 bits: el normal</span></li><li><span class="chip">char</span><span>un carácter entre comillas simples</span></li><li><span class="chip">boolean</span><span>true o false</span></li></ul><ul class="jv-lista"><li>Casi siempre: <b>int</b> para enteros, <b>double</b> para decimales, <b>boolean</b> para sí/no y <b>char</b> para una letra.</li><li>Un <code>int</code> tiene límite: al pasarte <b>da la vuelta</b> y sale un número negativo (<code>2147483647 + 1</code> = -2147483648).</li></ul><p>El <b>texto</b> (<code>String</code>) <b>no</b> es primitivo: es una clase, y se escribe con mayúscula.</p></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Operar con números</span><span class="desc">división entera, resto y conversiones</span></div>
+            <div class="jv-body"><pre class="vm-code">7 / 2        // 3      división ENTERA: se pierde el decimal
+7 / 2.0      // 3.5    si uno es decimal, el resultado también
+7 % 2        // 1      el resto de la división
+(int) 3.7    // 3      conversión a entero: se corta, no se redondea
+
+int x = 5;
+x++;         // x vale 6   (suma 1)
+x += 10;     // x vale 16  (equivale a x = x + 10)</pre><div class="jv-warn"><b>Ojo:</b> <code>int / int</code> da <b>siempre un entero</b>. Si quieres el decimal, pon un <code>.0</code> o convierte antes: <code>(double) 7 / 2</code>.</div><p>Las potencias no se hacen con <code>^</code> (es un XOR de bits): usa <code>Math.pow(2, 3)</code>.</p></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">El texto: String</span><span class="desc">una clase con muchos métodos</span></div>
+            <div class="jv-body"><pre class="vm-code">String nombre = "Tania";                 // entre comillas dobles
+String saludo = "Hola " + nombre;        // + une textos
+String dos = "Línea 1\nLínea 2";         // \n = salto, \t = tabulador, \" = comilla
+
+String largo = """
+        Texto de
+        varias líneas
+        """;                             // bloque de texto</pre><ul class="jv-lista"><li>Un <code>String</code> es <b>inmutable</b>: sus métodos <b>no lo cambian</b>, devuelven uno nuevo.</li><li><code>texto.toUpperCase();</code> sin guardar el resultado no hace nada: hay que escribir <code>texto = texto.toUpperCase();</code>.</li><li>Los textos se comparan con <b>equals</b>, no con <code>==</code> (mira «Referencias»).</li></ul></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Convertir entre texto y número</span><span class="desc">parseInt, valueOf y sus errores</span></div>
+            <div class="jv-body"><pre class="vm-code">int n = Integer.parseInt("42");          // texto -&gt; int
+double d = Double.parseDouble("3.5");    // texto -&gt; double
+long l = Long.parseLong("9000000000");
+
+String t = String.valueOf(42);           // número -&gt; texto  ("42")
+String u = "" + 42;                      // truco equivalente</pre><div class="jv-warn"><b>Ojo:</b> <code>Integer.parseInt("abc")</code> lanza <b>NumberFormatException</b>: el texto tiene que ser un número de verdad.</div><p>Los tipos primitivos tienen una clase «envoltorio» con mayúscula: <code>Integer</code>, <code>Double</code>, <code>Long</code>, <code>Boolean</code>, <code>Character</code>… sirven para convertir y para guardar números en un <code>ArrayList</code>.</p></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Constantes: final</span><span class="desc">valores que no cambian</span></div>
+            <div class="jv-body"><pre class="vm-code">final double IVA = 0.21;          // no se puede volver a asignar
+IVA = 0.10;                      // ERROR de compilación
+
+public static final double PI_ = 3.14;   // constante de la clase</pre><p>Por costumbre las constantes van en <b>MAYÚSCULAS</b>. Con <code>static final</code> hay <b>una sola copia</b> para toda la clase (mira «static y final»).</p></div>
           </div>
           <div class="entry">
-            <div class="entry-head"><span class="tag">Declarar variables</span><span class="desc">tipo, nombre y valor</span></div>
-            <div class="jv-body"><pre class="vm-code">int edad = 33;
-double precio = 9.99;
-String nombre = "Tania";   // texto: es una clase
-final double IVA = 0.21;   // constante: no cambia</pre></div>
+            <div class="entry-head"><span class="tag">var</span><span class="desc">que Java deduzca el tipo</span></div>
+            <div class="jv-body"><pre class="vm-code">var numero = 5;           // Java deduce: int
+var texto = "hola";      // Java deduce: String</pre><p>Desde Java 10. Solo vale para <b>variables locales</b> con valor inicial. La variable <b>sigue teniendo un tipo fijo</b>: es solo una forma de no escribirlo.</p></div>
           </div>
           <div class="entry">
-            <div class="entry-head"><span class="tag">Convertir texto en número</span><span class="desc">lo que se lee siempre llega como texto</span></div>
-            <div class="jv-body"><pre class="vm-code">int n = Integer.parseInt("42");
-double d = Double.parseDouble("3.5");</pre></div>
+            <div class="entry-head"><span class="tag">Los decimales no son exactos</span><span class="desc">0.1 + 0.2</span></div>
+            <div class="jv-body"><pre class="vm-code">double suma = 0.1 + 0.2;
+System.out.println(suma);     // 0.30000000000000004</pre><p><code>double</code> guarda <b>aproximaciones</b> en binario. Pasa igual en JavaScript. Para dinero se usa <code>BigDecimal</code> o se trabaja en céntimos con enteros.</p></div>
           </div>
         </div>
         <div class="group">
           <h2>Primitivo o referencia</h2>
-          <p class="group-desc">La idea que más confunde: <b>qué guarda</b> la variable.</p>
+          <p class="group-desc">La idea que más confunde: qué guarda realmente una variable.</p>
           <div class="entry core">
             <div class="entry-head"><span class="tag">Qué guarda cada una</span><span class="desc">el valor o la dirección</span></div>
-            <div class="jv-body">
-              <p><b>Primitivo</b> (int, double, boolean…): la caja guarda <b>el valor</b>.</p>
-              <div class="jv-mem"><span class="v">x</span><span class="jv-box">7</span></div>
-              <div class="jv-mem"><span class="v">y = x</span><span class="jv-box">7</span><span>← copia el valor</span></div>
-              <p><b>Referencia</b> (String, arrays, objetos): la caja guarda <b>la dirección</b> donde está el objeto.</p>
-              <div class="jv-mem"><span class="v">x</span><span class="jv-box ref">0x100</span><span>→</span><span class="jv-box obj">"PRUEBA"</span></div>
-              <div class="jv-mem"><span class="v">y = x</span><span class="jv-box ref">0x100</span><span>→ el mismo objeto</span></div></div>
+            <div class="jv-body"><p>Una variable <b>primitiva</b> guarda <b>el valor</b>. Una variable de <b>referencia</b> (un <code>String</code>, un array, un objeto…) guarda <b>la dirección</b> de memoria donde está el objeto.</p><div class="jv-mem"><span class="v">x</span><span class="jv-box">7</span></div><div class="jv-mem"><span class="v">y = x</span><span class="jv-box">7</span><span>← copia el valor</span></div><div class="jv-mem"><span class="v">x</span><span class="jv-box ref">0x100</span><span>→</span><span class="jv-box obj">"PRUEBA"</span></div><div class="jv-mem"><span class="v">y = x</span><span class="jv-box ref">0x100</span><span>→ el mismo objeto</span></div><ul class="jv-lista"><li>Con primitivos, <code>y = x</code> <b>copia el valor</b>: después son independientes.</li><li>Con referencias, <code>y = x</code> <b>copia la dirección</b>: los dos apuntan al <b>mismo</b> objeto y si cambias uno, cambia el otro.</li></ul><div class="simple-explain"><span class="se-label">En cristiano</span>Un primitivo es <b>el plato</b>. Una referencia es <b>el número de mesa</b>: dos clientes pueden tener el mismo número y mirar la misma mesa.</div></div>
           </div>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">== frente a equals</span><span class="desc">dirección o contenido</span></div>
-            <div class="jv-body">
-              <p><b>==</b> compara las <b>direcciones</b> (¿es el mismo objeto?).<br><b>.equals()</b> compara el <b>contenido</b> (¿dicen lo mismo?).</p><pre class="vm-code">x.equals(y)    // ¿mismo contenido?
-x == y         // ¿misma dirección?</pre></div>
+            <div class="entry-head"><span class="tag">== frente a equals</span><span class="desc">misma dirección o mismo contenido</span></div>
+            <div class="jv-body"><pre class="vm-code">String x = new String("PRUEBA");   // objeto en 0x100
+String y = new String("PRUEBA");   // otro objeto, en 0x200
+
+x == y         // false  (direcciones distintas)
+x.equals(y)    // true   (mismo contenido)
+
+x = y;         // ahora x apunta donde y
+x == y         // true</pre><ul class="glist"><li><span class="chip">==</span><span>compara las direcciones (¿es el mismo objeto?)</span></li><li><span class="chip">.equals()</span><span>compara el contenido (¿dicen lo mismo?)</span></li></ul><div class="jv-warn"><b>Ojo:</b> <b>Regla:</b> con números y <code>char</code>, usa <code>==</code>. Con textos y objetos, usa <code>equals</code>.</div></div>
           </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">null</span><span class="desc">una referencia sin objeto</span></div>
-            <div class="jv-body">
-              <p>Una referencia que <b>no apunta a nada</b> vale <code>null</code>. Un primitivo nunca es null.</p><pre class="vm-code">String x;   // sin objeto: null</pre></div>
-          </div>
-        </div>
-        <div class="group">
-          <h2>Un programa y la consola</h2>
-          <p class="group-desc">La estructura mínima y cómo hablar con la persona.</p>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">Estructura mínima</span><span class="desc">clase + main</span></div>
-            <div class="jv-body"><pre class="vm-code">public class Programa {                        // la clase
-    public static void main(String[] args) {   // por aquí empieza
-        System.out.println("Hola");            // escribe
-    }
-}</pre><p>El archivo se llama igual que la clase: <code>Programa.java</code>.</p></div>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Java 25: más corto</span><span class="desc">sin class, sin public static</span></div>
-            <div class="jv-body"><pre class="vm-code">void main() {
-    IO.println("Hola");
-    String t = IO.readln("Tu nombre: ");
-}</pre><p>Sin <code>class</code>, sin <code>public static</code> y sin <code>import</code>.</p></div>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Mostrar y leer</span><span class="desc">println, Scanner, IO</span></div>
-            <div class="jv-body"><ul class="glist"><li><span class="chip">println</span><span>escribe y salta de línea</span></li><li><span class="chip">print</span><span>escribe sin saltar</span></li><li><span class="chip">Scanner</span><span>lee lo que se teclea</span></li><li><span class="chip">IO.readln</span><span>pregunta y lee (Java 25)</span></li></ul></div>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">void y lo que devuelve un método</span><span class="desc">qué entrega un método</span></div>
-            <div class="jv-body"><ul class="glist"><li><span class="chip">void</span><span>no devuelve nada</span></li><li><span class="chip">int</span><span>devuelve un número</span></li><li><span class="chip">String</span><span>devuelve un texto</span></li><li><span class="chip">return</span><span>entrega el resultado</span></li></ul></div>
+            <div class="entry-head"><span class="tag">null y NullPointerException</span><span class="desc">una referencia sin objeto</span></div>
+            <div class="jv-body"><pre class="vm-code">String x = null;           // x no apunta a nada
+x.length();                // ERROR: NullPointerException</pre><ul class="jv-lista"><li><code>null</code> significa «no apunta a ningún objeto». Solo lo pueden valer las <b>referencias</b>, nunca un primitivo.</li><li>Si llamas a un método de algo que es <code>null</code>, Java lanza <b>NullPointerException</b>.</li><li>Las casillas sin rellenar de un array de objetos valen <code>null</code>.</li></ul><div class="simple-explain"><span class="se-label">En cristiano</span>Es llamar al camarero de una mesa donde <b>no hay nadie sentado</b>: no hay a quién preguntar.</div></div>
           </div>
         </div>
         <div class="group">
           <h2>Decidir y repetir</h2>
-          <p class="group-desc">Casi igual que en JavaScript.</p>
+          <p class="group-desc">Cómo hacer que el programa tome decisiones y repita cosas.</p>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">if / else</span><span class="desc">decidir</span></div>
+            <div class="entry-head"><span class="tag">Comparar y combinar condiciones</span><span class="desc">los operadores que dan true o false</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">==  !=</span><span>igual · distinto</span></li><li><span class="chip"><  >  <=  >=</span><span>menor · mayor · menor o igual · mayor o igual</span></li><li><span class="chip">&&</span><span>Y: las dos tienen que ser verdad</span></li><li><span class="chip">||</span><span>O: basta con una</span></li><li><span class="chip">!</span><span>NO: da la vuelta al resultado</span></li></ul><pre class="vm-code">int edad = 20;
+boolean mayor = edad &gt;= 18;                 // true
+boolean joven = edad &gt;= 18 &amp;&amp; edad &lt; 30;    // true
+boolean raro = !(edad == 20);               // false</pre><div class="jv-warn"><b>Ojo:</b> En Java la condición tiene que ser un <b>boolean</b> de verdad: <code>if (edad)</code> no vale (en JavaScript sí).</div></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">if / else if / else</span><span class="desc">decidir entre caminos</span></div>
             <div class="jv-body"><pre class="vm-code">if (edad &gt;= 18) {
-    ...
+    IO.println("Mayor de edad");
 } else if (edad &gt;= 16) {
-    ...
+    IO.println("Casi");
 } else {
-    ...
-}</pre></div>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">switch</span><span class="desc">elegir según un valor</span></div>
-            <div class="jv-body"><pre class="vm-code">switch (dia) {
-    case 1: ...; break;
-    case 2: ...; break;
-    default: ...;
-}</pre></div>
+    IO.println("Menor");
+}</pre><ol class="jv-lista jv-num"><li>Java evalúa la primera condición. Si es <code>true</code>, ejecuta ese bloque y <b>se salta el resto</b>.</li><li>Si no, prueba la siguiente <code>else if</code>.</li><li>El <code>else</code> final se ejecuta cuando <b>ninguna</b> se cumplió (es opcional).</li></ol><div class="simple-explain"><span class="se-label">En cristiano</span>Es un <b>cruce de caminos</b> con carteles: sigues por el primero cuya condición se cumple.</div></div>
           </div>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">for</span><span class="desc">repetir con contador</span></div>
-            <div class="jv-body"><pre class="vm-code">for (int i = 0; i &lt; 10; i++) {
-    ...
-}</pre></div>
+            <div class="entry-head"><span class="tag">switch (clásico y con flecha)</span><span class="desc">elegir según un valor</span></div>
+            <div class="jv-body"><pre class="vm-code">// con flecha (lo moderno): no hace falta break
+switch (opcion) {
+    case 1 -&gt; IO.println("Alta");
+    case 2 -&gt; IO.println("Listado");
+    case 0 -&gt; IO.println("Adiós");
+    default -&gt; IO.println("No la conozco");
+}
+
+// clásico: cada caso acaba con break
+switch (opcion) {
+    case 1: IO.println("Alta"); break;
+    case 2: IO.println("Listado"); break;
+    default: IO.println("No la conozco");
+}</pre><ul class="jv-lista"><li>Se entra por el <b>case</b> que coincide con el valor.</li><li>En el modo <b>clásico</b> hay que poner <code>break</code>; si te lo olvidas, Java <b>sigue ejecutando los casos de debajo</b>.</li><li>Con la <b>flecha</b> <code>-></code> no hace falta <code>break</code>.</li><li><code>default</code> recoge lo que no coincide con ningún caso.</li></ul></div>
           </div>
           <div class="entry">
-            <div class="entry-head"><span class="tag">while y do…while</span><span class="desc">repetir mientras</span></div>
-            <div class="jv-body"><pre class="vm-code">while (condicion) { ... }
+            <div class="entry-head"><span class="tag">Operador ternario</span><span class="desc">un if en una línea</span></div>
+            <div class="jv-body"><pre class="vm-code">String texto = edad &gt;= 18 ? "Mayor" : "Menor";
+//             condición     si sí     si no</pre><p>Elige <b>entre dos valores</b>. Es cómodo para asignar o imprimir, pero no para bloques largos.</p></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">for</span><span class="desc">repetir un número de veces</span></div>
+            <div class="jv-body"><pre class="vm-code">for (int i = 0; i &lt; 5; i++) {
+    IO.println(i);
+}</pre><ol class="jv-lista jv-num"><li><code>int i = 0</code>: <b>inicio</b>, se ejecuta una sola vez.</li><li><code>i < 5</code>: <b>condición</b>, se comprueba antes de cada vuelta.</li><li><code>i++</code>: <b>paso</b>, se ejecuta al acabar cada vuelta.</li><li>Escribe <b>0, 1, 2, 3, 4</b>: son 5 vueltas.</li></ol><div class="jv-warn"><b>Ojo:</b> Un <code>for</code> con <code>i <= 5</code> da <b>6</b> vueltas si empiezas en 0. Es el error más común.</div></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">while y do…while</span><span class="desc">repetir mientras se cumpla algo</span></div>
+            <div class="jv-body"><pre class="vm-code">while (intentos &lt; 3) {          // puede no ejecutarse ni una vez
+    intentos++;
+}
 
 do {
-    ...          // al menos UNA vez
-} while (condicion);</pre></div>
+    opcion = Integer.parseInt(IO.readln("Opción: "));
+} while (opcion != 0);          // se ejecuta AL MENOS una vez</pre><ul class="jv-lista"><li><b>while</b>: comprueba <b>antes</b>; si la condición ya es falsa, no entra.</li><li><b>do … while</b>: ejecuta <b>primero</b> y comprueba después. Va perfecto para <b>menús</b> y para «pedir hasta que acierte».</li></ul><div class="jv-warn"><b>Ojo:</b> Si la condición nunca deja de cumplirse, el programa se queda en un <b>bucle infinito</b>.</div></div>
           </div>
           <div class="entry core">
             <div class="entry-head"><span class="tag">for-each</span><span class="desc">recorrer una lista sin contador</span></div>
             <div class="jv-body"><pre class="vm-code">for (String nombre : nombres) {
-    ...
+    IO.println(nombre);
+}</pre><p>Se lee: «para cada <b>nombre</b> de <b>nombres</b>». Va en orden, de principio a fin. Es el <code>for…of</code> de JavaScript.</p><div class="jv-warn"><b>Ojo:</b> No sirve si necesitas saber la <b>posición</b> o cambiar lo que hay en cada hueco.</div></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">break y continue</span><span class="desc">saltarse vueltas</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">break</span><span>sale del bucle (o del switch) del todo</span></li><li><span class="chip">continue</span><span>se salta el resto de esta vuelta y sigue con la siguiente</span></li></ul><pre class="vm-code">for (int i = 1; i &lt;= 10; i++) {
+    if (i == 3) continue;     // se salta el 3
+    if (i == 6) break;        // se para en el 6
+    IO.println(i);            // 1 2 4 5
 }</pre></div>
           </div>
         </div>
         <div class="group">
-          <h2>Arrays y ArrayList</h2>
-          <p class="group-desc">Las dos formas de guardar varios datos.</p>
+          <h2>Métodos</h2>
+          <p class="group-desc">Trozos de código con nombre, para no repetirte y para ordenar un programa.</p>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">Array</span><span class="desc">tamaño fijo</span></div>
-            <div class="jv-body"><pre class="vm-code">int[] n = new int[3];
+            <div class="entry-head"><span class="tag">Qué es un método</span><span class="desc">una función con nombre</span></div>
+            <div class="jv-body"><pre class="vm-code">private int sumar(int a, int b) {     // declarar
+    return a + b;
+}
 
-n[0] = 5;
-n[1] = 6;
-n.length;        // 3</pre>
-              <div class="jv-warn"><b>Ojo:</b> los huecos son 0, 1 y 2. <code>n[3]</code> da <code>ArrayIndexOutOfBoundsException</code>.</div>
-              <p>Para ver su contenido: <code>Arrays.toString(n)</code>. Una <b>matriz</b> es un array de arrays: <code>char[][] t = new char[8][8];</code></p></div>
+int resultado = sumar(2, 3);          // llamar: resultado vale 5</pre><ul class="glist"><li><span class="chip">private</span><span>quién puede usarlo</span></li><li><span class="chip">int</span><span>el tipo que devuelve</span></li><li><span class="chip">sumar</span><span>el nombre (un verbo, en camelCase)</span></li><li><span class="chip">(int a, int b)</span><span>los parámetros: lo que necesita</span></li><li><span class="chip">return</span><span>entrega el resultado y termina el método</span></li></ul><div class="simple-explain"><span class="se-label">En cristiano</span>Un método es una <b>receta con nombre</b>: «hacer salsa». La escribes una vez y, cuando la necesitas, solo dices su nombre y le das los ingredientes.</div></div>
           </div>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">ArrayList</span><span class="desc">crece y se encoge</span></div>
-            <div class="jv-body"><pre class="vm-code">ArrayList&lt;String&gt; l = new ArrayList&lt;&gt;();
+            <div class="entry-head"><span class="tag">void y return</span><span class="desc">con resultado o sin él</span></div>
+            <div class="jv-body"><pre class="vm-code">void saludar(String nombre) {      // hace algo, no devuelve nada
+    IO.println("Hola " + nombre);
+}
 
-l.add("a");           // al final
-l.addFirst("b");      // al principio
-l.get(0);             // leer
-l.set(1, "c");        // cambiar
-l.remove(0);          // quitar
-l.size();             // cuántos hay</pre><p>El tipo de lo que guarda va entre <code>&lt; &gt;</code>.</p></div>
-          </div>
-        </div>
-        <div class="group">
-          <h2>Clases y objetos</h2>
-          <p class="group-desc">La clase es el molde; cada objeto sale de él.</p>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">Clase, objeto e instancia</span><span class="desc">molde → galleta</span></div>
-            <div class="jv-body">
-              <div class="jv-flow">
-                <div class="jv-step hl"><b>Clase</b><code>Persona</code>, el molde (prototipo).</div>
-                <span class="jv-arrow" aria-hidden="true">↓<small>new</small></span>
-                <div class="jv-step"><b>Objeto</b>una zona de memoria con sus datos.</div>
-                <span class="jv-arrow" aria-hidden="true">=</span>
-                <div class="jv-step"><b>Instancia</b>un objeto creado desde una clase.</div>
-              </div><pre class="vm-code">Persona p = new Persona("Tania");</pre></div>
-          </div>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">static y final</span><span class="desc">de la clase · no cambia</span></div>
-            <div class="jv-body">
-              <div class="jv-chips"><span class="chip html">static</span><span>de la clase: una sola copia</span></div>
-              <div class="jv-chips"><span class="chip html">final</span><span>no puede cambiar</span></div>
-              <div class="jv-chips"><span class="chip html">static final</span><span>constante</span></div><pre class="vm-code">public static final double IVA = 0.21;</pre></div>
-          </div>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">Quién puede verlo</span><span class="desc">private, paquete, protected, public</span></div>
-            <div class="jv-body">
-              <div class="jv-lad">
-                <div><b>private</b> · solo la propia clase</div>
-                <div><b>(nada)</b> · el mismo paquete</div>
-                <div><b>protected</b> · paquete e hijos</div>
-                <div><b>public</b> · todo el mundo</div>
-              </div></div>
-          </div>
-        </div>
-        <div class="group">
-          <h2>Textos y fechas</h2>
-          <p class="group-desc">Lo que más se usa con un <code>String</code> y con las fechas.</p>
-          <div class="entry core">
-            <div class="entry-head"><span class="tag">Métodos de String</span><span class="desc">length, trim, charAt, indexOf…</span></div>
-            <div class="jv-body"><ul class="glist"><li><span class="chip">length()</span><span>cuántos caracteres</span></li><li><span class="chip">trim()</span><span>quita espacios de los lados</span></li><li><span class="chip">charAt(2)</span><span>el carácter en esa posición</span></li><li><span class="chip">indexOf("a")</span><span>dónde está (-1 si no)</span></li><li><span class="chip">contains("a")</span><span>true o false</span></li><li><span class="chip">replace("a","b")</span><span>cambia un trozo</span></li><li><span class="chip">String.valueOf(5)</span><span>pasa a texto</span></li></ul></div>
+String comparar(int a, int b) {    // devuelve un texto
+    if (a &lt; b) return "menor";
+    return "mayor";
+}</pre><ul class="jv-lista"><li><b>void</b>: el método hace algo (escribir, guardar…) pero <b>no entrega nada</b>. No se usa con <code>=</code>.</li><li>Cualquier otro tipo (<code>int</code>, <code>String</code>…): <b>tiene que haber un <code>return</code></b> de ese tipo en todos los caminos.</li><li><code>return</code> <b>termina</b> el método en ese punto.</li></ul><div class="jv-warn"><b>Ojo:</b> Dentro de un <code>public static void main</code>, los métodos que llamas también tienen que ser <code>static</code> (en el <code>main()</code> corto de Java 25 no hace falta).</div></div>
           </div>
           <div class="entry">
-            <div class="entry-head"><span class="tag">Más con texto</span><span class="desc">unir, formatear, bloques</span></div>
-            <div class="jv-body"><ul class="glist"><li><span class="chip">"a" + "b"</span><span>unir textos</span></li><li><span class="chip">String.format</span><span>«Hola %s»</span></li><li><span class="chip">"""</span><span>bloque de varias líneas</span></li><li><span class="chip">Math.pow</span><span>potencias (^ no lo es)</span></li></ul></div>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">LocalDateTime</span><span class="desc">la fecha moderna</span></div>
-            <div class="jv-body"><pre class="vm-code">LocalDateTime ahora = LocalDateTime.now();</pre><p>También <code>LocalDate</code>, <code>LocalTime</code>, <code>Duration</code> y <code>Period</code>. No se modifica: cada cambio crea una fecha nueva.</p></div>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Date y GregorianCalendar</span><span class="desc">las fechas antiguas</span></div>
-            <div class="jv-body"><pre class="vm-code">Date fecha = new Date();
-GregorianCalendar gc = new GregorianCalendar();</pre><div class="jv-warn"><b>Ojo:</b> en <code>GregorianCalendar</code> los meses empiezan en <b>0</b>.</div></div>
-          </div>
-        </div>
-        <div class="group">
-          <h2>Eclipse</h2>
-          <p class="group-desc">Trucos para programar más rápido. En Mac, ⌘ en lugar de Ctrl.</p>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Atajos y plantillas</span><span class="desc">main, sysout, formatear</span></div>
-            <div class="jv-body"><ul class="glist"><li><span class="chip">main</span><span>Ctrl+Espacio: escribe el main entero</span></li><li><span class="chip">sysout</span><span>Ctrl+Espacio: escribe System.out.println()</span></li><li><span class="chip">Ctrl+Shift+F</span><span>ordena el código</span></li><li><span class="chip">Alt+Shift+M</span><span>Extract Method</span></li></ul></div>
-          </div>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Cómo se organiza</span><span class="desc">workspace, proyecto, perspectiva</span></div>
-            <div class="jv-body"><ul class="glist"><li><span class="chip">Workspace</span><span>la carpeta de todos tus proyectos</span></li><li><span class="chip">Proyecto</span><span>los ficheros de una aplicación</span></li><li><span class="chip">Perspectiva</span><span>ventanas colocadas de una forma</span></li></ul></div>
+            <div class="entry-head"><span class="tag">Parámetros y argumentos</span><span class="desc">lo que le pasas al método</span></div>
+            <div class="jv-body"><pre class="vm-code">void presentar(String nombre, int edad) {   // parámetros: variables del método
+    IO.println(nombre + " tiene " + edad);
+}
+
+presentar("Ana", 30);                       // argumentos: los valores que pasas</pre><ul class="jv-lista"><li>Se pasan <b>en el mismo orden</b> y con los <b>mismos tipos</b> que se declararon.</li><li>Con primitivos el método recibe <b>una copia</b>: lo que haga dentro no cambia tu variable original.</li><li>Con referencias recibe la <b>dirección</b>: sí puede modificar el objeto.</li></ul></div>
           </div>
           <div class="entry core">
-            <div class="entry-head"><span class="tag">Extract Method</span><span class="desc">convertir líneas en un método</span></div>
-            <div class="jv-body"><p><b>Antes</b></p><pre class="vm-code">// todo dentro del main
+            <div class="entry-head"><span class="tag">Extract Method</span><span class="desc">convertir líneas sueltas en un método</span></div>
+            <div class="jv-body"><p>Selecciona el código en Eclipse → clic derecho → <b>Refactor → Extract Method…</b> (atajo <b>Alt+Shift+M</b>; en Mac, <b>⌥⌘M</b>). Eclipse averigua solo qué parámetros necesita y qué devuelve.</p><pre class="vm-code">// ANTES: todo dentro del main
 if (a &lt; b) {
     r = "menor";
 } else {
     r = "mayor";
-}</pre><p><b>Después</b></p><pre class="vm-code">String comparar(int a, int b) {
+}
+
+// DESPUÉS: un método con nombre
+String comparar(int a, int b) {
     if (a &lt; b) return "menor";
     return "mayor";
 }
 
-r = comparar(a, b);</pre><p>Se lee mejor, se reutiliza (<b>DRY</b>) y se arregla en un solo sitio.</p></div>
+r = comparar(a, b);</pre><p>Ventajas: se lee mejor, se <b>reutiliza</b> (es el <b>DRY</b> de «no te repitas») y, si hay un fallo, lo arreglas en un solo sitio.</p></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Un programa ordenado con métodos</span><span class="desc">el esqueleto de un menú</span></div>
+            <div class="jv-body"><pre class="vm-code">void main() {
+    int opcion;
+    do {
+        mostrarOpciones();
+        opcion = Integer.parseInt(IO.readln("Opción: "));
+        procesarOpcion(opcion);
+    } while (opcion != 0);
+}
+
+void mostrarOpciones() { ... }
+void procesarOpcion(int opcion) { ... }</pre><p>El <code>main</code> queda como un <b>índice</b>: cada paso tiene su método y su nombre. Cada método hace <b>una sola cosa</b>.</p></div>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Arrays y listas</h2>
+          <p class="group-desc">Cómo guardar varios datos juntos.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Array</span><span class="desc">una fila de huecos de tamaño fijo</span></div>
+            <div class="jv-body"><pre class="vm-code">int[] n = new int[3];           // 3 huecos para enteros, todos a 0
+n[0] = 5;                       // el primer hueco es el 0
+n[1] = 6;
+n[2] = 7;
+n.length;                       // 3
+
+int[] m = {4, 8, 15};           // otra forma: con valores</pre><ul class="jv-lista"><li>Los huecos se numeran <b>desde 0</b>: un array de 3 tiene los huecos 0, 1 y 2.</li><li>El <b>tamaño no cambia</b> una vez creado.</li><li>Todos los huecos son <b>del mismo tipo</b>.</li><li>Sin rellenar valen <code>0</code> (números), <code>false</code> (boolean) o <code>null</code> (objetos).</li><li><code>length</code> <b>no lleva paréntesis</b> en un array.</li></ul><div class="simple-explain"><span class="se-label">En cristiano</span>Es una <b>caja de huevos</b>: huecos numerados, tiene los que tiene y no puedes meter uno más.</div></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">ArrayIndexOutOfBoundsException</span><span class="desc">el error de «ese hueco no existe»</span></div>
+            <div class="jv-body"><pre class="vm-code">int[] n = new int[3];
+n[3] = 8;      // ERROR: los huecos son 0, 1 y 2</pre><p>Sale al usar una posición que <b>no existe</b> (negativa o igual/mayor que el tamaño). Es el error más típico con arrays. El último hueco es siempre <code>length - 1</code>.</p></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Recorrer y mostrar un array</span><span class="desc">for, for-each y Arrays.toString</span></div>
+            <div class="jv-body"><pre class="vm-code">for (int i = 0; i &lt; n.length; i++) {   // con posición
+    IO.print(n[i] + " ");
+}
+
+for (int dato : n) {                   // sin posición
+    IO.print(dato + " ");
+}
+
+IO.println(Arrays.toString(n));        // [5, 6, 7]</pre><div class="jv-warn"><b>Ojo:</b> <code>IO.println(n)</code> sin más escribe un código raro (la dirección). Para ver el contenido usa <code>Arrays.toString</code>.</div></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Matrices</span><span class="desc">un array de arrays</span></div>
+            <div class="jv-body"><pre class="vm-code">char[][] tablero = new char[8][8];     // 8 filas x 8 columnas
+
+tablero[0][0] = 'T';                   // [fila][columna]
+tablero[7][7] = 't';
+
+for (char[] fila : tablero) {
+    for (char celda : fila) {
+        IO.print((celda != 0 ? celda : '.') + " ");
+    }
+    IO.println();
+}</pre><p>Una tabla con filas y columnas. Se recorre con <b>dos bucles</b>, uno dentro del otro. Las casillas de <code>char</code> sin rellenar valen <code>0</code>.</p></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Array de objetos</span><span class="desc">huecos que empiezan en null</span></div>
+            <div class="jv-body"><pre class="vm-code">Persona[] personas = new Persona[2];   // 2 huecos, los dos null
+personas[0] = new Persona("Ana", 30);  // ahora el 0 tiene un objeto
+// personas[1] sigue siendo null</pre><div class="jv-warn"><b>Ojo:</b> Un array de objetos <b>no crea los objetos</b>, solo los huecos. Si usas un hueco sin rellenar, saltará un <code>NullPointerException</code>.</div></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">ArrayList</span><span class="desc">una lista que crece y se encoge</span></div>
+            <div class="jv-body"><pre class="vm-code">ArrayList&lt;String&gt; l = new ArrayList&lt;&gt;();   // el tipo va entre &lt; &gt;
+
+l.add("a");           // al final
+l.addFirst("b");      // al principio
+l.add(1, "c");        // en la posición 1
+l.get(0);             // leer
+l.set(1, "z");        // cambiar
+l.remove(0);          // quitar la posición 0
+l.size();             // cuántos hay
+l.isEmpty();          // ¿está vacía?
+l.contains("a");      // ¿está?</pre><ul class="jv-lista"><li>Crece sola: no hace falta decir el tamaño.</li><li>Se usa con <b>métodos</b>, no con <code>[ ]</code>.</li><li>Guarda <b>objetos</b>: para números se escribe <code>ArrayList&lt;Integer&gt;</code> (con <code>Integer</code>, no <code>int</code>).</li></ul><div class="jv-warn"><b>Ojo:</b> En un <code>ArrayList&lt;Integer&gt;</code>, <code>remove(2)</code> quita la <b>posición 2</b>, no el número 2.</div><div class="simple-explain"><span class="se-label">En cristiano</span>Es el <b>array</b> de JavaScript, pero tienes que decir de qué tipo son sus elementos.</div></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Array o ArrayList</span><span class="desc">cuál usar</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">Array</span><span>tamaño fijo · <code>[ ]</code> · <code>n.length</code> · admite primitivos</span></li><li><span class="chip">ArrayList</span><span>crece · métodos · <code>l.size()</code> · solo objetos</span></li></ul><pre class="vm-code">n[1] = 10;              // array
+l.set(1, 10);           // ArrayList
+
+n.length                // array: sin paréntesis
+l.size()                // ArrayList: con paréntesis
+texto.length()          // String: con paréntesis</pre><p>Si sabes cuántos datos hay, un array. Si va a crecer o encoger, un <code>ArrayList</code>.</p></div>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Clases y objetos</h2>
+          <p class="group-desc">La base de Java: todo se organiza en clases.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Clase, objeto e instancia</span><span class="desc">el molde y lo que sale de él</span></div>
+            <div class="jv-body"><div class="jv-flow"><div class="jv-step hl"><b>Clase</b>Persona: el molde, la descripción.</div><span class="jv-arrow" aria-hidden="true">↓<small>new</small></span><div class="jv-step"><b>Objeto (instancia)</b>una zona de memoria con sus propios datos, creada desde la clase.</div></div><pre class="vm-code">public class Persona {
+    private String nombre;          // atributos: los datos
+    private int edad;
+
+    public Persona(String nombre, int edad) {   // constructor
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    public String saludar() {                   // método
+        return "Hola, soy " + nombre;
+    }
+}
+
+Persona ana = new Persona("Ana", 30);      // un objeto
+Persona luis = new Persona("Luis", 25);    // otro, independiente
+ana.saludar();                             // "Hola, soy Ana"</pre><div class="simple-explain"><span class="se-label">En cristiano</span>La clase es el <b>molde de las galletas</b>; cada galleta (objeto) sale del molde con su propio sabor (sus datos).</div></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Constructor y this</span><span class="desc">cómo nace un objeto</span></div>
+            <div class="jv-body"><ul class="jv-lista"><li>El <b>constructor</b> se llama como la clase, <b>no lleva tipo devuelto</b> y se ejecuta al hacer <code>new</code>.</li><li>Sirve para dar valores iniciales a los atributos.</li><li><code>this</code> es «<b>este objeto</b>». Se usa para distinguir el atributo del parámetro cuando se llaman igual.</li></ul><pre class="vm-code">public Persona(String nombre, int edad) {
+    this.nombre = nombre;    // atributo = parámetro
+    this.edad = edad;
+}</pre></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">record</span><span class="desc">una clase de datos en una línea (Java 16)</span></div>
+            <div class="jv-body"><pre class="vm-code">record Persona(String nombre, int edad) { }
+
+Persona p = new Persona("Ana", 30);
+p.nombre();          // "Ana"   (se lee con nombre(), sin get)
+p.edad();            // 30
+IO.println(p);       // Persona[nombre=Ana, edad=30]</pre><ul class="jv-lista"><li>Java crea <b>solo</b> el constructor, los métodos para leer cada dato, <code>equals</code> y <code>toString</code>.</li><li>Los datos son <b>inmutables</b>: una vez creado no se pueden cambiar.</li><li>Equivale a escribir a mano toda la clase <code>Persona</code> de arriba.</li></ul><div class="simple-explain"><span class="se-label">En cristiano</span>Es una <b>ficha con campos fijos</b>: nombre y apellidos, y listo. No hace falta escribir cómo se rellena ni cómo se lee.</div></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">static y final</span><span class="desc">de la clase · no cambia</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">static</span><span>pertenece a la <b>clase</b>, no a cada objeto: hay una sola copia</span></li><li><span class="chip">final</span><span>no se puede volver a asignar (variable) ni cambiar</span></li><li><span class="chip">static final</span><span>una constante de la clase</span></li></ul><pre class="vm-code">public static final double IVA = 0.21;    // constante compartida
+
+Math.pow(2, 3);     // un método static: se llama con la clase, sin new
+Persona.contar();   // idem</pre><p>Un atributo <b>static</b> es de la clase: si cambia, cambia para todos los objetos. Uno <b>no static</b> es de cada objeto.</p></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Quién puede verlo</span><span class="desc">private, paquete, protected y public</span></div>
+            <div class="jv-body"><div class="jv-lad"><div><b>private</b> · solo la propia clase</div><div><b>(nada)</b> · el mismo paquete</div><div><b>protected</b> · paquete e hijos</div><div><b>public</b> · todo el mundo</div></div><pre class="vm-code">public class Persona {
+    private int edad;        // nadie de fuera la toca directamente
+    public int getEdad() {   // se pide a través de un método
+        return edad;
+    }
+}</pre><p>Lo normal es que los <b>atributos sean <code>private</code></b> y se lean con métodos <b>públicos</b> (<code>getEdad()</code>). Se llama <b>encapsulamiento</b>.</p><div class="simple-explain"><span class="se-label">En cristiano</span>Como las puertas del local: <b>private</b> es la cocina (solo el personal) y <b>public</b> es la entrada principal.</div></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Paquetes e import</span><span class="desc">organizar y traer clases</span></div>
+            <div class="jv-body"><pre class="vm-code">package tienda.modelo;            // en qué carpeta lógica está esta clase
+
+import java.util.ArrayList;        // traer una clase de otro paquete
+import java.util.*;                // traer todas las de java.util</pre><ul class="jv-lista"><li>El <b>paquete</b> es como una carpeta para ordenar las clases.</li><li><code>java.lang</code> (<code>String</code>, <code>Math</code>, <code>System</code>…) <b>se importa solo</b>.</li><li>En el <code>main()</code> corto de Java 25 también se importan solas las de <code>java.base</code> (<code>ArrayList</code>, <code>Random</code>, <code>Scanner</code>…).</li></ul></div>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Textos y fechas</h2>
+          <p class="group-desc">Las herramientas que más se usan con un String y con el tiempo.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Métodos de String</span><span class="desc">length, trim, charAt, indexOf…</span></div>
+            <div class="jv-body"><pre class="vm-code">String texto = "  Hola mundo ";
+
+texto.length();             // 13     cuántos caracteres (con los espacios)
+texto.trim();               // "Hola mundo"   quita los espacios de los lados
+texto.charAt(2);            // 'H'    el carácter en esa posición (empieza en 0)
+texto.indexOf("mundo");     // 7      dónde empieza (-1 si no está)
+texto.contains("Hola");     // true
+texto.replace("Hola", "Adiós");   // "  Adiós mundo "
+texto.equals("x");          // false  ¿mismo contenido?
+texto.toUpperCase();        // "  HOLA MUNDO "
+String.valueOf(42);         // "42"</pre><div class="jv-warn"><b>Ojo:</b> Ninguno <b>cambia</b> el texto original: devuelven uno nuevo. Para quedarte con el cambio: <code>texto = texto.trim();</code>.</div></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Más con texto</span><span class="desc">unir, formatear y bloques</span></div>
+            <div class="jv-body"><pre class="vm-code">String a = "Hola " + "mundo";                    // unir
+String b = String.format("Hola %s, tienes %d", "Ana", 30);   // con huecos
+String c = """
+        Varias
+        líneas
+        """;                                       // bloque de texto
+Math.pow(2, 10);      // 1024.0
+Math.sqrt(16);        // 4.0
+Math.round(3.6);      // 4</pre></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Fechas: LocalDateTime</span><span class="desc">la forma moderna</span></div>
+            <div class="jv-body"><pre class="vm-code">import java.time.LocalDateTime;
+
+LocalDateTime ahora = LocalDateTime.now();
+System.out.println(ahora);       // 2026-10-27T10:15:30.123</pre><ul class="jv-lista"><li>Está en <code>java.time</code> (desde Java 8). También <code>LocalDate</code> (solo fecha), <code>LocalTime</code> (solo hora), <code>Duration</code> y <code>Period</code>.</li><li><b>No se modifica</b>: cada cambio crea una fecha nueva.</li><li>Los <b>meses</b> van de 1 a 12, como esperas.</li></ul><div class="simple-explain"><span class="se-label">En cristiano</span>Es una <b>ficha de fecha</b>: si quieres otra, sacas una nueva en vez de tachar la anterior.</div></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Date y GregorianCalendar</span><span class="desc">las fechas antiguas</span></div>
+            <div class="jv-body"><pre class="vm-code">import java.util.Date;
+import java.util.GregorianCalendar;
+
+Date fecha = new Date();
+GregorianCalendar gc = new GregorianCalendar();</pre><div class="jv-warn"><b>Ojo:</b> En <code>GregorianCalendar</code> los <b>meses empiezan en 0</b> (enero = 0). Por eso se prefiere <code>LocalDateTime</code>.</div><p>El <b>calendario gregoriano</b> es el que usamos hoy (desde 1582); la clase lleva su nombre.</p></div>
+          </div>
+        </div>
+        <div class="group">
+          <h2>Eclipse</h2>
+          <p class="group-desc">Trucos del editor. En Mac, ⌘ en lugar de Ctrl.</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Atajos y plantillas</span><span class="desc">escribir menos</span></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">main</span><span>Ctrl+Espacio: escribe el main entero</span></li><li><span class="chip">sysout</span><span>Ctrl+Espacio: escribe System.out.println()</span></li><li><span class="chip">Ctrl+Shift+F</span><span>ordena y alinea el código</span></li><li><span class="chip">Ctrl+1</span><span>arreglo rápido (Quick Fix) de un error</span></li><li><span class="chip">Alt+Shift+M</span><span>Extract Method</span></li></ul><p>Las <b>plantillas</b> funcionan así: escribes la palabra (<code>sysout</code>), pulsas <b>Ctrl+Espacio</b> y Eclipse completa el resto.</p></div>
+          </div>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Errores y avisos</span><span class="desc">rojo y amarillo</span></div>
+            <div class="jv-body"><ul class="jv-lista"><li><b>Subrayado rojo</b>: error. El programa no compila.</li><li><b>Subrayado amarillo</b>: aviso. Compila, pero algo es raro (por ejemplo, una variable que no usas).</li><li>Pasa el ratón por encima para ver el motivo, o pulsa <b>Ctrl+1</b> para que Eclipse te proponga cómo arreglarlo.</li></ul></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Cómo se organiza</span><span class="desc">workspace, proyecto y perspectiva</span></div>
+            <div class="jv-body"><pre class="vm-code">Workspace                  (la carpeta de todos tus proyectos)
+└─ mi-proyecto              (un Java Project)
+   └─ src
+      └─ paquete
+         └─ Programa.java</pre><ul class="glist"><li><span class="chip">Workspace</span><span>la carpeta donde guarda Eclipse tus proyectos</span></li><li><span class="chip">Proyecto</span><span>los ficheros de una aplicación</span></li><li><span class="chip">Perspectiva</span><span>ventanas colocadas de una forma concreta</span></li></ul></div>
           </div>
         </div>
         <div class="group">
           <h2>Versiones de Java</h2>
-          <p class="group-desc">Las marcadas con <b>LTS</b> tienen soporte largo y son las que usan las empresas.</p>
-          <div class="entry">
-            <div class="entry-head"><span class="tag">Versiones LTS</span><span class="desc">8, 11, 17, 21 y 25</span></div>
-            <div class="jv-body"><div class="jv-chips"><span class="chip lts">Java 8 · LTS</span><span class="chip lts">Java 11 · LTS</span><span class="chip lts">Java 17 · LTS</span><span class="chip lts">Java 21 · LTS</span><span class="chip lts">Java 25 · LTS</span></div></div>
+          <p class="group-desc">Qué es cada cosa cuando oyes «Java 17», «LTS» o «Jakarta EE».</p>
+          <div class="entry core">
+            <div class="entry-head"><span class="tag">Versiones LTS</span><span class="desc">las que usan las empresas</span></div>
+            <div class="jv-body"><div class="jv-chips"><span class="chip lts">Java 8 · LTS</span><span class="chip lts">Java 11 · LTS</span><span class="chip lts">Java 17 · LTS</span><span class="chip lts">Java 21 · LTS</span><span class="chip lts">Java 25 · LTS</span></div><p><b>LTS</b> significa <i>Long Term Support</i>: versiones con soporte durante años. Las empresas prefieren quedarse en una LTS en lugar de cambiar cada seis meses. Hoy son la <b>8, 11, 17, 21 y 25</b>.</p></div>
           </div>
           <div class="entry">
             <div class="entry-head"><span class="tag">Qué trajo cada una</span><span class="desc">de la 5 a la 16</span></div>
-            <div class="jv-body"><ul class="glist"><li><span class="chip">5</span><span>genéricos, @anotaciones, for-each</span></li><li><span class="chip">7</span><span>try-with-resources</span></li><li><span class="chip">8</span><span>lambdas, streams, java.time</span></li><li><span class="chip">9</span><span>módulos</span></li><li><span class="chip">10</span><span>var</span></li><li><span class="chip">15</span><span>bloques de texto """</span></li><li><span class="chip">16</span><span>record, instanceof con patrón</span></li></ul></div>
+            <div class="jv-body"><ul class="glist"><li><span class="chip">5</span><span>genéricos <code>&lt;T&gt;</code>, @anotaciones, for-each</span></li><li><span class="chip">7</span><span>try-with-resources</span></li><li><span class="chip">8</span><span>lambdas (<code>-></code>), streams, <code>java.time</code></span></li><li><span class="chip">9</span><span>módulos</span></li><li><span class="chip">10</span><span><code>var</code></span></li><li><span class="chip">15</span><span>bloques de texto <code>"""</code></span></li><li><span class="chip">16</span><span><code>record</code>, instanceof con patrón</span></li></ul></div>
           </div>
           <div class="entry">
             <div class="entry-head"><span class="tag">Los números de una versión</span><span class="desc">versión · subversión · revisión</span></div>
-            <div class="jv-body">
-              <div class="jv-semver"><div><strong>2</strong>versión<br>rompe lo anterior</div><span class="dot">.</span><div><strong>4</strong>subversión<br>novedades compatibles</div><span class="dot">.</span><div><strong>1</strong>revisión<br>arreglos y parches</div></div>
-              <div class="jv-chips"><span class="chip html">Java SE</span><span class="chip ">Jakarta EE</span><span class="chip ">Java ME</span></div>
-              <p><b>SE</b> (Standard) es la de siempre; <b>Jakarta EE</b> es para servidores; <b>ME</b>, para aparatos pequeños.</p></div>
+            <div class="jv-body"><div class="jv-semver"><div><strong>2</strong>versión<br>rompe lo anterior</div><span class="dot">.</span><div><strong>4</strong>subversión<br>novedades compatibles</div><span class="dot">.</span><div><strong>1</strong>revisión<br>arreglos y parches</div></div><p>Se llama <b>SemVer</b>. <b>Java SE</b> (Standard) es la de siempre; <b>Jakarta EE</b> es para servidores; <b>Java ME</b>, para aparatos pequeños.</p></div>
+          </div>
+          <div class="entry">
+            <div class="entry-head"><span class="tag">Compilado o interpretado</span><span class="desc">dos formas de traducir un programa</span></div>
+            <div class="jv-body"><p><b>Interpretado</b> (JavaScript, Python): se traduce mientras se ejecuta, como un <b>traductor simultáneo</b>. Más lento.</p><p><b>Compilado</b> (Java): se traduce antes, como una <b>transcripción</b> entera. Más rápido. Java compila a <b>bytecode</b> y la JVM lo ejecuta.</p></div>
           </div>
         </div>
       </div>
@@ -6435,9 +6695,5 @@ r = comparar(a, b);</pre><p>Se lee mejor, se reutiliza (<b>DRY</b>) y se arregla
     li.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
   });
 </script>
-
-
-
-
 </body>
 </html>
